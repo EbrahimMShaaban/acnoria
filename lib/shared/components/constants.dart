@@ -19,3 +19,8 @@ abstract class MediaQueryHelper {
     return MediaQuery.of(context).size.width / fraction;
   }
 }
+
+
+appPadding(){
+  return EdgeInsets.symmetric(horizontal: 36);
+}
