@@ -4,7 +4,6 @@ import '../styles/colors.dart';
 import '../styles/styles.dart';
 import 'constants.dart';
 
-
 class ButtonTemplate extends StatelessWidget {
   ButtonTemplate({
     Key? key,
@@ -26,23 +25,29 @@ class ButtonTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      minWidth: minwidth,
-      height: 50,
-      onPressed: onPressed,
-      color: color,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-      child: RichText(
-          text: TextSpan(
-              text: "",
-              style: TextStyle(color: Colors.white, fontSize: fontSize),
-              children: [
-            TextSpan(
-                text: text1, style: TextStyle(fontWeight: FontWeight.bold)),
-            TextSpan(text: text2),
-            TextSpan(
-                text: text3, style: TextStyle(fontWeight: FontWeight.bold)),
-          ])),
+    return Padding(
+      padding: const EdgeInsets.only(top: 36),
+      child: MaterialButton(
+        minWidth: minwidth,
+        height: 65,
+        onPressed: onPressed,
+        color: color,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        child: RichText(
+            text: TextSpan(
+                text: "",
+                style: TextStyle(color: Colors.white, fontSize: fontSize),
+                children: [
+              TextSpan(
+                  text: text1,
+                  style: AppTextStyles.boldtitles
+                      .apply(fontSizeDelta: 5, color: AppColors.white)),
+              TextSpan(text: text2),
+              TextSpan(
+                  text: text3, style: TextStyle(fontWeight: FontWeight.bold)),
+            ])),
+
+      ),
     );
   }
 }
@@ -64,31 +69,30 @@ class TextFieldTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 60.0, vertical: 5),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: TextFormField(
-          obscureText: obscureText,
-          controller: controller,
-          validator: (value) => validator!(value),
-          decoration: InputDecoration(
-              hintText: hintText,
-              border: InputBorder.none,
-              filled: true,
-              fillColor: AppColors.materialGrey,
-              enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
-              focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
-              errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
-              disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(20)))),
-        ),
+      padding: const EdgeInsets.only(top: 36.0),
+      child: TextFormField(
+        obscureText: obscureText,
+        controller: controller,
+        validator: (value) => validator!(value),
+        decoration: InputDecoration(
+            hintText: hintText,
+            border: InputBorder.none,
+            filled: true,
+            fillColor: AppColors.white,
+            labelStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
+            hintStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+            errorBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+            disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(15)))),
       ),
     );
   }
@@ -148,7 +152,8 @@ void showMyDialog(String _message, BuildContext context) async {
                   },
                   child: const Text(
                     "ok",
-                    style: TextStyle(color: AppColors.primarycolor, fontSize: 22),
+                    style:
+                        TextStyle(color: AppColors.primarycolor, fontSize: 22),
                   )),
             )
           ],
@@ -219,8 +224,6 @@ class TeamsName extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: Container(
-
-
         height: 100,
         width: 1,
         child: MaterialButton(
@@ -244,15 +247,3 @@ class TeamsName extends StatelessWidget {
     );
   }
 }
-
-// Future<bool?>  toast (){
-//   return Fluttertoast.showToast(
-//       msg: "This is Center Short Toast",
-//       toastLength: Toast.LENGTH_SHORT,
-//       gravity: ToastGravity.CENTER,
-//       timeInSecForIosWeb: 1,
-//       backgroundColor: Colors.red,
-//       textColor: Colors.white,
-//       fontSize: 16.0
-//   );
-// }
