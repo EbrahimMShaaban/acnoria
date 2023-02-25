@@ -1,7 +1,7 @@
+import 'package:acnoria/features/layout/view.dart';
 import 'package:acnoria/features/registration/login/view.dart';
-import 'package:acnoria/features/registration/pin/view.dart';
-import 'package:acnoria/features/welcamScreen/view.dart';
 import 'package:acnoria/shared/styles/theme.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -17,16 +17,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
+      supportedLocales: const [
         Locale('ar'), // English
         // Locale('es'), // Spanish
       ],
-      home: LoginScreen(),
+      home: AppLayout(),
     );
   }
 }
