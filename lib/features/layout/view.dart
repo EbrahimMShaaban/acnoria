@@ -32,7 +32,7 @@ class AppLayout extends StatelessWidget {
                 items: [
                   BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
                   BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-                  BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+                  BottomNavigationBarItem(icon: Icon(Icons.notifications_outlined), label: ''),
                   BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
                 ],
               ));
