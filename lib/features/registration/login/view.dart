@@ -1,7 +1,7 @@
 import 'package:acnoria/features/cart/view.dart';
 import 'package:acnoria/features/home/Categories/CategoriesScreen.dart';
-import 'package:acnoria/features/home/Favorite/FavoriteScreen.dart';
 import 'package:acnoria/features/home/itemScreen.dart';
+import 'package:acnoria/features/layout/view.dart';
 import 'package:acnoria/features/registration/Forgit_Password/view.dart';
 import 'package:acnoria/features/registration/pin/view.dart';
 import 'package:acnoria/features/registration/sign%20up/view.dart';
@@ -59,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                   text1: "تسجيل الدخول",
                   minwidth: double.infinity,
                   onPressed: () {
-                    navigateTo(context, CartScreen());
+                    navigateTo(context, AppLayout());
                   }),
               Padding(
                 padding: const EdgeInsets.only(top: 36.0),
