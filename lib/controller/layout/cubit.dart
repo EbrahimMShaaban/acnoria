@@ -1,8 +1,8 @@
 import 'package:acnoria/controller/layout/state.dart';
+import 'package:acnoria/features/Favourite/FavoriteScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/Favourite/view.dart';
 import '../../features/Home/view.dart';
 import '../../features/Notification/view.dart';
 import '../../features/Profile/view.dart';
@@ -25,7 +25,7 @@ class AppCubit extends Cubit<AppState> {
 
   List screen = [
     HomeScreen(),
-    FavouriteScreen(),
+    FavoriteScreen(),
     NotificationScreen(),
     ProfileScreen(),
   ];

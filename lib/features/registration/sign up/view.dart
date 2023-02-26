@@ -1,4 +1,3 @@
-import 'package:acnoria/features/home/Favorite/FavoriteScreen.dart';
 import 'package:acnoria/features/home/itemScreen.dart';
 import 'package:acnoria/features/registration/login/view.dart';
 import 'package:acnoria/features/registration/pin/view.dart';
@@ -8,6 +7,8 @@ import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
+
+import '../../Favourite/FavoriteScreen.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
