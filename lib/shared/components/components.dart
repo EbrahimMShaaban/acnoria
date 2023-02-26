@@ -39,10 +39,14 @@ class ButtonTemplate extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            icon==null?SizedBox(): Center(
-              child: Icon(icon, size: 30, color: AppColors.white),
+            icon == null
+                ? SizedBox()
+                : Center(
+                    child: Icon(icon, size: 30, color: AppColors.white),
+                  ),
+            SizedBox(
+              width: 5,
             ),
-            SizedBox(width: 5,),
             Text(text1,
                 textAlign: TextAlign.center,
                 style: AppTextStyles.boldtitles.apply(
@@ -72,9 +76,7 @@ class TextFieldTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20.0),
-      child: TextFormField(
+    return TextFormField(
         obscureText: obscureText,
         controller: controller,
         validator: (value) => validator!(value),
@@ -96,9 +98,7 @@ class TextFieldTemplate extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             disabledBorder: OutlineInputBorder(
                 borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(15)))),
-      ),
-    );
+                borderRadius: BorderRadius.all(Radius.circular(15)))));
   }
 }
 

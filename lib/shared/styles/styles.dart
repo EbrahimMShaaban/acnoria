@@ -27,7 +27,7 @@ abstract class AppTextStyles {
   /// - weight: w700
   /// - family: cairo
   static const TextStyle lrTitles =
-      TextStyle(fontWeight: FontWeight.w500, fontSize: 30);
+      TextStyle(fontWeight: FontWeight.w700, fontSize: 22);
 
   /// - weight: w800
   /// - family: cairo
