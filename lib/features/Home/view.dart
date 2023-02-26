@@ -1,6 +1,8 @@
 import 'package:acnoria/features/Home/widgets/category_box.dart';
 import 'package:acnoria/features/Home/widgets/product_item.dart';
+import 'package:acnoria/features/search/search_view.dart';
 import 'package:acnoria/shared/components/constants.dart';
+import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/images.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +35,9 @@ class HomeScreen extends StatelessWidget {
                           color: AppColors.white,
                           icon: Icon(Icons.shopping_basket_outlined)),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            navigateTo(context, SearchView());
+                          },
                           color: AppColors.white,
                           icon: Icon(Icons.search)),
                     ],

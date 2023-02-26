@@ -1,3 +1,7 @@
+import 'package:acnoria/features/Notification/widgets/listtile_item.dart';
+import 'package:acnoria/shared/components/constants.dart';
+import 'package:acnoria/shared/styles/images.dart';
+import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -6,10 +10,51 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Directionality(
-        textDirection: TextDirection.rtl,
+      body: Container(
+        width: MediaQueryHelper.sizeFromWidth(context, 1),
+        padding: EdgeInsets.symmetric(
+            horizontal: MediaQueryHelper.sizeFromWidth(context, 20)),
         child: Column(
-          children: [Text('اليوم')],
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'الإشعارات',
+              style: AppTextStyles.lrTitles,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('اليوم'),
+                NotifyItem(),
+                NotifyItem(isclickable: true),
+                Divider(
+                  thickness: 1,
+                )
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('أمس'),
+                NotifyItem(),
+                Divider(
+                  thickness: 1,
+                )
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('في هذا الأسبوع'),
+                NotifyItem(),
+                NotifyItem(),
+                NotifyItem(),
+                Divider(
+                  thickness: 1,
+                )
+              ],
+            ),
+          ],
         ),
       ),
     );
