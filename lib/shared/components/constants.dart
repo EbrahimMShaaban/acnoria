@@ -22,5 +22,5 @@ abstract class MediaQueryHelper {
 
 
 appPadding(){
-  return EdgeInsets.symmetric(horizontal: 36);
+  return EdgeInsets.symmetric(horizontal: 30,vertical: 10);
 }
