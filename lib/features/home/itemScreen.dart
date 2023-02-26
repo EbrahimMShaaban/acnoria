@@ -52,7 +52,7 @@ class _ItemScreenState extends State<ItemScreen> {
                 ),
                 child: Container(
                   // color: Colors.yellowAccent,
-                  height: MediaQueryHelper.sizeFromHeight(context, 2.6),
+                  height: MediaQueryHelper.sizeFromHeight(context, 2.9),
                   // width: MediaQueryHelper.sizeFromWidth(context, 2),
                   child: Image.asset(
                     "assets/images/item.png",
@@ -66,8 +66,8 @@ class _ItemScreenState extends State<ItemScreen> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
+                        spreadRadius: 1,
+                        blurRadius: 5,
                         offset: Offset(0, 3), // changes position of shadow
                       ),
                     ],
@@ -217,7 +217,10 @@ class _ItemScreenState extends State<ItemScreen> {
                             icon: Icons.add_circle_outline_rounded,
                             color: AppColors.primarycolor,
                             text1: " اضف الى السلة",
-                            onPressed: () {}),
+                            onPressed: () {
+
+                              navigateTo(context, CartScreen());
+                            }),
                       ),
                     ]),
               ),
