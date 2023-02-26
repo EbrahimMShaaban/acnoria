@@ -13,6 +13,7 @@ ThemeData lightTheme = ThemeData(
     splashColor: AppColors.primarycolor,
     focusColor: AppColors.primarycolor,
   ),
+
   textTheme: TextTheme(
     headline1: TextStyle(
       color: AppColors.blueDark,
