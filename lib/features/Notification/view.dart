@@ -10,51 +10,54 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQueryHelper.sizeFromWidth(context, 1),
-        padding: EdgeInsets.symmetric(
-            horizontal: MediaQueryHelper.sizeFromWidth(context, 20)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'الإشعارات',
-              style: AppTextStyles.lrTitles,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('اليوم'),
-                NotifyItem(),
-                NotifyItem(isclickable: true),
-                Divider(
-                  thickness: 1,
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('أمس'),
-                NotifyItem(),
-                Divider(
-                  thickness: 1,
-                )
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('في هذا الأسبوع'),
-                NotifyItem(),
-                NotifyItem(),
-                NotifyItem(),
-                Divider(
-                  thickness: 1,
-                )
-              ],
-            ),
-          ],
+      body: SafeArea(
+        child: Container(
+          width: MediaQueryHelper.sizeFromWidth(context, 1),
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQueryHelper.sizeFromWidth(context, 20)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'الإشعارات',
+                style: AppTextStyles.boldtitles.apply(fontSizeDelta: 5),
+              ),
+              SizedBox(height: 30,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('اليوم'),
+                  NotifyItem(),
+                  NotifyItem(isclickable: true),
+                  Divider(
+                    thickness: 1,
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('أمس'),
+                  NotifyItem(),
+                  Divider(
+                    thickness: 1,
+                  )
+                ],
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('في هذا الأسبوع'),
+                  NotifyItem(),
+                  NotifyItem(),
+                  NotifyItem(),
+                  Divider(
+                    thickness: 1,
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

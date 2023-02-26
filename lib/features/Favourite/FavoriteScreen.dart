@@ -37,7 +37,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                   return ContinerMyFavorite(context, () {});
                 },
                 separatorBuilder: (context, index) => Divider(height: 20),
-                itemCount: 10),
+                itemCount: 3),
             Expanded(
               child: SizedBox(),
             ),

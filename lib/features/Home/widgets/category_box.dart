@@ -1,3 +1,4 @@
+import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/components/constants.dart';
@@ -27,7 +28,7 @@ class CategoryBox extends StatelessWidget {
             ),
           ),
         ),
-        Text(txt)
+        Text(txt,style: AppTextStyles.lrTitles.apply(fontSizeDelta: -3),)
       ],
     );
   }
