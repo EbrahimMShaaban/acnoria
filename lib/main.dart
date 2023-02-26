@@ -1,3 +1,4 @@
+import 'package:acnoria/features/home/Favorite/FavoriteScreen.dart';
 import 'package:acnoria/features/registration/login/view.dart';
 import 'package:acnoria/features/registration/pin/view.dart';
 import 'package:acnoria/features/welcamScreen/view.dart';
