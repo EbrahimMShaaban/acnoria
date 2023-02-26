@@ -86,7 +86,7 @@ flutter:
     - family: Schyler
       fonts:
         - asset: assets/fonts/fontarbic.ttf
-          weight: 500
+          weight: 900
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

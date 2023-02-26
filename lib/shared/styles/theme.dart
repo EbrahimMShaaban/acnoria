@@ -8,6 +8,12 @@ ThemeData lightTheme = ThemeData(
   fontFamily: 'Schyler',
   primaryColor: AppColors.primarycolor,
   primarySwatch: Colors.green,
+  iconTheme: IconThemeData(color: AppColors.primarycolor),
+  buttonTheme: ButtonThemeData(
+    splashColor: AppColors.primarycolor,
+    focusColor: AppColors.primarycolor,
+  ),
+
   textTheme: TextTheme(
     headline1: TextStyle(
       color: AppColors.blueDark,
@@ -24,10 +30,10 @@ ThemeData lightTheme = ThemeData(
   ),
   appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.white,
-      toolbarHeight: 50,
+      toolbarHeight: 60,
       elevation: 0,
       centerTitle: true,
-      iconTheme: IconThemeData(color: AppColors.primarycolor),
+      iconTheme: IconThemeData(color: AppColors.primarycolor, size: 30),
       titleTextStyle: TextStyle(
         color: AppColors.primarycolor,
         fontSize: 32,

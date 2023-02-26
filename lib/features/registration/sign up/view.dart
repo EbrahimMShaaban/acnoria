@@ -1,3 +1,5 @@
+import 'package:acnoria/features/home/Favorite/FavoriteScreen.dart';
+import 'package:acnoria/features/home/itemScreen.dart';
 import 'package:acnoria/features/registration/login/view.dart';
 import 'package:acnoria/features/registration/pin/view.dart';
 import 'package:acnoria/shared/components/components.dart';
@@ -22,41 +24,44 @@ class SignUpScreen extends StatelessWidget {
         child: Padding(
           padding: appPadding(),
           child: ListView(
-            children: [ SizedBox(height: 20,),
+            children: [
+              SizedBox(
+                height: 20,
+              ),
               Image.asset(
                 "assets/images/logo.png",
                 height: 65,
                 width: 100,
               ),
-              SizedBox(height: 35,),
+              SizedBox(
+                height: 35,
+              ),
               Text(
                 "انشئ حسابك الان فى اكنوريا\n لمتابعه ما هو جديد",
                 style: AppTextStyles.boldtitles.apply(fontSizeDelta: 3),
               ),
-              TextFieldTemplate(
-                  hintText: "الاسم",
-                  controller: nameController),
+              TextFieldTemplate(hintText: "الاسم", controller: nameController),
               TextFieldTemplate(
                   hintText: "رقم الهاتف او البريد الالكتروني",
                   controller: emailController),
               TextFieldTemplate(
-                  hintText: "رقم الهاتف",
-                  controller: phonController),
+                  hintText: "رقم الهاتف", controller: phonController),
               TextFieldTemplate(
-                  hintText: "كلمة المرور", controller: passwordController),    TextFieldTemplate(
-                  hintText: "تأكيد كلمة المرور", controller: password2Controller),
+                  hintText: "كلمة المرور", controller: passwordController),
+              TextFieldTemplate(
+                  hintText: "تأكيد كلمة المرور",
+                  controller: password2Controller),
               SizedBox(
                 height: 20,
               ),
-
               ButtonTemplate(
                   color: AppColors.primarycolor,
                   text1: "تسجيل الدخول",
                   minwidth: double.infinity,
                   onPressed: () {
-                    navigateTo(context, PinScreen());
+                    navigateTo(context, FavoriteScreen());
                   }),
-               Padding(
+              Padding(
                 padding: EdgeInsets.only(top: 36.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -71,9 +76,13 @@ class SignUpScreen extends StatelessWidget {
                       },
                       child: Text(
                         " تسجيل الان",
-                        style: AppTextStyles.smTitles,
+                        style: AppTextStyles.smTitles.apply(
+                          decoration: TextDecoration.underline,
+                          fontSizeDelta: -2,
+                        ),
                       ),
                     ),
+
                   ],
                 ),
               )
