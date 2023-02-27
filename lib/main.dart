@@ -1,4 +1,3 @@
-import 'package:acnoria/features/home/Favorite/FavoriteScreen.dart';
 import 'package:acnoria/features/layout/view.dart';
 
 import 'package:acnoria/features/registration/login/view.dart';
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
         Locale('ar'), // English
         // Locale('es'), // Spanish
       ],
-      home: AppLayout(),
+      home: LoginScreen(),
     );
   }
 }

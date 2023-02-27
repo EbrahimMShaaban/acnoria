@@ -1,11 +1,14 @@
 import 'package:acnoria/features/Home/widgets/category_box.dart';
 import 'package:acnoria/features/Home/widgets/product_item.dart';
+import 'package:acnoria/features/cart/view.dart';
 import 'package:acnoria/features/search/search_view.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/images.dart';
 import 'package:flutter/material.dart';
+
+import '../Categories/CategoriesScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -25,29 +28,35 @@ class HomeScreen extends StatelessWidget {
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20))),
               child: Center(
-                  child: Row(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      IconButton(
-                          onPressed: () {},
-                          color: AppColors.white,
-                          icon: Icon(Icons.shopping_basket_outlined)),
-                      IconButton(
-                          onPressed: () {
-                            navigateTo(context, SearchView());
-                          },
-                          color: AppColors.white,
-                          icon: Icon(Icons.search)),
-                    ],
-                  ),
-                  IconButton(
-                      onPressed: () {},
-                      color: AppColors.white,
-                      icon: Icon(Icons.panorama_fish_eye)),
+                    Row(
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              navigateTo(context, CartScreen());
+                            },
+                            color: AppColors.white,
+                            icon: Icon(Icons.shopping_basket_outlined,size: 30,)),
+                        IconButton(
+                            onPressed: () {
+                              navigateTo(context, SearchView());
+                            },
+                            color: AppColors.white,
+                            icon: Icon(Icons.search,size: 30,)),
+                      ],
+                    ),
+                    Image.asset(AppImages.pin,color: Colors.white,),
+                    // IconButton(
+                    //     onPressed: () {},
+                    //     color: AppColors.white,
+                    //     icon: Icon(Icons.panorama_fish_eye)),
                 ],
-              )),
+              ),
+                  )),
             ),
             SizedBox(
               height: MediaQueryHelper.sizeFromHeight(context, 10),
@@ -65,15 +74,22 @@ class HomeScreen extends StatelessWidget {
                   imgPath: AppImages.recent,
                   txt: 'وصل حديثا',
                 ),
-                CategoryBox(
-                  color: AppColors.lightblue,
-                  imgPath: AppImages.box,
-                  txt: 'الأقسام',
+                InkWell(
+                  onTap: (){
+                    navigateTo(context, CategoriesScrren());
+                  },
+                  child: CategoryBox(
+
+                    color: AppColors.lightblue,
+                    imgPath: AppImages.box,
+                    txt: 'الأقسام',
+                  ),
                 ),
                 CategoryBox(
                   color: AppColors.lightgreen,
                   imgPath: AppImages.booking,
                   txt: 'طلباتي',
+
                 ),
               ],
             ),

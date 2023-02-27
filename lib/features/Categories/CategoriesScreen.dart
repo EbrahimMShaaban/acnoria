@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/components/navigator.dart';
 import '../../../shared/styles/colors.dart';
-import '../../cart/view.dart';
+import '../cart/view.dart';
 
 class CategoriesScrren extends StatelessWidget {
   const CategoriesScrren({Key? key}) : super(key: key);

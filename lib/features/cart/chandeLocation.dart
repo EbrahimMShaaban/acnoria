@@ -1,3 +1,4 @@
+import 'package:acnoria/features/cart/addNew_location.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/components/navigator.dart';
@@ -103,7 +104,7 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
                     color: AppColors.primarycolor,
                     text1: "أضافة عنوان جديد",
                     onPressed: () {
-
+navigateTo(context, AddNewLocation());
                     },),
               )
             ],
