@@ -56,56 +56,44 @@ class SearchView extends StatelessWidget {
             Container(
                 height: MediaQueryHelper.sizeFromHeight(context, 7),
                 child: MultiSelectContainer(
+                    highlightColor: AppColors.primarycolor,
+                    textStyles: MultiSelectTextStyles(
+                      textStyle: AppTextStyles.boldtitles
+                          .copyWith(color: AppColors.primarycolor),
+                    ),
                     prefix: MultiSelectPrefix(
-                        selectedPrefix: Padding(
-                          padding: EdgeInsets.only(right: 5),
-                          child: Icon(
-                            Icons.check,
-                            color: Colors.white,
-                            size: 14,
-                          ),
-                        ),
+                        // selectedPrefix: Padding(
+                        //   padding: EdgeInsets.only(right: 5),
+                        //   child: Icon(
+                        //     Icons.check,
+                        //     color: Colors.white,
+                        //     size: 14,
+                        //   ),
+                        // ),
                         disabledPrefix: const Padding(
-                          padding: EdgeInsets.only(right: 5),
-                          child: Icon(
-                            Icons.do_disturb_alt_sharp,
-                            size: 14,
-                          ),
-                        )),
+                      padding: EdgeInsets.only(right: 5),
+                      child: Icon(
+                        Icons.do_disturb_alt_sharp,
+                        size: 14,
+                      ),
+                    )),
                     items: [
                       MultiSelectCard(
-                          value: 'المكملات الغذائية',
-                          label: 'المكملات الغذائية',
-                          textStyles: MultiSelectItemTextStyles(
-                            selectedTextStyle: AppTextStyles.boldtitles,
-                            disabledTextStyle: AppTextStyles.smTitles,
-                            textStyle: AppTextStyles.boldtitles,
-                          )),
+                        value: 'المكملات الغذائية',
+                        label: 'المكملات الغذائية',
+                      ),
                       MultiSelectCard(
-                          value: 'العناية بالاسنان',
-                          label: 'العناية بالاسنان',
-                          textStyles: MultiSelectItemTextStyles(
-                            selectedTextStyle: AppTextStyles.boldtitles,
-                            disabledTextStyle: AppTextStyles.smTitles,
-                            textStyle: AppTextStyles.boldtitles,
-                          )),
+                        value: 'العناية بالاسنان',
+                        label: 'العناية بالاسنان',
+                      ),
                       MultiSelectCard(
-                          value: 'العطور',
-                          label: 'العطور',
-                          textStyles: MultiSelectItemTextStyles(
-                            selectedTextStyle: AppTextStyles.boldtitles,
-                            disabledTextStyle: AppTextStyles.smTitles
-                                .copyWith(color: Colors.black),
-                            textStyle: AppTextStyles.boldtitles,
-                          )),
+                        value: 'العطور',
+                        label: 'العطور',
+                      ),
                       MultiSelectCard(
-                          value: 'مستلزمات كبار السن',
-                          label: 'مستلزمات كبار السن',
-                          textStyles: MultiSelectItemTextStyles(
-                            selectedTextStyle: AppTextStyles.boldtitles,
-                            disabledTextStyle: AppTextStyles.smTitles,
-                            textStyle: AppTextStyles.boldtitles,
-                          )),
+                        value: 'مستلزمات كبار السن',
+                        label: 'مستلزمات كبار السن',
+                      ),
                     ],
                     onChange: (allSelectedItems, selectedItem) {})),
             Container(
