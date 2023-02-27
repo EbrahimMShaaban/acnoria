@@ -27,34 +27,31 @@ class ButtonTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 36),
-      child: MaterialButton(
-        minWidth: minwidth,
-        height: 65,
-        onPressed: onPressed,
-        color: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            icon == null
-                ? SizedBox()
-                : Center(
-                    child: Icon(icon, size: 30, color: AppColors.white),
-                  ),
-            SizedBox(
-              width: 5,
-            ),
-            Text(text1,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.boldtitles.apply(
-                  fontSizeDelta: 5,
-                  color: AppColors.white,
-                )),
-          ],
-        ),
+    return MaterialButton(
+      minWidth: minwidth,
+      height: 65,
+      onPressed: onPressed,
+      color: color,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          icon == null
+              ? SizedBox()
+              : Center(
+                  child: Icon(icon, size: 30, color: AppColors.white),
+                ),
+          SizedBox(
+            width: 5,
+          ),
+          Text(text1,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.boldtitles.apply(
+                fontSizeDelta: 5,
+                color: AppColors.white,
+              )),
+        ],
       ),
     );
   }
