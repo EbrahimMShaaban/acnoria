@@ -103,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('وصل حديثا'),
+                      Text('وصل حديثا',),
                       ElevatedButton(
                         onPressed: () {},
                         child: const Text('مشاهدة الجميع'),
@@ -139,7 +139,7 @@ class HomeScreen extends StatelessWidget {
             height: MediaQueryHelper.sizeFromHeight(context, 4.5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Colors.greenAccent,
+              color: Colors.white,
             ),
           ),
         )
