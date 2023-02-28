@@ -21,8 +21,7 @@ class AppLayout extends StatelessWidget {
             body: cubit.screen[cubit.currentIndex],
             bottomNavigationBar: BottomAppBar(
               elevation: 0,
-             // color: AppColors.grey,
-              color: Colors.greenAccent,
+              color: AppColors.grey,
               shape: CircularNotchedRectangle(),
               notchMargin: 5,
               child: Container(
