@@ -1,3 +1,4 @@
+import 'package:acnoria/features/Profile/widgets/header.dart';
 import 'package:acnoria/features/Profile/widgets/tileItem.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/styles/colors.dart';
@@ -17,38 +18,19 @@ class CommonQuestions extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
-            Container(
-              width: MediaQueryHelper.sizeFromWidth(context, 1),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SizedBox(),
-                  Image.asset(AppImages.logo,
-                      width: MediaQueryHelper.sizeFromWidth(context, 2)),
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Directionality(
-                          textDirection: TextDirection.ltr,
-                          child: Icon(
-                            Icons.arrow_back,
-                            size: 25,
-                          )))
-                ],
-              ),
-            ),
+            Header(),
             Padding(
               padding: appPadding(),
               child: Column(
-                
                 children: [
                   Row(
                     children: [
-                      Text('الأسألة الشائعة',style: AppTextStyles.lrTitles,)
+                      Text(
+                        'الأسألة الشائعة',
+                        style: AppTextStyles.lrTitles,
+                      )
                     ],
                   ),
-                  
                   SizedBox(
                     height: 30,
                   ),
