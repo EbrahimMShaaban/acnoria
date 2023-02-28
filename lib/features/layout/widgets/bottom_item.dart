@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import '../../../shared/components/constants.dart';
 
 class BottomItem extends StatelessWidget {
-  BottomItem(
-      {required this.onclick,
-      // required this.width,
-      required this.path,
-      required this.heigh,
-      Key? key})
+  BottomItem({required this.onclick,
+    // required this.width,
+    required this.path,
+    required this.heigh,
+    Key? key})
       : super(key: key);
   Function onclick;
 
