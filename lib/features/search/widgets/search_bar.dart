@@ -1,3 +1,5 @@
+import 'package:acnoria/features/search/filteration.dart';
+import 'package:acnoria/shared/components/navigator.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/components/components.dart';
@@ -21,13 +23,18 @@ class SearchBar extends StatelessWidget {
               hintText: 'بحث',
               controller: searchcontroller,
             )),
-        Container(
-          height: 40,
-          width: 40,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: AppColors.white),
-          child: Image.asset(AppImages.filter),
+        InkWell(
+          onTap: (){
+            navigateTo(context, FilterAtion());
+          },
+          child: Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: AppColors.white),
+            child: Image.asset(AppImages.filter),
+          ),
         )
       ],
     );

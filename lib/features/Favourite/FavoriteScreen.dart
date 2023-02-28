@@ -39,9 +39,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 },
                 separatorBuilder: (context, index) => Divider(height: 20),
                 itemCount: 3),
-            Expanded(
-              child: SizedBox(),
-            ),
+           SizedBox(height: 20,),
             ButtonTemplate(
                 minwidth: double.infinity,
                 icon: Icons.add_circle_outline_rounded,

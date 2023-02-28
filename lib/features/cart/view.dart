@@ -1,6 +1,7 @@
 import 'package:acnoria/features/cart/payment.dart';
 import 'package:acnoria/features/cart/widget/ContinerMyCart.dart';
 import 'package:acnoria/features/cart/widget/Price.dart';
+import 'package:acnoria/features/cart/widget/profileappbar.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/navigator.dart';
 import 'package:flutter/material.dart';
@@ -23,28 +24,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xffF5F5F5),
-        leadingWidth: 150,
-        leading: Padding(
-          padding: const EdgeInsets.only(right:36.0),
-          child: Text("السلة",
-              style: AppTextStyles.boldtitles
-                  .apply(color: AppColors.blueDark, fontSizeFactor: 1.5)),
-        ),
-        actions: [
-          Directionality(
-              textDirection: TextDirection.ltr,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.keyboard_backspace_sharp,
-                ),
-              ))
-        ],
-      ),
+      appBar: ProfileAppBar(context,txt: 'السلة'),
       body: SingleChildScrollView(
         child: Padding(
           padding: appPadding(),
@@ -54,9 +34,10 @@ class _CartScreenState extends State<CartScreen> {
                 height: 30,
               ),
               ListView.builder(
-                shrinkWrap: true,
+
                 physics:NeverScrollableScrollPhysics() ,
                 itemCount: 10,
+
                 itemBuilder: (context, index) {
                   return ContinerMyCart(context, add: () {
                     setState(() {
@@ -73,17 +54,14 @@ class _CartScreenState extends State<CartScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: 30.0, bottom: 40),
                 child: TextField(
-
-                  style: AppTextStyles.lrTitles.apply(
-                    color: AppColors.primarycolor
-                  ),
+                  style: AppTextStyles.lrTitles
+                      .apply(color: AppColors.primarycolor),
                   decoration: InputDecoration(
                     hintText: "كود الخصم",
                     hintStyle: AppTextStyles.lrTitles.apply(),
                     focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: AppColors.primarycolor),
                         borderRadius: BorderRadius.all(Radius.circular(15))),
-
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -107,7 +85,7 @@ class _CartScreenState extends State<CartScreen> {
                 ),
               ),
               Price(),
-             Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ButtonTemplate(
@@ -121,16 +99,15 @@ class _CartScreenState extends State<CartScreen> {
                   Padding(
                     padding: const EdgeInsets.only(top: 36),
                     child: InkWell(
-                      onTap: (){},
+                      onTap: () {},
                       child: Container(
                         width: 160,
                         height: 65,
                         decoration: BoxDecoration(
-                          border:
-                          Border.all(color: AppColors.blue, width: 2.0),
+                          border: Border.all(color: AppColors.blue, width: 2.0),
                           borderRadius: BorderRadius.all(Radius.circular(
-                              10.0) //         <--- border radius here
-                          ),
+                                  10.0) //         <--- border radius here
+                              ),
                         ),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -151,7 +128,9 @@ class _CartScreenState extends State<CartScreen> {
                   )
                 ],
               ),
-              SizedBox(height: 15,),
+              SizedBox(
+                height: 15,
+              ),
             ],
           ),
         ),
