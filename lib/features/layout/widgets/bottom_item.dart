@@ -4,16 +4,21 @@ import 'package:flutter/material.dart';
 import '../../../shared/components/constants.dart';
 
 class BottomItem extends StatelessWidget {
-  BottomItem({required this.onclick,
-    // required this.width,
-    required this.path,
-    required this.heigh,
-    Key? key})
+
+
+  BottomItem(
+      {required this.onclick,
+       required this.color,
+      required this.path,
+      required this.heigh,
+      Key? key})
+
       : super(key: key);
   Function onclick;
 
   // double width;
   IconData path;
+  Color color;
   double heigh;
 
   @override
@@ -28,7 +33,9 @@ class BottomItem extends StatelessWidget {
             Expanded(
               child: Icon(
                 path,
-                color: AppColors.primarycolor,
+                color: color,
+                size: 35,
+
               ),
               // Icon(
               //   Icons.home,
