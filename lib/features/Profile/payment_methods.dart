@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 
 import '../../shared/styles/colors.dart';
 
-class ChangeLocationScreens extends StatefulWidget {
-  const ChangeLocationScreens({Key? key}) : super(key: key);
+class PaymentMethodsScreens extends StatefulWidget {
+  const PaymentMethodsScreens({Key? key}) : super(key: key);
 
   @override
-  State<ChangeLocationScreens> createState() => _ChangeLocationScreensState();
+  State<PaymentMethodsScreens> createState() => _PaymentMethodsScreensState();
 }
 
-class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
+class _PaymentMethodsScreensState extends State<PaymentMethodsScreens> {
   List<ContainerLocationModel>? ContaineList = [];
 
   @override
@@ -23,18 +23,17 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
 
     ContaineList?.add(
       ContainerLocationModel(
-          title: "المكتب",
-          location: "85 صاري, الخالدية 506 جدة, 23 \n 423 - 8949",
-          phone: "9665252365+",
+          title: "اسم  صاحب البطاقة",
+          location: " تاريخ الانتهاء : 2/2023",
           isSelected: false),
     );
-    ContaineList?.add(
+       ContaineList?.add(
       ContainerLocationModel(
-          title: "المنزل",
-          location: "85 صاري, الخالدية 506 جدة, 23 \n 423 - 8949",
-          phone: "96652523557+",
+          title: "اسم  صاحب البطاقة",
+          location: " تاريخ الانتهاء : 2/2023",
           isSelected: false),
     );
+
 
     super.initState();
   }
@@ -44,12 +43,12 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xffF5F5F5),
-        leadingWidth: 200,
+        leadingWidth: 300,
         leading: Padding(
           padding: const EdgeInsets.only(right: 36.0),
-          child: Text("تغير العنوان",
+          child: Text("بطاقات الدفع المسجلة",
               style: AppTextStyles.boldtitles
-                  .apply(color: AppColors.blueDark, fontSizeFactor: 1.5)),
+                  .apply(color: AppColors.blueDark, fontSizeFactor:1.4)),
         ),
         actions: [
           Directionality(
@@ -74,10 +73,7 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
               SizedBox(
                 height: 30,
               ),
-              Text(
-                "عنوان الشحن",
-                style: AppTextStyles.boldtitles.apply(fontSizeDelta: 5),
-              ),
+
               ListView.builder(
                 shrinkWrap: true,
                 physics:NeverScrollableScrollPhysics() ,
@@ -87,7 +83,7 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
                       onTap: () {
                         setState(() {
                           ContaineList?.forEach(
-                              (gender) => gender.isSelected = false);
+                                  (gender) => gender.isSelected = false);
                           ContaineList![index].isSelected = true;
                         });
                       },
@@ -95,17 +91,17 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
                           containerLocationModel: ContaineList![index]));
                 },
               ),
-SizedBox(height: 20,),
+              SizedBox(height: 20,),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: ButtonTemplate(
                   minwidth: MediaQueryHelper.sizeFromWidth(context, 1),
                   icon: Icons.add_circle_outline_rounded,
-                    color: AppColors.primarycolor,
-                    text1: "أضافة عنوان جديد",
-                    onPressed: () {
-navigateTo(context, AddNewLocation());
-                    },),
+                  color: AppColors.primarycolor,
+                  text1: "أضافة عنوان جديد",
+                  onPressed: () {
+                    navigateTo(context, AddNewLocation());
+                  },),
               )
             ],
           ),
@@ -118,13 +114,11 @@ navigateTo(context, AddNewLocation());
 class ContainerLocationModel {
   final String title;
   final String location;
-  final String phone;
   bool isSelected;
 
   ContainerLocationModel({
     required this.title,
     required this.location,
-    required this.phone,
     required this.isSelected,
   });
 }
@@ -139,7 +133,7 @@ class ContainerLocation extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(10),
-      height: 160,
+      height: 100,
       width: MediaQueryHelper.sizeFromWidth(context, 1),
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -154,13 +148,9 @@ class ContainerLocation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
-            child: Icon(
-              Icons.location_on_rounded,
-              size: 30,
-              color: AppColors.white,
-            ),
+            child: Image.asset("assets/images/vise.png"),
             backgroundColor: AppColors.grey,
-            radius: 20,
+            radius: 25,
           ),
           SizedBox(
             width: 20,
@@ -179,11 +169,7 @@ class ContainerLocation extends StatelessWidget {
                 style: AppTextStyles.boldtitles
                     .apply(color: AppColors.greyDark, fontSizeDelta: -3),
               ),
-              Text(
-                containerLocationModel.phone,
-                style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.greyDark, fontSizeDelta: -3),
-              ),
+
             ],
           ),
         ],

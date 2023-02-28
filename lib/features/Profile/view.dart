@@ -2,6 +2,10 @@ import 'package:acnoria/features/Favourite/FavoriteScreen.dart';
 import 'package:acnoria/features/Home/widgets/category_box.dart';
 import 'package:acnoria/features/Profile/common_questions.dart';
 import 'package:acnoria/features/Profile/myorders.dart';
+import 'package:acnoria/features/Profile/payment_methods.dart';
+import 'package:acnoria/features/cart/chandeLocation.dart';
+import 'package:acnoria/features/registration/Forgit_Password/EditPassword.dart';
+import 'package:acnoria/features/registration/login/view.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -67,14 +71,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       txt: 'طلباتي',
                     ),
                   ),
-                  CategoryBox(
-                    color: Color(0xffEFF8ED),
-                    imgPath: "assets/images/map.png",
-                    txt: 'العناوين',
+                  InkWell(
+                    onTap: ()=>navigateTo(context, ChangeLocationScreens()),
+
+                    child: CategoryBox(
+                      color: Color(0xffEFF8ED),
+                      imgPath: "assets/images/map.png",
+                      txt: 'العناوين',
+                    ),
                   ),
                   InkWell(
                     onTap: () {
-                      navigateTo(context, FavoriteScreen());
+                      navigateTo(context, PaymentMethodsScreens());
                     },
                     child: CategoryBox(
                       color: Color(0xffFCEEEA),
@@ -116,10 +124,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           text: "معلومات الحساب",
                           icon: Icons.person_2_outlined),
                     ),
-                    Containedata(
-                        widget: Icon(Icons.arrow_back_ios),
-                        text: "تغير كلمة المرور",
-                        icon: Icons.lock_open_rounded),
+                    InkWell(
+                      onTap: () => navigateTo(context, EditPasswordScreen()),
+                      child: Containedata(
+                          widget: Icon(Icons.arrow_back_ios),
+                          text: "تغير كلمة المرور",
+                          icon: Icons.lock_open_rounded),
+                    ),
                   ],
                 ),
               ),
@@ -182,21 +193,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(
                 height: 20,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    "تسجيل الخروج",
-                    style: AppTextStyles.boldtitles
-                        .apply(color: Colors.red, fontSizeDelta: 10),
-                  ),
-                  Icon(
-                    Icons.exit_to_app,
-                    color: Colors.red,
-                    size: 35,
-                  )
-                ],
+              InkWell(
+                onTap: () => navigateAndFinished(context, LoginScreen()),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      "تسجيل الخروج",
+                      style: AppTextStyles.boldtitles
+                          .apply(color: Colors.red, fontSizeDelta: 10),
+                    ),
+                    Icon(
+                      Icons.exit_to_app,
+                      color: Colors.red,
+                      size: 35,
+                    )
+                  ],
+                ),
               )
             ],
           ),
