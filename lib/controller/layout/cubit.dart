@@ -29,4 +29,26 @@ class AppCubit extends Cubit<AppState> {
     NotificationScreen(),
     ProfileScreen(),
   ];
+  /*
+  *
+  *  int currentIndex = 0;
+  int currentTab = 0;
+  Widget currentscreen = HomeScreen();
+  List<Widget> screen =
+  [
+    HomeScreen(),
+    Directoory(),
+    Settings(),
+    ProfileScreen()
+  ];
+
+   changeBottomNav(int index) {
+    print(index);
+    currentscreen = screen[index];
+    currentIndex = index;
+    emit(ChangeNavBottomState());
+    print('current index is $currentIndex');
+    print(' index is $index');
+  }*/
+
 }

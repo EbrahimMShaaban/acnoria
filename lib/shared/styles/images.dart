@@ -10,5 +10,7 @@
   static const String care = 'assets/images/care.png';
   static const String health = 'assets/images/health.png';
   static const String medicine = 'assets/images/medicine.png';
+  static const String rooge = 'assets/images/item.png';
+  static const String loading = 'assets/images/loading.png';
 
 }
