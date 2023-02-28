@@ -1,5 +1,6 @@
 import 'package:acnoria/features/Favourite/FavoriteScreen.dart';
 import 'package:acnoria/features/Home/widgets/category_box.dart';
+import 'package:acnoria/features/Profile/myorders.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,7 @@ import '../../shared/components/navigator.dart';
 import '../../shared/styles/colors.dart';
 import '../../shared/styles/images.dart';
 import '../Categories/CategoriesScreen.dart';
+import 'accoun_details.dart';
 
 class ProfileScreen extends StatefulWidget {
   ProfileScreen({Key? key}) : super(key: key);
@@ -56,10 +58,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CategoryBox(
-                    color: Color(0xffEEF7FE),
-                    imgPath: AppImages.booking,
-                    txt: 'طلباتي',
+                  InkWell(
+                    onTap: ()=>navigateTo(context, MyOrder()),
+                    child: CategoryBox(
+
+                      color: Color(0xffEEF7FE),
+                      imgPath: AppImages.booking,
+                      txt: 'طلباتي',
+                    ),
                   ),
                   CategoryBox(
                     color: Color(0xffEFF8ED),
@@ -103,10 +109,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 width: MediaQueryHelper.sizeFromWidth(context, 1),
                 child: Column(
                   children: [
-                    Containedata(
-                        widget: Icon(Icons.arrow_back_ios),
-                        text: "معلومات الحساب",
-                        icon: Icons.person_2_outlined),
+                    InkWell(
+                      onTap: () => navigateTo(context, AccountDetails()),
+                      child: Containedata(
+                          widget: Icon(Icons.arrow_back_ios),
+                          text: "معلومات الحساب",
+                          icon: Icons.person_2_outlined),
+                    ),
                     Containedata(
                         widget: Icon(Icons.arrow_back_ios),
                         text: "تغير كلمة المرور",
@@ -164,7 +173,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
