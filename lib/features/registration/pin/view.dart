@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:acnoria/features/Home/view.dart';
+import 'package:acnoria/features/layout/view.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/styles/colors.dart';
@@ -84,81 +86,84 @@ class _PinScreenState extends State<PinScreen> {
                     child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 8.0, horizontal: 10),
-                        child: PinCodeTextField(
-                          appContext: context,
-                          pastedTextStyle: TextStyle(
-                            color: Colors.green.shade600,
-                            fontWeight: FontWeight.bold,
+                        child: Directionality(
+                          textDirection: TextDirection.ltr,
+                          child: PinCodeTextField(
+                            appContext: context,
+                            pastedTextStyle: TextStyle(
+                              color: Colors.green.shade600,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            length: 4,
+
+                            obscureText: false,
+                            obscuringCharacter: '*',
+                            animationType: AnimationType.fade,
+                            validator: (v) {
+                              if (v!.length! < 3) {
+                                return "I'm from validator";
+                              } else {
+                                return null;
+                              }
+                            },
+                            pinTheme: PinTheme(
+                              shape: PinCodeFieldShape.box,
+                              borderRadius: BorderRadius.circular(20),
+
+                              fieldHeight: 70,
+                              fieldWidth: 70,
+                              activeColor: AppColors.primarycolor,
+                              disabledColor: AppColors.primarycolor,
+                              borderWidth: 1,
+
+                              selectedFillColor: AppColors.primarycolor,
+                              selectedColor: AppColors.primarycolor,
+                              inactiveColor: AppColors.primarycolor,
+                              inactiveFillColor: Colors.white,
+                              // activeFillColor:
+                              //     hasError ? Colors.orange : Colors.white,
+                              activeFillColor: Colors.white,
+                            ),
+
+                            cursorColor: Colors.white,
+
+                            animationDuration: Duration(milliseconds: 300),
+                            textStyle: TextStyle(
+                              fontSize: 20,
+                              height: 1.6,
+                              color: Colors.grey,
+                            ),
+                            // backgroundColor: Colors.blue.shade50,
+                            enableActiveFill: true,
+                            errorAnimationController: errorController,
+                            controller: textEditingController,
+                            keyboardType: TextInputType.number,
+                            // boxShadows: [
+                            //   BoxShadow(
+                            //     offset: Offset(0, 1),
+                            //     color: Colors.black12,
+                            //     blurRadius: 10,
+                            //   )
+                            // ],
+                            onCompleted: (v) {
+                              print("Completed");
+                            },
+                            // onTap: () {
+                            //   print("Pressed");
+                            // },
+                            onChanged: (value) {
+                              print(value);
+                              setState(() {
+                                currentText = value;
+                              });
+                            },
+                            beforeTextPaste: (text) {
+                              print("Allowing to paste $text");
+                              //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+                              //but you can show anything you want here, like your pop up saying wrong paste format or etc
+                              return true;
+                            },
                           ),
-                          length: 4,
-
-                          obscureText: false,
-                          obscuringCharacter: '*',
-                          animationType: AnimationType.fade,
-                          validator: (v) {
-                            if (v!.length! < 3) {
-                              return "I'm from validator";
-                            } else {
-                              return null;
-                            }
-                          },
-                          pinTheme: PinTheme(
-                            shape: PinCodeFieldShape.box,
-                            borderRadius: BorderRadius.circular(15),
-
-                            fieldHeight: 60,
-                            fieldWidth: 60,
-                            activeColor: AppColors.primarycolor,
-                            disabledColor: AppColors.primarycolor,
-                            borderWidth: .5,
-
-                            selectedFillColor: AppColors.primarycolor,
-                            selectedColor: AppColors.primarycolor,
-                            inactiveColor: AppColors.primarycolor,
-                            inactiveFillColor: Colors.white,
-                            // activeFillColor:
-                            //     hasError ? Colors.orange : Colors.white,
-                            activeFillColor: Colors.white,
-                          ),
-
-                          cursorColor: Colors.white,
-
-                          animationDuration: Duration(milliseconds: 300),
-                          textStyle: TextStyle(
-                            fontSize: 20,
-                            height: 1.6,
-                            color: Colors.grey,
-                          ),
-                          // backgroundColor: Colors.blue.shade50,
-                          enableActiveFill: true,
-                          errorAnimationController: errorController,
-                          controller: textEditingController,
-                          keyboardType: TextInputType.number,
-                          boxShadows: [
-                            BoxShadow(
-                              offset: Offset(0, 1),
-                              color: Colors.black12,
-                              blurRadius: 10,
-                            )
-                          ],
-                          onCompleted: (v) {
-                            print("Completed");
-                          },
-                          // onTap: () {
-                          //   print("Pressed");
-                          // },
-                          onChanged: (value) {
-                            print(value);
-                            setState(() {
-                              currentText = value;
-                            });
-                          },
-                          beforeTextPaste: (text) {
-                            print("Allowing to paste $text");
-                            //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                            //but you can show anything you want here, like your pop up saying wrong paste format or etc
-                            return true;
-                          },
                         )),
                   ),
                   Padding(
@@ -176,24 +181,25 @@ class _PinScreenState extends State<PinScreen> {
                       text1: "تأكيد رمز التحقق",
                       minwidth: double.infinity,
                       onPressed: () {
-                        formKey.currentState?.validate();
+                        navigateAndFinished(context, AppLayout());
+                        // formKey.currentState?.validate();
                         // conditions for validating
-                        if (currentText.length != 6 ||
-                            currentText != "towtow") {
-                          errorController.add(ErrorAnimationType
-                              .shake); // Triggering error shake animation
-                          setState(() {
-                            hasError = true;
-                          });
-                        } else {
-                          setState(() {
-                            hasError = false;
-                            // scaffoldKey.currentState!.showSnackBa(SnackBar(
-                            //   content: Text("Aye!!"),
-                            //   duration: Duration(seconds: 2),
-                            // ));
-                          });
-                        }
+                        // if (currentText.length != 6 ||
+                        //     currentText != "towtow") {
+                        //   errorController.add(ErrorAnimationType
+                        //       .shake); // Triggering error shake animation
+                        //   setState(() {
+                        //     hasError = true;
+                        //   });
+                        // } else {
+                        //   setState(() {
+                        //     hasError = false;
+                        //     // scaffoldKey.currentState!.showSnackBa(SnackBar(
+                        //     //   content: Text("Aye!!"),
+                        //     //   duration: Duration(seconds: 2),
+                        //     // ));
+                        //   });
+                        // }
                       }),
 
                   Padding(

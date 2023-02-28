@@ -1,5 +1,6 @@
 import 'package:acnoria/features/layout/view.dart';
 import 'package:acnoria/features/registration/Forgit_Password/view.dart';
+import 'package:acnoria/features/registration/pin/view.dart';
 import 'package:acnoria/features/registration/sign%20up/view.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
@@ -50,12 +51,13 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 30,),
               ButtonTemplate(
                   color: AppColors.primarycolor,
                   text1: "تسجيل الدخول",
                   minwidth: double.infinity,
                   onPressed: () {
-                    navigateTo(context, AppLayout());
+                    navigateTo(context, PinScreen());
                   }),
               Padding(
                 padding: const EdgeInsets.only(top: 36.0),

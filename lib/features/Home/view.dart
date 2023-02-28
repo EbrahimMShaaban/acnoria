@@ -8,6 +8,7 @@ import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/images.dart';
 import 'package:flutter/material.dart';
 
+import '../../shared/styles/styles.dart';
 import '../Categories/CategoriesScreen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -103,7 +104,9 @@ class HomeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('وصل حديثا'),
+                      Text('وصل حديثا',
+                          style: AppTextStyles.smTitles
+                              .copyWith(color: AppColors.primarycolor)),
                       ElevatedButton(
                         onPressed: () {},
                         child: const Text('مشاهدة الجميع'),
@@ -139,7 +142,7 @@ class HomeScreen extends StatelessWidget {
             height: MediaQueryHelper.sizeFromHeight(context, 4.5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Colors.greenAccent,
+              color: Colors.white,
             ),
           ),
         )

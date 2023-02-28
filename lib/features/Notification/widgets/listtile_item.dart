@@ -19,7 +19,10 @@ class NotifyItem extends StatelessWidget {
         child: Image.asset(AppImages.pin),
       ),
       trailing: isclickable
-          ? ElevatedButton(onPressed: () {}, child: Text('تتبع الطلب'))
+          ? ElevatedButton(
+              onPressed: () {},
+              child: Text('تتبع الطلب'),
+            )
           : SizedBox(),
     );
   }

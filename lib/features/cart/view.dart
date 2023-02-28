@@ -34,9 +34,10 @@ class _CartScreenState extends State<CartScreen> {
                 height: 30,
               ),
               ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: 3,
+
+                physics:NeverScrollableScrollPhysics() ,
+                itemCount: 10,
+
                 itemBuilder: (context, index) {
                   return ContinerMyCart(context, add: () {
                     setState(() {

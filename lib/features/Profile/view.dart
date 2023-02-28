@@ -1,5 +1,6 @@
 import 'package:acnoria/features/Favourite/FavoriteScreen.dart';
 import 'package:acnoria/features/Home/widgets/category_box.dart';
+import 'package:acnoria/features/Profile/common_questions.dart';
 import 'package:acnoria/features/Profile/myorders.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,6 @@ import '../../shared/components/constants.dart';
 import '../../shared/components/navigator.dart';
 import '../../shared/styles/colors.dart';
 import '../../shared/styles/images.dart';
-import '../Categories/CategoriesScreen.dart';
 import 'accoun_details.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -166,10 +166,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         widget: Icon(Icons.arrow_back_ios),
                         text: "سياسية الخصوصية",
                         icon: Icons.cloud_circle_sharp),
-                    Containedata(
-                        widget: Icon(Icons.arrow_back_ios),
-                        text: "المساعده و الدعم",
-                        icon: Icons.lock_open_rounded),
+                    InkWell(
+                      onTap: (){
+                        navigateTo(context, CommonQuestions());
+                      },
+                      child: Containedata(
+
+                          widget: Icon(Icons.arrow_back_ios),
+                          text: "المساعده و الدعم",
+                          icon: Icons.lock_open_rounded),
+                    ),
                   ],
                 ),
               ),
