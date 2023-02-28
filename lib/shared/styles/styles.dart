@@ -4,7 +4,7 @@ abstract class AppTextStyles {
   /// - weight: w200
   /// - family: cairo
   static const TextStyle boldtitles =
-      TextStyle(fontWeight: FontWeight.bold, fontSize: 20,fontFamily: "Schyler");
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 20);
 
   /// - weight: w300
   /// - family: cairo
@@ -27,7 +27,7 @@ abstract class AppTextStyles {
   /// - weight: w700
   /// - family: cairo
   static const TextStyle lrTitles =
-      TextStyle(fontWeight: FontWeight.w500, fontSize: 30);
+      TextStyle(fontWeight: FontWeight.w700, fontSize: 22);
 
   /// - weight: w800
   /// - family: cairo

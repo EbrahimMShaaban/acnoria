@@ -35,6 +35,7 @@ dependencies:
   bloc: ^8.1.1
   flutter_bloc: ^8.1.2
   dio: ^4.0.6
+  flutter_multi_select_items: ^0.4.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -85,7 +86,7 @@ flutter:
     - family: Schyler
       fonts:
         - asset: assets/fonts/fontarbic.ttf
-          weight: 500
+          weight: 900
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

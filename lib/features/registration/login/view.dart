@@ -1,3 +1,4 @@
+import 'package:acnoria/features/layout/view.dart';
 import 'package:acnoria/features/registration/Forgit_Password/view.dart';
 import 'package:acnoria/features/registration/pin/view.dart';
 import 'package:acnoria/features/registration/sign%20up/view.dart';
@@ -50,6 +51,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 30,),
               ButtonTemplate(
                   color: AppColors.primarycolor,
                   text1: "تسجيل الدخول",
@@ -70,7 +72,10 @@ class LoginScreen extends StatelessWidget {
                       onTap: () => navigateTo(context, SignUpScreen()),
                       child: Text(
                         " انشئ حساب الان",
-                        style: AppTextStyles.smTitles,
+                        style: AppTextStyles.smTitles.apply(
+                          decoration: TextDecoration.underline,
+                          fontSizeDelta: -2,
+                        ),
                       ),
                     ),
                   ],

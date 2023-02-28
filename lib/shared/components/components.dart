@@ -12,7 +12,9 @@ class ButtonTemplate extends StatelessWidget {
     required this.onPressed,
     this.text2 = "",
     this.text3 = "",
+    this.icon,
     this.minwidth = 250,
+    this.minheight = 65,
     this.fontSize = 18,
   }) : super(key: key);
   Color color;
@@ -20,33 +22,38 @@ class ButtonTemplate extends StatelessWidget {
   String text2;
   String text3;
   double minwidth;
+  double minheight;
   double fontSize;
+  IconData? icon;
   void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 36),
-      child: MaterialButton(
-        minWidth: minwidth,
-        height: 65,
-        onPressed: onPressed,
-        color: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        child: RichText(
-            text: TextSpan(
-                text: "",
-                style: TextStyle(color: Colors.white, fontSize: fontSize),
-                children: [
-              TextSpan(
-                  text: text1,
-                  style: AppTextStyles.boldtitles
-                      .apply(fontSizeDelta: 5, color: AppColors.white)),
-              TextSpan(text: text2),
-              TextSpan(
-                  text: text3, style: TextStyle(fontWeight: FontWeight.bold)),
-            ])),
-
+    return MaterialButton(
+      minWidth: minwidth,
+      height: minheight,
+      onPressed: onPressed,
+      color: color,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          icon == null
+              ? SizedBox()
+              : Center(
+                  child: Icon(icon, size: 30, color: AppColors.white),
+                ),
+          SizedBox(
+            width: 5,
+          ),
+          Text(text1,
+              textAlign: TextAlign.center,
+              style: AppTextStyles.boldtitles.apply(
+                fontSizeDelta: 5,
+                color: AppColors.white,
+              )),
+        ],
       ),
     );
   }
@@ -69,31 +76,30 @@ class TextFieldTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 36.0),
+      padding: const EdgeInsets.only(top: 20.0,bottom: 10),
       child: TextFormField(
-        obscureText: obscureText,
-        controller: controller,
-        validator: (value) => validator!(value),
-        decoration: InputDecoration(
-            hintText: hintText,
-            border: InputBorder.none,
-            filled: true,
-            fillColor: AppColors.white,
-            labelStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
-            hintStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
-            enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(15))),
-            focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(15))),
-            errorBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(15))),
-            disabledBorder: OutlineInputBorder(
-                borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(15)))),
-      ),
+          obscureText: obscureText,
+          controller: controller,
+          validator: (value) => validator!(value),
+          decoration: InputDecoration(
+              hintText: hintText,
+              border: InputBorder.none,
+              filled: true,
+              fillColor: AppColors.white,
+              labelStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
+              hintStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              disabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(15))))),
     );
   }
 }
