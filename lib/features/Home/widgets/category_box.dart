@@ -15,8 +15,8 @@ class CategoryBox extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: MediaQueryHelper.sizeFromWidth(context, 5),
-          width: MediaQueryHelper.sizeFromWidth(context, 5),
+          height: MediaQueryHelper.sizeFromWidth(context, 6),
+          width: MediaQueryHelper.sizeFromWidth(context, 6),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: color,
@@ -24,11 +24,11 @@ class CategoryBox extends StatelessWidget {
           child: Center(
             child: Image.asset(
               imgPath,
-              width: MediaQueryHelper.sizeFromWidth(context, 10),
+              width: MediaQueryHelper.sizeFromWidth(context, 14),
             ),
           ),
         ),
-        Text(txt,style: AppTextStyles.lrTitles.apply(fontSizeDelta: -3),)
+        Text(txt,style: AppTextStyles.boldtitles.apply(fontSizeDelta: -3),)
       ],
     );
   }

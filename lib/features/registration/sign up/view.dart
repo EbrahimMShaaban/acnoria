@@ -53,14 +53,14 @@ class SignUpScreen extends StatelessWidget {
                   hintText: "تأكيد كلمة المرور",
                   controller: password2Controller),
               SizedBox(
-                height: 20,
+                height: 30,
               ),
               ButtonTemplate(
                   color: AppColors.primarycolor,
                   text1: "تسجيل الدخول",
                   minwidth: double.infinity,
                   onPressed: () {
-                    navigateTo(context, FavoriteScreen());
+                    navigateTo(context, PinScreen());
                   }),
               Padding(
                 padding: EdgeInsets.only(top: 36.0),

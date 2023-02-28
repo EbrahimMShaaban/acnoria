@@ -1,6 +1,7 @@
 import 'package:acnoria/features/layout/view.dart';
 
 import 'package:acnoria/features/registration/login/view.dart';
+import 'package:acnoria/features/welcamScreen/view.dart';
 import 'package:acnoria/shared/styles/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         Locale('ar'), // English
         // Locale('es'), // Spanish
       ],
-      home: LoginScreen(),
+      home: OnBoardingScreen(),
     );
   }
 }
