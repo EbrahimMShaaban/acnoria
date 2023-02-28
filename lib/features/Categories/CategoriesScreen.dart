@@ -48,12 +48,13 @@ class CategoriesScrren extends StatelessWidget {
           ContinerCategories_backgroundimage(context),
           ListView.builder(
             shrinkWrap: true,
-            physics:NeverScrollableScrollPhysics() ,
+            physics: NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) {
               return ContinerCategories(
                 context,
               );
-            },itemCount: 20,
+            },
+            itemCount: 20,
           )
         ]),
       ),
