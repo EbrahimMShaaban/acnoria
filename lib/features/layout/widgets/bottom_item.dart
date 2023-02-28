@@ -6,7 +6,7 @@ import '../../../shared/components/constants.dart';
 class BottomItem extends StatelessWidget {
   BottomItem(
       {required this.onclick,
-      // required this.width,
+       required this.color,
       required this.path,
       required this.heigh,
       Key? key})
@@ -15,6 +15,7 @@ class BottomItem extends StatelessWidget {
 
   // double width;
   IconData path;
+  Color color;
   double heigh;
 
   @override
@@ -29,7 +30,9 @@ class BottomItem extends StatelessWidget {
             Expanded(
               child: Icon(
                 path,
-                color: AppColors.primarycolor,
+                color: color,
+                size: 35,
+
               ),
               // Icon(
               //   Icons.home,
