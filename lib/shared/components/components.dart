@@ -14,6 +14,7 @@ class ButtonTemplate extends StatelessWidget {
     this.text3 = "",
     this.icon,
     this.minwidth = 250,
+    this.minheight = 65,
     this.fontSize = 18,
   }) : super(key: key);
   Color color;
@@ -21,6 +22,7 @@ class ButtonTemplate extends StatelessWidget {
   String text2;
   String text3;
   double minwidth;
+  double minheight;
   double fontSize;
   IconData? icon;
   void Function()? onPressed;
@@ -29,7 +31,7 @@ class ButtonTemplate extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       minWidth: minwidth,
-      height: 65,
+      height: minheight,
       onPressed: onPressed,
       color: color,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),

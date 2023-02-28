@@ -12,9 +12,18 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(top: 5,bottom: 5),
       padding: EdgeInsets.all(5),
       width: MediaQueryHelper.sizeFromWidth(context, 2.6),
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(.2),
+            spreadRadius: 2,
+            blurRadius: 1,
+            offset: Offset(0,0), // changes position of shadow
+          ),
+        ],
         borderRadius: BorderRadius.circular(20),
         color: AppColors.grey,
       ),
@@ -31,7 +40,7 @@ class ProductItem extends StatelessWidget {
                     color: AppColors.primarycolor),
                 Row(
                   children: const [
-                    Text('4.8'),
+                    Text('4.8',),
                     Icon(
                       Icons.star,
                       size: 15,
