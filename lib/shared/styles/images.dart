@@ -13,5 +13,6 @@
   static const String rooge = 'assets/images/item.png';
   static const String loading = 'assets/images/loading.png';
   static const String x = 'assets/images/x.png';
+  static const String indicator = 'assets/images/indicator.png';
 
 }

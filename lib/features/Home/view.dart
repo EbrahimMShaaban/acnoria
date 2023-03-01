@@ -3,21 +3,30 @@ import 'package:acnoria/features/Home/widgets/product_item.dart';
 import 'package:acnoria/features/cart/view.dart';
 import 'package:acnoria/features/search/categories.dart';
 import 'package:acnoria/features/search/search_view.dart';
-import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/images.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../shared/styles/styles.dart';
 import '../Categories/CategoriesScreen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+  final controller = PageController(viewportFraction: 0.8, keepPage: true);
 
   @override
   Widget build(BuildContext context) {
+    final pages = List.generate(
+        4,
+        (index) => Container(
+          margin: EdgeInsets.only(left: 5),
+
+          child: Center(
+              child: Image.asset(AppImages.indicator,)),
+        ));
     return Scaffold(
         body: SingleChildScrollView(
       child: Stack(
@@ -169,21 +178,88 @@ class HomeScreen extends StatelessWidget {
             top: MediaQueryHelper.sizeFromHeight(context, 5.2),
             right: MediaQueryHelper.sizeFromWidth(context, 9),
             child: Container(
-              width: MediaQueryHelper.sizeFromWidth(context, 1.3),
-              height: MediaQueryHelper.sizeFromHeight(context, 4.5),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 5,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.white,
-              ),
-            ),
+                width: MediaQueryHelper.sizeFromWidth(context, 1.3),
+                height: MediaQueryHelper.sizeFromHeight(context, 4.5),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 5,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          width: MediaQueryHelper.sizeFromWidth(context, 2.4),
+                          height: 110,
+                          child: PageView.builder(
+                            controller: controller,
+                            // itemCount: pages.length,
+                            itemBuilder: (_, index) {
+                              return pages[index % pages.length];
+                            },
+                          ),
+                        ),
+                        Container(
+                          width: 140,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'اجدد العروض!',
+                                style: AppTextStyles.smTitles.copyWith(
+                                    color: AppColors.green, fontSize: 18),
+                              ),
+                              Text(
+                                'ايسنس ماسكارا لاش',
+                                style: AppTextStyles.lrTitles.copyWith(
+                                    color: AppColors.primarycolor,
+                                    fontSize: 18),
+                              ),
+                              SizedBox(height: 5),
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColors.primarycolor),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'اشتري اآن',
+                                    style: AppTextStyles.lrTitles
+                                        .copyWith(fontSize: 18),
+                                  ))
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SmoothPageIndicator(
+                            controller: controller,
+                            count: pages.length,
+                            effect: ScrollingDotsEffect(
+
+                              radius: 8,
+                              spacing: 2,
+                              dotHeight: 7,
+                              dotWidth: 7,
+                              activeDotColor: AppColors.green,
+                              dotColor: AppColors.grey
+                            )),
+                      ],
+                    )
+                  ],
+                )),
           )
         ],
       ),
