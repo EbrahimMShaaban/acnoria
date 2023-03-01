@@ -100,7 +100,7 @@ class _PinScreenState extends State<PinScreen> {
                             obscuringCharacter: '*',
                             animationType: AnimationType.fade,
                             validator: (v) {
-                              if (v!.length! < 3) {
+                              if (v!.length < 3) {
                                 return "I'm from validator";
                               } else {
                                 return null;

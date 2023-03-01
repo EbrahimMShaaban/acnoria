@@ -24,7 +24,7 @@ class SearchBar extends StatelessWidget {
               child: TextFieldTemplate(
                 hintText: 'بحث',
                 controller: searchcontroller,
-                Icon: Icon(Icons.search,color: AppColors.primarycolor,size: 20),
+                icon: Icon(Icons.search,color: AppColors.primarycolor,size: 20),
 
               ),
             )),
