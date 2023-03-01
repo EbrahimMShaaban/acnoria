@@ -34,13 +34,13 @@ class EditPasswordScreen extends StatelessWidget {
                 style: AppTextStyles.boldtitles.apply(fontSizeDelta: -1),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: 18),
                 child: TextFieldTemplate(
                     hintText: "كلمة المرور",
                     controller: passwordController),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: 18),
                 child: TextFieldTemplate(
                     hintText: "تأكيد كلمة المرور",
                     controller: passwordController2),

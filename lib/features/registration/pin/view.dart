@@ -209,7 +209,7 @@ class _PinScreenState extends State<PinScreen> {
                       children: [
                         Text(
                           "لم يصلك الرمز؟",
-                          style: AppTextStyles.boldtitles,
+                          style: AppTextStyles.boldtitles.apply(fontSizeDelta: -3.5),
                         ),
                         InkWell(
                           onTap: () {
@@ -217,7 +217,11 @@ class _PinScreenState extends State<PinScreen> {
                           },
                           child: Text(
                             " اعادة الارسال",
-                            style: AppTextStyles.smTitles,
+                            style: AppTextStyles.smTitles.apply(
+                                decoration: TextDecoration.underline,
+                                fontSizeDelta: -3,
+                                color: AppColors.blue
+                            ),
                           ),
                         ),
                       ],

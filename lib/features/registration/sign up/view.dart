@@ -83,8 +83,8 @@ class SignUpScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "بفعل لديك حساب؟",
-                      style: AppTextStyles.boldtitles,
+                      "بالفعل لديك حساب؟",
+                      style: AppTextStyles.boldtitles.apply(fontSizeDelta: -3.5),
                     ),
                     InkWell(
                       onTap: () {
@@ -93,8 +93,9 @@ class SignUpScreen extends StatelessWidget {
                       child: Text(
                         " تسجيل الان",
                         style: AppTextStyles.smTitles.apply(
-                          decoration: TextDecoration.underline,
-                          fontSizeDelta: -2,
+                            decoration: TextDecoration.underline,
+                            fontSizeDelta: -3,
+                            color: AppColors.blue
                         ),
                       ),
                     ),

@@ -88,8 +88,8 @@ class TextFieldTemplate extends StatelessWidget {
             border: InputBorder.none,
             filled: true,
             fillColor: AppColors.white,
-            labelStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
-            hintStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
+            labelStyle: AppTextStyles.hittext,
+            hintStyle:AppTextStyles.hittext,
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
