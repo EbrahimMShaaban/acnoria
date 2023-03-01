@@ -14,10 +14,30 @@ import '../../shared/styles/styles.dart';
 import '../Categories/CategoriesScreen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+  final controller = PageController(viewportFraction: 0.8, keepPage: true);
 
   @override
   Widget build(BuildContext context) {
+    final pages = List.generate(
+        6,
+        (index) => Container(
+          width: 300,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Colors.grey.shade300,
+              ),
+              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+              child: Container(
+                height: 100,
+
+                child: Center(
+                    child: Text(
+                  "Page $index",
+                  style: TextStyle(color: Colors.indigo),
+                )),
+              ),
+            ));
     return Scaffold(
         body: SingleChildScrollView(
       child: Stack(
@@ -169,21 +189,63 @@ class HomeScreen extends StatelessWidget {
             top: MediaQueryHelper.sizeFromHeight(context, 5.2),
             right: MediaQueryHelper.sizeFromWidth(context, 9),
             child: Container(
-              width: MediaQueryHelper.sizeFromWidth(context, 1.3),
-              height: MediaQueryHelper.sizeFromHeight(context, 4.5),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 1,
-                    blurRadius: 5,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.white,
-              ),
-            ),
+                width: MediaQueryHelper.sizeFromWidth(context, 1.3),
+                height: MediaQueryHelper.sizeFromHeight(context, 4.5),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 5,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.white,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      width: 170,
+                      height: 110,
+                      child: PageView.builder(
+                        controller: controller,
+                        // itemCount: pages.length,
+                        itemBuilder: (_, index) {
+                          return pages[index % pages.length];
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: 140,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            'اجدد العروض!',
+                            style: AppTextStyles.smTitles
+                                .copyWith(color: AppColors.green,fontSize: 18),
+                          ),
+                          Text(
+                            'ايسنس ماسكارا لاش',
+                            style: AppTextStyles.lrTitles
+                                .copyWith(color: AppColors.primarycolor,fontSize: 18),
+                          ),
+                          ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.primarycolor),
+                              onPressed: () {},
+                              child: Text(
+                                'اشتري اآن',
+                                style: AppTextStyles.lrTitles.copyWith(fontSize: 18),
+                              ))
+                        ],
+                      ),
+                    )
+                  ],
+                )),
           )
         ],
       ),

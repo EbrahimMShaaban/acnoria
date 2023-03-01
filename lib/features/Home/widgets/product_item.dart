@@ -40,7 +40,7 @@ class ProductItem extends StatelessWidget {
                     color: AppColors.primarycolor),
                 Row(
                   children: const [
-                    Text('4.8',),
+                    Text('4.8',style: TextStyle(color: AppColors.green)),
                     Icon(
                       Icons.star,
                       size: 15,
