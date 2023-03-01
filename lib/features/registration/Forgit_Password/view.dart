@@ -34,9 +34,11 @@ class ForgitPasswordScreen extends StatelessWidget {
                 "ادخل رقم الهاتف لاستعادة كلمة المرور",
                 style: AppTextStyles.boldtitles.apply(fontSizeDelta: -1),
               ),
-              TextFieldTemplate(
-                  hintText: "رقم الهاتف او البريد الالكتروني",
-                  controller: emailController),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),                child: TextFieldTemplate(
+                    hintText: "رقم الهاتف او البريد الالكتروني",
+                    controller: emailController),
+              ),
 
               SizedBox(
                 height: 20,

@@ -32,11 +32,15 @@ class LoginScreen extends StatelessWidget {
                 "سجل الدخول الان لتري ما\n هو جديد",
                 style: AppTextStyles.boldtitles.apply(fontSizeDelta: 3),
               ),
-              TextFieldTemplate(
-                  hintText: "رقم الهاتف او البريد الالكتروني",
-                  controller: emailController),
-              TextFieldTemplate(
-                  hintText: "كلمة المرور", controller: passwordController),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),                   child: TextFieldTemplate(
+                    hintText: "رقم الهاتف او البريد الالكتروني",
+                    controller: emailController),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),                   child: TextFieldTemplate(
+                    hintText: "كلمة المرور", controller: passwordController),
+              ),
               SizedBox(
                 height: 20,
               ),

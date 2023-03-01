@@ -16,31 +16,34 @@ class CommonQuestions extends StatelessWidget {
     ];
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [
-            Header(),
-            Padding(
-              padding: appPadding(),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'الأسألة الشائعة',
-                        style: AppTextStyles.lrTitles,
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  TileItem(data: data),
-                  TileItem(data: data),
-                  TileItem(data: data),
-                ],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Header(),
+              Padding(
+                padding: appPadding(),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'الأسألة الشائعة',
+                          style: AppTextStyles.lrTitles,
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    TileItem(data: data),
+                    TileItem(data: data),
+                    TileItem(data: data),
+                    TileItem(data: data),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

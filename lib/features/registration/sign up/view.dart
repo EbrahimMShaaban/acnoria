@@ -41,17 +41,32 @@ class SignUpScreen extends StatelessWidget {
                 "انشئ حسابك الان فى اكنوريا\n لمتابعه ما هو جديد",
                 style: AppTextStyles.boldtitles.apply(fontSizeDelta: 3),
               ),
-              TextFieldTemplate(hintText: "الاسم", controller: nameController),
-              TextFieldTemplate(
-                  hintText: "رقم الهاتف او البريد الالكتروني",
-                  controller: emailController),
-              TextFieldTemplate(
-                  hintText: "رقم الهاتف", controller: phonController),
-              TextFieldTemplate(
-                  hintText: "كلمة المرور", controller: passwordController),
-              TextFieldTemplate(
-                  hintText: "تأكيد كلمة المرور",
-                  controller: password2Controller),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: TextFieldTemplate(hintText: "الاسم", controller: nameController),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: TextFieldTemplate(
+                    hintText: "رقم الهاتف او البريد الالكتروني",
+                    controller: emailController),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: TextFieldTemplate(
+                    hintText: "رقم الهاتف", controller: phonController),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: TextFieldTemplate(
+                    hintText: "كلمة المرور", controller: passwordController),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: TextFieldTemplate(
+                    hintText: "تأكيد كلمة المرور",
+                    controller: password2Controller),
+              ),
               SizedBox(
                 height: 30,
               ),

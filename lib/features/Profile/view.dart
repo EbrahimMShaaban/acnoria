@@ -3,6 +3,8 @@ import 'package:acnoria/features/Home/widgets/category_box.dart';
 import 'package:acnoria/features/Profile/common_questions.dart';
 import 'package:acnoria/features/Profile/myorders.dart';
 import 'package:acnoria/features/Profile/payment_methods.dart';
+import 'package:acnoria/features/Profile/privacy.dart';
+import 'package:acnoria/features/Profile/us_information.dart';
 import 'package:acnoria/features/cart/chandeLocation.dart';
 import 'package:acnoria/features/registration/Forgit_Password/EditPassword.dart';
 import 'package:acnoria/features/registration/login/view.dart';
@@ -63,17 +65,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
-                    onTap: ()=>navigateTo(context, MyOrder()),
+                    onTap: () => navigateTo(context, MyOrder()),
                     child: CategoryBox(
-
                       color: Color(0xffEEF7FE),
                       imgPath: AppImages.booking,
                       txt: 'طلباتي',
                     ),
                   ),
                   InkWell(
-                    onTap: ()=>navigateTo(context, ChangeLocationScreens()),
-
+                    onTap: () => navigateTo(context, ChangeLocationScreens()),
                     child: CategoryBox(
                       color: Color(0xffEFF8ED),
                       imgPath: "assets/images/map.png",
@@ -169,20 +169,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         text: "اللغه",
                         icon: Icons.language),
-                    const Containedata(
-                        widget: Icon(Icons.arrow_back_ios),
-                        text: "معلومات عنا",
-                        icon: Icons.circle),
-                    Containedata(
-                        widget: Icon(Icons.arrow_back_ios),
-                        text: "سياسية الخصوصية",
-                        icon: Icons.cloud_circle_sharp),
                     InkWell(
                       onTap: (){
+                        navigateTo(context, UsInformation());
+                      },
+                      child: const Containedata(
+                          widget: Icon(Icons.arrow_back_ios),
+                          text: "معلومات عنا",
+                          icon: Icons.circle),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        navigateTo(context, Privacy());
+                      },
+                      child: Containedata(
+                          widget: Icon(Icons.arrow_back_ios),
+                          text: "سياسية الخصوصية",
+                          icon: Icons.cloud_circle_sharp),
+                    ),
+                    InkWell(
+                      onTap: () {
                         navigateTo(context, CommonQuestions());
                       },
                       child: Containedata(
-
                           widget: Icon(Icons.arrow_back_ios),
                           text: "المساعده و الدعم",
                           icon: Icons.lock_open_rounded),
