@@ -59,47 +59,64 @@ class ButtonTemplate extends StatelessWidget {
   }
 }
 
-class TextFieldTemplate extends StatelessWidget {
+class TextFieldTemplate extends StatefulWidget {
   TextFieldTemplate({
     Key? key,
     required this.hintText,
     required this.controller,
-    this.obscureText = false,
     this.validator,
-    this.Icon,
+    this.isPassword = false,
+    this.icon,
   }) : super(key: key);
 
   String hintText;
   TextEditingController controller;
-  bool obscureText;
   Function? validator;
-  Widget? Icon;
+  Widget? icon;
+  bool isPassword;
+
+  @override
+  State<TextFieldTemplate> createState() => _TextFieldTemplateState();
+}
+
+class _TextFieldTemplateState extends State<TextFieldTemplate> {
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-        obscureText: obscureText,
 
-        controller: controller,
-        validator: (value) => validator!(value),
+    return TextFormField(
+        obscureText: widget.isPassword ? _isObscure : false,
+        controller: widget.controller,
+        validator: (value) => widget.validator!(value),
         decoration: InputDecoration(
-          prefixIcon:Icon ,
-            hintText: hintText,
+            prefixIcon: widget.icon,
+            hintText: widget.hintText,
             border: InputBorder.none,
+            suffixIcon: widget.isPassword
+                ? IconButton(
+                    splashRadius: 20,
+                    icon: Icon(
+                        _isObscure==true
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        color: AppColors.blue),
+                    onPressed: () => setState(() => _isObscure = !_isObscure))
+                : null,
             filled: true,
             fillColor: AppColors.white,
             labelStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
             hintStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
-            enabledBorder: OutlineInputBorder(
+            enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
-            focusedBorder: OutlineInputBorder(
+            focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
-            errorBorder: OutlineInputBorder(
+            errorBorder: const OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
-            disabledBorder: OutlineInputBorder(
+            disabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(15)))));
   }

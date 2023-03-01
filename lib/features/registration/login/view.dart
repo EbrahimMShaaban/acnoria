@@ -9,9 +9,16 @@ import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
 
   @override
@@ -21,25 +28,34 @@ class LoginScreen extends StatelessWidget {
         child: Padding(
           padding: appPadding(),
           child: ListView(
-            children: [ SizedBox(height: 20,),
+            children: [
+              SizedBox(
+                height: 20,
+              ),
               Image.asset(
                 "assets/images/logo.png",
                 height: 65,
                 width: 100,
               ),
-              SizedBox(height: 35,),
+              SizedBox(
+                height: 35,
+              ),
               Text(
                 "سجل الدخول الان لتري ما\n هو جديد",
                 style: AppTextStyles.boldtitles.apply(fontSizeDelta: 3),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),                   child: TextFieldTemplate(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: TextFieldTemplate(
                     hintText: "رقم الهاتف او البريد الالكتروني",
                     controller: emailController),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),                   child: TextFieldTemplate(
-                    hintText: "كلمة المرور", controller: passwordController),
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: TextFieldTemplate(
+                    isPassword: true,
+                    hintText: "كلمة المرور",
+                    controller: passwordController),
               ),
               SizedBox(
                 height: 20,
@@ -47,7 +63,9 @@ class LoginScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.bottomLeft,
                 child: InkWell(
-                  onTap: () {navigateTo(context, ForgitPasswordScreen());},
+                  onTap: () {
+                    navigateTo(context, ForgitPasswordScreen());
+                  },
                   child: Text(
                     "هل نسيت كلمة المرور؟",
                     style: AppTextStyles.boldtitles
@@ -55,7 +73,9 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 30,
+              ),
               ButtonTemplate(
                   color: AppColors.primarycolor,
                   text1: "تسجيل الدخول",
