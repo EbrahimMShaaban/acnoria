@@ -1,4 +1,3 @@
-import 'package:acnoria/features/home/itemScreen.dart';
 import 'package:acnoria/features/registration/login/view.dart';
 import 'package:acnoria/features/registration/pin/view.dart';
 import 'package:acnoria/shared/components/components.dart';
@@ -7,9 +6,6 @@ import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
-
-import '../../Favourite/FavoriteScreen.dart';
-
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
   TextEditingController nameController = TextEditingController();
@@ -43,7 +39,8 @@ class SignUpScreen extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
-                child: TextFieldTemplate(hintText: "الاسم", controller: nameController),
+                child: TextFieldTemplate(
+                    hintText: "الاسم", controller: nameController),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
@@ -59,11 +56,14 @@ class SignUpScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: TextFieldTemplate(
-                    hintText: "كلمة المرور", controller: passwordController),
+                    isPassword: true,
+                    hintText: "كلمة المرور",
+                    controller: passwordController),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: TextFieldTemplate(
+                    isPassword: true,
                     hintText: "تأكيد كلمة المرور",
                     controller: password2Controller),
               ),
@@ -99,7 +99,6 @@ class SignUpScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-
                   ],
                 ),
               )
