@@ -14,26 +14,36 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
+     // crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
             width: MediaQueryHelper.sizeFromWidth(context, 1.5),
 
-            child: TextFieldTemplate(
-              hintText: 'بحث',
-              controller: searchcontroller,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: TextFieldTemplate(
+                hintText: 'بحث',
+                controller: searchcontroller,
+                Icon: Icon(Icons.search,color: AppColors.primarycolor,size: 20),
+
+              ),
             )),
+        SizedBox(width: 10,),
         InkWell(
           onTap: (){
             navigateTo(context, FilterAtion());
           },
           child: Container(
-            height: 40,
-            width: 40,
+            height: MediaQueryHelper.sizeFromWidth(context, 9),
+
+            width: MediaQueryHelper.sizeFromWidth(context, 9),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: AppColors.white),
-            child: Image.asset(AppImages.filter),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Image.asset(AppImages.filter),
+            ),
           ),
         )
       ],

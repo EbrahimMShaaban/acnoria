@@ -33,12 +33,18 @@ class EditPasswordScreen extends StatelessWidget {
                 "قم بأدخال كلمة المرور الجديده",
                 style: AppTextStyles.boldtitles.apply(fontSizeDelta: -1),
               ),
-              TextFieldTemplate(
-                  hintText: "كلمة المرور",
-                  controller: passwordController),
-              TextFieldTemplate(
-                  hintText: "تأكيد كلمة المرور",
-                  controller: passwordController2),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: TextFieldTemplate(
+                    hintText: "كلمة المرور",
+                    controller: passwordController),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: TextFieldTemplate(
+                    hintText: "تأكيد كلمة المرور",
+                    controller: passwordController2),
+              ),
 
               SizedBox(
                 height: 20,

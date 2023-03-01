@@ -12,7 +12,7 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 5,bottom: 5),
+      margin: EdgeInsets.only(top: 5,bottom: 5,right: 2,left: 2),
       padding: EdgeInsets.all(5),
       width: MediaQueryHelper.sizeFromWidth(context, 2.6),
       decoration: BoxDecoration(

@@ -17,12 +17,12 @@ class Categories extends StatelessWidget {
     return Scaffold(
       appBar: AppSearchBar(context),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: appPadding(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                height: MediaQueryHelper.sizeFromHeight(context, 10),
+                height: MediaQueryHelper.sizeFromHeight(context, 8),
                 //  color: Colors.red,
                 child: SearchBar()),
             Row(
@@ -54,6 +54,11 @@ class Categories extends StatelessWidget {
             Expanded(
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 0.7,
+
+                   // mainAxisExtent: 100,
+                 mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
                     crossAxisCount: 2),
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {

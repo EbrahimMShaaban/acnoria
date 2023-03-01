@@ -11,6 +11,7 @@ class TileItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.symmetric(vertical: 10),
       width: MediaQueryHelper.sizeFromWidth(context, 1),
       decoration: BoxDecoration(
           color: AppColors.white,

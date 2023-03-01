@@ -36,6 +36,7 @@ class _CartScreenState extends State<CartScreen> {
               ListView.builder(
 
                 physics:NeverScrollableScrollPhysics() ,
+                shrinkWrap: true,
                 itemCount: 10,
 
                 itemBuilder: (context, index) {

@@ -66,41 +66,42 @@ class TextFieldTemplate extends StatelessWidget {
     required this.controller,
     this.obscureText = false,
     this.validator,
+    this.Icon,
   }) : super(key: key);
 
   String hintText;
   TextEditingController controller;
   bool obscureText;
   Function? validator;
+  Widget? Icon;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20.0,bottom: 10),
-      child: TextFormField(
-          obscureText: obscureText,
-          controller: controller,
-          validator: (value) => validator!(value),
-          decoration: InputDecoration(
-              hintText: hintText,
-              border: InputBorder.none,
-              filled: true,
-              fillColor: AppColors.white,
-              labelStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
-              hintStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
-              enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
-              focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
-              errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
-              disabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.all(Radius.circular(15))))),
-    );
+    return TextFormField(
+        obscureText: obscureText,
+
+        controller: controller,
+        validator: (value) => validator!(value),
+        decoration: InputDecoration(
+          prefixIcon:Icon ,
+            hintText: hintText,
+            border: InputBorder.none,
+            filled: true,
+            fillColor: AppColors.white,
+            labelStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
+            hintStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
+            enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+            focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+            errorBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(15))),
+            disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(15)))));
   }
 }
 
