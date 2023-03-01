@@ -3,12 +3,12 @@ import 'package:acnoria/features/Home/widgets/product_item.dart';
 import 'package:acnoria/features/cart/view.dart';
 import 'package:acnoria/features/search/categories.dart';
 import 'package:acnoria/features/search/search_view.dart';
-import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/images.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../shared/styles/styles.dart';
 import '../Categories/CategoriesScreen.dart';
@@ -20,24 +20,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pages = List.generate(
-        6,
+        4,
         (index) => Container(
-          width: 300,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.grey.shade300,
-              ),
-              margin: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-              child: Container(
-                height: 100,
+          margin: EdgeInsets.only(left: 5),
 
-                child: Center(
-                    child: Text(
-                  "Page $index",
-                  style: TextStyle(color: Colors.indigo),
-                )),
-              ),
-            ));
+          child: Center(
+              child: Image.asset(AppImages.indicator,)),
+        ));
     return Scaffold(
         body: SingleChildScrollView(
       child: Stack(
@@ -203,46 +192,71 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.white,
                 ),
-                child: Row(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      width: 170,
-                      height: 110,
-                      child: PageView.builder(
-                        controller: controller,
-                        // itemCount: pages.length,
-                        itemBuilder: (_, index) {
-                          return pages[index % pages.length];
-                        },
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Container(
+                          width: MediaQueryHelper.sizeFromWidth(context, 2.4),
+                          height: 110,
+                          child: PageView.builder(
+                            controller: controller,
+                            // itemCount: pages.length,
+                            itemBuilder: (_, index) {
+                              return pages[index % pages.length];
+                            },
+                          ),
+                        ),
+                        Container(
+                          width: 140,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'اجدد العروض!',
+                                style: AppTextStyles.smTitles.copyWith(
+                                    color: AppColors.green, fontSize: 18),
+                              ),
+                              Text(
+                                'ايسنس ماسكارا لاش',
+                                style: AppTextStyles.lrTitles.copyWith(
+                                    color: AppColors.primarycolor,
+                                    fontSize: 18),
+                              ),
+                              SizedBox(height: 5),
+                              ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                      backgroundColor: AppColors.primarycolor),
+                                  onPressed: () {},
+                                  child: Text(
+                                    'اشتري اآن',
+                                    style: AppTextStyles.lrTitles
+                                        .copyWith(fontSize: 18),
+                                  ))
+                            ],
+                          ),
+                        )
+                      ],
                     ),
-                    Container(
-                      width: 140,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            'اجدد العروض!',
-                            style: AppTextStyles.smTitles
-                                .copyWith(color: AppColors.green,fontSize: 18),
-                          ),
-                          Text(
-                            'ايسنس ماسكارا لاش',
-                            style: AppTextStyles.lrTitles
-                                .copyWith(color: AppColors.primarycolor,fontSize: 18),
-                          ),
-                          ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.primarycolor),
-                              onPressed: () {},
-                              child: Text(
-                                'اشتري اآن',
-                                style: AppTextStyles.lrTitles.copyWith(fontSize: 18),
-                              ))
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SmoothPageIndicator(
+                            controller: controller,
+                            count: pages.length,
+                            effect: ScrollingDotsEffect(
+
+                              radius: 8,
+                              spacing: 2,
+                              dotHeight: 7,
+                              dotWidth: 7,
+                              activeDotColor: AppColors.green,
+                              dotColor: AppColors.grey
+                            )),
+                      ],
                     )
                   ],
                 )),
