@@ -6,14 +6,21 @@ import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 
-class FilterAtion extends StatelessWidget {
+class FilterAtion extends StatefulWidget {
   FilterAtion({Key? key}) : super(key: key);
+
+  @override
+  State<FilterAtion> createState() => _FilterAtionState();
+}
+
+class _FilterAtionState extends State<FilterAtion> {
   List items = [
     'موصى بها',
     'الأقدم',
     'الأحدث',
   ];
-  RangeValues _currentRangeValues = const RangeValues(40, 80);
+
+  RangeValues _currentRangeValues = const RangeValues(100, 500);
 
   @override
   Widget build(BuildContext context) {
@@ -141,14 +148,42 @@ class FilterAtion extends StatelessWidget {
                       style: AppTextStyles.lrTitles,
                     ),
                     SizedBox(height: 15,),
+                    // RangeSlider(
+                    //   values: _currentRangeValues,
+                    //   onChanged: (RangeValues newrange) {
+                    //     setState(() {
+                    //       _currentRangeValues= newrange;
+                    //     });
+                    //
+                    //   },
+                    //   min: 200,
+                    //   max: 1000,
+                    //
+                    //   activeColor: AppColors.primarycolor,
+                    //   inactiveColor: AppColors.primarycolor,
+                    // ),
                     RangeSlider(
                       values: _currentRangeValues,
-                      onChanged: (x) {},
-                      min: 1,
-                      max: 100,
-                      activeColor: AppColors.primarycolor,
-                      inactiveColor: AppColors.primarycolor,
-                    ),
+                      max: 2000,
+                     divisions: 20,
+
+                      // activeColor: AppColors.primarycolor,
+                      // inactiveColor: AppColors.primarycolor,
+
+                      labels: RangeLabels(
+
+
+                       "${ _currentRangeValues.start.round().toString()}ر.س",
+                        "${_currentRangeValues.end.round().toString()}ر.س",
+
+                      ),
+                      onChanged: (RangeValues values) {
+                        setState(() {
+                          _currentRangeValues = values;
+                        });
+                      },
+                    )
+
                   ],
                 ),
               ),
@@ -163,7 +198,7 @@ class FilterAtion extends StatelessWidget {
               height: MediaQueryHelper.sizeFromHeight(context, 5),
               width: MediaQueryHelper.sizeFromWidth(context, 1),
               decoration: BoxDecoration(
-                  //     color: Colors.lightGreen,
+
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(30),
                       topLeft: Radius.circular(30))),
