@@ -90,32 +90,25 @@ class FilterAtion extends StatelessWidget {
                       'الأقسام',
                       style: AppTextStyles.lrTitles,
                     ),
-                    SizedBox(height: 15,),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Container(
-                      margin: EdgeInsets.symmetric(vertical: 10),
+                        margin: EdgeInsets.symmetric(vertical: 10),
                         height: MediaQueryHelper.sizeFromHeight(context, 7),
                         child: MultiSelectContainer(
+                            itemsDecoration: MultiSelectDecorations(
+                                selectedDecoration: BoxDecoration(
+                                    color: AppColors.blue,
+                                    borderRadius: BorderRadius.circular(10)),
+                                decoration: BoxDecoration(
+                                    color: AppColors.greym,
+                                    borderRadius: BorderRadius.circular(10))),
                             highlightColor: AppColors.primarycolor,
                             textStyles: MultiSelectTextStyles(
                               textStyle: AppTextStyles.boldtitles
                                   .copyWith(color: AppColors.primarycolor),
                             ),
-                            prefix: MultiSelectPrefix(
-                                // selectedPrefix: Padding(
-                                //   padding: EdgeInsets.only(right: 5),
-                                //   child: Icon(
-                                //     Icons.check,
-                                //     color: Colors.white,
-                                //     size: 14,
-                                //   ),
-                                // ),
-                                disabledPrefix: const Padding(
-                              padding: EdgeInsets.only(right: 5),
-                              child: Icon(
-                                Icons.do_disturb_alt_sharp,
-                                size: 14,
-                              ),
-                            )),
                             items: [
                               MultiSelectCard(
                                 value: 'المكملات الغذائية',
@@ -135,12 +128,16 @@ class FilterAtion extends StatelessWidget {
                               ),
                             ],
                             onChange: (allSelectedItems, selectedItem) {})),
-                    SizedBox(height: 15,),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Text(
                       'نطاق السعر',
                       style: AppTextStyles.lrTitles,
                     ),
-                    SizedBox(height: 15,),
+                    SizedBox(
+                      height: 15,
+                    ),
                     RangeSlider(
                       values: _currentRangeValues,
                       onChanged: (x) {},

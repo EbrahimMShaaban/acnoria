@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
   static const Color greyDark = Color(0xff8B8B8B);
   static const Color lightred = Color(0xffFCEEEA);
   static const Color lightblue =Color.fromRGBO(74, 144, 226, 0.08);
+  static const Color greym =Color.fromRGBO(132, 192, 68, 0.1);
   static const Color lightgreen =Color(0xff4A90E214);
   static const Color gold =Color(0xffF5D15F);
 

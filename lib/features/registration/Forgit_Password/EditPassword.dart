@@ -37,12 +37,15 @@ class EditPasswordScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: TextFieldTemplate(
                     hintText: "كلمة المرور",
+                    isPassword: true,
                     controller: passwordController),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: TextFieldTemplate(
                     hintText: "تأكيد كلمة المرور",
+                    isPassword: true,
+
                     controller: passwordController2),
               ),
 

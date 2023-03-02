@@ -51,9 +51,7 @@ class _ItemScreenState extends State<ItemScreen> {
                   right: MediaQueryHelper.sizeFromWidth(context, 5),
                 ),
                 child: Container(
-                  // color: Colors.yellowAccent,
                   height: MediaQueryHelper.sizeFromHeight(context, 2.9),
-                  // width: MediaQueryHelper.sizeFromWidth(context, 2),
                   child: Image.asset(
                     "assets/images/item.png",
                     fit: BoxFit.fill,
@@ -68,7 +66,7 @@ class _ItemScreenState extends State<ItemScreen> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 1,
                         blurRadius: 5,
-                        offset: Offset(0, 3), // changes position of shadow
+                        offset: Offset(10, 0), // changes position of shadow
                       ),
                     ],
                     borderRadius: BorderRadius.only(
@@ -119,8 +117,8 @@ class _ItemScreenState extends State<ItemScreen> {
                       ),
                       Text(
                         "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى ",
-                        style: AppTextStyles.smTitles
-                            .apply(color: AppColors.greyDark, fontSizeDelta: -3),
+                        style: AppTextStyles.smTitles.apply(
+                            color: AppColors.greyDark, fontSizeDelta: -3),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -218,7 +216,6 @@ class _ItemScreenState extends State<ItemScreen> {
                             color: AppColors.primarycolor,
                             text1: " اضف الى السلة",
                             onPressed: () {
-
                               navigateTo(context, CartScreen());
                             }),
                       ),

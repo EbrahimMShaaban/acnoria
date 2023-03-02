@@ -127,16 +127,8 @@ class HomeScreen extends StatelessWidget {
                             style: AppTextStyles.smTitles
                                 .copyWith(color: AppColors.primarycolor)),
 
-                        // ButtonTemplate(
-                        //     color: AppColors.primarycolor,
-                        //     text1: 'مشاهدة الجميع',
-                        //     fontSize: 15,
-                        //     minheight: 30,
-                        //
-                        //     minwidth: 30,
-                        //     onPressed: (){
-                        //       navigateTo(context, Categories());
-                        //     })
+
+
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20)),
