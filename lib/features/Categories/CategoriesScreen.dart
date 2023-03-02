@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 import '../../../shared/components/navigator.dart';
 import '../../../shared/styles/colors.dart';
+import '../../shared/styles/images.dart';
 import '../cart/view.dart';
+import '../search/widgets/search_bar.dart';
 
 class CategoriesScrren extends StatelessWidget {
   const CategoriesScrren({Key? key}) : super(key: key);
@@ -15,7 +17,10 @@ class CategoriesScrren extends StatelessWidget {
       backgroundColor: AppColors.white,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.shopping_basket_outlined),
+          icon: Image.asset(
+            AppImages.basket,height: 33,
+            color: AppColors.primarycolor,
+          ),
           onPressed: () {
             navigateTo(context, CartScreen());
           },
@@ -42,8 +47,15 @@ class CategoriesScrren extends StatelessWidget {
               fontSizeDelta: 10,
             ),
           ),
+
           SizedBox(
-            height: 20,
+            height: 10,
+          ),
+          Container(
+              height: MediaQueryHelper.sizeFromHeight(context, 8),
+              //  color: Colors.red,
+              child: SearchBar()),SizedBox(
+            height: 30,
           ),
           ContinerCategories_backgroundimage(context),
           ListView.builder(

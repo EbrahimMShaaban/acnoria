@@ -37,7 +37,7 @@ class _CartScreenState extends State<CartScreen> {
 
                 physics:NeverScrollableScrollPhysics() ,
                 shrinkWrap: true,
-                itemCount: 10,
+                itemCount: 3,
 
                 itemBuilder: (context, index) {
                   return ContinerMyCart(context, add: () {

@@ -48,6 +48,9 @@ class AddNewLocation extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
+              Image.asset("assets/images/img_4.png"),  SizedBox(
+                height: 20,
+              ),
               Addlocation(
                 controller: controller,
                 hintText: "المنطقة",
