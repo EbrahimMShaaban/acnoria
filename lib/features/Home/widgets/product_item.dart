@@ -64,9 +64,10 @@ class ProductItem extends StatelessWidget {
                 maxLines: 2,
                 style: AppTextStyles.smTitles
                     .copyWith(fontSize: 14, fontWeight: FontWeight.w600)),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text('12 ر.س',style: AppTextStyles.smTitles
                     .copyWith(fontSize: 15, fontWeight: FontWeight.w700,color: AppColors.blue
@@ -74,7 +75,7 @@ class ProductItem extends StatelessWidget {
                 IconButton(
                     onPressed: () {},
                     icon: Icon(Icons.add_circle_outline),
-                    iconSize: 16,
+                    iconSize: 20,
                     color: AppColors.primarycolor),
               ],
             )

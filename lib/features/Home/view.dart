@@ -22,10 +22,12 @@ class HomeScreen extends StatelessWidget {
     final pages = List.generate(
         4,
         (index) => Container(
+
               margin: EdgeInsets.only(left: 5),
               child: Center(
                   child: Image.asset(
                 AppImages.indicator,
+                     width: 300,height: 300,
               )),
             ));
     return Scaffold(
@@ -138,13 +140,13 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
-                     crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('وصل حديثا',
                             style: AppTextStyles.boldtitles.copyWith(
-                                color: AppColors.blue,
-                                )),
+                              color: AppColors.blue,
+                            )),
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20)),
@@ -207,11 +209,13 @@ class HomeScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          width: MediaQueryHelper.sizeFromWidth(context, 2.4),
+                          width: MediaQueryHelper.sizeFromWidth(context, 2.8),
                           height: 110,
                           child: PageView.builder(
                             controller: controller,
-                            // itemCount: pages.length,
+
+
+                            itemCount:1,
                             itemBuilder: (_, index) {
                               return pages[index % pages.length];
                             },
