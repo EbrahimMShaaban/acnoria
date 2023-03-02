@@ -88,6 +88,7 @@ class _CartScreenState extends State<CartScreen> {
               Price(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   ButtonTemplate(
                     minwidth: 160,

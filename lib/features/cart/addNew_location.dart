@@ -104,46 +104,49 @@ class Addlocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text(
-          text!,
-          style: AppTextStyles.lrTitles
-              .apply(fontSizeDelta: 0, color: AppColors.blue),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        TextFormField(
-            controller: controller,
-            style: AppTextStyles.boldtitles.apply(
-              color: AppColors.blueDark,
-            ),
-            // validator: (value) => validator!(value),
-            decoration: InputDecoration(
-                hintText: hintText,
-                border: InputBorder.none,
-                filled: true,
-                fillColor: AppColors.white,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            text!,
+            style: AppTextStyles.lrTitles
+                .apply(fontSizeDelta: -5, color: AppColors.blue),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              controller: controller,
+              style: AppTextStyles.boldtitles.apply(
+                color: AppColors.blueDark,
+              ),
+              // validator: (value) => validator!(value),
+              decoration: InputDecoration(
+                  hintText: hintText,
+                  border: InputBorder.none,
+                  filled: true,
+                  fillColor: AppColors.white,
 
-                hintStyle: AppTextStyles.boldtitles.apply(
-                  color: AppColors.blue,
-                ),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                disabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide.none,
-                    borderRadius: BorderRadius.all(Radius.circular(15))))),
-      ],
+                  hintStyle: AppTextStyles.boldtitles.apply(
+                    color: AppColors.blue,
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.all(Radius.circular(15))))),
+        ],
+      ),
     );
   }
 }

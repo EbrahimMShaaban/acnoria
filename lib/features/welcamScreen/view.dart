@@ -120,8 +120,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       finishOnBoarding();
                     },
                     child: Text("تخطي",
+
                         style: AppTextStyles.boldtitles
-                            .apply(color: AppColors.green)),
+                            .apply(color: AppColors.green,decoration: TextDecoration.underline)),
                   ),
                 ]),
           ],
@@ -135,7 +136,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         children: [
           Expanded(
             child: Image(
-              width: 300,
+              width: MediaQueryHelper.sizeFromWidth(context, 1.5),
               image: AssetImage(
                 '${model.image}',
               ),
@@ -145,7 +146,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             '${model.body}',
             textAlign: TextAlign.center,
             style:
-                AppTextStyles.boldtitles.apply(color: AppColors.primarycolor),
+                AppTextStyles.textsmbold.apply(color: AppColors.primarycolor),
           ),
           SizedBox(
             height: 14.0,

@@ -336,7 +336,7 @@ class _paymentScreenState extends State<paymentScreen> {
               Container(
                 margin: EdgeInsets.only(bottom: 10, top: 20),
                 padding: EdgeInsets.symmetric(horizontal: 1, vertical: 5),
-                height: 120,
+                height: 130,
                 decoration: BoxDecoration(
                     color: AppColors.white,
                     borderRadius: BorderRadius.circular(15),

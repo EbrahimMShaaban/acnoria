@@ -28,7 +28,7 @@ class CategoryBox extends StatelessWidget {
             ),
           ),
         ),
-        Text(txt,style: AppTextStyles.boldtitles.apply(fontSizeDelta: -3),)
+        Text(txt,style: AppTextStyles.boldtitles.apply(fontSizeDelta: -5),)
       ],
     );
   }

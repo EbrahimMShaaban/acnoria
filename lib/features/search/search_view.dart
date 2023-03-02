@@ -22,7 +22,7 @@ class SearchView extends StatelessWidget {
       appBar: AppSearchBar(context),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding:appPadding(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -31,25 +31,24 @@ class SearchView extends StatelessWidget {
                   //  color: Colors.red,
                   child: SearchBar()),
               Text('الأبحاث الحديثة', style: AppTextStyles.lrTitles),
-              Container(
-                height: MediaQueryHelper.sizeFromHeight(context, 4),
-                child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    // itemExtent: 30,
-                    cacheExtent: 100,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        contentPadding: EdgeInsets.zero,
-                        minLeadingWidth: 0,
-                        leading: Icon(
-                          Icons.access_time_outlined,
-                          color: AppColors.primarycolor,
-                        ),
-                        title: Text('المكملات الغذائية'),
-                      );
-                    },
-                    itemCount: 10),
-              ),
+              ListView.builder(
+                  physics:NeverScrollableScrollPhysics() ,
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  // itemExtent: 30,
+                  cacheExtent: 100,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      minLeadingWidth: 0,
+                      leading: Icon(
+                        Icons.access_time_outlined,
+                        color: AppColors.primarycolor,
+                      ),
+                      title: Text('المكملات الغذائية'),
+                    );
+                  },
+                  itemCount: 3),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Text('الأكثر بحثا', style: AppTextStyles.lrTitles),
