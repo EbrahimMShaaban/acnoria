@@ -42,22 +42,14 @@ ThemeData lightTheme = ThemeData(
             statusBarColor: AppColors.primarycolor,
             statusBarIconBrightness: Brightness.light)),
     sliderTheme: SliderThemeData(
-        inactiveTrackColor: AppColors.materialGrey,
-      //   inactiveTickMarkColor: Colors.orangeAccent,
-      //   disabledActiveTickMarkColor: Colors.deepOrange,
-      //   disabledActiveTrackColor: Colors.lightGreenAccent,
-      //   disabledInactiveTickMarkColor: Colors.purpleAccent,
-      // disabledThumbColor: Colors.black,
-      // disabledSecondaryActiveTrackColor: Colors.brown,
-      activeTrackColor: AppColors.primarycolor,
-      activeTickMarkColor: AppColors.primarycolor,
-      disabledInactiveTrackColor: Colors.blue,
-      // overlappingShapeStrokeColor: Colors.yellowAccent,
-      // overlayColor: Colors.orangeAccent
-// secondaryActiveTrackColor: Colors.yellowAccent,
-      thumbColor: AppColors.primarycolor,
-
-
-
-    )
-);
+        // inactiveTrackColor: AppColors.slidergrey,
+        inactiveTickMarkColor: AppColors.slidergrey,
+        activeTrackColor: AppColors.primarycolor,
+        activeTickMarkColor: AppColors.primarycolor,
+        disabledInactiveTrackColor: Colors.blue,
+        thumbColor: AppColors.primarycolor,
+        rangeTrackShape: RectangularRangeSliderTrackShape(),
+        rangeValueIndicatorShape: PaddleRangeSliderValueIndicatorShape(),
+        rangeTickMarkShape: RoundRangeSliderTickMarkShape(tickMarkRadius: 1.2),
+        rangeThumbShape: RoundRangeSliderThumbShape(
+            disabledThumbRadius: 10, enabledThumbRadius: 10)));

@@ -17,6 +17,7 @@ class AppColors {
   static const Color lightgreen = Color.fromRGBO(132, 192, 68, 0.1);
   static const Color gold = Color(0xffF5D15F);
   static const Color Bluehint = Color.fromRGBO(0, 86, 168, 0.34);
+  static const Color slidergrey = Color.fromRGBO(74, 144, 226, 0.12);
 }
 
 // const MaterialColor materialColor = MaterialColor(
