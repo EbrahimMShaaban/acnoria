@@ -1,5 +1,6 @@
 import 'package:acnoria/features/home/itemScreen.dart';
 import 'package:acnoria/shared/components/navigator.dart';
+import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/components/constants.dart';
@@ -12,8 +13,8 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 5,bottom: 5,right: 2,left: 2),
-      padding: EdgeInsets.all(5),
+      margin: EdgeInsets.only(top: 5, bottom: 5, right: 2, left: 2),
+      padding: EdgeInsets.all(7),
       width: MediaQueryHelper.sizeFromWidth(context, 2.6),
       decoration: BoxDecoration(
         boxShadow: [
@@ -21,10 +22,10 @@ class ProductItem extends StatelessWidget {
             color: Colors.grey.withOpacity(.2),
             spreadRadius: 2,
             blurRadius: 1,
-            offset: Offset(0,0), // changes position of shadow
+            offset: Offset(0, 0), // changes position of shadow
           ),
         ],
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         color: AppColors.grey,
       ),
       child: InkWell(
@@ -40,7 +41,11 @@ class ProductItem extends StatelessWidget {
                     color: AppColors.primarycolor),
                 Row(
                   children: const [
-                    Text('4.8',style: TextStyle(color: AppColors.green)),
+                    Text('4.8',
+                        style: TextStyle(
+                            color: AppColors.green,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold)),
                     Icon(
                       Icons.star,
                       size: 15,
@@ -55,15 +60,21 @@ class ProductItem extends StatelessWidget {
               width: MediaQueryHelper.sizeFromWidth(context, 3),
               height: MediaQueryHelper.sizeFromHeight(context, 12),
             ),
-            Text('اوه ماي تنت مرطب شفاه وملمع – وردي – 4 غ ', maxLines: 2),
+            Text('اوه ماي تنت مرطب شفاه وملمع – وردي – 4 غ ',
+                maxLines: 2,
+                style: AppTextStyles.smTitles
+                    .copyWith(fontSize: 14, fontWeight: FontWeight.w600)),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
               children: [
-                Text('12 ر.س'),
+                Text('12 ر.س',style: AppTextStyles.smTitles
+                    .copyWith(fontSize: 15, fontWeight: FontWeight.w700,color: AppColors.blue
+                )),
                 IconButton(
                     onPressed: () {},
                     icon: Icon(Icons.add_circle_outline),
-                    iconSize: 15,
+                    iconSize: 16,
                     color: AppColors.primarycolor),
               ],
             )

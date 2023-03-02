@@ -22,11 +22,12 @@ class HomeScreen extends StatelessWidget {
     final pages = List.generate(
         4,
         (index) => Container(
-          margin: EdgeInsets.only(left: 5),
-
-          child: Center(
-              child: Image.asset(AppImages.indicator,)),
-        ));
+              margin: EdgeInsets.only(left: 5),
+              child: Center(
+                  child: Image.asset(
+                AppImages.indicator,
+              )),
+            ));
     return Scaffold(
         body: SingleChildScrollView(
       child: Stack(
@@ -35,83 +36,99 @@ class HomeScreen extends StatelessWidget {
             children: [
               Container(
                 height: MediaQueryHelper.sizeFromHeight(context, 3),
+                padding:
+                    EdgeInsets.all(MediaQueryHelper.sizeFromWidth(context, 18)),
                 decoration: const BoxDecoration(
                     color: AppColors.primarycolor,
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(20),
                         bottomRight: Radius.circular(20))),
-                child: Center(
-                    child: Padding(
+                child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  navigateTo(context, CartScreen());
+                                },
+                                color: AppColors.white,
+                                icon: Image.asset(
+                                  AppImages.basket,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  navigateTo(context, SearchView());
+                                },
+                                color: AppColors.white,
+                                icon: Image.asset(
+                                  AppImages.search,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
                           IconButton(
-                              onPressed: () {
-                                navigateTo(context, CartScreen());
-                              },
-                              color: AppColors.white,
-                              icon: Icon(
-                                Icons.shopping_basket_outlined,
-                                size: 30,
-                              )),
-                          IconButton(
-                              onPressed: () {
-                                navigateTo(context, SearchView());
-                              },
-                              color: AppColors.white,
-                              icon: Icon(
-                                Icons.search,
-                                size: 30,
-                              )),
+                            onPressed: () {
+                              navigateTo(context, SearchView());
+                            },
+                            color: AppColors.white,
+                            icon: Image.asset(
+                              AppImages.pin,
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
-                      Image.asset(
-                        AppImages.pin,
-                        color: Colors.white,
-                      ),
-                      // IconButton(
-                      //     onPressed: () {},
-                      //     color: AppColors.white,
-                      //     icon: Icon(Icons.panorama_fish_eye)),
+                      SizedBox(
+                        height: MediaQueryHelper.sizeFromHeight(context, 15),
+                      )
                     ],
                   ),
-                )),
+                ),
               ),
               SizedBox(
                 height: MediaQueryHelper.sizeFromHeight(context, 10),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  CategoryBox(
-                    color: AppColors.lightred,
-                    imgPath: AppImages.discount,
-                    txt: 'العروض',
-                  ),
-                  CategoryBox(
-                    color: AppColors.lightgreen,
-                    imgPath: AppImages.recent,
-                    txt: 'وصل حديثا',
-                  ),
-                  InkWell(
-                    onTap: () {
-                      navigateTo(context, CategoriesScrren());
-                    },
-                    child: CategoryBox(
-                      color: AppColors.lightblue,
-                      imgPath: AppImages.box,
-                      txt: 'الأقسام',
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CategoryBox(
+                      color: AppColors.lightred,
+                      imgPath: AppImages.discount,
+                      txt: 'العروض',
                     ),
-                  ),
-                  CategoryBox(
-                    color: AppColors.lightgreen,
-                    imgPath: AppImages.booking,
-                    txt: 'طلباتي',
-                  ),
-                ],
+                    CategoryBox(
+                      color: AppColors.lightgreen,
+                      imgPath: AppImages.recent,
+                      txt: 'وصل حديثا',
+                    ),
+                    InkWell(
+                      onTap: () {
+                        navigateTo(context, CategoriesScrren());
+                      },
+                      child: CategoryBox(
+                        color: AppColors.lightblue,
+                        imgPath: AppImages.box,
+                        txt: 'الأقسام',
+                      ),
+                    ),
+                    CategoryBox(
+                      color: AppColors.lightgreen,
+                      imgPath: AppImages.booking,
+                      txt: 'طلباتي',
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 10),
               Padding(
@@ -121,22 +138,13 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
+                     crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('وصل حديثا',
-                            style: AppTextStyles.smTitles
-                                .copyWith(color: AppColors.primarycolor)),
-
-                        // ButtonTemplate(
-                        //     color: AppColors.primarycolor,
-                        //     text1: 'مشاهدة الجميع',
-                        //     fontSize: 15,
-                        //     minheight: 30,
-                        //
-                        //     minwidth: 30,
-                        //     onPressed: (){
-                        //       navigateTo(context, Categories());
-                        //     })
+                            style: AppTextStyles.boldtitles.copyWith(
+                                color: AppColors.blue,
+                                )),
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20)),
@@ -164,7 +172,7 @@ class HomeScreen extends StatelessWidget {
                           separatorBuilder: (context, x) {
                             return SizedBox(
                               width:
-                                  MediaQueryHelper.sizeFromWidth(context, 15),
+                                  MediaQueryHelper.sizeFromWidth(context, 30),
                             );
                           },
                           itemCount: 10),
@@ -218,13 +226,13 @@ class HomeScreen extends StatelessWidget {
                               Text(
                                 'اجدد العروض!',
                                 style: AppTextStyles.smTitles.copyWith(
-                                    color: AppColors.green, fontSize: 18),
+                                    color: AppColors.green, fontSize: 16),
                               ),
                               Text(
                                 'ايسنس ماسكارا لاش',
                                 style: AppTextStyles.lrTitles.copyWith(
                                     color: AppColors.primarycolor,
-                                    fontSize: 18),
+                                    fontSize: 16),
                               ),
                               SizedBox(height: 5),
                               ElevatedButton(
@@ -248,14 +256,12 @@ class HomeScreen extends StatelessWidget {
                             controller: controller,
                             count: pages.length,
                             effect: ScrollingDotsEffect(
-
-                              radius: 8,
-                              spacing: 2,
-                              dotHeight: 7,
-                              dotWidth: 7,
-                              activeDotColor: AppColors.green,
-                              dotColor: AppColors.grey
-                            )),
+                                radius: 8,
+                                spacing: 2,
+                                dotHeight: 7,
+                                dotWidth: 7,
+                                activeDotColor: AppColors.green,
+                                dotColor: AppColors.grey)),
                       ],
                     )
                   ],

@@ -105,9 +105,10 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
                 : null,
             filled: true,
             fillColor: AppColors.white,
-            labelStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
-            hintStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
-            enabledBorder: const OutlineInputBorder(
+            labelStyle: AppTextStyles.hittext,
+            hintStyle:AppTextStyles.hittext,
+            enabledBorder: OutlineInputBorder(
+
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             focusedBorder: const OutlineInputBorder(

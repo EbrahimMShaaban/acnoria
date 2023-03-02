@@ -1,4 +1,4 @@
- class AppImages{
+class AppImages {
   static const String discount = 'assets/images/discount.png';
   static const String recent = 'assets/images/recent.png';
   static const String box = 'assets/images/box.png';
@@ -14,5 +14,6 @@
   static const String loading = 'assets/images/loading.png';
   static const String x = 'assets/images/x.png';
   static const String indicator = 'assets/images/indicator.png';
-
+  static const String basket = 'assets/images/basket.png';
+  static const String search = 'assets/images/search.png';
 }

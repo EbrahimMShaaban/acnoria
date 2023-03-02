@@ -32,7 +32,7 @@ class ForgitPasswordScreen extends StatelessWidget {
               // SizedBox(height: 35,),
               Text(
                 "ادخل رقم الهاتف لاستعادة كلمة المرور",
-                style: AppTextStyles.boldtitles.apply(fontSizeDelta: -1),
+                style: AppTextStyles.boldtitles.apply(),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),                child: TextFieldTemplate(

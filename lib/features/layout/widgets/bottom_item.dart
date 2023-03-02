@@ -34,16 +34,12 @@ class BottomItem extends StatelessWidget {
               child: Icon(
                 path,
                 color: color,
-                size: 35,
+                size: 28,
+
+
 
               ),
-              // Icon(
-              //   Icons.home,
-              //   size: cubit.currentTab == 0 ? 35 : 25,
-              //   color: cubit.currentTab == 0
-              //       ? AppColors.white
-              //       : AppColors.grey,
-              // ),
+
             ),
           ],
         ));
