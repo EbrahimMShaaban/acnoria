@@ -39,7 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
                     "مرحبا امنية",
@@ -47,10 +47,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   IconButton(
                       onPressed: () {},
-                      icon: Icon(
-                        Icons.shopping_basket_outlined,
-                        size: 30,
-                      ))
+                      icon: Image.asset(height: 33,
+                        AppImages.basket,
+                        color:AppColors.primarycolor,
+                      ),)
                 ],
               ),
               Text(

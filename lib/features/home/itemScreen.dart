@@ -47,24 +47,25 @@ class _ItemScreenState extends State<ItemScreen> {
               ))
         ],
       ),
+
       body: Column(
         children: [
           SingleChildScrollView(
             child: Column(
               children: [
+
+
                 Container(
-                  // color: Colors.yellowAccent,
+
                   height: MediaQueryHelper.sizeFromHeight(context, 2.9),
-                  // width: MediaQueryHelper.sizeFromWidth(context, 2),
                   child: Image.asset(
                     "assets/images/item.png",
                     fit: BoxFit.fill,
                   ),
                 ),
+])),
 
-              ],
-            ),
-          ),
+
           Expanded(
             child: Container(
               height: MediaQueryHelper.sizeFromHeight(context,10),
@@ -185,9 +186,11 @@ class _ItemScreenState extends State<ItemScreen> {
                               ),
                             ],
                           ),
-                        ),
-                      ],
-                    ),
+
+
+                      ),
+
+
                     Row(
                       children: [
                         Icon(
@@ -228,10 +231,10 @@ class _ItemScreenState extends State<ItemScreen> {
                             navigateTo(context, CartScreen());
                           }),
                     ),
-                  ]),
+                  ]),]
             ),
-          ),
-        ],
+          ),)
+       ],
       ),
     );
   }

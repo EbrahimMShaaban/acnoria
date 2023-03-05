@@ -22,10 +22,12 @@ class HomeScreen extends StatelessWidget {
     final pages = List.generate(
         4,
         (index) => Container(
+
               margin: EdgeInsets.only(left: 5),
               child: Center(
                   child: Image.asset(
                 AppImages.indicator,
+                     width: 300,height: 300,
               )),
             ));
     return Scaffold(
@@ -139,13 +141,13 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
-                     crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('وصل حديثا',
                             style: AppTextStyles.boldtitles.copyWith(
-                                color: AppColors.blue,
-                                )),
+                              color: AppColors.blue,
+                            )),
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20)),
@@ -212,6 +214,7 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+
                     Expanded(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -224,9 +227,25 @@ class HomeScreen extends StatelessWidget {
                               itemBuilder: (_, index) {
                                 return pages[index % pages.length];
                               },
-                            ),
-                          ),
-                          const SizedBox(width: 8),
+                            ),)
+// =======
+//                     Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                       children: [
+//                         Container(
+//                           width: MediaQueryHelper.sizeFromWidth(context, 2.8),
+//                           height: 110,
+//                           child: PageView.builder(
+//                             controller: controller,
+//
+//
+//                             itemCount:1,
+//                             itemBuilder: (_, index) {
+//                               return pages[index % pages.length];
+//                             },
+// >>>>>>> 09e86d17f0cd8c249a83c796346a940f16c31c23
+//                           ),
+                           ,SizedBox(width: 8),
                           Expanded(
                             flex: 4,
                             child: Column(
