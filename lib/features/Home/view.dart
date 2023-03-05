@@ -15,7 +15,7 @@ import '../Categories/CategoriesScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
-  final controller = PageController(viewportFraction: 0.8, keepPage: true);
+  final controller = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +31,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         body: SingleChildScrollView(
       child: Stack(
+        alignment: Alignment.center,
         children: [
           Column(
             children: [
@@ -149,12 +150,17 @@ class HomeScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20)),
                           child: ElevatedButton(
+                            
                             onPressed: () {
                               navigateTo(context, Categories());
                             },
                             child: const Text('مشاهدة الجميع'),
                             style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(8))
+                              ),
                                 backgroundColor: AppColors.primarycolor),
+                            
                           ),
                         )
                       ],
@@ -184,17 +190,20 @@ class HomeScreen extends StatelessWidget {
           ),
           Positioned(
             top: MediaQueryHelper.sizeFromHeight(context, 5.2),
-            right: MediaQueryHelper.sizeFromWidth(context, 9),
+            left: 40,
+            right: 40,
+            // right: MediaQueryHelper.sizeFromWidth(context, 9),
             child: Container(
-                width: MediaQueryHelper.sizeFromWidth(context, 1.3),
-                height: MediaQueryHelper.sizeFromHeight(context, 4.5),
+                width: MediaQuery.of(context).size.width,
+                height: 150,
+                padding: const EdgeInsets.fromLTRB(12,0,12,5),
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.5),
                       spreadRadius: 1,
                       blurRadius: 5,
-                      offset: Offset(0, 3), // changes position of shadow
+                      offset: const Offset(0, 3), // changes position of shadow
                     ),
                   ],
                   borderRadius: BorderRadius.circular(15),
@@ -203,67 +212,70 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          width: MediaQueryHelper.sizeFromWidth(context, 2.4),
-                          height: 110,
-                          child: PageView.builder(
-                            controller: controller,
-                            // itemCount: pages.length,
-                            itemBuilder: (_, index) {
-                              return pages[index % pages.length];
-                            },
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: PageView.builder(
+                              controller: controller,
+                              itemCount: pages.length,
+                              itemBuilder: (_, index) {
+                                return pages[index % pages.length];
+                              },
+                            ),
                           ),
-                        ),
-                        Container(
-                          width: 140,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                'اجدد العروض!',
-                                style: AppTextStyles.smTitles.copyWith(
-                                    color: AppColors.green, fontSize: 16),
-                              ),
-                              Text(
-                                'ايسنس ماسكارا لاش',
-                                style: AppTextStyles.lrTitles.copyWith(
-                                    color: AppColors.primarycolor,
-                                    fontSize: 16),
-                              ),
-                              SizedBox(height: 5),
-                              ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColors.primarycolor),
-                                  onPressed: () {},
+                          const SizedBox(width: 8),
+                          Expanded(
+                            flex: 4,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'اجدد العروض!',
+                                  style: AppTextStyles.smTitles.copyWith(
+                                      color: AppColors.green, fontSize: 14),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 8),
                                   child: Text(
-                                    'اشتري اآن',
-                                    style: AppTextStyles.lrTitles
-                                        .copyWith(fontSize: 18),
-                                  ))
-                            ],
-                          ),
-                        )
-                      ],
+                                    'ايسنس ماسكارا لاش',
+                                    style: AppTextStyles.lrTitles.copyWith(
+                                        color: AppColors.primarycolor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15),
+                                  ),
+                                ),
+                                ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(10))
+                                      ),
+                                        backgroundColor: AppColors.primarycolor),
+                                    onPressed: () {},
+                                    child: Text(
+                                      'اشتري اآن',
+                                      style: AppTextStyles.lrTitles
+                                          .copyWith(fontSize: 16),
+                                    ))
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SmoothPageIndicator(
-                            controller: controller,
-                            count: pages.length,
-                            effect: ScrollingDotsEffect(
-                                radius: 8,
-                                spacing: 2,
-                                dotHeight: 7,
-                                dotWidth: 7,
-                                activeDotColor: AppColors.green,
-                                dotColor: AppColors.grey)),
-                      ],
-                    )
+                    SmoothPageIndicator(
+                        controller: controller,
+                        count: pages.length,
+                        effect: const ScrollingDotsEffect(
+                            radius: 8,
+                            spacing: 2,
+                            dotHeight: 7,
+                            dotWidth: 7,
+                            activeDotColor: AppColors.green,
+                            dotColor: AppColors.grey))
                   ],
                 )),
           )
