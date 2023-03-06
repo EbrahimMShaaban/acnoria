@@ -116,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               IconButton(
                                 onPressed: () {
-                                  navigateTo(context, SearchView());
+                                  navigateTo(context, Categories());
                                 },
                                 color: AppColors.white,
                                 icon: Image.asset(

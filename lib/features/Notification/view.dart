@@ -11,6 +11,7 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -30,9 +31,12 @@ class NotificationScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('اليوم',
-                        style: AppTextStyles.smTitles
-                            .copyWith(color: AppColors.greyDark)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Text('اليوم',
+                          style: AppTextStyles.boldtitles
+                              .copyWith(color: AppColors.Bluehint, fontSize: 17)),
+                    ),
                     NotifyItem(),
                     NotifyItem(isclickable: true),
                     Divider(
@@ -43,10 +47,13 @@ class NotificationScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'أمس',
-                      style: AppTextStyles.smTitles
-                          .copyWith(color: AppColors.greyDark),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Text(
+                        'أمس',
+                        style: AppTextStyles.boldtitles
+                            .copyWith(color: AppColors.Bluehint,fontSize: 17),
+                      ),
                     ),
                     NotifyItem(),
                     Divider(
@@ -57,9 +64,12 @@ class NotificationScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('في هذا الأسبوع',
-                        style: AppTextStyles.smTitles
-                            .copyWith(color: AppColors.greyDark)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Text('في هذا الأسبوع',
+                          style: AppTextStyles.boldtitles
+                              .copyWith(color: AppColors.Bluehint,fontSize: 17)),
+                    ),
                     NotifyItem(),
                     NotifyItem(),
                     NotifyItem(),

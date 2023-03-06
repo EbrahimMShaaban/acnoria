@@ -147,7 +147,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             textAlign: TextAlign.center,
             style:
             AppTextStyles.boldtitles.apply(
-                color: AppColors.primarycolor, fontSizeDelta:-6.sp),
+                color: AppColors.primarycolor, fontSizeDelta:-2.sp),
           ),
           SizedBox(
             height: 14.0,
