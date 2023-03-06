@@ -35,10 +35,7 @@ class HomeScreen extends StatelessWidget {
                 height: 300,
               )),
             ),
-          )
-
-
-          ,
+          ),
           SizedBox(width: 8),
           Expanded(
             flex: 4,
@@ -46,6 +43,7 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                SizedBox(height: 5,),
                 Text(
                   'اجدد العروض!',
                   style: AppTextStyles.smTitles
@@ -70,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () {},
                     child: Text(
                       'اشتري اآن',
-                      style: AppTextStyles.lrTitles.copyWith(fontSize: 16),
+                      style: AppTextStyles.lrTitles.copyWith(fontSize: 14),
                     ))
               ],
             ),
@@ -86,7 +84,7 @@ class HomeScreen extends StatelessWidget {
           Column(
             children: [
               Container(
-                height: MediaQueryHelper.sizeFromHeight(context, 3),
+                height: MediaQueryHelper.sizeFromHeight(context, 3.5),
                 padding:
                     EdgeInsets.all(MediaQueryHelper.sizeFromWidth(context, 18)),
                 decoration: const BoxDecoration(
@@ -112,6 +110,7 @@ class HomeScreen extends StatelessWidget {
                                 icon: Image.asset(
                                   AppImages.basket,
                                   color: Colors.white,
+                                  height: 25,
                                 ),
                               ),
                               IconButton(
@@ -122,6 +121,7 @@ class HomeScreen extends StatelessWidget {
                                 icon: Image.asset(
                                   AppImages.search,
                                   color: Colors.white,
+                                  height: 25,
                                 ),
                               ),
                             ],
@@ -134,6 +134,7 @@ class HomeScreen extends StatelessWidget {
                             icon: Image.asset(
                               AppImages.pin,
                               color: Colors.white,
+                              height: 25,
                             ),
                           ),
                         ],
@@ -194,7 +195,9 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text('وصل حديثا',
                             style: AppTextStyles.boldtitles.copyWith(
-                              color: AppColors.blue,
+                              color: AppColors.primarycolor,
+                              fontSize: 18,
+
                             )),
                         Container(
                           decoration: BoxDecoration(
@@ -214,14 +217,15 @@ class HomeScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: MediaQueryHelper.sizeFromHeight(context, 50),
+                      height: 10,
                     ),
                     Container(
+                      margin: EdgeInsets.symmetric(horizontal: 5),
                       height: MediaQueryHelper.sizeFromHeight(context, 3.1),
                       child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return ProductItem();
+                            return ProductItem(colorPath: "assets/images/gym.png",);
                           },
                           separatorBuilder: (context, x) {
                             return SizedBox(
@@ -230,20 +234,126 @@ class HomeScreen extends StatelessWidget {
                             );
                           },
                           itemCount: 10),
-                    )
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Image.asset(AppImages.img,
+                        width: MediaQueryHelper.sizeFromWidth(context, 1)),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('المكملات الغذائية',
+                            style: AppTextStyles.boldtitles.copyWith(
+                              color: AppColors.blue,
+                              fontSize: 18,
+                            )),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20)),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              navigateTo(context, Categories());
+                            },
+                            child: const Text('مشاهدة الجميع'),
+                            style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8))),
+                                backgroundColor: AppColors.primarycolor),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      height: MediaQueryHelper.sizeFromHeight(context, 3.1),
+                      child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return ProductItem(colorPath: AppImages.food,);
+                          },
+                          separatorBuilder: (context, x) {
+                            return SizedBox(
+                              width:
+                                  MediaQueryHelper.sizeFromWidth(context, 30),
+                            );
+                          },
+                          itemCount: 10),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Image.asset(AppImages.img,
+                        width: MediaQueryHelper.sizeFromWidth(context, 1)),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('العطور',
+                            style: AppTextStyles.boldtitles.copyWith(
+                              color: AppColors.blue,
+                              fontSize: 18,
+                            )),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20)),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              navigateTo(context, Categories());
+                            },
+                            child: const Text('مشاهدة الجميع'),
+                            style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8))),
+                                backgroundColor: AppColors.primarycolor),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 5),
+                      height: MediaQueryHelper.sizeFromHeight(context, 3.1),
+                      child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return ProductItem(colorPath: AppImages.barvan,);
+                          },
+                          separatorBuilder: (context, x) {
+                            return SizedBox(
+                              width:
+                              MediaQueryHelper.sizeFromWidth(context, 30),
+                            );
+                          },
+                          itemCount: 10),
+                    ),
                   ],
                 ),
               )
             ],
           ),
           Positioned(
-            top: MediaQueryHelper.sizeFromHeight(context, 5.2),
+            top: MediaQueryHelper.sizeFromHeight(context, 6.5),
             left: 40,
             right: 40,
             // right: MediaQueryHelper.sizeFromWidth(context, 9),
             child: Container(
-               width: MediaQuery.of(context).size.width,
-             // width: 200,
+                width: MediaQuery.of(context).size.width,
+                // width: 200,
                 height: 150,
                 padding: const EdgeInsets.fromLTRB(12, 0, 12, 5),
                 decoration: BoxDecoration(
@@ -262,7 +372,6 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-
                       height: 120,
                       child: PageView.builder(
                         controller: controller,
@@ -272,11 +381,7 @@ class HomeScreen extends StatelessWidget {
                         },
                       ),
                     ),
-
-
-
                     SmoothPageIndicator(
-
                         controller: controller,
                         count: pages.length,
                         effect: const ScrollingDotsEffect(
