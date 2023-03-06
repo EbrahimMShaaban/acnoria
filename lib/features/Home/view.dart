@@ -20,16 +20,64 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pages = List.generate(
-        4,
-        (index) => Container(
-
+      4,
+      (index) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Expanded(
+            flex: 5,
+            child: Container(
               margin: EdgeInsets.only(left: 5),
               child: Center(
                   child: Image.asset(
                 AppImages.indicator,
-                     width: 300,height: 300,
+                width: 300,
+                height: 300,
               )),
-            ));
+            ),
+          )
+
+
+          ,
+          SizedBox(width: 8),
+          Expanded(
+            flex: 4,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'اجدد العروض!',
+                  style: AppTextStyles.smTitles
+                      .copyWith(color: AppColors.green, fontSize: 14),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    'ايسنس ماسكارا لاش',
+                    style: AppTextStyles.lrTitles.copyWith(
+                        color: AppColors.primarycolor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                  ),
+                ),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        backgroundColor: AppColors.primarycolor),
+                    onPressed: () {},
+                    child: Text(
+                      'اشتري اآن',
+                      style: AppTextStyles.lrTitles.copyWith(fontSize: 16),
+                    ))
+              ],
+            ),
+          )
+        ],
+      ),
+    );
     return Scaffold(
         body: SingleChildScrollView(
       child: Stack(
@@ -152,17 +200,15 @@ class HomeScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20)),
                           child: ElevatedButton(
-                            
                             onPressed: () {
                               navigateTo(context, Categories());
                             },
                             child: const Text('مشاهدة الجميع'),
                             style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(8))
-                              ),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8))),
                                 backgroundColor: AppColors.primarycolor),
-                            
                           ),
                         )
                       ],
@@ -196,9 +242,10 @@ class HomeScreen extends StatelessWidget {
             right: 40,
             // right: MediaQueryHelper.sizeFromWidth(context, 9),
             child: Container(
-                width: MediaQuery.of(context).size.width,
+               width: MediaQuery.of(context).size.width,
+             // width: 200,
                 height: 150,
-                padding: const EdgeInsets.fromLTRB(12,0,12,5),
+                padding: const EdgeInsets.fromLTRB(12, 0, 12, 5),
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -214,78 +261,22 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                    Container(
 
-                    Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Expanded(
-                            flex: 5,
-                            child: PageView.builder(
-                              controller: controller,
-                              itemCount: pages.length,
-                              itemBuilder: (_, index) {
-                                return pages[index % pages.length];
-                              },
-                            ),)
-// =======
-//                     Row(
-//                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-//                       children: [
-//                         Container(
-//                           width: MediaQueryHelper.sizeFromWidth(context, 2.8),
-//                           height: 110,
-//                           child: PageView.builder(
-//                             controller: controller,
-//
-//
-//                             itemCount:1,
-//                             itemBuilder: (_, index) {
-//                               return pages[index % pages.length];
-//                             },
-// >>>>>>> 09e86d17f0cd8c249a83c796346a940f16c31c23
-//                           ),
-                           ,SizedBox(width: 8),
-                          Expanded(
-                            flex: 4,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'اجدد العروض!',
-                                  style: AppTextStyles.smTitles.copyWith(
-                                      color: AppColors.green, fontSize: 14),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 8),
-                                  child: Text(
-                                    'ايسنس ماسكارا لاش',
-                                    style: AppTextStyles.lrTitles.copyWith(
-                                        color: AppColors.primarycolor,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15),
-                                  ),
-                                ),
-                                ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(Radius.circular(10))
-                                      ),
-                                        backgroundColor: AppColors.primarycolor),
-                                    onPressed: () {},
-                                    child: Text(
-                                      'اشتري اآن',
-                                      style: AppTextStyles.lrTitles
-                                          .copyWith(fontSize: 16),
-                                    ))
-                              ],
-                            ),
-                          )
-                        ],
+                      height: 120,
+                      child: PageView.builder(
+                        controller: controller,
+                        itemCount: pages.length,
+                        itemBuilder: (_, index) {
+                          return pages[index % pages.length];
+                        },
                       ),
                     ),
+
+
+
                     SmoothPageIndicator(
+
                         controller: controller,
                         count: pages.length,
                         effect: const ScrollingDotsEffect(
