@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../styles/colors.dart';
 import '../styles/styles.dart';
@@ -13,8 +14,8 @@ class ButtonTemplate extends StatelessWidget {
     this.text2 = "",
     this.text3 = "",
     this.icon,
-    this.minwidth = 250,
-    this.minheight = 65,
+    this.minwidth = 318,
+    this.minheight = 64,
     this.fontSize = 18,
   }) : super(key: key);
   Color color;
@@ -35,25 +36,29 @@ class ButtonTemplate extends StatelessWidget {
       onPressed: onPressed,
       color: color,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          icon == null
-              ? SizedBox()
-              : Center(
-                  child: Icon(icon, size: 30, color: AppColors.white),
-                ),
-          SizedBox(
-            width: 5,
-          ),
-          Text(text1,
-              textAlign: TextAlign.center,
-              style: AppTextStyles.boldtitles.apply(
-                fontSizeDelta: 5,
-                color: AppColors.white,
-              )),
-        ],
+      child: Center(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            icon == null
+                ? SizedBox()
+                : Center(
+                    child: Icon(icon, size: 30, color: AppColors.white),
+                  ),
+            SizedBox(
+              width: 5,
+            ),
+            Center(
+              child: Text(text1,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.boldtitlesButton.apply(
+                    fontSizeDelta: 2.sp,
+                    color: AppColors.white,
+                  )),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -84,11 +89,11 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
 
   @override
   Widget build(BuildContext context) {
-
     return TextFormField(
         obscureText: widget.isPassword ? _isObscure : false,
         controller: widget.controller,
         validator: (value) => widget.validator!(value),
+        style: AppTextStyles.hittext,
         decoration: InputDecoration(
             prefixIcon: widget.icon,
             hintText: widget.hintText,
@@ -97,18 +102,18 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
                 ? IconButton(
                     splashRadius: 20,
                     icon: Icon(
-                        _isObscure==true
+                        _isObscure == true
                             ? Icons.visibility_outlined
                             : Icons.visibility_off_outlined,
-                        color: AppColors.blue),
+                        color: AppColors.Bluehint),
                     onPressed: () => setState(() => _isObscure = !_isObscure))
                 : null,
             filled: true,
             fillColor: AppColors.white,
-            labelStyle: AppTextStyles.hittext,
-            hintStyle:AppTextStyles.hittext,
-            enabledBorder: OutlineInputBorder(
 
+            labelStyle: AppTextStyles.hittext,
+            hintStyle: AppTextStyles.hittext,
+            enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             focusedBorder: const OutlineInputBorder(
