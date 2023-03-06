@@ -2,7 +2,6 @@ import 'package:acnoria/controller/layout/cubit.dart';
 import 'package:acnoria/controller/layout/state.dart';
 import 'package:acnoria/features/layout/widgets/bottom_item.dart';
 import 'package:acnoria/shared/styles/colors.dart';
-import 'package:acnoria/shared/styles/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -55,8 +54,8 @@ class AppLayout extends StatelessWidget {
                         //     ? MediaQueryHelper.sizeFromWidth(context, 13)
                         //     : MediaQueryHelper.sizeFromWidth(context, 15),
                         path: cubit.currentIndex == 0
-                            ? AppImages.x
-                            : AppImages.x,
+                            ? Icons.home
+                            : Icons.home_outlined,
                         heigh: cubit.currentIndex == 0 ? 2 : 0,
 
                         color: cubit.currentIndex == 0
@@ -71,8 +70,8 @@ class AppLayout extends StatelessWidget {
                         //     ? MediaQueryHelper.sizeFromWidth(context, 13)
                         //     : MediaQueryHelper.sizeFromWidth(context, 15),
                         path: cubit.currentIndex == 1
-                            ? AppImages.x
-                            : AppImages.x,
+                            ? Icons.favorite
+                            : Icons.favorite_border,
                         heigh: cubit.currentIndex == 1 ? 2 : 0,
                         color: cubit.currentIndex == 1
                             ? AppColors.primarycolor
@@ -86,8 +85,8 @@ class AppLayout extends StatelessWidget {
                         //     ? MediaQueryHelper.sizeFromWidth(context, 13)
                         //     : MediaQueryHelper.sizeFromWidth(context, 15),
                         path: cubit.currentIndex == 2
-                            ? AppImages.x
-                            : AppImages.x,
+                            ? Icons.notifications
+                            : Icons.notifications_outlined,
                         heigh: cubit.currentIndex == 2 ? 2 : 0,
                         color: cubit.currentIndex == 2
                             ? AppColors.primarycolor
@@ -101,8 +100,9 @@ class AppLayout extends StatelessWidget {
                         //     ? MediaQueryHelper.sizeFromWidth(context, 13)
                         //     : MediaQueryHelper.sizeFromWidth(context, 15),
                         path: cubit.currentIndex == 3
-                            ? AppImages.x
-                            : AppImages.x,
+                            ? Icons.person
+                            : Icons.person_outlined,
+
                         heigh: cubit.currentIndex == 3 ? 2 : 0,
                         color: cubit.currentIndex == 3
                             ? AppColors.primarycolor
