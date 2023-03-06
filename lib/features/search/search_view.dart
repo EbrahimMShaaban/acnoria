@@ -27,31 +27,68 @@ class SearchView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                  height: MediaQueryHelper.sizeFromHeight(context, 10),
+                  height: 90,
                   //  color: Colors.red,
                   child: SearchBar()),
-              Text('الأبحاث الحديثة', style: AppTextStyles.lrTitles),
-              ListView.builder(
-                  physics:NeverScrollableScrollPhysics() ,
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  // itemExtent: 30,
-                  cacheExtent: 100,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      minLeadingWidth: 0,
-                      leading: Icon(
-                        Icons.access_time_outlined,
-                        color: AppColors.primarycolor,
-                      ),
-                      title: Text('المكملات الغذائية'),
-                    );
-                  },
-                  itemCount: 3),
-              Padding(
+              Text('الأبحاث الحديثة', style: AppTextStyles.boldtitles.copyWith(fontSize: 18)),
+              Column(
+                children: [
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    minLeadingWidth: 0,
+                    leading: Icon(
+                      Icons.access_time_outlined,
+                      color: AppColors.primarycolor,
+                    ),
+                    title: Text('العطور'),
+                  ),ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    minLeadingWidth: 0,
+                    leading: Icon(
+                      Icons.access_time_outlined,
+                      color: AppColors.primarycolor,
+                    ),
+                    title: Text('المكملات الغذائية'),
+                  ),ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    minLeadingWidth: 0,
+                    leading: Icon(
+                      Icons.access_time_outlined,
+                      color: AppColors.primarycolor,
+                    ),
+                    title: Text('العدسات'),
+                  ),ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    minLeadingWidth: 0,
+                    leading: Icon(
+                      Icons.access_time_outlined,
+                      color: AppColors.primarycolor,
+                    ),
+                    title: Text('الرشاقة والصحة'),
+                  ),
+                ],
+              )
+              // ListView.builder(
+              //     physics:NeverScrollableScrollPhysics() ,
+              //     shrinkWrap: true,
+              //     padding: EdgeInsets.zero,
+              //     // itemExtent: 30,
+              //     cacheExtent: 100,
+              //     itemBuilder: (context, index) {
+              //       return ListTile(
+              //         contentPadding: EdgeInsets.zero,
+              //         minLeadingWidth: 0,
+              //         leading: Icon(
+              //           Icons.access_time_outlined,
+              //           color: AppColors.primarycolor,
+              //         ),
+              //         title: Text('المكملات الغذائية'),
+              //       );
+              //     },
+              //     itemCount: 4),
+              ,Padding(
                 padding: const EdgeInsets.only(bottom: 10),
-                child: Text('الأكثر بحثا', style: AppTextStyles.lrTitles),
+                child: Text('الأكثر بحثا',  style: AppTextStyles.boldtitles.copyWith(fontSize: 18)),
               ),
               Container(
                   height: MediaQueryHelper.sizeFromHeight(context, 7),
@@ -104,6 +141,11 @@ class SearchView extends StatelessWidget {
                         ),
                       ],
                       onChange: (allSelectedItems, selectedItem) {})),
+              SizedBox(height: 10,),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Text('الأقسام',  style: AppTextStyles.boldtitles.copyWith(fontSize: 18)),
+              ),
               GridView.builder(
                 physics:NeverScrollableScrollPhysics() ,
                 shrinkWrap: true,

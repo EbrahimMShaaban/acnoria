@@ -1,13 +1,16 @@
+import 'package:acnoria/features/search/search_view.dart';
 import 'package:acnoria/features/search/widgets/appbar.dart';
 import 'package:acnoria/features/search/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../../shared/components/components.dart';
 import '../../shared/components/constants.dart';
 import '../../shared/components/navigator.dart';
 import '../../shared/styles/colors.dart';
 import '../../shared/styles/images.dart';
 import '../../shared/styles/styles.dart';
 import '../Home/widgets/product_item.dart';
+import 'filteration.dart';
 
 class Categories extends StatelessWidget {
   const Categories({Key? key}) : super(key: key);
@@ -24,7 +27,56 @@ class Categories extends StatelessWidget {
             Container(
                 height: MediaQueryHelper.sizeFromHeight(context, 8),
                 //  color: Colors.red,
-                child: SearchBar()),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        navigateTo(context, SearchView());
+                      },
+                      child: Container(
+                          width: MediaQueryHelper.sizeFromWidth(context, 1.6),
+                          height: 45,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: AppColors.white
+                          ),
+
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                child: Image.asset(
+                                  AppImages.search,
+                                  color: Colors.grey,
+                                  height: 20,
+                                ),
+                              ),
+                              Text('بحث',style: TextStyle( color: Colors.grey,),)
+                            ],
+                          )),
+                    ),
+                    SizedBox(width: 10,),
+                    InkWell(
+                      onTap: (){
+                        navigateTo(context, FilterAtion());
+                      },
+                      child: Container(
+                        height: MediaQueryHelper.sizeFromWidth(context, 9),
+
+                        width: MediaQueryHelper.sizeFromWidth(context, 9),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: AppColors.white),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Image.asset(AppImages.filter),
+                        ),
+                      ),
+                    )
+                  ],
+                )),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
