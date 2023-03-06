@@ -45,144 +45,143 @@ class _FilterAtionState extends State<FilterAtion> {
             ],
           ),
           Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQueryHelper.sizeFromWidth(context, 20)),
-              width: MediaQueryHelper.sizeFromWidth(context, 1),
-              child: Padding(
-                padding: appPadding(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'التصنيفات',
-                      style: AppTextStyles.lrTitles,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
+            child: Padding(
+              padding: appPadding(),
+              child: ListView(
+                //    crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'التصنيفات',
+                    style: AppTextStyles.lrTitles.copyWith(fontSize: 24),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: Text(
                       'مرتبة حسب',
-                      style: AppTextStyles.smTitles,
+                      style: AppTextStyles.textsmbold,
                     ),
-                    Container(
-                      margin: EdgeInsets.symmetric(vertical: 10),
-                      width: MediaQueryHelper.sizeFromWidth(context, 1.2),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: AppColors.white),
-                      child: DropdownButton(
-                          isExpanded: true,
-                          underline: SizedBox(),
-                          // style: AppTextStyles.lrTitles
-                          //     .copyWith(color: AppColors.primarycolor),
-                          elevation: 10,
-                          // borderRadius: BorderRadius.circular(15),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 10),
+                    //  width: MediaQueryHelper.sizeFromWidth(context, 1.1),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: AppColors.white),
+                    child: DropdownButton(
+                        isExpanded: true,
+                        underline: SizedBox(),
+                        // style: AppTextStyles.lrTitles
+                        //     .copyWith(color: AppColors.primarycolor),
+                        elevation: 10,
+                        // borderRadius: BorderRadius.circular(15),
 
-                          icon: Icon(Icons.keyboard_arrow_down_outlined),
-                          items: [
-                            DropdownMenuItem(
-                                child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'موصى بها',
-                                style: AppTextStyles.smTitles
-                                    .copyWith(color: AppColors.primarycolor),
-                              ),
-                            ))
-                          ],
-                          onChanged: (x) {}),
-                    ),
-                    Text(
-                      'الأقسام',
-                      style: AppTextStyles.lrTitles,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Container(
-                        margin: EdgeInsets.symmetric(vertical: 10),
-                        height: MediaQueryHelper.sizeFromHeight(context, 7),
-                        child: MultiSelectContainer(
-                            itemsDecoration: MultiSelectDecorations(
-                                selectedDecoration: BoxDecoration(
-                                    color: AppColors.blue,
-                                    borderRadius: BorderRadius.circular(10)),
-                                decoration: BoxDecoration(
-                                    color: AppColors.greym,
-                                    borderRadius: BorderRadius.circular(10))),
-                            highlightColor: AppColors.primarycolor,
-                            textStyles: MultiSelectTextStyles(
-                              textStyle: AppTextStyles.boldtitles
-                                  .apply(color: AppColors.primarycolor),
+                        icon: Icon(Icons.keyboard_arrow_down_outlined),
+                        items: [
+                          DropdownMenuItem(
+                              child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'موصى بها',
+                              style: AppTextStyles.smTitles
+                                  .copyWith(color: AppColors.primarycolor),
                             ),
-                            items: [
-                              MultiSelectCard(
-                                value: 'المكملات الغذائية',
-                                label: 'المكملات الغذائية',
-                              ),
-                              MultiSelectCard(
-                                value: 'العناية بالاسنان',
-                                label: 'العناية بالاسنان',
-                              ),
-                              MultiSelectCard(
-                                value: 'العطور',
-                                label: 'العطور',
-                              ),
-                              MultiSelectCard(
-                                value: 'مستلزمات كبار السن',
-                                label: 'مستلزمات كبار السن',
-                              ),
-                            ],
-                            onChange: (allSelectedItems, selectedItem) {})),
-                    SizedBox(
-                      height: 15,
+                          ))
+                        ],
+                        onChanged: (x) {}),
+                  ),
+                  Text(
+                    'الأقسام',
+                    style: AppTextStyles.lrTitles,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                      height: MediaQueryHelper.sizeFromHeight(context, 7),
+                      child: MultiSelectContainer(
+                          itemsDecoration: MultiSelectDecorations(
+                              selectedDecoration: BoxDecoration(
+                                  color: AppColors.blue,
+                                  borderRadius: BorderRadius.circular(10)),
+                              decoration: BoxDecoration(
+                                  color: AppColors.greym,
+                                  borderRadius: BorderRadius.circular(10))),
+                          highlightColor: AppColors.primarycolor,
+                          textStyles: MultiSelectTextStyles(
+                            textStyle: AppTextStyles.boldtitles
+                                .apply(color: AppColors.primarycolor),
+                          ),
+                          items: [
+                            MultiSelectCard(
+                              value: 'المكملات الغذائية',
+                              label: 'المكملات الغذائية',
+                            ),
+                            MultiSelectCard(
+                              value: 'العناية بالاسنان',
+                              label: 'العناية بالاسنان',
+                            ),
+                            MultiSelectCard(
+                              value: 'العطور',
+                              label: 'العطور',
+                            ),
+                            MultiSelectCard(
+                              value: 'مستلزمات كبار السن',
+                              label: 'مستلزمات كبار السن',
+                            ),
+                            MultiSelectCard(
+                              value: 'المكملات الغذائية',
+                              label: 'المكملات الغذائية',
+                            ),
+                            MultiSelectCard(
+                              value: 'العناية بالاسنان',
+                              label: 'العناية بالاسنان',
+                            ),
+                            MultiSelectCard(
+                              value: 'العطور',
+                              label: 'العطور',
+                            ),
+                            MultiSelectCard(
+                              value: 'مستلزمات كبار السن',
+                              label: 'مستلزمات كبار السن',
+                            ),
+                          ],
+                          onChange: (allSelectedItems, selectedItem) {})),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    'نطاق السعر',
+                    style: AppTextStyles.lrTitles,
+                  ),
+
+                  SizedBox(
+                    height: 15,
+                  ),
+
+
+                  RangeSlider(
+                    values: _currentRangeValues,
+                    max: 2000,
+                    divisions: 20,
+
+                    // activeColor: AppColors.primarycolor,
+                    // inactiveColor: AppColors.primarycolor,
+
+                    labels: RangeLabels(
+                      "${_currentRangeValues.start.round().toString()}ر.س",
+                      "${_currentRangeValues.end.round().toString()}ر.س",
                     ),
-                    Text(
-                      'نطاق السعر',
-                      style: AppTextStyles.lrTitles,
-                    ),
-
-                    SizedBox(height: 15,),
-                    // RangeSlider(
-                    //   values: _currentRangeValues,
-                    //   onChanged: (RangeValues newrange) {
-                    //     setState(() {
-                    //       _currentRangeValues= newrange;
-                    //     });
-                    //
-                    //   },
-                    //   min: 200,
-                    //   max: 1000,
-                    //
-                    //   activeColor: AppColors.primarycolor,
-                    //   inactiveColor: AppColors.primarycolor,
-                    // ),
-
-                    RangeSlider(
-                      values: _currentRangeValues,
-                      max: 2000,
-                     divisions: 20,
-
-                      // activeColor: AppColors.primarycolor,
-                      // inactiveColor: AppColors.primarycolor,
-
-                      labels: RangeLabels(
-
-
-                       "${ _currentRangeValues.start.round().toString()}ر.س",
-                        "${_currentRangeValues.end.round().toString()}ر.س",
-
-                      ),
-                      onChanged: (RangeValues values) {
-                        setState(() {
-                          _currentRangeValues = values;
-                        });
-                      },
-                    )
-
-                  ],
-                ),
+                    onChanged: (RangeValues values) {
+                      setState(() {
+                        _currentRangeValues = values;
+                      });
+                    },
+                  )
+                ],
               ),
             ),
           ),
@@ -195,7 +194,6 @@ class _FilterAtionState extends State<FilterAtion> {
               height: MediaQueryHelper.sizeFromHeight(context, 5),
               width: MediaQueryHelper.sizeFromWidth(context, 1),
               decoration: BoxDecoration(
-
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(30),
                       topLeft: Radius.circular(30))),
@@ -205,10 +203,13 @@ class _FilterAtionState extends State<FilterAtion> {
                 children: [
                   Expanded(
                       flex: 2,
-                      child: ButtonTemplate(
-                          color: AppColors.primarycolor,
-                          text1: 'تطبيق',
-                          onPressed: () {})),
+                      child: Container(
+                        height: 60,
+                        child: ButtonTemplate(
+                            color: AppColors.primarycolor,
+                            text1: 'تطبيق',
+                            onPressed: () {}),
+                      )),
                   Expanded(
                       flex: 1,
                       child: TextButton(
