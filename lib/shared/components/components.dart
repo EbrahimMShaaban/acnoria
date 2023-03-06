@@ -42,6 +42,7 @@ class ButtonTemplate extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             icon == null
+
                 ? SizedBox()
                 : Center(
                     child: Icon(icon, size: 30, color: AppColors.white),
@@ -49,6 +50,7 @@ class ButtonTemplate extends StatelessWidget {
             SizedBox(
               width: 5,
             ),
+
             Center(
               child: Text(text1,
                   textAlign: TextAlign.center,
@@ -90,11 +92,14 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor:AppColors.blue ,
         obscureText: widget.isPassword ? _isObscure : false,
         controller: widget.controller,
         validator: (value) => widget.validator!(value),
         style: AppTextStyles.hittext,
         decoration: InputDecoration(
+
+
             prefixIcon: widget.icon,
             hintText: widget.hintText,
             border: InputBorder.none,
