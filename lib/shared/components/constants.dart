@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 
@@ -22,5 +23,5 @@ abstract class MediaQueryHelper {
 
 
 appPadding(){
-  return EdgeInsets.symmetric(horizontal: 30,vertical: 10);
+  return EdgeInsets.symmetric(horizontal: 30.h,vertical: 10.w);
 }

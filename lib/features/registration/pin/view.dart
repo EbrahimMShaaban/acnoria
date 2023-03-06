@@ -8,6 +8,7 @@ import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../shared/components/navigator.dart';
@@ -66,21 +67,23 @@ class _PinScreenState extends State<PinScreen> {
                       padding: EdgeInsets.only(top: 100, bottom: 50),
                       child: Image.asset(
                         "assets/images/pin.png",
-                        width: 250,
-                        height: 250,
+                        width: 200,
+                        height: 200,
                       )),
                   Text(
                     "الرجاء ادخال رمز التحق",
-                    style: AppTextStyles.boldtitles.apply(fontSizeDelta: 5),
+                    style: AppTextStyles.boldtitles.apply(fontSizeDelta: 1.sp),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 25.h,
                   ),
                   Text(
                     "تم ارسال الرمز الى +966 4558 545",
                     style: AppTextStyles.w600.apply(color: AppColors.blue),
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Form(
                     key: formKey,
                     child: Padding(
@@ -112,13 +115,13 @@ class _PinScreenState extends State<PinScreen> {
 
                               fieldHeight: 70,
                               fieldWidth: 70,
-                              activeColor: AppColors.primarycolor,
-                              disabledColor: AppColors.primarycolor,
+                              activeColor: AppColors.Bluehint,
+                              disabledColor: AppColors.Bluehint,
                               borderWidth: 1,
 
                               selectedFillColor: AppColors.primarycolor,
-                              selectedColor: AppColors.primarycolor,
-                              inactiveColor: AppColors.primarycolor,
+                              selectedColor: AppColors.Bluehint,
+                              inactiveColor: AppColors.Bluehint,
                               inactiveFillColor: Colors.white,
                               // activeFillColor:
                               //     hasError ? Colors.orange : Colors.white,
@@ -133,7 +136,7 @@ class _PinScreenState extends State<PinScreen> {
                               height: 1.6,
                               color: Colors.grey,
                             ),
-                            // backgroundColor: Colors.blue.shade50,
+                            // backgroundColor: Colors.Bluehint.shade50,
                             enableActiveFill: true,
                             errorAnimationController: errorController,
                             controller: textEditingController,
@@ -201,7 +204,6 @@ class _PinScreenState extends State<PinScreen> {
                         //   });
                         // }
                       }),
-
                   Padding(
                     padding: EdgeInsets.only(top: 36.0),
                     child: Row(
@@ -209,7 +211,8 @@ class _PinScreenState extends State<PinScreen> {
                       children: [
                         Text(
                           "لم يصلك الرمز؟",
-                          style: AppTextStyles.boldtitles.apply(fontSizeDelta: -3.5),
+                          style: AppTextStyles.boldtitles
+                              .apply(fontSizeDelta: -3.5.sp),
                         ),
                         InkWell(
                           onTap: () {
@@ -219,15 +222,13 @@ class _PinScreenState extends State<PinScreen> {
                             " اعادة الارسال",
                             style: AppTextStyles.smTitles.apply(
                                 decoration: TextDecoration.underline,
-                                fontSizeDelta: -3,
-                                color: AppColors.blue
-                            ),
+                                fontSizeDelta: -3.sp,
+                                color: AppColors.blue),
                           ),
                         ),
                       ],
                     ),
                   )
-
                 ]),
           ),
         ),
