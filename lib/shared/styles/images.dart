@@ -23,4 +23,7 @@ class AppImages {
   static const String fevortSelect = 'assets/images/fevortSelect.png';
   static const String homeSelect = 'assets/images/homeSelect.png';
   static const String homeNotSelect = 'assets/images/homeNotSelect.png';
+  static const String img = 'assets/images/image.png';
+  static const String barvan = 'assets/images/barvan.png';
+  static const String food = 'assets/images/food.png';
 }

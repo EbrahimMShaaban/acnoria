@@ -62,7 +62,7 @@ class Categories extends StatelessWidget {
                     crossAxisCount: 2),
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
-                  return ProductItem();
+                  return ProductItem(colorPath: "assets/images/gym.png",);
                 },
               ),
             )

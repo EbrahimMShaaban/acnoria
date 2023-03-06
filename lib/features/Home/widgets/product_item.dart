@@ -8,7 +8,8 @@ import '../../../shared/styles/colors.dart';
 import '../../../shared/styles/images.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({Key? key}) : super(key: key);
+   ProductItem({required this.colorPath,Key? key}) : super(key: key);
+  String colorPath;
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +57,8 @@ class ProductItem extends StatelessWidget {
               ],
             ),
             Image.asset(
-              "assets/images/gym.png",
-              width: MediaQueryHelper.sizeFromWidth(context, 3),
+              colorPath,
+
               height: MediaQueryHelper.sizeFromHeight(context, 12),
             ),
             Text('اوه ماي تنت مرطب شفاه وملمع – وردي – 4 غ ',
