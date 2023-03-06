@@ -10,7 +10,7 @@ abstract class AppTextStyles {
   /// - weight: w200
   /// - family: cairo
   static TextStyle boldtitles =
-  TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp, height: 1.7);
+  TextStyle(fontWeight: FontWeight.bold, fontSize: 17.sp, height: 1.7);
 
   static TextStyle boldtitlesButton =
   TextStyle(fontWeight: FontWeight.bold, fontSize: 20.sp,);

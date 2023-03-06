@@ -61,6 +61,8 @@ class Categories extends StatelessWidget {
             ),
             Expanded(
               child: GridView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: 0.7,
 
