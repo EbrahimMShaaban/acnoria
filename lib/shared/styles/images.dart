@@ -16,4 +16,11 @@ class AppImages {
   static const String indicator = 'assets/images/indicator.png';
   static const String basket = 'assets/images/basket.png';
   static const String search = 'assets/images/search.png';
+  static const String notagicationNotSelect = 'assets/images/notagicationNotSelect.png';
+  static const String notagicationSelect = 'assets/images/notagicationSelect.png';
+  static const String personNotSelect = 'assets/images/personNotSelect.png';
+  static const String fevortNotSelect = 'assets/images/fevortNotSelect.png';
+  static const String fevortSelect = 'assets/images/fevortSelect.png';
+  static const String homeSelect = 'assets/images/homeSelect.png';
+  static const String homeNotSelect = 'assets/images/homeNotSelect.png';
 }
