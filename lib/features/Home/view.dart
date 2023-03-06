@@ -278,7 +278,7 @@ class HomeScreen extends StatelessWidget {
                       child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return ProductItem(colorPath: AppImages.food,);
+                            return ProductItem(colorPath: AppImages.food);
                           },
                           separatorBuilder: (context, x) {
                             return SizedBox(
