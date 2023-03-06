@@ -115,8 +115,8 @@ class Addlocation extends StatelessWidget {
         children: [
           Text(
             text!,
-            style: AppTextStyles.lrTitles
-                .apply(fontSizeDelta: -5, color: AppColors.blue),
+            style: AppTextStyles.boldtitles
+                .apply(fontSizeDelta: -3, color: AppColors.Bluehint),
           ),
           SizedBox(
             height: 10,
@@ -125,6 +125,7 @@ class Addlocation extends StatelessWidget {
               controller: controller,
               style: AppTextStyles.boldtitles.apply(
                 color: AppColors.blueDark,
+                fontSizeDelta: -5
               ),
               // validator: (value) => validator!(value),
               decoration: InputDecoration(
@@ -134,7 +135,8 @@ class Addlocation extends StatelessWidget {
                   fillColor: AppColors.white,
 
                   hintStyle: AppTextStyles.boldtitles.apply(
-                    color: AppColors.blue,
+                    color: AppColors.blue,                fontSizeDelta: -5
+
                   ),
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide.none,

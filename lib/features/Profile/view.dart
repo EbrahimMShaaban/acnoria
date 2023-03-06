@@ -185,7 +185,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Containedata(
                           widget: Icon(Icons.arrow_back_ios, size: 19),
                           text: "سياسية الخصوصية",
-                          icon: Icons.cloud_circle_sharp),
+                          icon: Icons.info_outline),
                     ),
                     InkWell(
                       onTap: () {
@@ -194,7 +194,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Containedata(
                           widget: Icon(Icons.arrow_back_ios, size: 19),
                           text: "المساعده و الدعم",
-                          icon: Icons.lock ),
+                          icon: Icons.question_mark_outlined ),
                     ),
                   ],
                 ),

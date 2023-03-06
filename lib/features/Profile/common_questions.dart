@@ -25,11 +25,22 @@ class CommonQuestions extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
+
+                      crossAxisAlignment: CrossAxisAlignment.end,
+
                       children: [
+                        Icon(
+                          Icons.info_outline,
+                          color: AppColors.blueDark,size: 20,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
                         Text(
                           'الأسألة الشائعة',
-                          style: AppTextStyles.lrTitles,
-                        )
+                          style: AppTextStyles.boldtitles,
+                        ),
+
                       ],
                     ),
                     SizedBox(
