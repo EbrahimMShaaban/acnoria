@@ -12,17 +12,21 @@ class NotifyItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(' هذا النص هو مثال ة عدد الحروف التى يولدها التطبيق.',
-          style: AppTextStyles.w600, maxLines: 2),
-      subtitle: Text("09:20am "),
+          style: AppTextStyles.w600.copyWith(
+            fontSize: 16
+          ), maxLines: 2),
+      subtitle: Text("09:20am ",
+          style: AppTextStyles.boldtitles.apply(
+              color: AppColors.Bluehint, fontSizeDelta:-4)),
       leading: CircleAvatar(
         backgroundColor: AppColors.grey,
-        child: Image.asset(AppImages.pin),
+        child: Image.asset(AppImages.pin,height: 22),
       ),
       trailing: isclickable
           ? ElevatedButton(
-              onPressed: () {},
-              child: Text('تتبع الطلب'),
-            )
+        onPressed: () {},
+        child: Text('تتبع الطلب'),
+      )
           : SizedBox(),
     );
   }

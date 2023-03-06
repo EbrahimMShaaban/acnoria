@@ -46,11 +46,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     style: AppTextStyles.boldtitles.apply(fontSizeDelta: 10),
                   ),
                   IconButton(
-                      onPressed: () {},
-                      icon: Image.asset(height: 33,
-                        AppImages.basket,
-                        color:AppColors.primarycolor,
-                      ),)
+                    onPressed: () {},
+                    icon: Image.asset(
+                      height: 33,
+                      AppImages.basket,
+                      color: AppColors.primarycolor,
+                    ),
+                  )
                 ],
               ),
               Text(
@@ -58,16 +60,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: AppTextStyles.boldtitles
                     .apply(color: AppColors.blue, fontSizeDelta: -4),
               ),
-              SizedBox(
-                height: MediaQueryHelper.sizeFromHeight(context, 10),
-              ),
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
                     onTap: () => navigateTo(context, MyOrder()),
                     child: CategoryBox(
-                      color: Color(0xffEEF7FE),
+                      color: Color(0xff0D4A90E2),
                       imgPath: AppImages.booking,
                       txt: 'طلباتي',
                     ),
@@ -75,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   InkWell(
                     onTap: () => navigateTo(context, ChangeLocationScreens()),
                     child: CategoryBox(
-                      color: Color(0xffEFF8ED),
+                      color: Color(0xff0D4A90E1),
                       imgPath: "assets/images/map.png",
                       txt: 'العناوين',
                     ),
@@ -95,7 +95,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       navigateTo(context, FavoriteScreen());
                     },
                     child: CategoryBox(
-                      color: Color(0xff0D4A90E2),
+                      color: Color(0xffEEF7FE),
                       imgPath: "assets/images/fovert.png",
                       txt: 'المفضلة',
                     ),
@@ -107,7 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Text(
                 "معلومات الحساب",
-                style: AppTextStyles.boldtitles.apply(fontSizeDelta: 5),
+                style: AppTextStyles.boldtitles.apply(fontSizeDelta: 0),
               ),
               Container(
                 margin: EdgeInsets.only(top: 20),
@@ -120,14 +120,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     InkWell(
                       onTap: () => navigateTo(context, AccountDetails()),
                       child: Containedata(
-                          widget: Icon(Icons.arrow_back_ios),
+                          widget: Icon(Icons.arrow_back_ios, size: 19),
                           text: "معلومات الحساب",
                           icon: Icons.person_2_outlined),
                     ),
                     InkWell(
                       onTap: () => navigateTo(context, EditPasswordScreen()),
                       child: Containedata(
-                          widget: Icon(Icons.arrow_back_ios),
+                          widget: Icon(Icons.arrow_back_ios, size: 19),
                           text: "تغير كلمة المرور",
                           icon: Icons.lock_open_rounded),
                     ),
@@ -139,7 +139,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Text(
                 "الاعدادات",
-                style: AppTextStyles.boldtitles.apply(fontSizeDelta: 5),
+                style: AppTextStyles.boldtitles.apply(fontSizeDelta: 0),
               ),
               Container(
                 margin: EdgeInsets.only(top: 20),
@@ -165,25 +165,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         widget: Text(
                           "العربية",
                           style: AppTextStyles.boldtitles
-                              .apply(fontSizeDelta: 1, color: AppColors.green),
+                              .apply(fontSizeDelta: 0, color: AppColors.green),
                         ),
                         text: "اللغه",
                         icon: Icons.language),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         navigateTo(context, UsInformation());
                       },
                       child: const Containedata(
-                          widget: Icon(Icons.arrow_back_ios),
+                          widget: Icon(Icons.arrow_back_ios, size: 19),
                           text: "معلومات عنا",
-                          icon: Icons.circle),
+                          icon: Icons.info_outline),
                     ),
                     InkWell(
                       onTap: () {
                         navigateTo(context, Privacy());
                       },
                       child: Containedata(
-                          widget: Icon(Icons.arrow_back_ios),
+                          widget: Icon(Icons.arrow_back_ios, size: 19),
                           text: "سياسية الخصوصية",
                           icon: Icons.cloud_circle_sharp),
                     ),
@@ -192,9 +192,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         navigateTo(context, CommonQuestions());
                       },
                       child: Containedata(
-                          widget: Icon(Icons.arrow_back_ios),
+                          widget: Icon(Icons.arrow_back_ios, size: 19),
                           text: "المساعده و الدعم",
-                          icon: Icons.lock_open_rounded),
+                          icon: Icons.lock ),
                     ),
                   ],
                 ),
@@ -211,12 +211,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Text(
                       "تسجيل الخروج",
                       style: AppTextStyles.boldtitles
-                          .apply(color: Colors.red, fontSizeDelta: 10),
+                          .apply(color: Colors.red, fontSizeDelta: 5),
                     ),
                     Icon(
                       Icons.exit_to_app,
                       color: Colors.red,
-                      size: 35,
+                      size: 25,
                     )
                   ],
                 ),
@@ -241,7 +241,7 @@ class Containedata extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20, bottom: 20, left: 30, right: 15),
+      padding: const EdgeInsets.only(top: 10, bottom: 10, left: 30, right: 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -250,7 +250,7 @@ class Containedata extends StatelessWidget {
             children: [
               Icon(
                 icon,
-                size: 30,
+                size: 22,
               ),
               SizedBox(
                 width: 10,
@@ -258,7 +258,7 @@ class Containedata extends StatelessWidget {
               Text(
                 text,
                 style: AppTextStyles.boldtitles
-                    .apply(fontSizeDelta: 1, color: AppColors.blue),
+                    .apply(fontSizeDelta: -3, color: AppColors.blue),
               ),
             ],
           ),
