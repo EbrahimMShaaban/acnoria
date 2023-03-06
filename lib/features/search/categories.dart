@@ -31,38 +31,48 @@ class Categories extends StatelessWidget {
                 TextButton(
                   onPressed: () {},
                   child: Text('العطور',
-                      style: AppTextStyles.smTitles
-                          .copyWith(color: AppColors.primarycolor)),
+                      style: AppTextStyles.smTitles.copyWith(
+                          color: AppColors.primarycolor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900)),
                 ),
                 TextButton(
                     onPressed: () {},
-                    child: Text('الانسان',
-                        style: AppTextStyles.smTitles
-                            .copyWith(color: AppColors.primarycolor))),
+                    child: Text('الاسنان',
+                        style: AppTextStyles.smTitles.copyWith(
+                          color: AppColors.primarycolor,
+                          fontSize: 18,
+                        ))),
                 TextButton(
                     onPressed: () {},
                     child: Text('عدسات',
-                        style: AppTextStyles.smTitles
-                            .copyWith(color: AppColors.primarycolor))),
+                        style: AppTextStyles.smTitles.copyWith(
+                          color: AppColors.primarycolor,
+                          fontSize: 18,
+                        ))),
                 TextButton(
                     onPressed: () {},
                     child: Text('مكملات غذائية',
-                        style: AppTextStyles.smTitles
-                            .copyWith(color: AppColors.primarycolor))),
+                        style: AppTextStyles.smTitles.copyWith(
+                          color: AppColors.primarycolor,
+                          fontSize: 18,
+                        ))),
               ],
             ),
             Expanded(
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 0.7,
+                    childAspectRatio: 0.7,
 
-                   // mainAxisExtent: 100,
-                 mainAxisSpacing: 8,
+                    // mainAxisExtent: 100,
+                    mainAxisSpacing: 8,
                     crossAxisSpacing: 8,
                     crossAxisCount: 2),
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
-                  return ProductItem(colorPath: "assets/images/gym.png",);
+                  return ProductItem(
+                    colorPath: "assets/images/gym.png",
+                  );
                 },
               ),
             )
