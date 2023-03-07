@@ -22,7 +22,7 @@ class SearchView extends StatelessWidget {
       appBar: AppSearchBar(context),
       body: SingleChildScrollView(
         child: Padding(
-          padding:appPadding(),
+          padding: appPadding(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -30,7 +30,8 @@ class SearchView extends StatelessWidget {
                   height: 90,
                   //  color: Colors.red,
                   child: SearchBar()),
-              Text('الأبحاث الحديثة', style: AppTextStyles.boldtitles.copyWith(fontSize: 18)),
+              Text('الأبحاث الحديثة',
+                  style: AppTextStyles.boldtitles.copyWith(fontSize: 18)),
               Column(
                 children: [
                   ListTile(
@@ -41,7 +42,8 @@ class SearchView extends StatelessWidget {
                       color: AppColors.primarycolor,
                     ),
                     title: Text('العطور'),
-                  ),ListTile(
+                  ),
+                  ListTile(
                     contentPadding: EdgeInsets.zero,
                     minLeadingWidth: 0,
                     leading: Icon(
@@ -49,7 +51,8 @@ class SearchView extends StatelessWidget {
                       color: AppColors.primarycolor,
                     ),
                     title: Text('المكملات الغذائية'),
-                  ),ListTile(
+                  ),
+                  ListTile(
                     contentPadding: EdgeInsets.zero,
                     minLeadingWidth: 0,
                     leading: Icon(
@@ -57,7 +60,8 @@ class SearchView extends StatelessWidget {
                       color: AppColors.primarycolor,
                     ),
                     title: Text('العدسات'),
-                  ),ListTile(
+                  ),
+                  ListTile(
                     contentPadding: EdgeInsets.zero,
                     minLeadingWidth: 0,
                     leading: Icon(
@@ -86,9 +90,11 @@ class SearchView extends StatelessWidget {
               //       );
               //     },
               //     itemCount: 4),
-              ,Padding(
+              ,
+              Padding(
                 padding: const EdgeInsets.only(bottom: 10),
-                child: Text('الأكثر بحثا',  style: AppTextStyles.boldtitles.copyWith(fontSize: 18)),
+                child: Text('الأكثر بحثا',
+                    style: AppTextStyles.boldtitles.copyWith(fontSize: 18)),
               ),
               Container(
                   height: MediaQueryHelper.sizeFromHeight(context, 7),
@@ -141,13 +147,16 @@ class SearchView extends StatelessWidget {
                         ),
                       ],
                       onChange: (allSelectedItems, selectedItem) {})),
-              SizedBox(height: 10,),
+              SizedBox(
+                height: 10,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text('الأقسام',  style: AppTextStyles.boldtitles.copyWith(fontSize: 18)),
+                child: Text('الأقسام',
+                    style: AppTextStyles.boldtitles.copyWith(fontSize: 18)),
               ),
               GridView.builder(
-                physics:NeverScrollableScrollPhysics() ,
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),
@@ -163,7 +172,14 @@ class SearchView extends StatelessWidget {
                             onPressed: () {
                               navigateTo(context, Categories());
                             },
-                            child: Text('الرشاقة والصحة'),
+                            child: FittedBox(
+                              child: Text(
+                                'الرشاقة والصحة',
+                                style: AppTextStyles.hittext.copyWith(
+                                  color: AppColors.white
+                                ),
+                              ),
+                            ),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.primarycolor)),
                       )
@@ -178,47 +194,3 @@ class SearchView extends StatelessWidget {
     );
   }
 }
-
-/*
-* GridView.extent(
-                  shrinkWrap: true,
-
-                  maxCrossAxisExtent:
-                      MediaQueryHelper.sizeFromWidth(context, 1.6),
-                  childAspectRatio: 4,
-
-                //  physics: ScrollPhysics(),
-                  primary: false,
-                  //  padding: const EdgeInsets.all(16),
-                  crossAxisSpacing: 100,
-                  mainAxisSpacing: 0,
-
-                  children: [
-                    Container(
-                      height: 20,
-                      child: Text("aaaaaaaaaaaaaaaaaaaaaaaaaa", maxLines: 1),
-                    ),
-                    Container(
-                      color: Colors.red,
-                      width: 10,
-                      height: 20,
-                      child: Text("xxx"),
-                    ),
-
-                    Container(
-                      height: 20,
-                      child: Text("yyy"),
-                    ),
-                    Text("aaaaa"),
-                    Text("aaaaa"),
-                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaa"),
-                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaa"),
-                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaa"),
-                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaa"),
-                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaa"),
-                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaa"),
-                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaa"),
-                    Text("aaaaaaaaaaaaaaaaaaaaaaaaaa"),
-                  ],
-                )
-* */

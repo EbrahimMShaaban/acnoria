@@ -18,12 +18,11 @@ import '../../../shared/styles/styles.dart';
                Text(
                  "مبلغ اجمالى",
                  style:
-                 AppTextStyles.boldtitles.apply(fontSizeDelta: 3),
+                 AppTextStyles.textsmbold,
                ),
                Text(
                  "110 ر.س",
-                 style: AppTextStyles.boldtitles
-                     .apply(color: AppColors.blue, fontSizeDelta: 3),
+                 style:  AppTextStyles.textsmbold,
                ),
              ],
            ),
@@ -39,13 +38,15 @@ import '../../../shared/styles/styles.dart';
              children: [
                Text(
                  "الشحن",
-                 style: AppTextStyles.boldtitles
-                     .apply(color: AppColors.green, fontSizeDelta: 3),
+                 style:  AppTextStyles.textsmbold.copyWith(
+                   color: AppColors.green
+                 ),
                ),
                Text(
-                 "110 ر.س",
-                 style: AppTextStyles.boldtitles
-                     .apply(color: AppColors.green, fontSizeDelta: 3),
+                 "20 ر.س",
+                 style:  AppTextStyles.textsmbold.copyWith(
+                     color: AppColors.green
+                 ),
                ),
              ],
            ),
@@ -57,15 +58,16 @@ import '../../../shared/styles/styles.dart';
          Padding(
            padding: const EdgeInsets.symmetric(vertical: 20.0),
            child: Row(
+             crossAxisAlignment: CrossAxisAlignment.end,
              mainAxisAlignment: MainAxisAlignment.spaceBetween,
              children: [
                Text(
                  "اجمالى المبلغ",
                  style:
-                 AppTextStyles.boldtitles.apply(fontSizeDelta: 3),
+                 AppTextStyles.textsmbold,
                ),
                SizedBox(
-                 width: 10,
+                 width: 12,
                ),
                Text(
                  "(4 عناصر)",
@@ -74,9 +76,8 @@ import '../../../shared/styles/styles.dart';
                ),
                Spacer(),
                Text(
-                 "110 ر.س",
-                 style: AppTextStyles.boldtitles
-                     .apply(color: AppColors.blue, fontSizeDelta: 3),
+                 "124 ر.س",
+                 style: AppTextStyles.textsmbold,
                ),
              ],
            ),

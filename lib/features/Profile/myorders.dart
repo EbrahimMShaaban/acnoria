@@ -68,7 +68,7 @@ Widget ContinerMyorder(context, onPressed, done) {
   return Container(
     margin: EdgeInsets.only(bottom: 10, top: 20),
     padding: EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-    height: 150,
+   // height: 150,
     decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(15),
@@ -80,9 +80,10 @@ Widget ContinerMyorder(context, onPressed, done) {
             offset: Offset(0, 0), // changes position of shadow
           ),
         ]),
-    width: MediaQueryHelper.sizeFromWidth(context, 1),
+   // width: MediaQueryHelper.sizeFromWidth(context, 1),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           height: 90,
@@ -93,58 +94,67 @@ Widget ContinerMyorder(context, onPressed, done) {
             fit: BoxFit.fill,
           ),
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "أوه ماي تنت",
-              style: AppTextStyles.boldtitles
-                  .apply(color: AppColors.blue, fontSizeDelta: 2),
-            ),
-            RichText(
-                text: TextSpan(
-                    style: AppTextStyles.boldtitles
-                        .copyWith(color: AppColors.primarycolor, fontSize: 17),
-                    text: 'السعر:  ',
-                    children: [
-                  TextSpan(
-                    text: '55 ر.س',
-                    style: AppTextStyles.boldtitles
-                        .copyWith(color: AppColors.greyDark, fontSize: 17),
-                  )
-                ])),
-            RichText(
-                text: TextSpan(
-                    style: AppTextStyles.boldtitles
-                        .copyWith(color: AppColors.primarycolor, fontSize: 17),
-                    text: 'الكمية:  ',
-                    children: [
-                  TextSpan(
-                    text: '2',
-                    style: AppTextStyles.boldtitles
-                        .copyWith(color: AppColors.greyDark, fontSize: 17),
-                  )
-                ])),
-            RichText(
-                text: TextSpan(
-                    style: AppTextStyles.boldtitles
-                        .copyWith(color: AppColors.primarycolor, fontSize: 17),
-                    text: 'الحالة:  ',
-                    children: [
-                  done
-                      ? TextSpan(
-                          text: 'تم الأستلام',
-                          style: AppTextStyles.boldtitles
-                              .copyWith(color: Colors.green , fontSize: 17),
-                        )
-                      : TextSpan(
-                          text: 'يتم تجهيزه للتحويل',
-                          style: AppTextStyles.boldtitles
-                              .copyWith(color: Colors.red, fontSize: 17),
-                        )
-                ])),
-          ],
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+           // mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "أوه ماي تنت",
+                style: AppTextStyles.textsmbold
+                    .copyWith(color: AppColors.blue,height: 0 ),
+              ),
+              RichText(
+
+
+                  text: TextSpan(
+
+                      style: AppTextStyles.boldtitles
+                          .copyWith(color: AppColors.primarycolor, fontSize: 17
+                      ,fontFamily: 'Schyler',
+                      ),
+                      text: 'السعر:  ',
+                      children: [
+                    TextSpan(
+                      text: '55 ر.س',
+                      style: AppTextStyles.boldtitles
+                          .copyWith(color: AppColors.greyDark, fontSize: 17),
+                    )
+                  ])),
+              RichText(
+                  text: TextSpan(
+                      style: AppTextStyles.boldtitles
+                          .copyWith(color: AppColors.primarycolor,fontFamily: 'Schyler', fontSize: 17),
+                      text: 'الكمية:  ',
+                      children: [
+                    TextSpan(
+                      text: '2',
+                      style: AppTextStyles.boldtitles
+                          .copyWith(color: AppColors.greyDark, fontSize: 17),
+                    )
+                  ])),
+              RichText(
+                  text: TextSpan(
+                      style: AppTextStyles.boldtitles
+                          .copyWith(color: AppColors.primarycolor,fontFamily: 'Schyler', fontSize: 17),
+                      text: 'الحالة:  ',
+                      children: [
+                    done
+                        ? TextSpan(
+                            text: 'تم الأستلام',
+                            style: AppTextStyles.boldtitles
+                                .copyWith(color: Colors.green , fontSize: 17),
+                          )
+                        : TextSpan(
+                            text: 'يتم تجهيزه للتحويل',
+                            style: AppTextStyles.textsmbold
+                                .copyWith(color: Colors.red, height: 0,fontSize: 14),
+                          )
+                  ])),
+              SizedBox(height: 3,)
+            ],
+          ),
         ),
         // Spacer(),
 
