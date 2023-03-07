@@ -8,6 +8,8 @@ import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
+
+import '../../../shared/styles/images.dart';
 class ConfirmSceen extends StatefulWidget {
   const ConfirmSceen({Key? key}) : super(key: key);
 
@@ -40,7 +42,7 @@ class _ConfirmSceenState extends State<ConfirmSceen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/images/ConfirmSceen.png",height: 200,),
+              Image.asset(AppImages.confirmsceen,height: 200,),
               Text("تم التأكد من الرمز بنجاح ",style: AppTextStyles.boldtitles,)
             ],
           ),

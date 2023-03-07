@@ -32,19 +32,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       image: 'assets/images/img_2.png',
       title: 'Plant Growing',
       body:
-      "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة،  أن زيادة عدد الحروف التى يولدها التطبيق.",
+          "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة،  أن زيادة عدد الحروف التى يولدها التطبيق.",
     ),
     BoardingModel(
       image: 'assets/images/img_1.png',
       title: 'Plant Growing',
       body:
-      "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة،  أن زيادة عدد الحروف التى يولدها التطبيق.",
+          "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة،  أن زيادة عدد الحروف التى يولدها التطبيق.",
     ),
     BoardingModel(
       image: 'assets/images/img.png',
       title: 'Plant Growing',
       body:
-      "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة،  أن زيادة عدد الحروف التى يولدها التطبيق.",
+          "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة،  أن زيادة عدد الحروف التى يولدها التطبيق.",
     ),
   ];
 
@@ -95,7 +95,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   height: 40.0,
                 ),
                 Column(
-                  // crossAxisAlignment: CrossAxisAlignment.end,
+                    // crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ButtonTemplate(
@@ -114,15 +114,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           }
                         },
                       ),
-                    isLast?SizedBox(height:50.h,): TextButton(
-                        onPressed: () {
-                          finishOnBoarding();
-                        },
-                        child: Text("تخطي",
-                            style: AppTextStyles.boldtitles.apply(
-                                color: AppColors.green,
-                                decoration: TextDecoration.underline)),
-                      ),
+                      isLast
+                          ? SizedBox(
+                              height: 50.h,
+                            )
+                          : TextButton(
+                              onPressed: () {
+                                finishOnBoarding();
+                              },
+                              child: Text("تخطي",
+
+                                  style: AppTextStyles.boldtitles.copyWith(
+                                      color: AppColors.green,
+                                      decoration: TextDecoration.underline)),
+                            ),
                     ]),
               ],
             ),
@@ -130,8 +135,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  Widget buildBoardingItem(BoardingModel model) =>
-      Column(
+  Widget buildBoardingItem(BoardingModel model) => Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
@@ -145,6 +149,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           Text(
             '${model.body}',
             textAlign: TextAlign.center,
+
             style:
             AppTextStyles.boldtitles.apply(
                 color: AppColors.primarycolor, fontSizeDelta:-3.sp),
