@@ -40,7 +40,7 @@ class _ConfirmSceenState extends State<ConfirmSceen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/images/confirmSceen.png",height: 200,),
+              Image.asset("assets/images/ConfirmSceen.png",height: 200,),
               Text("تم التأكد من الرمز بنجاح ",style: AppTextStyles.boldtitles,)
             ],
           ),
