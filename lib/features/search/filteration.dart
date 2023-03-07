@@ -5,6 +5,7 @@ import 'package:acnoria/shared/styles/images.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FilterAtion extends StatefulWidget {
   FilterAtion({Key? key}) : super(key: key);
@@ -54,18 +55,18 @@ class _FilterAtionState extends State<FilterAtion> {
                     'التصنيفات',
                     style: AppTextStyles.lrTitles.copyWith(fontSize: 24),
                   ),
-                  SizedBox(
-                    height: 15,
-                  ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Text(
                       'مرتبة حسب',
-                      style: AppTextStyles.textsmbold,
+                      style: AppTextStyles.lrTitles.copyWith(
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: EdgeInsets.symmetric(vertical: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     //  width: MediaQueryHelper.sizeFromWidth(context, 1.1),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
@@ -78,15 +79,20 @@ class _FilterAtionState extends State<FilterAtion> {
                         elevation: 10,
                         // borderRadius: BorderRadius.circular(15),
 
-                        icon: Icon(Icons.keyboard_arrow_down_outlined),
+                        icon: Icon(
+                          Icons.keyboard_arrow_down_outlined,
+                          color: AppColors.primarycolor,size: 30,
+                        ),
                         items: [
                           DropdownMenuItem(
                               child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               'موصى بها',
-                              style: AppTextStyles.smTitles
-                                  .copyWith(color: AppColors.primarycolor),
+                              style: AppTextStyles.boldtitles.copyWith(
+                                color: AppColors.primarycolor,
+                                fontSize: 18,
+                              ),
                             ),
                           ))
                         ],
@@ -94,7 +100,9 @@ class _FilterAtionState extends State<FilterAtion> {
                   ),
                   Text(
                     'الأقسام',
-                    style: AppTextStyles.lrTitles,
+                    style: AppTextStyles.lrTitles.copyWith(
+                      fontSize: 20,
+                    ),
                   ),
                   SizedBox(
                     height: 15,
@@ -103,6 +111,7 @@ class _FilterAtionState extends State<FilterAtion> {
                       margin: EdgeInsets.symmetric(vertical: 10),
                       height: MediaQueryHelper.sizeFromHeight(context, 7),
                       child: MultiSelectContainer(
+
                           itemsDecoration: MultiSelectDecorations(
                               selectedDecoration: BoxDecoration(
                                   color: AppColors.blue,
@@ -151,18 +160,17 @@ class _FilterAtionState extends State<FilterAtion> {
                           ],
                           onChange: (allSelectedItems, selectedItem) {})),
                   SizedBox(
-                    height: 15,
+                    height: 130.h,
                   ),
                   Text(
                     'نطاق السعر',
-                    style: AppTextStyles.lrTitles,
+                    style: AppTextStyles.lrTitles.copyWith(
+                      fontSize: 20,
+                    ),
                   ),
-
                   SizedBox(
-                    height: 15,
+                    height: 40.h,
                   ),
-
-
                   RangeSlider(
                     values: _currentRangeValues,
                     max: 2000,
@@ -205,6 +213,7 @@ class _FilterAtionState extends State<FilterAtion> {
                       flex: 2,
                       child: Container(
                         height: 60,
+                        padding: EdgeInsets.symmetric(horizontal: 15),
                         child: ButtonTemplate(
                             color: AppColors.primarycolor,
                             text1: 'تطبيق',

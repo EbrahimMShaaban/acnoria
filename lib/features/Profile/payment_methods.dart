@@ -63,36 +63,44 @@ class _PaymentMethodsScreensState extends State<PaymentMethodsScreens> {
               ))
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: appPadding(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 30,
-              ),
+      body: Padding(
+        padding: appPadding(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 30,
+            ),
 
-              ListView.builder(
-                shrinkWrap: true,
-                physics:NeverScrollableScrollPhysics() ,
-                itemCount: ContaineList!.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return InkWell(
-                      onTap: () {
-                        setState(() {
-                          ContaineList?.forEach(
-                                  (gender) => gender.isSelected = false);
-                          ContaineList![index].isSelected = true;
-                        });
-                      },
-                      child: ContainerLocation(
-                          containerLocationModel: ContaineList![index]));
-                },
+            Expanded(
+              flex: 9,
+
+              child: SingleChildScrollView(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics:NeverScrollableScrollPhysics() ,
+                  itemCount: ContaineList!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                        onTap: () {
+                          setState(() {
+                            ContaineList?.forEach(
+                                    (gender) => gender.isSelected = false);
+                            ContaineList![index].isSelected = true;
+                          });
+                        },
+                        child: ContainerLocation(
+                            containerLocationModel: ContaineList![index]));
+                  },
+                ),
               ),
-              SizedBox(height: 20,),
-              Align(
+            ),
+
+
+            Expanded(
+              flex: 1,
+              child: Align(
                 alignment: Alignment.bottomCenter,
                 child: ButtonTemplate(
                   minwidth: MediaQueryHelper.sizeFromWidth(context, 1),
@@ -102,9 +110,9 @@ class _PaymentMethodsScreensState extends State<PaymentMethodsScreens> {
                   onPressed: () {
                     navigateTo(context, AddNewLocation());
                   },),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -133,7 +141,7 @@ class ContainerLocation extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(10),
-      height: 100,
+      height: 90,
       width: MediaQueryHelper.sizeFromWidth(context, 1),
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -142,7 +150,7 @@ class ContainerLocation extends StatelessWidget {
                 ? AppColors.green
                 : AppColors.grey,
             width: 1.0),
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -150,7 +158,7 @@ class ContainerLocation extends StatelessWidget {
           CircleAvatar(
             child: Image.asset("assets/images/vise.png"),
             backgroundColor: AppColors.grey,
-            radius: 25,
+            radius: 20,
           ),
           SizedBox(
             width: 20,
@@ -162,12 +170,12 @@ class ContainerLocation extends StatelessWidget {
               Text(
                 containerLocationModel.title,
                 style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.blueDark, fontSizeDelta: 3),
+                    .apply(color: AppColors.blueDark, fontSizeDelta: -3),
               ),
               Text(
                 containerLocationModel.location,
                 style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.greyDark, fontSizeDelta: -3),
+                    .apply(color: AppColors.greyDark, fontSizeDelta: -6),
               ),
 
             ],
