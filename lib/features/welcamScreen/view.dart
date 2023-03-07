@@ -149,8 +149,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           Text(
             '${model.body}',
             textAlign: TextAlign.center,
-            style: AppTextStyles.boldtitles
-                .apply(color: AppColors.primarycolor, fontSizeDelta: -2.sp),
+
+            style:
+            AppTextStyles.boldtitles.apply(
+                color: AppColors.primarycolor, fontSizeDelta:-3.sp),
           ),
           SizedBox(
             height: 14.0,

@@ -65,7 +65,7 @@ class _PinScreenState extends State<PinScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                      padding: EdgeInsets.only(top: 100, bottom: 50),
+                      padding: EdgeInsets.only(top: 80, bottom: 50),
                       child: Image.asset(
                         "assets/images/pin.png",
                         width: 200,
@@ -89,7 +89,7 @@ class _PinScreenState extends State<PinScreen> {
                     key: formKey,
                     child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 10),
+                            vertical: 10.0, horizontal: 2),
                         child: Directionality(
                           textDirection: TextDirection.ltr,
                           child: PinCodeTextField(
@@ -114,8 +114,8 @@ class _PinScreenState extends State<PinScreen> {
                               shape: PinCodeFieldShape.box,
                               borderRadius: BorderRadius.circular(20),
 
-                              fieldHeight: 70,
-                              fieldWidth: 70,
+                              fieldHeight: 60.h,
+                              fieldWidth: 60.w,
                               activeColor: AppColors.Bluehint,
                               disabledColor: AppColors.Bluehint,
                               borderWidth: 1,
