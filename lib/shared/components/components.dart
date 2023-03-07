@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../styles/colors.dart';
 import '../styles/styles.dart';
@@ -12,7 +13,9 @@ class ButtonTemplate extends StatelessWidget {
     required this.onPressed,
     this.text2 = "",
     this.text3 = "",
-    this.minwidth = 250,
+    this.icon,
+    this.minwidth = 318,
+    this.minheight = 60,
     this.fontSize = 18,
   }) : super(key: key);
   Color color;
@@ -20,81 +23,113 @@ class ButtonTemplate extends StatelessWidget {
   String text2;
   String text3;
   double minwidth;
+  double minheight;
   double fontSize;
+  IconData? icon;
   void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 36),
-      child: MaterialButton(
-        minWidth: minwidth,
-        height: 65,
-        onPressed: onPressed,
-        color: color,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        child: RichText(
-            text: TextSpan(
-                text: "",
-                style: TextStyle(color: Colors.white, fontSize: fontSize),
-                children: [
-              TextSpan(
-                  text: text1,
-                  style: AppTextStyles.boldtitles
-                      .apply(fontSizeDelta: 5, color: AppColors.white)),
-              TextSpan(text: text2),
-              TextSpan(
-                  text: text3, style: TextStyle(fontWeight: FontWeight.bold)),
-            ])),
+    return MaterialButton(
+      minWidth: minwidth,
+      height: minheight,
+      onPressed: onPressed,
+      color: color,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Center(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            icon == null
 
+                ? SizedBox()
+                : Center(
+              child: Icon(icon, size: 25, color: AppColors.white),
+            ),
+            SizedBox(
+              width: 5,
+            ),
+
+            Center(
+              child: Text(text1,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.boldtitlesButton.apply(
+                    fontSizeDelta: -3.sp,
+                    color: AppColors.white,
+                  )),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class TextFieldTemplate extends StatelessWidget {
+class TextFieldTemplate extends StatefulWidget {
   TextFieldTemplate({
     Key? key,
     required this.hintText,
     required this.controller,
-    this.obscureText = false,
     this.validator,
+    this.isPassword = false,
+    this.icon,
   }) : super(key: key);
 
   String hintText;
   TextEditingController controller;
-  bool obscureText;
   Function? validator;
+  Widget? icon;
+  bool isPassword;
+
+  @override
+  State<TextFieldTemplate> createState() => _TextFieldTemplateState();
+}
+
+class _TextFieldTemplateState extends State<TextFieldTemplate> {
+  bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 36.0),
-      child: TextFormField(
-        obscureText: obscureText,
-        controller: controller,
-        validator: (value) => validator!(value),
+    return TextFormField(
+        cursorColor:AppColors.blue ,
+        obscureText: widget.isPassword ? _isObscure : false,
+        controller: widget.controller,
+        validator: (value) => widget.validator!(value),
+        style: AppTextStyles.hittext,
         decoration: InputDecoration(
-            hintText: hintText,
+
+
+            prefixIcon: widget.icon,
+            hintText: widget.hintText,
             border: InputBorder.none,
+            suffixIcon: widget.isPassword
+                ? IconButton(
+                splashRadius: 20,
+                icon: Icon(
+                    _isObscure == true
+                        ? Icons.visibility_outlined
+                        : Icons.visibility_off_outlined,
+                    color: AppColors.Bluehint),
+                onPressed: () => setState(() => _isObscure = !_isObscure))
+                : null,
             filled: true,
             fillColor: AppColors.white,
-            labelStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
-            hintStyle: const TextStyle(color: AppColors.blue, fontSize: 15),
+
+            labelStyle: AppTextStyles.hittext,
+            hintStyle: AppTextStyles.hittext,
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
-            focusedBorder: OutlineInputBorder(
+            focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
-            errorBorder: OutlineInputBorder(
+            errorBorder: const OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
-            disabledBorder: OutlineInputBorder(
+            disabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide.none,
-                borderRadius: BorderRadius.all(Radius.circular(15)))),
-      ),
-    );
+                borderRadius: BorderRadius.all(Radius.circular(15)))));
   }
 }
 
@@ -145,15 +180,15 @@ void showMyDialog(String _message, BuildContext context) async {
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0),
-                  ))),
+                            borderRadius: BorderRadius.circular(25.0),
+                          ))),
                   onPressed: () {
                     Navigator.pop(context, "ok");
                   },
                   child: const Text(
                     "ok",
                     style:
-                        TextStyle(color: AppColors.primarycolor, fontSize: 22),
+                    TextStyle(color: AppColors.primarycolor, fontSize: 22),
                   )),
             )
           ],
@@ -162,7 +197,6 @@ void showMyDialog(String _message, BuildContext context) async {
 }
 
 ///
-
 class NavigateToOption extends StatelessWidget {
   NavigateToOption({Key? key, required this.name, required this.onPressed})
       : super(key: key);
@@ -187,7 +221,7 @@ class NavigateToOption extends StatelessWidget {
               children: [
                 Text(name,
                     style:
-                        TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                 Spacer(),
                 SizedBox(
                   width: 40,
@@ -230,7 +264,7 @@ class TeamsName extends StatelessWidget {
             padding: EdgeInsets.all(10),
             color: AppColors.materialGrey,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             child: RichText(
               text: TextSpan(
                 text: 'Team ',

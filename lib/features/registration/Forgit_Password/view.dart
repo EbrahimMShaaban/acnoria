@@ -7,6 +7,7 @@ import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgitPasswordScreen extends StatelessWidget {
   ForgitPasswordScreen({Key? key}) : super(key: key);
@@ -20,7 +21,6 @@ class ForgitPasswordScreen extends StatelessWidget {
           padding: appPadding(),
           child: ListView(
             children: [
-
               Padding(
                 padding: EdgeInsets.only(top: 100, bottom: 50),
                 child: Image.asset(
@@ -32,14 +32,13 @@ class ForgitPasswordScreen extends StatelessWidget {
               // SizedBox(height: 35,),
               Text(
                 "ادخل رقم الهاتف لاستعادة كلمة المرور",
-                style: AppTextStyles.boldtitles.apply(fontSizeDelta: -1),
+                style: AppTextStyles.boldtitles.apply(fontSizeDelta: -2.sp),
               ),
-              TextFieldTemplate(
-                  hintText: "رقم الهاتف او البريد الالكتروني",
-                  controller: emailController),
-
-              SizedBox(
-                height: 20,
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 30.h),
+                child: TextFieldTemplate(
+                    hintText: "رقم الهاتف او البريد الالكتروني",
+                    controller: emailController),
               ),
 
               ButtonTemplate(
@@ -49,7 +48,6 @@ class ForgitPasswordScreen extends StatelessWidget {
                   onPressed: () {
                     navigateTo(context, EditPasswordScreen());
                   }),
-
             ],
           ),
         ),
