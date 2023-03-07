@@ -24,7 +24,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ProfileAppBar(context,txt: 'السلة'),
+      appBar: ProfileAppBar(context, txt: 'السلة'),
       body: SingleChildScrollView(
         child: Padding(
           padding: appPadding(),
@@ -34,11 +34,9 @@ class _CartScreenState extends State<CartScreen> {
                 height: 30,
               ),
               ListView.builder(
-
-                physics:NeverScrollableScrollPhysics() ,
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: 3,
-
+                itemCount: 2,
                 itemBuilder: (context, index) {
                   return ContinerMyCart(context, add: () {
                     setState(() {
@@ -59,7 +57,8 @@ class _CartScreenState extends State<CartScreen> {
                       .apply(color: AppColors.primarycolor),
                   decoration: InputDecoration(
                     hintText: "كود الخصم",
-                    hintStyle: AppTextStyles.lrTitles.apply(),
+                    hintStyle: AppTextStyles.textsmbold
+                        .copyWith(height: 0, fontWeight: FontWeight.w500),
                     focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: AppColors.primarycolor),
                         borderRadius: BorderRadius.all(Radius.circular(15))),
@@ -112,14 +111,14 @@ class _CartScreenState extends State<CartScreen> {
                               ),
                         ),
                         child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Center(
                               child: Text("اضافة منتجات",
                                   textAlign: TextAlign.center,
-                                  style: AppTextStyles.boldtitles.apply(
-                                    fontSizeDelta: 5,
+                                  style: AppTextStyles.textsmbold.copyWith(
+                                    height: 1,
                                     color: AppColors.blue,
                                   )),
                             ),
