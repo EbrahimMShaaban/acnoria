@@ -104,7 +104,7 @@ class _CartScreenState extends State<CartScreen> {
                       onTap: () {},
                       child: Container(
                         width: 160,
-                        height: 65,
+                        height: 60,
                         decoration: BoxDecoration(
                           border: Border.all(color: AppColors.blue, width: 2.0),
                           borderRadius: BorderRadius.all(Radius.circular(

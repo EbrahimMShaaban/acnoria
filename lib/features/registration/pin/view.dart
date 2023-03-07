@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:acnoria/features/Home/view.dart';
 import 'package:acnoria/features/layout/view.dart';
+import 'package:acnoria/features/registration/pin/confirmSceen.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/styles/colors.dart';
@@ -184,7 +185,7 @@ class _PinScreenState extends State<PinScreen> {
                       text1: "تأكيد رمز التحقق",
                       minwidth: double.infinity,
                       onPressed: () {
-                        navigateAndFinished(context, AppLayout());
+                        navigateAndFinished(context, ConfirmSceen());
                         // formKey.currentState?.validate();
                         // conditions for validating
                         // if (currentText.length != 6 ||

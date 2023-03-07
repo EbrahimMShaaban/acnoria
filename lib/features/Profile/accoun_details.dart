@@ -27,18 +27,18 @@ class AccountDetails extends StatelessWidget {
               ),
               Addlocation(
                 controller: controller,
-                hintText: "الاسم بالكامل",
-                text: "امنية نهاد سعد",
+                hintText:"امنية نهاد سعد" ,
+                text: "الاسم بالكامل",
               ),
               Addlocation(
                 controller: controller,
-                hintText: "رقم الهاتف",
-                text: "+966 587 596",
+                hintText:  "+966 587 596",
+                text:"رقم الهاتف",
               ),
               Addlocation(
                 controller: controller,
-                hintText: "البريد الالكتروني",
-                text: "omnia74@gmail.com",
+                hintText: "omnia74@gmail.com",
+                text: "البريد الالكتروني",
               ),
 
               Padding(

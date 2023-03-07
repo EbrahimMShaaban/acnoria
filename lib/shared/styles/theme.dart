@@ -48,6 +48,7 @@ ThemeData lightTheme = ThemeData(
         activeTickMarkColor: AppColors.primarycolor,
         disabledInactiveTrackColor: Colors.blue,
         thumbColor: AppColors.primarycolor,
+        
         rangeTrackShape: RectangularRangeSliderTrackShape(),
         rangeValueIndicatorShape: PaddleRangeSliderValueIndicatorShape(),
         rangeTickMarkShape: RoundRangeSliderTickMarkShape(tickMarkRadius: 1.2),

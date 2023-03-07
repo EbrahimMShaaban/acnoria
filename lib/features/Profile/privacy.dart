@@ -24,48 +24,72 @@ class Privacy extends StatelessWidget {
                 padding: appPadding(),
                 child: Column(
                   children: [
-                    Row(
+                    Row(                      crossAxisAlignment: CrossAxisAlignment.end,
+
                       children: [
+                        Icon(
+                          Icons.info_outline,
+                          color: AppColors.blueDark,size: 20,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
                         Text(
                           'سياسة الخصوصية',
-                          style: AppTextStyles.lrTitles,
-                        )
+                          style: AppTextStyles.boldtitles,
+                        ),
+
                       ],
                     ),
                     SizedBox(
                       height: 30,
                     ),
                     Container(
-                      padding: EdgeInsets.all(8),
+                      padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: AppColors.white,
                       ),
                       child: Text(data ,
-                          style: AppTextStyles.smTitles),
+                          style: AppTextStyles.boldtitles.apply(
+
+                              color: AppColors.blue,fontSizeDelta: -3
+                          )),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    Row(
+                    Row(                      crossAxisAlignment: CrossAxisAlignment.end,
+
                       children: [
+                        Icon(
+                          Icons.info_outline,
+                          color: AppColors.blueDark,size: 20,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
                         Text(
                           'الشروط و الاحكام',
-                          style: AppTextStyles.lrTitles,
-                        )
+                          style: AppTextStyles.boldtitles,
+                        ),
+
                       ],
                     ),
                     SizedBox(
                       height: 30,
                     ),
                     Container(
-                      padding: EdgeInsets.all(8),
+                      padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: AppColors.white,
                       ),
                       child: Text(data,
-                          style: AppTextStyles.smTitles),
+                          style: AppTextStyles.boldtitles.apply(
+
+                              color: AppColors.blue,fontSizeDelta: -3
+                          )),
                     ),
                   ],
                 ),

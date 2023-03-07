@@ -3,6 +3,7 @@ import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../shared/components/navigator.dart';
 
@@ -145,7 +146,7 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                         margin: EdgeInsets.only(bottom: 10, top: 20),
                         padding:
                             EdgeInsets.symmetric(horizontal: 1, vertical: 5),
-                        height: 120,
+                        height: 110.h,
                         decoration: BoxDecoration(
                           color: AppColors.white,
                           borderRadius: BorderRadius.circular(15),

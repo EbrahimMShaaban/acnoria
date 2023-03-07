@@ -47,7 +47,7 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
         leadingWidth: 200,
         leading: Padding(
           padding: const EdgeInsets.only(right: 36.0),
-          child: Text("تغير العنوان",
+          child: Text("العنوان",
               style: AppTextStyles.boldtitles
                   .apply(color: AppColors.blueDark, fontSizeFactor: 1.5)),
         ),
@@ -64,21 +64,23 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
               ))
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: appPadding(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              Text(
-                "عنوان الشحن",
-                style: AppTextStyles.boldtitles.apply(fontSizeDelta: 5),
-              ),
-              ListView.builder(
+      body: Padding(
+        padding: appPadding(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              "اختر العنوان",
+              style: AppTextStyles.boldtitles.apply(fontSizeDelta: 5),
+            ),
+            Expanded(
+              flex: 9,
+
+              child: ListView.builder(
                 shrinkWrap: true,
                 physics:NeverScrollableScrollPhysics() ,
                 itemCount: ContaineList!.length,
@@ -95,8 +97,12 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
                           containerLocationModel: ContaineList![index]));
                 },
               ),
-SizedBox(height: 20,),
-              Align(
+            ),
+
+            Expanded(
+              flex: 1,
+
+              child: Align(
                 alignment: Alignment.bottomCenter,
                 child: ButtonTemplate(
                   minwidth: MediaQueryHelper.sizeFromWidth(context, 1),
@@ -106,9 +112,9 @@ SizedBox(height: 20,),
                     onPressed: () {
 navigateTo(context, AddNewLocation());
                     },),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
@@ -139,7 +145,7 @@ class ContainerLocation extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(10),
-      height: 160,
+      height: 150,
       width: MediaQueryHelper.sizeFromWidth(context, 1),
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -154,11 +160,7 @@ class ContainerLocation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
-            child: Icon(
-              Icons.location_on_rounded,
-              size: 30,
-              color: AppColors.white,
-            ),
+            child: Image.asset("assets/images/location2.png",width: 25),
             backgroundColor: AppColors.grey,
             radius: 20,
           ),
@@ -172,17 +174,17 @@ class ContainerLocation extends StatelessWidget {
               Text(
                 containerLocationModel.title,
                 style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.blueDark, fontSizeDelta: 3),
+                    .apply(color: AppColors.blueDark, fontSizeDelta: -2),
               ),
               Text(
                 containerLocationModel.location,
                 style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.greyDark, fontSizeDelta: -3),
+                    .apply(color: AppColors.greyDark, fontSizeDelta: -5),
               ),
               Text(
                 containerLocationModel.phone,
                 style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.greyDark, fontSizeDelta: -3),
+                    .apply(color: AppColors.greyDark, fontSizeDelta: -5),
               ),
             ],
           ),

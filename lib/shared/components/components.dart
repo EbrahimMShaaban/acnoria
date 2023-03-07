@@ -55,7 +55,7 @@ class ButtonTemplate extends StatelessWidget {
               child: Text(text1,
                   textAlign: TextAlign.center,
                   style: AppTextStyles.boldtitlesButton.apply(
-                    fontSizeDelta: 1.sp,
+                    fontSizeDelta: -3.sp,
                     color: AppColors.white,
                   )),
             ),
