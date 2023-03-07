@@ -97,9 +97,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () => navigateTo(context, SignUpScreen()),
                       child: Text(
                         " انشئ حساب الان",
-                        style: AppTextStyles.smTitles.apply(
+                        style: AppTextStyles.smTitles.copyWith(
                             decoration: TextDecoration.underline,
-                            fontSizeDelta: -3.sp,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
                             color: AppColors.blue),
                       ),
                     ),
