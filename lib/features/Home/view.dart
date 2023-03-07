@@ -8,6 +8,7 @@ import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/images.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../shared/styles/styles.dart';
@@ -43,11 +44,11 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 5,),
+
                 Text(
                   'اجدد العروض!',
                   style: AppTextStyles.smTitles
-                      .copyWith(color: AppColors.green, fontSize: 14),
+                      .copyWith(color: AppColors.green, fontSize: 14.sp),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
@@ -56,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                     style: AppTextStyles.lrTitles.copyWith(
                         color: AppColors.primarycolor,
                         fontWeight: FontWeight.bold,
-                        fontSize: 15),
+                        fontSize: 14.sp),
                   ),
                 ),
                 ElevatedButton(
@@ -68,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () {},
                     child: Text(
                       'اشتري اآن',
-                      style: AppTextStyles.lrTitles.copyWith(fontSize: 14),
+                      style: AppTextStyles.lrTitles.copyWith(fontSize: 14.sp),
                     ))
               ],
             ),
