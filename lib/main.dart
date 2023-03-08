@@ -1,4 +1,3 @@
-import 'package:acnoria/features/Profile/view.dart';
 import 'package:acnoria/features/layout/view.dart';
 
 import 'package:acnoria/features/registration/login/view.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'features/Home/view.dart';
-import 'features/Profile/myorders.dart';
 import 'features/search/filteration.dart';
 
 void main() {
@@ -39,7 +37,7 @@ class MyApp extends StatelessWidget {
             Locale('ar'), // English
             // Locale('es'), // Spanish
           ],
-          home: AppLayout(),
+          home: OnBoardingScreen(),
         );
       },
     );
