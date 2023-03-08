@@ -22,7 +22,7 @@ PreferredSizeWidget AppSearchBar(BuildContext context) {
               Navigator.pop(context);
             },
             icon: Icon(
-              Icons.arrow_back,
+              Icons.keyboard_backspace_sharp,
               size: 25,
               textDirection: TextDirection.ltr,
             )),

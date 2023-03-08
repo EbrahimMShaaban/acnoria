@@ -41,16 +41,17 @@ ThemeData lightTheme = ThemeData(
         systemOverlayStyle: SystemUiOverlayStyle(
             statusBarColor: AppColors.primarycolor,
             statusBarIconBrightness: Brightness.light)),
-    sliderTheme: SliderThemeData(
-        // inactiveTrackColor: AppColors.slidergrey,
+    sliderTheme: const SliderThemeData(
+        valueIndicatorColor: AppColors.primarycolor,
         inactiveTickMarkColor: AppColors.slidergrey,
         activeTrackColor: AppColors.primarycolor,
         activeTickMarkColor: AppColors.primarycolor,
         disabledInactiveTrackColor: Colors.blue,
         thumbColor: AppColors.primarycolor,
-        
         rangeTrackShape: RectangularRangeSliderTrackShape(),
         rangeValueIndicatorShape: PaddleRangeSliderValueIndicatorShape(),
         rangeTickMarkShape: RoundRangeSliderTickMarkShape(tickMarkRadius: 1.2),
         rangeThumbShape: RoundRangeSliderThumbShape(
-            disabledThumbRadius: 10, enabledThumbRadius: 10)));
+          disabledThumbRadius: 10,
+          enabledThumbRadius: 10,
+        )));

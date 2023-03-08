@@ -43,12 +43,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   Text(
                     "مرحبا امنية",
-                    style: AppTextStyles.boldtitles.apply(fontSizeDelta: 10),
+                    style: AppTextStyles.boldtitles.copyWith(fontSize: 22),
                   ),
                   IconButton(
                     onPressed: () {},
                     icon: Image.asset(
-                      height: 33,
+                      height: 25,
                       AppImages.basket,
                       color: AppColors.primarycolor,
                     ),

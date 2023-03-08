@@ -15,7 +15,7 @@ PreferredSizeWidget ProfileAppBar  (BuildContext context , {required String txt}
         padding: const EdgeInsets.only(right:36.0),
         child: Text(txt,
             style: AppTextStyles.boldtitles
-                .apply(color: AppColors.blueDark, fontSizeFactor: 1.5)),
+                .copyWith(color: AppColors.blueDark, height: 2.5,fontSize: 22)),
       ),
       actions: [
         Directionality(
@@ -26,6 +26,7 @@ PreferredSizeWidget ProfileAppBar  (BuildContext context , {required String txt}
               },
               icon: Icon(
                 Icons.keyboard_backspace_sharp,
+                size: 25,
               ),
             ))
       ],

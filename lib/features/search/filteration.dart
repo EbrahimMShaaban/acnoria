@@ -53,14 +53,14 @@ class _FilterAtionState extends State<FilterAtion> {
                 children: [
                   Text(
                     'التصنيفات',
-                    style: AppTextStyles.lrTitles.copyWith(fontSize: 24),
+                    style: AppTextStyles.lrTitles.copyWith(fontSize: 25),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Text(
                       'مرتبة حسب',
                       style: AppTextStyles.lrTitles.copyWith(
-                        fontSize: 20,
+                        fontSize: 17,
                       ),
                     ),
                   ),
@@ -91,7 +91,7 @@ class _FilterAtionState extends State<FilterAtion> {
                               'موصى بها',
                               style: AppTextStyles.boldtitles.copyWith(
                                 color: AppColors.primarycolor,
-                                fontSize: 18,
+                                fontSize: 16,
                               ),
                             ),
                           ))
@@ -224,8 +224,13 @@ class _FilterAtionState extends State<FilterAtion> {
                       child: TextButton(
                         onPressed: () {},
                         child: Text('إعادة تعيين',
-                            style: AppTextStyles.smTitles
-                                .copyWith(color: AppColors.primarycolor)),
+                            style: AppTextStyles.hittext
+                                .copyWith(color: AppColors.primarycolor,
+
+
+
+
+                            )),
                       ))
                 ],
               ),

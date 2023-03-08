@@ -57,18 +57,19 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
             children: [
               Text(
                 "أوه ماي تنت",
-                style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.blue, fontSizeDelta: 2),
+                style: AppTextStyles.textsmbold
+                    .copyWith(color: AppColors.blue, height: 0),
               ),
               Text(
                 "متبقى 3",
-                style: AppTextStyles.smTitles
-                    .apply(color: AppColors.green, fontSizeDelta: -2),
+                style: AppTextStyles.hittext.copyWith(
+                  color: AppColors.green,
+                ),
               ),
               Text(
                 "55 ر.س",
-                style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.blue, fontSizeDelta: 2),
+                style: AppTextStyles.textsmbold
+                    .copyWith(color: AppColors.blue, height: 0),
               ),
             ],
           ),
@@ -81,30 +82,54 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
               IconButton(onPressed: () {}, icon: Icon(Icons.clear_outlined)),
               Container(
                 margin: const EdgeInsets.only(left: 20.0),
-               // padding: const EdgeInsets.only(left: 10.0,),
-               //  height: 35,
-               //  width: 70,
+                width: 110,
+                height: 40,
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.blue, width: 1.0),
-                  borderRadius: BorderRadius.all(
+                  border: Border.all(color: AppColors.blue,),
+                  borderRadius: const BorderRadius.all(
                       Radius.circular(10.0) //         <--- border radius here
                       ),
                 ),
                 child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   // mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    IconButton(
-                      onPressed: () => widget.add!(),
-                      icon: Icon(Icons.add,color: AppColors.green,size: 15,),
+                    Container(
+
+                     // width: 10,
+                      child: IconButton(
+
+                        onPressed: () => widget.add!(),
+                        icon: Icon(
+
+                          Icons.add,
+                          color: AppColors.green,
+                          size: 12,
+                        ),
+                      ),
                     ),
-                    Text(
-                      "${widget.count}",
-                      style: AppTextStyles.boldtitles.apply(color: AppColors.green,),
+                    Container(
+                      width: 5,
+                      child: Text(
+                        "${widget.count}",
+                        style: AppTextStyles.textsmbold.copyWith(
+                          color: AppColors.green,
+                          height: 0
+
+                        ),
+                      ),
                     ),
-                    IconButton(
-                      onPressed: () => widget.remove!(),
-                      icon: Icon(Icons.remove,color: AppColors.green,size: 15,),
+                    Container(
+                  //    width: 10,
+                      child: IconButton(
+                        onPressed: () => widget.remove!(),
+                        icon: Icon(
+                          Icons.remove,
+                          color: AppColors.green,
+                          size: 12,
+                        ),
+                      ),
                     ),
                   ],
                 ),
