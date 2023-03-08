@@ -49,23 +49,27 @@ class _ItemScreenState extends State<ItemScreen> {
       ),
       body: Column(
         children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  // color: Colors.yellowAccent,
-                  height: MediaQueryHelper.sizeFromHeight(context,3),
-                  // width: MediaQueryHelper.sizeFromWidth(context, 2),
-                  child: Image.asset(
-                    "assets/images/item.png",
-                    fit: BoxFit.fill,
-                  ),
-                ),
+          Expanded(
 
-              ],
+            flex: 1,            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    // color: Colors.yellowAccent,
+                    height: MediaQueryHelper.sizeFromHeight(context,3),
+                    // width: MediaQueryHelper.sizeFromWidth(context, 2),
+                    child: Image.asset(
+                      "assets/images/item.png",
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+
+                ],
+              ),
             ),
           ),
           Expanded(
+            flex: 2,
             child: Container(
               height: MediaQueryHelper.sizeFromHeight(context,10),
               decoration: BoxDecoration(
@@ -220,7 +224,6 @@ class _ItemScreenState extends State<ItemScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: ButtonTemplate(
-                          minwidth: double.infinity,
                           icon: Icons.add_circle_outline_rounded,
                           color: AppColors.primarycolor,
                           text1: " اضف الى السلة",
