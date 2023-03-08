@@ -37,7 +37,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 itemBuilder: (context, index) {
                   return ContinerMyFavorite(context, () {});
                 },
-                separatorBuilder: (context, index) => Divider(height: 20),
+                separatorBuilder: (context, index) => SizedBox(height: 20,),
                 itemCount: 3),
            SizedBox(height: 20,),
             ButtonTemplate(
@@ -58,6 +58,7 @@ Widget ContinerMyFavorite(context, onPressed) {
     margin: EdgeInsets.only(bottom: 10),
     padding: EdgeInsets.symmetric(horizontal:0, vertical: 5),
     height: 100,
+
     decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(15),
@@ -69,7 +70,7 @@ Widget ContinerMyFavorite(context, onPressed) {
             offset: Offset(0, 0), // changes position of shadow
           ),
         ]),
-    width: MediaQueryHelper.sizeFromWidth(context, 1),
+    width: MediaQuery.of(context).size.width,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
@@ -89,13 +90,13 @@ Widget ContinerMyFavorite(context, onPressed) {
             Text(
               "أوه ماي تنت",
               style: AppTextStyles.boldtitles
-                  .apply(color: AppColors.blue, fontSizeDelta: 2),
+                  .apply(color: AppColors.blue, fontSizeDelta: 0),
             ),
             Text(
               "350ml",
               style: AppTextStyles.smTitles.apply(
                   color: AppColors.greyDark,
-                  fontSizeDelta: -2,
+                  fontSizeDelta: -5,
                   fontWeightDelta: 100),
             ),
           ],
@@ -103,7 +104,7 @@ Widget ContinerMyFavorite(context, onPressed) {
         // Spacer(),
         Padding(
           padding: EdgeInsets.only(
-            right: MediaQueryHelper.sizeFromWidth(context, 8),
+            right: MediaQueryHelper.sizeFromWidth(context, 9),
           ),
           // alignment: Alignment.center,
           child: Text(

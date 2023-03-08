@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../shared/components/constants.dart';
 import '../../../shared/styles/colors.dart';
 import '../../../shared/styles/styles.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ContinerMyCart extends StatefulWidget {
   const ContinerMyCart(
@@ -75,66 +76,60 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
           ),
 
           Spacer(),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              IconButton(onPressed: () {}, icon: Icon(Icons.clear_outlined)),
-              Container(
-                margin: const EdgeInsets.only(left: 20.0),
-                width: 110,
-                height: 40,
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.blue,),
-                  borderRadius: const BorderRadius.all(
-                      Radius.circular(10.0) //         <--- border radius here
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Icon(Icons.clear_outlined),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    // margin: const EdgeInsets.only(left: 20.0),
+                    width: 70,
+                    height: 35,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: AppColors.Bluehint,
                       ),
+                      borderRadius: const BorderRadius.all(
+                          Radius.circular(10.0) //         <--- border radius here
+                          ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            widget.add!();
+                          },
+                          child: Icon(
+                            Icons.add,
+                            color: AppColors.green,
+                            size: 15,
+                          ),
+                        ),
+                        Text("${widget.count}",
+                            style: AppTextStyles.boldtitles.copyWith(
+                                color: AppColors.green, height: 0, fontSize: 15)),
+                        InkWell(
+                          onTap: () {
+                            widget.remove!();
+                          },
+                          child: Icon(
+                            Icons.remove,
+                            color: AppColors.green,
+                            size: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-
-                     // width: 10,
-                      child: IconButton(
-
-                        onPressed: () => widget.add!(),
-                        icon: Icon(
-
-                          Icons.add,
-                          color: AppColors.green,
-                          size: 12,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 5,
-                      child: Text(
-                        "${widget.count}",
-                        style: AppTextStyles.textsmbold.copyWith(
-                          color: AppColors.green,
-                          height: 0
-
-                        ),
-                      ),
-                    ),
-                    Container(
-                  //    width: 10,
-                      child: IconButton(
-                        onPressed: () => widget.remove!(),
-                        icon: Icon(
-                          Icons.remove,
-                          color: AppColors.green,
-                          size: 12,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
 // Align(
 //     alignment: Alignment.topRight,

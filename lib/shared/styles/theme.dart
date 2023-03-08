@@ -32,7 +32,7 @@ ThemeData lightTheme = ThemeData(
         toolbarHeight: 60,
         elevation: 0,
         centerTitle: true,
-        iconTheme: IconThemeData(color: AppColors.primarycolor, size: 30),
+        iconTheme: IconThemeData(color: AppColors.primarycolor, size: 25),
         titleTextStyle: TextStyle(
           color: AppColors.primarycolor,
           fontSize: 32,
