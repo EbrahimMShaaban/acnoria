@@ -45,7 +45,7 @@ class ButtonTemplate extends StatelessWidget {
 
                 ? SizedBox()
                 : Center(
-              child: Icon(icon, size: 25, color: AppColors.white),
+              child: Icon(icon, size: 21, color: AppColors.white),
             ),
             SizedBox(
               width: 5,
@@ -54,8 +54,8 @@ class ButtonTemplate extends StatelessWidget {
             Center(
               child: Text(text1,
                   textAlign: TextAlign.center,
-                  style: AppTextStyles.boldtitlesButton.apply(
-                    fontSizeDelta: -3.sp,
+                  style: AppTextStyles.boldtitlesButton.copyWith(
+                 fontSize: 17,
                     color: AppColors.white,
                   )),
             ),
