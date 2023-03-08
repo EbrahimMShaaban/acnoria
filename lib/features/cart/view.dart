@@ -90,7 +90,7 @@ class _CartScreenState extends State<CartScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   ButtonTemplate(
-                    minwidth: 160,
+                    minwidth: MediaQueryHelper.sizeFromWidth(context,2.6),
                     color: AppColors.primarycolor,
                     text1: "شراء الان",
                     onPressed: () {
@@ -102,7 +102,7 @@ class _CartScreenState extends State<CartScreen> {
                     child: InkWell(
                       onTap: () {},
                       child: Container(
-                        width: 160,
+                        width: MediaQueryHelper.sizeFromWidth(context, 2.8),
                         height: 60,
                         decoration: BoxDecoration(
                           border: Border.all(color: AppColors.blue, width: 2.0),
