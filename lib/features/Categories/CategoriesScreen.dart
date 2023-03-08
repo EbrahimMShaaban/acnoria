@@ -18,7 +18,8 @@ class CategoriesScrren extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: Image.asset(
-            AppImages.basket,height: 33,
+            AppImages.basket,
+            height: 33,
             color: AppColors.primarycolor,
           ),
           onPressed: () {
@@ -47,14 +48,14 @@ class CategoriesScrren extends StatelessWidget {
               fontSizeDelta: 10,
             ),
           ),
-
           SizedBox(
             height: 10,
           ),
           Container(
               height: MediaQueryHelper.sizeFromHeight(context, 8),
               //  color: Colors.red,
-              child: SearchBar()),SizedBox(
+              child: SearchBar()),
+          SizedBox(
             height: 30,
           ),
           ContinerCategories_backgroundimage(context),
@@ -93,24 +94,27 @@ Widget ContinerCategories(
           ),
         ]),
     width: MediaQueryHelper.sizeFromWidth(context, 1),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text(
-          "المكملات الغذائية",
-          style: AppTextStyles.boldtitles
-              .apply(color: AppColors.blueDark, fontSizeDelta: 3),
-        ),
-        Container(
-          height: 70,
-          width: 70,
-          // color: Colors.amber
-          child: Image.asset(
-            "assets/images/gym.png",
-            fit: BoxFit.fill,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            "المكملات الغذائية",
+            style: AppTextStyles.boldtitles
+                .apply(color: AppColors.blueDark, fontSizeDelta: -3),
           ),
-        ),
-      ],
+          Container(
+            height: 70,
+            width: 70,
+            // color: Colors.amber
+            child: Image.asset(
+              "assets/images/gym.png",
+              fit: BoxFit.fill,
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
@@ -137,24 +141,15 @@ Widget ContinerCategories_backgroundimage(
     child: Stack(
       children: [
         Image.asset("assets/images/img_3.png", fit: BoxFit.fill),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Text(
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
               "المكملات الغذائية",
               style: AppTextStyles.boldtitles
-                  .apply(color: AppColors.blueDark, fontSizeDelta: 3),
+                  .apply(color: AppColors.blueDark, fontSizeDelta: -3),
             ),
-            Container(
-              height: 70,
-              width: 70,
-              // color: Colors.amber
-              child: Image.asset(
-                "assets/images/gym.png",
-                fit: BoxFit.fill,
-              ),
-            ),
-          ],
+          ),
         ),
       ],
     ),

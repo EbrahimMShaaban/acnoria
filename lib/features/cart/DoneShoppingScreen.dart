@@ -57,7 +57,7 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                       Text(
                         "تم اتمام العملية بنجاح  سيتم توصيل طلبك خلال\n 24 دقيقه",
                         textAlign: TextAlign.center,
-                        style: AppTextStyles.boldtitles,
+                        style: AppTextStyles.boldtitles.copyWith(fontSize: 18),
                       )
                     ],
                   ),
@@ -79,7 +79,7 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                     children: [
                       Text(
                         "اسم العميل",
-                        style: AppTextStyles.boldtitles.apply(fontSizeDelta: 3),
+                        style: AppTextStyles.boldtitles.copyWith(fontSize: 20),
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 5),
@@ -105,14 +105,14 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                                   "العنوان",
                                   style: AppTextStyles.boldtitles.apply(
                                       color: AppColors.primarycolor,
-                                      fontSizeDelta: 5),
+                                      fontSizeDelta: 0),
                                 ),
                               ],
                             ),
                             Text(
                               "85 صاري, الخالدية 506 جدة, 23\n423 - 8949",
                               style: AppTextStyles.boldtitles.apply(
-                                  color: AppColors.greyDark, fontSizeDelta: -3),
+                                  color: AppColors.greyDark, fontSizeDelta: -5),
                             ),
                             Row(  crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -126,21 +126,21 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                                   "رقم التواصل",
                                   style: AppTextStyles.boldtitles.apply(
                                       color: AppColors.primarycolor,
-                                      fontSizeDelta: 5),
+                                      fontSizeDelta: 0),
                                 ),
                               ],
                             ),
                             Text(
                               "96655245+",
                               style: AppTextStyles.boldtitles.apply(
-                                  color: AppColors.greyDark, fontSizeDelta: -3),
+                                  color: AppColors.greyDark, fontSizeDelta: -5),
                             ),
                           ],
                         ),
                       ),
                       Text(
                         "المنتجات",
-                        style: AppTextStyles.boldtitles.apply(fontSizeDelta: 3),
+                        style: AppTextStyles.boldtitles.copyWith(fontSize: 20),
                       ),
                       Container(
                         margin: EdgeInsets.only(bottom: 10, top: 20),
@@ -173,7 +173,7 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                                 Text(
                                   "أوه ماي تنت",
                                   style: AppTextStyles.boldtitles.apply(
-                                      color: AppColors.blue, fontSizeDelta: 2),
+                                      color: AppColors.blue, fontSizeDelta: -2),
                                 ),
                                 RichText(
                                     textAlign: TextAlign.center,
@@ -181,12 +181,12 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                                       TextSpan(
                                         text: "السعر :  ",
                                         style: AppTextStyles.boldtitles.apply(
-                                            color: AppColors.primarycolor),
+                                            color: AppColors.primarycolor,fontSizeDelta: -2),
                                       ),
                                       TextSpan(
                                         text: "55 ر.س ",
                                         style: AppTextStyles.smTitles
-                                            .apply(color: AppColors.green),
+                                            .apply(color: AppColors.green,fontSizeDelta: -2),
                                       ),
                                     ])),
                                 RichText(
@@ -195,12 +195,12 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                                       TextSpan(
                                         text: "الكمية :  ",
                                         style: AppTextStyles.boldtitles.apply(
-                                            color: AppColors.primarycolor),
+                                            color: AppColors.primarycolor,fontSizeDelta: -2),
                                       ),
                                       TextSpan(
                                         text: "2",
                                         style: AppTextStyles.smTitles
-                                            .apply(color: AppColors.green),
+                                            .apply(color: AppColors.green,fontSizeDelta: -2),
                                       ),
                                     ])),
                               ],
