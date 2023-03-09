@@ -26,7 +26,7 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.symmetric(horizontal: 1, vertical: 5),
+      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 9),
       height: 120,
       decoration: BoxDecoration(
           color: AppColors.white,
@@ -45,7 +45,7 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
         children: [
           Container(
             height: 80,
-            width: 80,
+            width: 90,
 // color: Colors.amber
             child: Image.asset(
               "assets/images/item.png",
@@ -66,7 +66,11 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
                 style: AppTextStyles.hittext.copyWith(
                   color: AppColors.green,
                 ),
+
               ),
+              SizedBox(height: 9),
+
+
               Text(
                 "55 ر.س",
                 style: AppTextStyles.textsmbold
@@ -82,7 +86,7 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Icon(Icons.clear_outlined),
+                Icon(Icons.clear_outlined,size: 18),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
