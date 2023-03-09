@@ -173,20 +173,22 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                                 Text(
                                   "أوه ماي تنت",
                                   style: AppTextStyles.boldtitles.apply(
-                                      color: AppColors.blue, fontSizeDelta: -2),
+                                      color: AppColors.primarycolor, fontSizeDelta: 0),
                                 ),
                                 RichText(
                                     textAlign: TextAlign.center,
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text: "السعر :  ",
-                                        style: AppTextStyles.boldtitles.apply(
-                                            color: AppColors.primarycolor,fontSizeDelta: -2),
+                                        style: AppTextStyles.w600.copyWith(
+                                            color: AppColors.primarycolor,
+                                            fontSize: 17),
                                       ),
                                       TextSpan(
                                         text: "55 ر.س ",
-                                        style: AppTextStyles.smTitles
-                                            .apply(color: AppColors.green,fontSizeDelta: -2),
+                                        style: AppTextStyles.w600.copyWith(
+                                            color: AppColors.green,
+                                            fontSize: 17),
                                       ),
                                     ])),
                                 RichText(
@@ -194,13 +196,15 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                                     text: TextSpan(children: [
                                       TextSpan(
                                         text: "الكمية :  ",
-                                        style: AppTextStyles.boldtitles.apply(
-                                            color: AppColors.primarycolor,fontSizeDelta: -2),
+                                        style: AppTextStyles.w600.copyWith(
+                                            color: AppColors.primarycolor,
+                                            fontSize: 17),
                                       ),
                                       TextSpan(
                                         text: "2",
-                                        style: AppTextStyles.smTitles
-                                            .apply(color: AppColors.green,fontSizeDelta: -2),
+                                        style: AppTextStyles.w600.copyWith(
+                                            color: AppColors.green,
+                                            fontSize: 17),
                                       ),
                                     ])),
                               ],
