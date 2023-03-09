@@ -98,6 +98,7 @@ class SearchView extends StatelessWidget {
               ),
               Container(
                   height: MediaQueryHelper.sizeFromHeight(context, 7),
+                  width: MediaQuery.of(context).size.width,
                   child: MultiSelectContainer(
                       highlightColor: AppColors.primarycolor,
                       itemsDecoration: MultiSelectDecorations(
@@ -108,8 +109,10 @@ class SearchView extends StatelessWidget {
                               color: AppColors.greym,
                               borderRadius: BorderRadius.circular(10))),
                       textStyles: MultiSelectTextStyles(
-                        textStyle: AppTextStyles.boldtitles
-                            .copyWith(color: AppColors.primarycolor),
+                        textStyle: AppTextStyles.boldtitles.copyWith(
+                            color: AppColors.blueDark,
+                            fontFamily: 'Schyler',
+                            fontSize: 19),
                       ),
                       prefix: MultiSelectPrefix(
                           // selectedPrefix: Padding(
@@ -127,7 +130,10 @@ class SearchView extends StatelessWidget {
                           Icons.do_disturb_alt_sharp,
                           size: 14,
                         ),
-                      )),
+                      )
+                      ,),
+                      wrapSettings: WrapSettings(spacing: 10,runSpacing: 10,
+                     ),
                       items: [
                         MultiSelectCard(
                           value: 'المكملات الغذائية',
@@ -175,9 +181,8 @@ class SearchView extends StatelessWidget {
                             child: FittedBox(
                               child: Text(
                                 'الرشاقة والصحة',
-                                style: AppTextStyles.hittext.copyWith(
-                                  color: AppColors.white
-                                ),
+                                style: AppTextStyles.hittext
+                                    .copyWith(color: AppColors.white),
                               ),
                             ),
                             style: ElevatedButton.styleFrom(

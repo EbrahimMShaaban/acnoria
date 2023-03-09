@@ -122,7 +122,10 @@ class _FilterAtionState extends State<FilterAtion> {
                           highlightColor: AppColors.primarycolor,
                           textStyles: MultiSelectTextStyles(
                             textStyle: AppTextStyles.boldtitles
-                                .apply(color: AppColors.primarycolor),
+                                .copyWith(color: AppColors.blueDark,
+                              fontFamily: 'Schyler',
+                              fontSize: 19
+                            ),
                           ),
                           items: [
                             MultiSelectCard(
