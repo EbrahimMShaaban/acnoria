@@ -208,10 +208,11 @@ class HomeScreen extends StatelessWidget {
                               navigateTo(context, Categories());
                             },
                             child: const Text('مشاهدة الجميع'),
+
                             style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(8))),
+                                        BorderRadius.all(Radius.circular(10))),
                                 backgroundColor: AppColors.primarycolor),
                           ),
                         )
