@@ -15,7 +15,10 @@ class DioHelper {
             // receiveTimeout: 5000,
             // sendTimeout: 5000,
             // connectTimeout: 5000,
-            headers: {"Accept": "application/json"}),
+            headers: {
+              "Accept": "application/json",
+
+            }),
       );
     } catch (e) {
       print(e.toString());

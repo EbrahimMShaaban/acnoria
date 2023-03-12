@@ -1,5 +1,4 @@
 
-import '../../../../network/models/user_model.dart';
 
 abstract class RegisterStates {}
 class RegisterInitialStates extends RegisterStates{}
