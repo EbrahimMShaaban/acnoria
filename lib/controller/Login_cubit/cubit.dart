@@ -11,7 +11,7 @@ class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginInitialStates());
 
   static LoginCubit? get(context) => BlocProvider.of(context);
-   RegisterModrl? loginModel;
+  RegisterModrl? loginModel;
 
   final formKey = GlobalKey<FormState>();
 
@@ -24,27 +24,25 @@ class LoginCubit extends Cubit<LoginStates> {
     // }
     emit(LoginLoadingtState());
     // formKey.currentState!.save();
-    DioHelper.postdata(url:LOGIN, headers: {
-
-      "Accept":"application/json"
-    },posteddata: {
+    DioHelper.postdata(url: LOGIN, headers: {
+      "Accept": "application/json"
+    }, query: {
+      "token": "true"
+    }, posteddata: {
       "email": email,
       "password": password,
     }).then((value) {
       emit(LoginSuccessState());
-  loginModel = RegisterModrl.fromJson(value.data);
-  loginModel?.message=value.data["message"];
-  loginModel?.token=value.data["token"];
-  print("1111111111111111111111111111done");
-  print(loginModel?.message);
-  print(loginModel?.token);
-
+      loginModel = RegisterModrl.fromJson(value.data);
+      print("1111111111111111111111111111done");
+      print(loginModel?.message);
+      print(loginModel?.token);
     }).catchError((error) {
       emit(LoginErrorState(message: error.toString()));
       print(error.toString());
       print("11111111111111111111111111111");
       print(email);
-      print(password);
+      print(password); print(loginModel?.message);
       print("11111111111111111111111111111");
     });
   }

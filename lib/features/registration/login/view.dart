@@ -14,6 +14,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../models/registermodel.dart';
+import '../../../shared/network/local/shared_preferences.dart';
+
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
 
@@ -31,10 +34,20 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginStates>(
-        listener: (context, state) {
-          // TODO: implement listener
+        listener: (context, state){
+          RegisterModrl? userModel=LoginCubit.get(context)!.loginModel;
+
+        // TODO: implement listener
           if (state is LoginSuccessState)
-            navigateTo(context, PinScreen());
+            CacheHelper.saveData(
+                key: 'token', value: userModel?.token)
+                .then((value) {
+              print("userModel.token");
+              print("${userModel?.token} "+ "ddddddddddddddddddddddddd");
+              print("${userModel?.message} "+ "ddddddddddddddddddddddddd");
+              navigateAndFinished(context, const PinScreen());
+            });
+
         },
         builder: (context, state) {
           return Scaffold(
