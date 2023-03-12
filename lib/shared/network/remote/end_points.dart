@@ -1,14 +1,4 @@
-var BASEURL = 'https://grad-teams.herokuapp.com/api/';
-const SIGNUP = 'register';
+var BASEURL = 'https://acnoria-backend.spider-te8.com/api/customer/';
+const REGISTER = 'register';
 const LOGIN = 'login';
 const LOGOUT = 'logout';
-const teams = 'teams';
-
-const myTeams = 'teams/';
-//const allTeams = 'teams?type=/';
-const allcreditTeams = 'teams?type=credit';
-const allgeneralTeams = 'teams?type=general';
-dynamic token = '';
-dynamic myName = '';
-dynamic team_id = '';
-dynamic user = '';
