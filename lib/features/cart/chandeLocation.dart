@@ -1,4 +1,5 @@
 import 'package:acnoria/features/cart/addNew_location.dart';
+import 'package:acnoria/features/cart/widget/profileappbar.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/components/navigator.dart';
@@ -42,28 +43,7 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xffF5F5F5),
-        leadingWidth: 200,
-        leading: Padding(
-          padding: const EdgeInsets.only(right: 36.0),
-          child: Text("العنوان",
-              style: AppTextStyles.boldtitles
-                  .apply(color: AppColors.blueDark, fontSizeFactor: 1.5)),
-        ),
-        actions: [
-          Directionality(
-              textDirection: TextDirection.ltr,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.keyboard_backspace_sharp,
-                ),
-              ))
-        ],
-      ),
+      appBar: ProfileAppBar(context, txt: 'العنوان'),
       body: Padding(
         padding: appPadding(),
         child: Column(

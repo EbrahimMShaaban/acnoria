@@ -2,6 +2,7 @@ import 'package:acnoria/controller/layout/cubit.dart';
 import 'package:acnoria/controller/layout/state.dart';
 import 'package:acnoria/features/layout/widgets/bottom_item.dart';
 import 'package:acnoria/shared/styles/colors.dart';
+import 'package:acnoria/shared/styles/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -54,13 +55,13 @@ class AppLayout extends StatelessWidget {
                         //     ? MediaQueryHelper.sizeFromWidth(context, 13)
                         //     : MediaQueryHelper.sizeFromWidth(context, 15),
                         path: cubit.currentIndex == 0
-                            ? Icons.home
-                            : Icons.home_outlined,
+                            ?AppImages.homeselect
+                            : AppImages.home,
                         heigh: cubit.currentIndex == 0 ? 2 : 0,
 
-                        color: cubit.currentIndex == 0
-                            ? AppColors.primarycolor
-                            : AppColors.blueDark,
+                        // color: cubit.currentIndex == 0
+                        //     ? AppColors.primarycolor
+                        //     : AppColors.blueDark,
                       ),
                       BottomItem(
                         onclick: () {
@@ -70,12 +71,12 @@ class AppLayout extends StatelessWidget {
                         //     ? MediaQueryHelper.sizeFromWidth(context, 13)
                         //     : MediaQueryHelper.sizeFromWidth(context, 15),
                         path: cubit.currentIndex == 1
-                            ? Icons.favorite
-                            : Icons.favorite_border,
+                            ? AppImages.favouriteSelect
+                            : AppImages.favourite,
                         heigh: cubit.currentIndex == 1 ? 2 : 0,
-                        color: cubit.currentIndex == 1
-                            ? AppColors.primarycolor
-                            : AppColors.blueDark,
+                        // color: cubit.currentIndex == 1
+                        //     ? AppColors.primarycolor
+                        //     : AppColors.blueDark,
                       ),
                       BottomItem(
                         onclick: () {
@@ -85,12 +86,12 @@ class AppLayout extends StatelessWidget {
                         //     ? MediaQueryHelper.sizeFromWidth(context, 13)
                         //     : MediaQueryHelper.sizeFromWidth(context, 15),
                         path: cubit.currentIndex == 2
-                            ? Icons.notifications
-                            : Icons.notifications_outlined,
+                            ?AppImages.notificationsSelect
+                            : AppImages.notifications,
                         heigh: cubit.currentIndex == 2 ? 2 : 0,
-                        color: cubit.currentIndex == 2
-                            ? AppColors.primarycolor
-                            : AppColors.blueDark,
+                        // color: cubit.currentIndex == 2
+                        //     ? AppColors.primarycolor
+                        //     : AppColors.blueDark,
                       ),
                       BottomItem(
                         onclick: () {
@@ -100,13 +101,13 @@ class AppLayout extends StatelessWidget {
                         //     ? MediaQueryHelper.sizeFromWidth(context, 13)
                         //     : MediaQueryHelper.sizeFromWidth(context, 15),
                         path: cubit.currentIndex == 3
-                            ? Icons.person
-                            : Icons.person_outlined,
+                            ? AppImages.profileselsect
+                            : AppImages.profile,
 
                         heigh: cubit.currentIndex == 3 ? 2 : 0,
-                        color: cubit.currentIndex == 3
-                            ? AppColors.primarycolor
-                            : AppColors.blueDark,
+                        // color: cubit.currentIndex == 3
+                        //     ? AppColors.primarycolor
+                        //     : AppColors.blueDark,
                       ),
                     ],
                   ),

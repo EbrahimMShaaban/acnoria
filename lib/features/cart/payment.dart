@@ -1,6 +1,7 @@
 import 'package:acnoria/features/cart/DoneShoppingScreen.dart';
 import 'package:acnoria/features/cart/chandeLocation.dart';
 import 'package:acnoria/features/cart/widget/Price.dart';
+import 'package:acnoria/features/cart/widget/profileappbar.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/navigator.dart';
 import 'package:flutter/material.dart';
@@ -55,28 +56,7 @@ class _paymentScreenState extends State<paymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xffF5F5F5),
-        leadingWidth: 200,
-        leading: Padding(
-          padding: const EdgeInsets.only(right: 36.0),
-          child: Text("عملية الشراء",
-              style: AppTextStyles.boldtitles
-                  .apply(color: AppColors.blueDark, fontSizeFactor: 1.5)),
-        ),
-        actions: [
-          Directionality(
-              textDirection: TextDirection.ltr,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.keyboard_backspace_sharp,
-                ),
-              ))
-        ],
-      ),
+      appBar: ProfileAppBar(context, txt: 'عملية الشراء'),
       body: SingleChildScrollView(
         child: Padding(
           padding: appPadding(),
@@ -88,7 +68,10 @@ class _paymentScreenState extends State<paymentScreen> {
               ),
               Text(
                 "عنوان الشحن",
-                style: AppTextStyles.boldtitles.apply(fontSizeDelta: 2),
+                style: AppTextStyles.textsmbold.copyWith(
+                   height: 0,fontWeight: FontWeight.w900
+                ),
+
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 30),
