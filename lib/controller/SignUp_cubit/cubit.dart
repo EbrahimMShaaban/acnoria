@@ -10,8 +10,8 @@ class RegisterCubit extends Cubit<RegisterStates> {
   RegisterCubit() : super(RegisterInitialStates());
 
   static RegisterCubit? get(context) => BlocProvider.of(context);
-  late  RegisterModrl registerModrl;
-  //final formKey = GlobalKey<FormState>();//
+   RegisterModrl? registerModrl;
+  final formKey = GlobalKey<FormState>();//
 
   void userRegister({
     required String? first_name,
@@ -20,11 +20,13 @@ class RegisterCubit extends Cubit<RegisterStates> {
     required String? password,
     required String? password_confirmation,
   }) {
-    // if (!formKey.currentState!.validate()) {
-    //   return;
-    // }
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
     emit(RegisterLoadingtState());
-    DioHelper.postdata(url: REGISTER, posteddata: {
+    DioHelper.postdata(url: REGISTER,
+
+        posteddata: {
       "email": email,
       "first_name": first_name,
       "last_name": last_name,
@@ -40,7 +42,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
     }).catchError((error) {
       emit(RegisterErrorState());
       print(error.toString());
-      print(error);
+      print(registerModrl?.message);
       print("11111111111111111111111111111");
       print(password);
       print(email);

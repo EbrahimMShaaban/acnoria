@@ -15,10 +15,7 @@ class DioHelper {
             // receiveTimeout: 5000,
             // sendTimeout: 5000,
             // connectTimeout: 5000,
-            headers: {
-              "Accept": "application/json",
-
-            }),
+            headers: {"Accept": "application/json"}),
       );
     } catch (e) {
       print(e.toString());
@@ -35,8 +32,11 @@ class DioHelper {
   }
 
   static Future<Response> postdata(
-      {required String url, Map<String, dynamic>? posteddata, headers}) async {
-    return await dio.post(url,
+      {required String url,
+      Map<String, dynamic>? posteddata,
+      Map<String, dynamic>? query,
+      headers}) async {
+    return await dio.post(url, queryParameters: query,
         data: posteddata, options: Options(headers: headers));
   }
 

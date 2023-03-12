@@ -2,6 +2,9 @@ import 'package:acnoria/features/layout/view.dart';
 
 import 'package:acnoria/features/registration/login/view.dart';
 import 'package:acnoria/features/welcamScreen/view.dart';
+import 'package:acnoria/shared/network/local/shared_preferences.dart';
+import 'package:acnoria/shared/network/remote/dio_helper.dart';
+import 'package:acnoria/shared/network/remote/end_points.dart';
 import 'package:acnoria/shared/styles/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +14,31 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'features/Home/view.dart';
 import 'features/search/filteration.dart';
 
-void main() {
-  runApp(const MyApp());
+void main()async{
+
+  WidgetsFlutterBinding.ensureInitialized();
+  // cameras = await availableCameras();
+
+  await DioHelper.init();
+  await CacheHelper.init();
+  final Widget startWidget;
+  // await Future.delayed(Duration(seconds: 5));
+  token = CacheHelper.getData(key: 'token');
+
+  if (token != null) {
+    if (token != null)
+      startWidget = AppLayout();
+    else
+      startWidget = LoginScreen();
+  } else {
+    startWidget =  LoginScreen();
+  }  runApp( MyApp(startwidget: startWidget,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final Widget startwidget;
+
+  const MyApp({Key? key, required this.startwidget}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +59,7 @@ class MyApp extends StatelessWidget {
             Locale('ar'), // English
             // Locale('es'), // Spanish
           ],
-          home: OnBoardingScreen(),
+          home: startwidget,
         );
       },
     );
