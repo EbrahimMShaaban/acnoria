@@ -44,7 +44,6 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
                 Text(
                   'اجدد العروض!',
                   style: AppTextStyles.smTitles
@@ -198,7 +197,6 @@ class HomeScreen extends StatelessWidget {
                             style: AppTextStyles.boldtitles.copyWith(
                               color: AppColors.primarycolor,
                               fontSize: 18,
-
                             )),
                         Container(
                           decoration: BoxDecoration(
@@ -208,7 +206,6 @@ class HomeScreen extends StatelessWidget {
                               navigateTo(context, Categories());
                             },
                             child: const Text('مشاهدة الجميع'),
-
                             style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                     borderRadius:
@@ -227,7 +224,9 @@ class HomeScreen extends StatelessWidget {
                       child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return ProductItem(colorPath: "assets/images/gym.png",);
+                            // return ProductItem(
+                            //   model: "assets/images/gym.png",
+                            // );
                           },
                           separatorBuilder: (context, x) {
                             return SizedBox(
@@ -280,7 +279,8 @@ class HomeScreen extends StatelessWidget {
                       child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return ProductItem(colorPath: AppImages.food);
+                            // return
+                            //   //ProductItem(model: AppImages.food);
                           },
                           separatorBuilder: (context, x) {
                             return SizedBox(
@@ -333,12 +333,14 @@ class HomeScreen extends StatelessWidget {
                       child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return ProductItem(colorPath: AppImages.barvan,);
+                            // return ProductItem(
+                            //   model: AppImages.barvan,
+                            // );
                           },
                           separatorBuilder: (context, x) {
                             return SizedBox(
                               width:
-                              MediaQueryHelper.sizeFromWidth(context, 30),
+                                  MediaQueryHelper.sizeFromWidth(context, 30),
                             );
                           },
                           itemCount: 10),

@@ -1,4 +1,5 @@
 import 'package:acnoria/features/home/itemScreen.dart';
+import 'package:acnoria/models/product_model.dart';
 import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +9,10 @@ import '../../../shared/styles/colors.dart';
 import '../../../shared/styles/images.dart';
 
 class ProductItem extends StatelessWidget {
-   ProductItem({required this.colorPath,Key? key}) : super(key: key);
-  String colorPath;
+  ProductItem({required this.model, required this.index, Key? key})
+      : super(key: key);
+  Product model;
+  int index;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +41,14 @@ class ProductItem extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.favorite_border),
+                    icon: model.data![index].isWishlisted!
+                        ? Icon(Icons.favorite_border)
+                        : Icon(Icons.favorite_border),
                     color: AppColors.primarycolor),
                 Row(
-                  children: const [
-                    Text('4.8',
+                  children:  [
+                    Text(
+                        '${model.data![index].reviews?.averageRating}',
                         style: TextStyle(
                             color: AppColors.green,
                             fontSize: 12,
@@ -56,23 +62,23 @@ class ProductItem extends StatelessWidget {
                 )
               ],
             ),
-            Image.asset(
-              colorPath,
-
+            Image.network(
+              '${model.data![index].baseImage?.originalImageUrl}',
               height: MediaQueryHelper.sizeFromHeight(context, 12),
             ),
             Text('اوه ماي تنت مرطب شفاه وملمع – وردي – 4 غ ',
                 maxLines: 2,
                 style: AppTextStyles.smTitles
                     .copyWith(fontSize: 14, fontWeight: FontWeight.w600)),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('12 ر.س',style: AppTextStyles.smTitles
-                    .copyWith(fontSize: 15, fontWeight: FontWeight.w700,color: AppColors.blue
-                )),
+                Text('12 ر.س',
+                    style: AppTextStyles.smTitles.copyWith(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.blue)),
                 IconButton(
                     onPressed: () {},
                     icon: Icon(Icons.add_circle_outline),
