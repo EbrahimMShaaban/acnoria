@@ -4,3 +4,5 @@ const LOGIN = 'customer/login';
 const LOGOUT = 'logout';
 
 dynamic token = '';
+
+const AllCategories='products';

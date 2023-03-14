@@ -51,10 +51,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
             CacheHelper.saveData(
                 key: 'token', value: userModel?.token)
                 .then((value) {
+
               print("userModel.token");
               print("${userModel?.token} "+ "ddddddddddddddddddddddddd");
               print("${userModel?.message} "+ "ddddddddddddddddddddddddd");
               navigateAndFinished(context, const PinScreen());
+
             });
 
           }

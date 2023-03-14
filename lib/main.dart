@@ -1,6 +1,7 @@
 import 'package:acnoria/features/layout/view.dart';
 
 import 'package:acnoria/features/registration/login/view.dart';
+import 'package:acnoria/features/search/cubit/cubit.dart';
 import 'package:acnoria/features/welcamScreen/view.dart';
 import 'package:acnoria/shared/network/local/shared_preferences.dart';
 import 'package:acnoria/shared/network/remote/dio_helper.dart';
@@ -8,14 +9,14 @@ import 'package:acnoria/shared/network/remote/end_points.dart';
 import 'package:acnoria/shared/styles/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'features/Home/view.dart';
 import 'features/search/filteration.dart';
 
-void main()async{
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // cameras = await availableCameras();
 
@@ -31,8 +32,11 @@ void main()async{
     else
       startWidget = LoginScreen();
   } else {
-    startWidget =  LoginScreen();
-  }  runApp( MyApp(startwidget: startWidget,));
+    startWidget = LoginScreen();
+  }
+  runApp(MyApp(
+    startwidget: startWidget,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -47,20 +51,24 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: lightTheme,
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('ar'), // English
-            // Locale('es'), // Spanish
-          ],
-          home: startwidget,
-        );
+        return MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (BuildContext context) => SearchCubit()..getAllCatefories())
+            ],
+            child: MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: lightTheme,
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [
+                Locale('ar'), // English
+                // Locale('es'), // Spanish
+              ],
+              home: AppLayout(),
+            ));
       },
     );
   }
