@@ -48,8 +48,8 @@ class Categories extends StatelessWidget {
                           child: Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
                                 child: Image.asset(
                                   AppImages.search,
                                   color: Colors.grey,
@@ -132,10 +132,11 @@ class Categories extends StatelessWidget {
                               const SliverGridDelegateWithFixedCrossAxisCount(
                                   childAspectRatio: 0.65,
 
-                                  // mainAxisExtent: 100,
-                                  mainAxisSpacing: 8,
+
+
                                   crossAxisSpacing: 8,
-                                  crossAxisCount: 2),
+                                  crossAxisCount: 2
+                              ),
                           itemCount: product?.data?.length,
                           itemBuilder: (BuildContext context, int index) {
                             print(
