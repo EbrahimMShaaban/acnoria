@@ -15,6 +15,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../controller/Login_cubit/cubit.dart';
 import '../../../models/registermodel.dart';
 import '../../../shared/network/local/shared_preferences.dart';
+import '../../../shared/network/remote/end_points.dart';
 
 class SignUpScreen extends StatefulWidget {
   SignUpScreen({Key? key}) : super(key: key);
@@ -51,6 +52,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             CacheHelper.saveData(
                 key: 'token', value: userModel?.token)
                 .then((value) {
+              token = userModel?.token;
+
               print("userModel.token");
               print("${userModel?.token} "+ "ddddddddddddddddddddddddd");
               print("${userModel?.message} "+ "ddddddddddddddddddddddddd");
@@ -92,12 +95,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
                         child: TextFieldTemplate(
-                            hintText: "الاسم",    validator: (v) {
+                            hintText: "الاسم الأول",    validator: (v) {
                           if (v.isEmpty) {
                             return "Name is Required";
                           }
                           return null;
-                        },controller: nameController),
+                        },controller: firstnameControlle),
+                      ),   Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: TextFieldTemplate(
+                            hintText: "الاسم الثانى",    validator: (v) {
+                          if (v.isEmpty) {
+                            return "Name is Required";
+                          }
+                          return null;
+                        },controller: lastnameControlle),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
@@ -149,8 +161,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   minwidth: double.infinity,
                   onPressed: () {
                     RegisterCubit.get(context)?.userRegister(
-                        first_name: nameController.text,
-                        last_name: nameController.text,
+                        first_name: firstnameControlle.text,
+                        last_name: lastnameControlle.text,
                         // first_name: firstnameControlle.text,
                         // last_name: lastnameControlle.text,
                         email: emailController.text,
