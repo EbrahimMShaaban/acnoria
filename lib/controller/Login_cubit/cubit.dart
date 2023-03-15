@@ -24,7 +24,9 @@ class LoginCubit extends Cubit<LoginStates> {
     // }
     emit(LoginLoadingtState());
     // formKey.currentState!.save();
-    DioHelper.postdata(url: LOGIN, headers: {
+    DioHelper.postdata(url: LOGIN,
+
+        headers: {
       "Accept": "application/json"
     }, query: {
       "token": "true"

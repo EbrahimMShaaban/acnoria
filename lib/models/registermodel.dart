@@ -16,10 +16,10 @@ class RegisterModrl {
 
 class Data {
   int? id;
-  String? email;
+  String? email ;
   String? name;
-  String? firstName;
-  String? lastName;
+  String? firstName ;
+  String? lastName ;
   Null? gender;
   Null? dateOfBirth;
   Null? phone;

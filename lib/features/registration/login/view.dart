@@ -7,6 +7,7 @@ import 'package:acnoria/features/registration/sign%20up/view.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/components/navigator.dart';
+import 'package:acnoria/shared/network/remote/end_points.dart';
 import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
@@ -42,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
             CacheHelper.saveData(
                 key: 'token', value: userModel?.token)
                 .then((value) {
+                  token = userModel?.token;
               print("userModel.token");
               print("${userModel?.token} "+ "ddddddddddddddddddddddddd");
               print("${userModel?.message} "+ "ddddddddddddddddddddddddd");

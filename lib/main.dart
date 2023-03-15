@@ -1,8 +1,6 @@
 import 'package:acnoria/features/layout/view.dart';
 
 import 'package:acnoria/features/registration/login/view.dart';
-import 'package:acnoria/features/search/cubit/cubit.dart';
-import 'package:acnoria/features/welcamScreen/view.dart';
 import 'package:acnoria/shared/network/local/shared_preferences.dart';
 import 'package:acnoria/shared/network/remote/dio_helper.dart';
 import 'package:acnoria/shared/network/remote/end_points.dart';
@@ -13,10 +11,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'features/Home/view.dart';
-import 'features/search/filteration.dart';
+import 'features/search/cubit/cubit.dart';
+
+
+
+
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   // cameras = await availableCameras();
 
