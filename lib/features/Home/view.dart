@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
       ),
     );
     return BlocProvider(
-      create: (BuildContext context) => HomeCubit()..getAllCatefories(true),
+      create: (BuildContext context) => HomeCubit()..getAllProducts(true),
       child: Scaffold(
           body: SingleChildScrollView(
         child: Stack(
