@@ -6,3 +6,5 @@ const EDITPROFIL = 'customer/profile';
 const LOGOUT = 'logout';
 
 dynamic token = '';
+
+const AllCategories='products';
