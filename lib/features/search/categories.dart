@@ -110,7 +110,9 @@ class Categories extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return categoriesmodel.data![index].name != null? TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+
+                                  },
                                   child: Text(
                                       '${categoriesmodel.data?[index].name}',
                                       style: AppTextStyles.smTitles.copyWith(
