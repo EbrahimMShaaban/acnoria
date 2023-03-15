@@ -1,3 +1,5 @@
+import 'package:acnoria/features/Categories/cubit/cubit.dart';
+import 'package:acnoria/features/Home/cubit/cubit.dart';
 import 'package:acnoria/features/layout/view.dart';
 
 import 'package:acnoria/features/registration/login/view.dart';
@@ -51,24 +53,20 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MultiBlocProvider(
-            providers: [
-              BlocProvider(create: (BuildContext context) => SearchCubit()..getAllCatefories())
-            ],
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: lightTheme,
-              localizationsDelegates: const [
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: const [
-                Locale('ar'), // English
-                // Locale('es'), // Spanish
-              ],
-              home: AppLayout(),
-            ));
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme,
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('ar'), // English
+            // Locale('es'), // Spanish
+          ],
+          home: AppLayout(),
+        );
       },
     );
   }

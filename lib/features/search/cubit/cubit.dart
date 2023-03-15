@@ -14,13 +14,13 @@ class SearchCubit extends Cubit<SearchStates> {
 
   Product? product;
 
-  getAllCatefories() {
+  getAllProducts() {
     print('prooooduct is ${product?.data?.length}');
 
     emit(SearchLoadingtState());
 
     DioHelper.getdata(
-      url:  AllCategories,
+      url:  AllProducts,
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json',
