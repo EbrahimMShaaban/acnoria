@@ -15,13 +15,13 @@ class HomeCubit extends Cubit<HomeStates> {
 
   Product? product;
 
-  getAllCatefories(bool isnew) {
-    print('prooooduct is ${product?.data?.length}');
+  getAllProducts(bool isnew) {
+ //   print('prooooduct is ${product?.data?.length}');
 
     emit(HomeLoadingtState());
 
     DioHelper.getdata(
-      url:  AllCategories,
+      url:  AllProducts,
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json',

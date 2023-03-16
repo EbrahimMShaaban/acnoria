@@ -22,7 +22,6 @@ class ProductItem extends StatelessWidget {
         padding: EdgeInsets.all(7),
         width: MediaQueryHelper.sizeFromWidth(context, 2.6),
         decoration: BoxDecoration(
-
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(.2),
@@ -33,7 +32,6 @@ class ProductItem extends StatelessWidget {
           ],
           borderRadius: BorderRadius.circular(10),
           color: AppColors.grey,
-
         ),
         child: InkWell(
           onTap: () => navigateTo(context, ItemScreen(product: model,index:  index,)),
@@ -69,12 +67,17 @@ class ProductItem extends StatelessWidget {
                 height: MediaQueryHelper.sizeFromHeight(context, 8),
                 child: Image.network(
                   '${model.data![index].baseImage?.originalImageUrl}',
-                 // height: MediaQueryHelper.sizeFromHeight(context, 10),
+                  errorBuilder: (context, object, stack) {
+                    return Center(
+                      child: Text('لا توجد صورة لعرضها'),
+                    );
+
+                  },
+                  // height: MediaQueryHelper.sizeFromHeight(context, 10),
                 ),
               ),
               Container(
                 height: 45,
-
                 child: Text('${model.data![index].shortDescription}',
                     maxLines: 2,
                     style: AppTextStyles.smTitles
