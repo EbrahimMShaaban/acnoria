@@ -55,6 +55,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
+
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: lightTheme,
@@ -67,7 +68,7 @@ class MyApp extends StatelessWidget {
             Locale('ar'), // English
             // Locale('es'), // Spanish
           ],
-          home: AppLayout(),
+          home: startwidget,
         );
       },
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 ThemeData lightTheme = ThemeData(
+
     scaffoldBackgroundColor: Color(0xffF5F5F5),
     platform: TargetPlatform.iOS,
     fontFamily: 'Schyler',
@@ -13,7 +14,8 @@ ThemeData lightTheme = ThemeData(
       splashColor: AppColors.primarycolor,
       focusColor: AppColors.primarycolor,
     ),
-    textTheme: TextTheme(
+
+  textTheme: TextTheme(
       headline1: TextStyle(
         color: AppColors.blueDark,
       ),

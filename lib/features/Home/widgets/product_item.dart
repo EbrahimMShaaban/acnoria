@@ -34,7 +34,7 @@ class ProductItem extends StatelessWidget {
           color: AppColors.grey,
         ),
         child: InkWell(
-          onTap: () => navigateTo(context, ItemScreen()),
+          onTap: () => navigateTo(context, ItemScreen(product: model,index:  index,)),
           child: Column(
             children: [
               Row(
