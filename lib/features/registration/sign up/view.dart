@@ -15,6 +15,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../controller/Login_cubit/cubit.dart';
 import '../../../models/registermodel.dart';
 import '../../../shared/network/local/shared_preferences.dart';
+import '../../../shared/network/remote/end_points.dart';
 
 class SignUpScreen extends StatefulWidget {
   SignUpScreen({Key? key}) : super(key: key);
@@ -45,20 +46,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: BlocConsumer<RegisterCubit, RegisterStates>(
         listener: (context, state) {
           print(state);
-          RegisterModrl? userModel=RegisterCubit.get(context)!.registerModrl;
+          RegisterModrl? userModel = RegisterCubit.get(context)!.registerModrl;
 
           if (state is RegisterSuccessState) {
-            CacheHelper.saveData(
-                key: 'token', value: userModel?.token)
+            CacheHelper.saveData(key: 'token', value: userModel?.token)
                 .then((value) {
+              token = userModel?.token;
 
               print("userModel.token");
-              print("${userModel?.token} "+ "ddddddddddddddddddddddddd");
-              print("${userModel?.message} "+ "ddddddddddddddddddddddddd");
+              print("${userModel?.token} " + "ddddddddddddddddddddddddd");
+              print("${userModel?.message} " + "ddddddddddddddddddddddddd");
               navigateAndFinished(context, const PinScreen());
-
             });
-
           }
 
           // TODO: implement listener
@@ -85,8 +84,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Text(
                         "انشئ حسابك الان فى اكنوريا\n لمتابعه ما هو جديد",
-                        style:
-                            AppTextStyles.boldtitles.apply(fontSizeDelta: -1.sp),
+                        style: AppTextStyles.boldtitles
+                            .apply(fontSizeDelta: -1.sp),
                       ),
                       SizedBox(
                         height: 10.h,
@@ -94,22 +93,37 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 15),
                         child: TextFieldTemplate(
-                            hintText: "الاسم",    validator: (v) {
-                          if (v.isEmpty) {
-                            return "Name is Required";
-                          }
-                          return null;
-                        },controller: nameController),
+                            hintText: "الاسم الأول",
+                            validator: (v) {
+                              if (v.isEmpty) {
+                                return "Name is Required";
+                              }
+                              return null;
+                            },
+                            controller: firstnameControlle),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                        child: TextFieldTemplate(
+                            hintText: "الاسم الثانى",
+                            validator: (v) {
+                              if (v.isEmpty) {
+                                return "Name is Required";
+                              }
+                              return null;
+                            },
+                            controller: lastnameControlle),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: TextFieldTemplate(
-                            hintText: "البريد الالكتروني",                 validator: (v) {
-                          if (v.isEmpty) {
-                            return "Email is Required";
-                          }
-                          return null;
-                        },
+                            hintText: "البريد الالكتروني",
+                            validator: (v) {
+                              if (v.isEmpty) {
+                                return "Email is Required";
+                              }
+                              return null;
+                            },
                             controller: emailController),
                       ),
                       // Padding(
@@ -120,48 +134,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: TextFieldTemplate(
-                            isPassword: true,                        validator: (v) {
-                          if (v.length < 5) {
-                            return "Password is Required";
-                          }
-                          return null;
-                        },
+                            isPassword: true,
+                            validator: (v) {
+                              if (v.length < 5) {
+                                return "Password is Required";
+                              }
+                              return null;
+                            },
                             hintText: "كلمة المرور",
                             controller: passwordController),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: TextFieldTemplate(
-                            isPassword: true,    validator: (v) {
-                          if (password2Controller.text !=
-                              passwordController.text) {
-                            return "Passwords not match";
-                          }
-                          return null;
-                        },
+                            isPassword: true,
+                            validator: (v) {
+                              if (password2Controller.text !=
+                                  passwordController.text) {
+                                return "Passwords not match";
+                              }
+                              return null;
+                            },
                             hintText: "تأكيد كلمة المرور",
                             controller: password2Controller),
                       ),
                       SizedBox(
                         height: 30,
                       ),
-                      state is! RegisterLoadingtState?ButtonTemplate(
-                  color: AppColors.primarycolor,
-                  text1: "تسجيل الدخول",
-                  minwidth: double.infinity,
-                  onPressed: () {
-                    RegisterCubit.get(context)?.userRegister(
-                        first_name: nameController.text,
-                        last_name: nameController.text,
-                        // first_name: firstnameControlle.text,
-                        // last_name: lastnameControlle.text,
-                        email: emailController.text,
-                        password_confirmation: password2Controller.text,
-                        password: passwordController.text);
-                  },
-                ):Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                      state is! RegisterLoadingtState
+                          ? ButtonTemplate(
+                              color: AppColors.primarycolor,
+                              text1: "تسجيل الدخول",
+                              minwidth: double.infinity,
+                              onPressed: () {
+                                RegisterCubit.get(context)?.userRegister(
+                                    first_name: firstnameControlle.text,
+                                    last_name: lastnameControlle.text,
+                                    // first_name: firstnameControlle.text,
+                                    // last_name: lastnameControlle.text,
+                                    email: emailController.text,
+                                    password_confirmation:
+                                        password2Controller.text,
+                                    password: passwordController.text);
+                              },
+                            )
+                          : Center(
+                              child: CircularProgressIndicator(),
+                            ),
                       // ConditionalBuilder(
                       //   condition: ,
                       //   builder: (context) =>
