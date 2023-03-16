@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import '../../shared/styles/images.dart';
 
 class ItemScreen extends StatefulWidget {
-  const ItemScreen({Key? key}) : super(key: key);
+   ItemScreen({required this.id,Key? key}) : super(key: key);
+  int? id;
 
   @override
   State<ItemScreen> createState() => _ItemScreenState();

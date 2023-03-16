@@ -4,6 +4,7 @@ import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 
+import '../../../models/customproducts_model.dart';
 import '../../../shared/components/constants.dart';
 import '../../../shared/styles/colors.dart';
 import '../../../shared/styles/images.dart';
@@ -11,7 +12,7 @@ import '../../../shared/styles/images.dart';
 class ProductItem extends StatelessWidget {
   ProductItem({required this.model, required this.index, Key? key})
       : super(key: key);
-  Product model;
+  CustomProductsModel model;
   int index;
 
   @override
@@ -34,7 +35,7 @@ class ProductItem extends StatelessWidget {
           color: AppColors.grey,
         ),
         child: InkWell(
-          onTap: () => navigateTo(context, ItemScreen()),
+          onTap: () => navigateTo(context, ItemScreen(id:index ,)),
           child: Column(
             children: [
               Row(
@@ -42,7 +43,7 @@ class ProductItem extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {},
-                      icon: model.data![index].isWishlisted!
+                      icon: model.data![index].isItemInCart!
                           ? Icon(Icons.favorite_border)
                           : Icon(Icons.favorite_border),
                       color: AppColors.primarycolor),

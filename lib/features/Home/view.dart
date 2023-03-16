@@ -15,6 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../models/customproducts_model.dart';
 import '../../models/product_model.dart';
 import '../../shared/styles/styles.dart';
 import '../Categories/CategoriesScreen.dart';
@@ -83,7 +84,7 @@ class HomeScreen extends StatelessWidget {
       ),
     );
     return BlocProvider(
-      create: (BuildContext context) => HomeCubit()..getAllProducts(true),
+      create: (BuildContext context) => HomeCubit()..getAllProducts(id: 6906),
       child: Scaffold(
           body: SingleChildScrollView(
         child: Stack(
@@ -228,7 +229,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       BlocConsumer<HomeCubit, HomeStates>(
                         builder: (context, state) {
-                          Product? product = HomeCubit.get(context)?.product;
+                          CustomProductsModel? product = HomeCubit.get(context)?.product;
                           return Container(
                             margin: const EdgeInsets.symmetric(horizontal: 5),
                             height:
@@ -245,7 +246,6 @@ class HomeScreen extends StatelessWidget {
                                     separatorBuilder: (context, x) {
                                       return SizedBox(
                                         width: MediaQueryHelper.sizeFromWidth(
-
                                             context, 30),
                                       );
                                     },

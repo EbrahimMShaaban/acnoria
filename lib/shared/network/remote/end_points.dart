@@ -5,5 +5,5 @@ const LOGOUT = 'logout';
 
 dynamic token = '';
 
-const AllProducts='products';
+const AllProducts='custom/products';
 const AllCategories='custom/categories';

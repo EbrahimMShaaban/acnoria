@@ -7,12 +7,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter/material.dart';
 
+import '../../../models/customproducts_model.dart';
+
 class SearchCubit extends Cubit<SearchStates> {
   SearchCubit() : super(SearchInitialStates());
 
   static SearchCubit? get(context) => BlocProvider.of(context);
 
-  Product? product;
+  CustomProductsModel? product;
 
   getAllProducts() {
     print('prooooduct is ${product?.data?.length}');
@@ -26,11 +28,11 @@ class SearchCubit extends Cubit<SearchStates> {
         'Accept': 'application/json',
       },
     ).then((value) {
-      product = Product.fromJson(value.data);
-      List<Data> list = product?.data?.length as List<Data>;
+      product = CustomProductsModel.fromJson(value.data);
+    //  List<Data> list = product?.data?.length as List<Data>;
       print('prooooduct is ${value.data}');
       print('prooooduct is ${value.data}');
-      print('prooooduct is ${list}');
+  //    print('prooooduct is ${list}');
 
 
       emit(SearchSuccessState());

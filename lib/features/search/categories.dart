@@ -9,6 +9,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../models/categories_model.dart';
+import '../../models/customproducts_model.dart';
 import '../../models/product_model.dart';
 import '../../shared/components/constants.dart';
 import '../../shared/components/navigator.dart';
@@ -163,7 +164,7 @@ class Categories extends StatelessWidget {
               Expanded(
                 child: BlocConsumer<SearchCubit, SearchStates>(
                   builder: (context, state) {
-                    Product? product = SearchCubit.get(context)?.product;
+                    CustomProductsModel? product = SearchCubit.get(context)?.product;
                     return product?.data != null
                         ? GridView.builder(
                             // shrinkWrap: true,

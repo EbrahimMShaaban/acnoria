@@ -1,21 +1,20 @@
-import 'package:acnoria/controller/layout/state.dart';
 import 'package:acnoria/features/Home/cubit/state.dart';
-import 'package:acnoria/features/search/cubit/state.dart';
-import 'package:acnoria/models/product_model.dart';
+
 import 'package:acnoria/shared/network/remote/dio_helper.dart';
 import 'package:acnoria/shared/network/remote/end_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:flutter/material.dart';
+
+import '../../../models/customproducts_model.dart';
 
 class HomeCubit extends Cubit<HomeStates> {
   HomeCubit() : super(HomeInitialStates());
 
   static HomeCubit? get(context) => BlocProvider.of(context);
 
-  Product? product;
+  CustomProductsModel? product;
 
-  getAllProducts(bool isnew) {
+  getAllProducts({required int id,bool isnew= false,}) {
  //   print('prooooduct is ${product?.data?.length}');
 
     emit(HomeLoadingtState());
@@ -27,15 +26,17 @@ class HomeCubit extends Cubit<HomeStates> {
         'Accept': 'application/json',
       },
       query: {
-        'new': isnew
+        'new': isnew,
+        'category_id':id,
+        'locale':"ar"
       }
 
     ).then((value) {
-      product = Product.fromJson(value.data);
-      List<Data> list = product?.data?.length as List<Data>;
+      product = CustomProductsModel.fromJson(value.data);
+     // List<Data> list = product?.data?.length as List<Data>;
       print('prooooduct is ${value.data}');
       print('prooooduct is ${value.data}');
-      print('prooooduct is ${list}');
+
 
 
       emit(HomeSuccessState());
