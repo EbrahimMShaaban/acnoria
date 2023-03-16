@@ -5,7 +5,7 @@ import 'package:acnoria/features/Profile/myorders.dart';
 import 'package:acnoria/features/Profile/payment_methods.dart';
 import 'package:acnoria/features/Profile/privacy.dart';
 import 'package:acnoria/features/Profile/us_information.dart';
-import 'package:acnoria/features/cart/chandeLocation.dart';
+import 'package:acnoria/features/location/chandeLocation.dart';
 import 'package:acnoria/features/registration/Forgit_Password/EditPassword.dart';
 import 'package:acnoria/features/registration/login/view.dart';
 import 'package:acnoria/shared/network/remote/end_points.dart';
@@ -223,7 +223,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: 20,
                     ),
                     InkWell(
-                      onTap: () => navigateAndFinished(context, LoginScreen()),
+                      onTap: () => signout(context),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.end,

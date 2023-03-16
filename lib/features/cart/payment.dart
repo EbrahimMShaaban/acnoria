@@ -1,5 +1,5 @@
 import 'package:acnoria/features/cart/DoneShoppingScreen.dart';
-import 'package:acnoria/features/cart/chandeLocation.dart';
+import 'package:acnoria/features/location/chandeLocation.dart';
 import 'package:acnoria/features/cart/widget/Price.dart';
 import 'package:acnoria/features/cart/widget/profileappbar.dart';
 import 'package:acnoria/shared/components/components.dart';

@@ -36,7 +36,7 @@ class ProductItem extends StatelessWidget {
 
         ),
         child: InkWell(
-          onTap: () => navigateTo(context, ItemScreen()),
+          onTap: () => navigateTo(context, ItemScreen(product: model,index:  index,)),
           child: Column(
             children: [
               Row(

@@ -8,7 +8,7 @@ import '../../shared/components/components.dart';
 import '../../shared/components/constants.dart';
 import '../../shared/styles/colors.dart';
 import '../../shared/styles/styles.dart';
-import '../cart/addNew_location.dart';
+import '../location/addNew_location.dart';
 import 'cubit/profil_cubit.dart';
 
 class AccountDetails extends StatefulWidget {
