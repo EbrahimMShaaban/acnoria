@@ -11,5 +11,5 @@ const GEDORDER= 'checkout/cart';
 
 dynamic token = '';
 
-const AllProducts='custom/products';
+const AllCustomProducts='custom/products';
 const AllCategories='custom/categories';

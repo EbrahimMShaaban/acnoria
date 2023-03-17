@@ -15,6 +15,16 @@ class CategoriesCubit extends Cubit<CategoriesStates> {
 
   static CategoriesCubit? get(context) => BlocProvider.of(context);
 
+  int selectedIndex = -1;
+  chngeSelection(int index){
+    selectedIndex = index;
+
+    // x =!x ;
+    // x =isSeelcted! ;
+    // print('is cubit = $x');
+    // print('is selectt = $isSeelcted');
+  }
+
   CategoriesModel? categoriesModel;
 
   getAllCatefories() {

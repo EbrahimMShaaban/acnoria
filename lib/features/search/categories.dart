@@ -19,15 +19,22 @@ import '../../shared/styles/styles.dart';
 import '../Home/widgets/product_item.dart';
 import 'filteration.dart';
 
-class Categories extends StatelessWidget {
-  const Categories({Key? key}) : super(key: key);
+class Categories extends StatefulWidget {
+  Categories({Key? key}) : super(key: key);
+  int selectedIndex = 0;
+  int id = 6906;
 
+  @override
+  State<Categories> createState() => _CategoriesState();
+}
+
+class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => SearchCubit()..getAllProducts(),
+          create: (context) => SearchCubit()..getAllProducts(widget.id),
         ),
         BlocProvider(
           create: (context) => CategoriesCubit()..getAllCatefories(),
@@ -68,7 +75,7 @@ class Categories extends StatelessWidget {
                                     height: 20,
                                   ),
                                 ),
-                                Text(
+                              const  Text(
                                   'بحث',
                                   style: TextStyle(
                                     color: Colors.grey,
@@ -77,7 +84,7 @@ class Categories extends StatelessWidget {
                               ],
                             )),
                       ),
-                      SizedBox(
+                    const  SizedBox(
                         width: 10,
                       ),
                       InkWell(
@@ -110,62 +117,57 @@ class Categories extends StatelessWidget {
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
-                                return categoriesmodel.data![index].name != null? TextButton(
-                                  onPressed: () {
+                                return categoriesmodel.data![index].name != null
+                                    ? GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            widget.selectedIndex = index;
+                                            widget.id = categoriesmodel
+                                                .data![index].id!;
 
-                                  },
-                                  child: Text(
-                                      '${categoriesmodel.data?[index].name}',
-                                      style: AppTextStyles.smTitles.copyWith(
-                                          color: AppColors.primarycolor,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w900)),
-                                ):const SizedBox();
+                                            SearchCubit.get(context)
+                                                ?.getAllProducts(categoriesmodel
+                                                    .data![index].id!);
+                                            print("idddddddd is${widget.id}");
+                                          });
+                                          // CategoriesCubit.get(context)
+                                          //     ?.chngeSelection(index);
+                                          print(
+                                              'is uiiiiii = ${CategoriesCubit.get(context)!.selectedIndex}');
+                                          print('is uiiiiii = ');
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 7),
+                                          child: Text(
+                                              '${categoriesmodel.data?[index].name}',
+                                              style: AppTextStyles.smTitles
+                                                  .copyWith(
+                                                      color: widget
+                                                                  .selectedIndex ==
+                                                              index
+                                                          ? AppColors
+                                                              .primarycolor
+                                                          : AppColors.green,
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w900)),
+                                        ),
+                                      )
+                                    : const SizedBox();
                               },
                               itemCount: categoriesmodel.data!.length),
                         );
                 },
               ),
 
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   children: [
-              //     TextButton(
-              //       onPressed: () {},
-              //       child: Text('العطور',
-              //           style: AppTextStyles.smTitles.copyWith(
-              //               color: AppColors.primarycolor,
-              //               fontSize: 18,
-              //               fontWeight: FontWeight.w900)),
-              //     ),
-              //     TextButton(
-              //         onPressed: () {},
-              //         child: Text('الاسنان',
-              //             style: AppTextStyles.smTitles.copyWith(
-              //               color: AppColors.primarycolor,
-              //               fontSize: 18,
-              //             ))),
-              //     TextButton(
-              //         onPressed: () {},
-              //         child: Text('عدسات',
-              //             style: AppTextStyles.smTitles.copyWith(
-              //               color: AppColors.primarycolor,
-              //               fontSize: 18,
-              //             ))),
-              //     TextButton(
-              //         onPressed: () {},
-              //         child: Text('مكملات غذائية',
-              //             style: AppTextStyles.smTitles.copyWith(
-              //               color: AppColors.primarycolor,
-              //               fontSize: 18,
-              //             ))),
-              //   ],
-              // ),
+              ///
               Expanded(
                 child: BlocConsumer<SearchCubit, SearchStates>(
                   builder: (context, state) {
-                    CustomProductsModel? product = SearchCubit.get(context)?.product;
-                    return product?.data != null
+                    CustomProductsModel? product =
+                        SearchCubit.get(context)?.product;
+                    return state is!SearchLoadingtState
                         ? GridView.builder(
                             // shrinkWrap: true,
                             //  physics: NeverScrollableScrollPhysics(),
@@ -175,7 +177,9 @@ class Categories extends StatelessWidget {
                                     crossAxisSpacing: 8,
                                     crossAxisCount: 2),
                             itemCount: product?.data?.length,
+                            //  itemCount: 10,
                             itemBuilder: (BuildContext context, int index) {
+                              // SearchCubit.get(context)?.getAllProducts(widget.id);
                               print(
                                   'product length in ui is ${product?.data?.length}');
                               return ProductItem(
@@ -184,7 +188,7 @@ class Categories extends StatelessWidget {
                               );
                             },
                           )
-                        : Center(child: CircularProgressIndicator());
+                        : const Center(child: CircularProgressIndicator());
                   },
                   listener: (context, state) {},
                 ),

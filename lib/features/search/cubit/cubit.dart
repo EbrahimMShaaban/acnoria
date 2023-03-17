@@ -16,17 +16,21 @@ class SearchCubit extends Cubit<SearchStates> {
 
   CustomProductsModel? product;
 
-  getAllProducts() {
+  getAllProducts(int id) {
     print('prooooduct is ${product?.data?.length}');
 
     emit(SearchLoadingtState());
 
     DioHelper.getdata(
-      url:  AllProducts,
+      url:  AllCustomProducts,
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json',
       },
+      query: {
+        'locale' : 'ar',
+        'category_id':id,
+      }
     ).then((value) {
       product = CustomProductsModel.fromJson(value.data);
     //  List<Data> list = product?.data?.length as List<Data>;

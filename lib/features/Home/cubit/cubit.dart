@@ -20,7 +20,7 @@ class HomeCubit extends Cubit<HomeStates> {
     emit(HomeLoadingtState());
 
     DioHelper.getdata(
-      url:  AllProducts,
+      url:  AllCustomProducts,
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json',

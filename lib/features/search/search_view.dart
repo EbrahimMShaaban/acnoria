@@ -16,11 +16,12 @@ import 'categories.dart';
 
 class SearchView extends StatelessWidget {
   SearchView({Key? key}) : super(key: key);
+  int?id=1000;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SearchCubit()..getAllProducts(),
+      create: (context) => SearchCubit()..getAllProducts(id!),
       child: Scaffold(
         backgroundColor: AppColors.grey,
         appBar: AppSearchBar(context),
