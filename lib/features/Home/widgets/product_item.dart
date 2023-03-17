@@ -35,10 +35,18 @@ class ProductItem extends StatelessWidget {
           color: AppColors.grey,
         ),
         child: InkWell(
+          onTap: () {
+            navigateTo(
+                context,
+               ItemScreen(urlkey: model.data![index].urlKey)
+            );
+            print("item id is :   ${model.data![index].id}");
+            print("item urlkey is :   ${model.data![index].urlKey}");
+            print("item index is $index");
 
-          onTap: () => navigateTo(context, ItemScreen(id:index ,)),
+          },
 
-   //       onTap: () => navigateTo(context, ItemScreen(product: model,index:  index,)),
+          //       onTap: () => navigateTo(context, ItemScreen(product: model,index:  index,)),
           child: Column(
             children: [
               Row(
@@ -75,7 +83,6 @@ class ProductItem extends StatelessWidget {
                     return Center(
                       child: Text('لا توجد صورة لعرضها'),
                     );
-
                   },
                   // height: MediaQueryHelper.sizeFromHeight(context, 10),
                 ),

@@ -1,5 +1,6 @@
 import 'package:acnoria/features/cart/cubit/Cart_cubit.dart';
 import 'package:acnoria/features/cart/view.dart';
+import 'package:acnoria/models/customproducts_model.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/components/navigator.dart';
@@ -12,15 +13,13 @@ import '../../models/product_model.dart';
 import '../../shared/styles/images.dart';
 
 class ItemScreen extends StatefulWidget {
-
-   ItemScreen({required this.id,Key? key}) : super(key: key);
-  int? id;
+  ItemScreen({required this.urlkey, Key? key}) : super(key: key);
+  String? urlkey;
 
   // const ItemScreen({Key? key, required this.product, required this.index})
   //     : super(key: key);
   // final Product product;
   // final int index;
-
 
   @override
   State<ItemScreen> createState() => _ItemScreenState();
@@ -33,7 +32,7 @@ class _ItemScreenState extends State<ItemScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CartCubit(),
+      create: (context) => CartCubit()..getAllProducts('${widget.urlkey}'),
       child: Scaffold(
         backgroundColor: AppColors.white,
         appBar: AppBar(
@@ -62,257 +61,287 @@ class _ItemScreenState extends State<ItemScreen> {
         ),
         body: SizedBox(
           height: MediaQueryHelper.sizeFromHeight(context, 1),
-          child: SingleChildScrollView(
-            child: Stack(
-              children: [
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Column(
-                    children: [
-                      Container(
-                        // color: Colors.yellowAccent,
-                        height: MediaQueryHelper.sizeFromHeight(context, 3),
-                        // width: MediaQueryHelper.sizeFromWidth(context, 2),
-                        child: Image.network(
-                          '$widget.product.data![widget.index].baseImage?.originalImageUrl',
-                          // height: MediaQueryHelper.sizeFromHeight(context, 10),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 3,
-                            blurRadius: 10,
-                            offset: Offset(0, 3), // changes position of shadow
+          child: BlocConsumer<CartCubit, CartState>(
+            listener: (context, state) {},
+            builder: (context, state) {
+              CustomProductsModel? customProductsModel =
+                  CartCubit.get(context).product;
+              return state is! AddCartLoadingtState
+                  ? SingleChildScrollView(
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: Column(
+                              children: [
+                                Container(
+                                  // color: Colors.yellowAccent,
+                                  height: MediaQueryHelper.sizeFromHeight(
+                                      context, 3),
+                                  // width: MediaQueryHelper.sizeFromWidth(context, 2),
+                                  child: Image.network(
+                                    '${customProductsModel?.data![0].baseImage?.largeImageUrl}',
+                                    // height: MediaQueryHelper.sizeFromHeight(context, 10),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ],
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(35.0),
-                            topRight: Radius.circular(35.0))),
-                    padding: EdgeInsets.symmetric(horizontal: 36, vertical: 4),
-                    margin: EdgeInsets.only(
-                      top: MediaQueryHelper.sizeFromHeight(context, 2.5),
-                    ),
-                    // decoration: BoxDecoration(
-                    //     color: Colors.white,
-                    //     boxShadow: [
-                    //       BoxShadow(
-                    //         color: Colors.grey.withOpacity(0.5),
-                    //         spreadRadius: 1,
-                    //         blurRadius: 5,
-                    //         offset: Offset(0, 3), // changes position of shadow
-                    //       ),
-                    //     ],
-                    //     borderRadius: BorderRadius.only(
-                    //         topLeft: Radius.circular(35.0),
-                    //         topRight: Radius.circular(35.0))),
-                    // padding: EdgeInsets.symmetric(horizontal: 36, vertical: 30),
-                    // margin: EdgeInsets.only(
-                    //   top: MediaQueryHelper.sizeFromHeight(context, 2.5),
-                    // ),
-
-                    child: Column(
-                      children: [
-                        Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                      child: Text(
-                                        '$widget.product.data![widget.index].shortDescription',
-                                        maxLines: 2,
-                                        style: AppTextStyles.boldtitles
-                                            .copyWith(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600),
-                                      ),
-                                      width: 280),
-                                  IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        favoriteIcon = !favoriteIcon;
-                                      });
-                                    },
-                                    icon: favoriteIcon == true
-                                        ? Icon(
-                                            Icons.favorite,
-                                            size: 30,
-                                            color: AppColors.primarycolor,
-                                          )
-                                        : Icon(
-                                            Icons.favorite_border,
-                                            size: 30,
-                                            color: AppColors.primarycolor,
-                                          ),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "– وردي – 4 غ",
-                                style: AppTextStyles.boldtitles.copyWith(
-                                    color: AppColors.blueDark, fontSize: 15),
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Text(
-                                '$widget.product.data![widget.index].description',
-                                style: AppTextStyles.smTitles.apply(
-                                    color: AppColors.greyDark,
-                                    fontSizeDelta: -8),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '$widget.product.data![widget.index].price} ر.س ',
-                                    style: AppTextStyles.boldtitles.apply(
-                                        color: AppColors.blue,
-                                        fontSizeDelta: 0),
-                                  ),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    '$widget.product.data![widget.index].formatedPrice ',
-                                    style: AppTextStyles.boldtitles.apply(
-                                        decoration: TextDecoration.lineThrough,
-                                        color: AppColors.green,
-                                        fontSizeDelta: -5),
-                                  ),
-                                  Spacer(),
-                                  Container(
-                                    margin: const EdgeInsets.only(top: 30.0),
-                                    // padding: const EdgeInsets.all(10.0),
-                                    height: 40,
-                                    width: 100,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: AppColors.blue, width: 1.0),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(
-                                              10.0) //         <--- border radius here
-                                          ),
+                          Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.5),
+                                      spreadRadius: 3,
+                                      blurRadius: 10,
+                                      offset: Offset(
+                                          0, 3), // changes position of shadow
                                     ),
-                                    child: Row(
+                                  ],
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(35.0),
+                                      topRight: Radius.circular(35.0))),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 36, vertical: 4),
+                              margin: EdgeInsets.only(
+                                top: MediaQueryHelper.sizeFromHeight(
+                                    context, 2.5),
+                              ),
+                              // decoration: BoxDecoration(
+                              //     color: Colors.white,
+                              //     boxShadow: [
+                              //       BoxShadow(
+                              //         color: Colors.grey.withOpacity(0.5),
+                              //         spreadRadius: 1,
+                              //         blurRadius: 5,
+                              //         offset: Offset(0, 3), // changes position of shadow
+                              //       ),
+                              //     ],
+                              //     borderRadius: BorderRadius.only(
+                              //         topLeft: Radius.circular(35.0),
+                              //         topRight: Radius.circular(35.0))),
+                              // padding: EdgeInsets.symmetric(horizontal: 36, vertical: 30),
+                              // margin: EdgeInsets.only(
+                              //   top: MediaQueryHelper.sizeFromHeight(context, 2.5),
+                              // ),
+
+                              child: Column(
+                                children: [
+                                  Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
+                                          CrossAxisAlignment.start,
                                       children: [
-                                        InkWell(
-                                            onTap: () {
-                                              setState(() {
-                                                count++;
-                                              });
-                                            },
-                                            child: Icon(Icons.add)),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                                width: 280,
+                                                child: Text(
+                                                  '${customProductsModel?.data![0].shortDescription}',
+                                                  maxLines: 2,
+                                                  style: AppTextStyles
+                                                      .boldtitles
+                                                      .copyWith(
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                )),
+                                            IconButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  favoriteIcon = !favoriteIcon;
+                                                });
+                                              },
+                                              icon: favoriteIcon == true
+                                                  ? Icon(
+                                                      Icons.favorite,
+                                                      size: 30,
+                                                      color: AppColors
+                                                          .primarycolor,
+                                                    )
+                                                  : Icon(
+                                                      Icons.favorite_border,
+                                                      size: 30,
+                                                      color: AppColors
+                                                          .primarycolor,
+                                                    ),
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
                                         Text(
-                                          "${count}",
+                                          "– وردي – 4 غ",
                                           style: AppTextStyles.boldtitles
                                               .copyWith(
-                                                  fontSize: 20,
-                                                  height: 0,
-                                                  color: AppColors.blue),
+                                                  color: AppColors.blueDark,
+                                                  fontSize: 15),
                                         ),
-                                        InkWell(
-                                          onTap: () {
-                                            if (count > 1)
-                                              setState(() {
-                                                count--;
-                                              });
-                                          },
-                                          child: Icon(Icons.remove),
+                                        SizedBox(
+                                          height: 15,
                                         ),
-                                      ],
-                                    ),
+                                        Text(
+                                          '${customProductsModel?.data![0].description}',
+                                          style: AppTextStyles.smTitles.apply(
+                                              color: AppColors.greyDark,
+                                              fontSizeDelta: -8),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              '${customProductsModel?.data![0].price} ر.س ',
+                                              style: AppTextStyles.boldtitles
+                                                  .apply(
+                                                      color: AppColors.blue,
+                                                      fontSizeDelta: 0),
+                                            ),
+                                            SizedBox(width: 5),
+                                            Text(
+                                              '${customProductsModel?.data![0].formatedPrice}',
+                                              style: AppTextStyles.boldtitles
+                                                  .apply(
+                                                      decoration: TextDecoration
+                                                          .lineThrough,
+                                                      color: AppColors.green,
+                                                      fontSizeDelta: -5),
+                                            ),
+                                            Spacer(),
+                                            Container(
+                                              margin: const EdgeInsets.only(
+                                                  top: 30.0),
+                                              // padding: const EdgeInsets.all(10.0),
+                                              height: 40,
+                                              width: 100,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    color: AppColors.blue,
+                                                    width: 1.0),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(
+                                                        10.0) //         <--- border radius here
+                                                    ),
+                                              ),
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          count++;
+                                                        });
+                                                      },
+                                                      child: Icon(Icons.add)),
+                                                  Text(
+                                                    "${count}",
+                                                    style: AppTextStyles
+                                                        .boldtitles
+                                                        .copyWith(
+                                                            fontSize: 20,
+                                                            height: 0,
+                                                            color:
+                                                                AppColors.blue),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      if (count > 1)
+                                                        setState(() {
+                                                          count--;
+                                                        });
+                                                    },
+                                                    child: Icon(Icons.remove),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                              size: 20,
+                                            ),
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                              size: 20,
+                                            ),
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                              size: 20,
+                                            ),
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                              size: 20,
+                                            ),
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                              size: 20,
+                                            ),
+                                          ],
+                                        ),
+                                      ]),
+                                  BlocConsumer<CartCubit, CartState>(
+                                    listener: (context, state) {
+                                      print(state);
+                                      if (state is AddCartSuccessState)
+                                        navigateTo(context, CartScreen());
+                                      // TODO: implement listener
+                                    },
+                                    builder: (context, state) {
+                                      return state is AddCartLoadingtState
+                                          ? Center(
+                                              child:
+                                                  CircularProgressIndicator(),
+                                            )
+                                          : Align(
+                                              alignment: Alignment.bottomCenter,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 20),
+                                                child: FittedBox(
+                                                  child: ButtonTemplate(
+                                                      icon: Icons
+                                                          .add_circle_outline_rounded,
+                                                      color: AppColors
+                                                          .primarycolor,
+                                                      text1: " اضف الى السلة",
+                                                      onPressed: () {
+                                                        // CartCubit.get(context).AddCart(
+                                                        //     product_id: widget.product
+                                                        //         .data![widget.index].id,
+                                                        //     quantity: count);
+                                                      }),
+                                                ),
+                                              ),
+                                            );
+                                    },
                                   ),
                                 ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.yellow,
-                                    size: 20,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.yellow,
-                                    size: 20,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.yellow,
-                                    size: 20,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.yellow,
-                                    size: 20,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.yellow,
-                                    size: 20,
-                                  ),
-                                ],
-                              ),
-                            ]),
-                        BlocConsumer<CartCubit, CartState>(
-                          listener: (context, state) {
-                            print(state);
-                            if (state is AddCartSuccessState)
-                              navigateTo(
-                                  context, CartScreen());
-                            // TODO: implement listener
-                          },
-                          builder: (context, state) {
-                            return state is AddCartLoadingtState
-                                ? Center(
-                                    child: CircularProgressIndicator(),
-                                  )
-                                : Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 20),
-                                      child: FittedBox(
-                                        child: ButtonTemplate(
-                                            icon: Icons
-                                                .add_circle_outline_rounded,
-                                            color: AppColors.primarycolor,
-                                            text1: " اضف الى السلة",
-                                            onPressed: () {
-
-                                              // CartCubit.get(context).AddCart(
-                                              //     product_id: widget.product
-                                              //         .data![widget.index].id,
-                                              //     quantity: count);
-
-
-                                            }),
-                                      ),
-                                    ),
-                                  );
-                          },
-                        ),
-                      ],
-                    )),
-              ],
-            ),
+                              )),
+                        ],
+                      ),
+                    )
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    );
+            },
           ),
         ),
       ),

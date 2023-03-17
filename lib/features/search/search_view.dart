@@ -1,3 +1,5 @@
+import 'package:acnoria/features/Categories/cubit/cubit.dart';
+import 'package:acnoria/features/Categories/cubit/state.dart';
 import 'package:acnoria/features/search/cubit/cubit.dart';
 import 'package:acnoria/features/search/widgets/appbar.dart';
 import 'package:acnoria/features/search/widgets/search_bar.dart';
@@ -10,18 +12,27 @@ import 'package:acnoria/shared/components/constants.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_multi_select_items/flutter_multi_select_items.dart';
 
+import '../../models/categories_model.dart';
+import '../../models/customproducts_model.dart';
 import '../../shared/components/components.dart';
 import '../../shared/styles/images.dart';
 import 'categories.dart';
 
 class SearchView extends StatelessWidget {
   SearchView({Key? key}) : super(key: key);
-  int?id=1000;
+  int? id = 1000;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SearchCubit()..getAllProducts(id!),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SearchCubit()..getAllProducts(id!),
+        ),
+        BlocProvider(
+          create: (context) => CategoriesCubit()..getAllCatefories(),
+        )
+      ],
       child: Scaffold(
         backgroundColor: AppColors.grey,
         appBar: AppSearchBar(context),
@@ -120,25 +131,27 @@ class SearchView extends StatelessWidget {
                               fontSize: 19),
                         ),
                         prefix: MultiSelectPrefix(
-                            // selectedPrefix: Padding(
-                            //   padding: EdgeInsets.only(right: 5),
-                            //   child: Icon(
-                            //     Icons.check,
-                            //     color: Colors.white,
-                            //     size: 14,
-                            //   ),
-                            // ),
+                          // selectedPrefix: Padding(
+                          //   padding: EdgeInsets.only(right: 5),
+                          //   child: Icon(
+                          //     Icons.check,
+                          //     color: Colors.white,
+                          //     size: 14,
+                          //   ),
+                          // ),
 
-                            disabledPrefix: const Padding(
-                          padding: EdgeInsets.only(right: 5),
-                          child: Icon(
-                            Icons.do_disturb_alt_sharp,
-                            size: 14,
+                          disabledPrefix: const Padding(
+                            padding: EdgeInsets.only(right: 5),
+                            child: Icon(
+                              Icons.do_disturb_alt_sharp,
+                              size: 14,
+                            ),
                           ),
-                        )
-                        ,),
-                        wrapSettings: WrapSettings(spacing: 10,runSpacing: 10,
-                       ),
+                        ),
+                        wrapSettings: WrapSettings(
+                          spacing: 10,
+                          runSpacing: 10,
+                        ),
                         items: [
                           MultiSelectCard(
                             value: 'المكملات الغذائية',
@@ -166,35 +179,54 @@ class SearchView extends StatelessWidget {
                   child: Text('الأقسام',
                       style: AppTextStyles.boldtitles.copyWith(fontSize: 18)),
                 ),
-                GridView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemCount: 4,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Stack(
-                      alignment: AlignmentDirectional.bottomCenter,
-                      children: [
-                        Image.asset(AppImages.care),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 20),
-                          child: ElevatedButton(
-                              onPressed: () {
-                                navigateTo(context, Categories());
-                              },
-                              child: FittedBox(
-                                child: Text(
-                                  'الرشاقة والصحة',
-                                  style: AppTextStyles.hittext
-                                      .copyWith(color: AppColors.white),
-                                ),
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.primarycolor)),
-                        )
-                      ],
-                    );
+                BlocConsumer<CategoriesCubit, CategoriesStates>(
+                  listener: (context, state) {},
+                  builder: (context, state) {
+                    CategoriesModel? categoriesmodel =
+                        CategoriesCubit.get(context)?.categoriesModel;
+                    return state is! CategoriesLoadingtState
+                        ? GridView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
+                            itemCount: 4,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Stack(
+                                alignment: AlignmentDirectional.bottomCenter,
+                                children: [
+                                  Image.network('${categoriesmodel?.data![index].imageUrl}'
+                                  ,errorBuilder: (context, obj , tracer){
+                                    return Image.asset(AppImages.care);
+                                    },
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20),
+                                    child: ElevatedButton(
+                                        onPressed: () {
+                                          navigateTo(context, Categories());
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                AppColors.primarycolor),
+                                        child:  FittedBox(
+                                          child: Text(
+                                            "${categoriesmodel?.data![index].name}",
+                                            style: AppTextStyles.hittext
+                                                .copyWith(
+                                                    color: AppColors.white),
+                                          ),
+                                        )),
+                                  )
+                                ],
+                              );
+                            },
+                          )
+                        : const Center(
+                            child: CircularProgressIndicator(),
+                          );
                   },
                 ),
               ],
