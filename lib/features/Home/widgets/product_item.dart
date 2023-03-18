@@ -4,6 +4,7 @@ import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 
+import '../../../models/customproducts_model.dart';
 import '../../../shared/components/constants.dart';
 import '../../../shared/styles/colors.dart';
 import '../../../shared/styles/images.dart';
@@ -11,7 +12,7 @@ import '../../../shared/styles/images.dart';
 class ProductItem extends StatelessWidget {
   ProductItem({required this.model, required this.index, Key? key})
       : super(key: key);
-  Product model;
+  CustomProductsModel model;
   int index;
 
   @override
@@ -34,7 +35,18 @@ class ProductItem extends StatelessWidget {
           color: AppColors.grey,
         ),
         child: InkWell(
-          onTap: () => navigateTo(context, ItemScreen(product: model,index:  index,)),
+          onTap: () {
+            navigateTo(
+                context,
+               ItemScreen(urlkey: model.data![index].urlKey)
+            );
+            print("item id is :   ${model.data![index].id}");
+            print("item urlkey is :   ${model.data![index].urlKey}");
+            print("item index is $index");
+
+          },
+
+          //       onTap: () => navigateTo(context, ItemScreen(product: model,index:  index,)),
           child: Column(
             children: [
               Row(
@@ -42,7 +54,7 @@ class ProductItem extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {},
-                      icon: model.data![index].isWishlisted!
+                      icon: model.data![index].isItemInCart!
                           ? Icon(Icons.favorite_border)
                           : Icon(Icons.favorite_border),
                       color: AppColors.primarycolor),
@@ -71,7 +83,6 @@ class ProductItem extends StatelessWidget {
                     return Center(
                       child: Text('لا توجد صورة لعرضها'),
                     );
-
                   },
                   // height: MediaQueryHelper.sizeFromHeight(context, 10),
                 ),

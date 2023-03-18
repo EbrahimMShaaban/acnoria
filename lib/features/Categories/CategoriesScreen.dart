@@ -72,8 +72,7 @@ class CategoriesScrren extends StatelessWidget {
                 print(state);
               },
               builder: (context, state) {
-
-                 CategoriesModel? categoriesmodel =
+                CategoriesModel? categoriesmodel =
                     CategoriesCubit.get(context)?.categoriesModel;
                 return categoriesmodel == null
                     ? Center(child: CircularProgressIndicator())
@@ -81,9 +80,11 @@ class CategoriesScrren extends StatelessWidget {
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
-                          return categoriesmodel.data![index].name != null? ContinerCategories(
-                            name: '${categoriesmodel.data![index].name}',
-                          ):SizedBox();
+                          return categoriesmodel.data![index].name != null
+                              ? ContinerCategories(
+                                  name: '${categoriesmodel.data![index].name}',
+                                )
+                              : SizedBox();
                         },
                         itemCount: categoriesmodel.data?.length,
                       );

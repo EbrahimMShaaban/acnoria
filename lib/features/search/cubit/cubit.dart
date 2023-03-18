@@ -7,30 +7,36 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter/material.dart';
 
+import '../../../models/customproducts_model.dart';
+
 class SearchCubit extends Cubit<SearchStates> {
   SearchCubit() : super(SearchInitialStates());
 
   static SearchCubit? get(context) => BlocProvider.of(context);
 
-  Product? product;
+  CustomProductsModel? product;
 
-  getAllProducts() {
+  getAllProducts(int id) {
     print('prooooduct is ${product?.data?.length}');
 
     emit(SearchLoadingtState());
 
     DioHelper.getdata(
-      url:  AllProducts,
+      url:  AllCustomProducts,
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json',
       },
+      query: {
+        'locale' : 'ar',
+        'category_id':id,
+      }
     ).then((value) {
-      product = Product.fromJson(value.data);
-      List<Data> list = product?.data?.length as List<Data>;
+      product = CustomProductsModel.fromJson(value.data);
+    //  List<Data> list = product?.data?.length as List<Data>;
       print('prooooduct is ${value.data}');
       print('prooooduct is ${value.data}');
-      print('prooooduct is ${list}');
+  //    print('prooooduct is ${list}');
 
 
       emit(SearchSuccessState());
