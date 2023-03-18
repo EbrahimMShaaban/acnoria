@@ -300,11 +300,14 @@ class _ItemScreenState extends State<ItemScreen> {
                                   BlocConsumer<CartCubit, CartState>(
                                     listener: (context, state) {
                                       print(state);
-                                      if (state is AddCartSuccessState)
+                                      if (state is AddCartSuccessState) {
                                         navigateTo(context, CartScreen());
+                                      }
                                       // TODO: implement listener
                                     },
                                     builder: (context, state) {
+                                      CustemItemModel? customProductsModel =
+                                          CartCubit.get(context).product;
                                       return state is AddCartLoadingtState
                                           ? Center(
                                               child:
@@ -324,10 +327,9 @@ class _ItemScreenState extends State<ItemScreen> {
                                                           .primarycolor,
                                                       text1: " اضف الى السلة",
                                                       onPressed: () {
-                                                        // CartCubit.get(context).AddCart(
-                                                        //     product_id: widget.product
-                                                        //         .data![widget.index].id,
-                                                        //     quantity: count);
+                                                        CartCubit.get(context).AddCart(
+                                                            product_id: customProductsModel?.data!.id,
+                                                            quantity: count);
                                                       }),
                                                 ),
                                               ),
