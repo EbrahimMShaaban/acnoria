@@ -9,6 +9,7 @@ import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../models/custom_item_model.dart';
 import '../../models/product_model.dart';
 import '../../shared/styles/images.dart';
 
@@ -64,7 +65,7 @@ class _ItemScreenState extends State<ItemScreen> {
           child: BlocConsumer<CartCubit, CartState>(
             listener: (context, state) {},
             builder: (context, state) {
-              CustomProductsModel? customProductsModel =
+              CustemItemModel? customProductsModel =
                   CartCubit.get(context).product;
               return state is! AddCartLoadingtState
                   ? SingleChildScrollView(
@@ -80,7 +81,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                       context, 3),
                                   // width: MediaQueryHelper.sizeFromWidth(context, 2),
                                   child: Image.network(
-                                    '${customProductsModel?.data![0].baseImage?.largeImageUrl}',
+                                    '${customProductsModel?.data!.baseImage?.largeImageUrl}',
                                     // height: MediaQueryHelper.sizeFromHeight(context, 10),
                                   ),
                                 ),
@@ -141,7 +142,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                             SizedBox(
                                                 width: 280,
                                                 child: Text(
-                                                  '${customProductsModel?.data![0].shortDescription}',
+                                                  '${customProductsModel?.data!.shortDescription}',
                                                   maxLines: 2,
                                                   style: AppTextStyles
                                                       .boldtitles
@@ -186,7 +187,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                           height: 15,
                                         ),
                                         Text(
-                                          '${customProductsModel?.data![0].description}',
+                                          '${customProductsModel?.data!.description}',
                                           style: AppTextStyles.smTitles.apply(
                                               color: AppColors.greyDark,
                                               fontSizeDelta: -8),
@@ -196,7 +197,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              '${customProductsModel?.data![0].price} ر.س ',
+                                              '${customProductsModel?.data!.price} ر.س ',
                                               style: AppTextStyles.boldtitles
                                                   .apply(
                                                       color: AppColors.blue,
@@ -204,7 +205,7 @@ class _ItemScreenState extends State<ItemScreen> {
                                             ),
                                             SizedBox(width: 5),
                                             Text(
-                                              '${customProductsModel?.data![0].formatedPrice}',
+                                              '${customProductsModel?.data!.formatedPrice}',
                                               style: AppTextStyles.boldtitles
                                                   .apply(
                                                       decoration: TextDecoration

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
+import '../../../models/custom_item_model.dart';
 import '../../../models/customproducts_model.dart';
 import '../../../models/registermodel.dart';
 import '../../../shared/network/remote/dio_helper.dart';
@@ -15,7 +16,7 @@ class CartCubit extends Cubit<CartState> {
   static CartCubit get(context) => BlocProvider.of(context);
 
   // CartModel? myCart;
-  CustomProductsModel? product;
+  CustemItemModel? product;
 
   void getCart() {
     emit(GetOrderLoadingtState());
@@ -46,12 +47,12 @@ class CartCubit extends Cubit<CartState> {
 
 
   getAllProducts(String key) {
-    print('prooooduct is ${product?.data?.length}');
+    print('prooooduct is ${product}');
 
     emit(AddCartLoadingtState());
 
     DioHelper.getdata(
-        url:  AllCustomProducts+key,
+        url:  CustomProduct+key,
         headers: {
           'Content-type': 'application/json',
           'Accept': 'application/json',
@@ -60,7 +61,7 @@ class CartCubit extends Cubit<CartState> {
           'locale' : 'ar',
         }
     ).then((value) {
-      product = CustomProductsModel.fromJson(value.data);
+      product = CustemItemModel.fromJson(value.data);
       //  List<Data> list = product?.data?.length as List<Data>;
       print('prooooduct is ${value.data}');
       print('prooooduct is ${value.data}');
@@ -72,7 +73,7 @@ class CartCubit extends Cubit<CartState> {
       emit(AddCartErrorState());
 
       print('eeeeeeeeeeee${error.toString()}');
-      print('prooooduct is ${product?.data?.length}');
+      print('prooooduct is ${product}');
     });
   }
 
