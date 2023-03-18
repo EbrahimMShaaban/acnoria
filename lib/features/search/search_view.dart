@@ -26,9 +26,9 @@ class SearchView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => SearchCubit()..getAllProducts(id!),
-        ),
+        // BlocProvider(
+        //   create: (context) => SearchCubit()..getAllProducts(id!),
+        // ),
         BlocProvider(
           create: (context) => CategoriesCubit()..getAllCatefories(),
         )

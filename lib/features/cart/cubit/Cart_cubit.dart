@@ -100,9 +100,12 @@ class CartCubit extends Cubit<CartState> {
         "product_id": product_id,
         "quantity": quantity,
       }).then((value) {
+        emit(AddCartSuccessState());
       print("1111111111111111111111111111done");
+      print(product_id);
+      print(quantity);
 
-      emit(AddCartSuccessState());
+
     }).catchError((error) {
       print(error.toString());
       print("000000000000000000");
