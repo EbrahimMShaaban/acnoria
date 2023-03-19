@@ -92,7 +92,7 @@ class CartCubit extends Cubit<CartState> {
     // formKey.currentState!.save();
     DioHelper.postdata(url: ADDCART+"${product_id}", headers: {
       "Accept": "application/json",
-      'Authorization': "Bearer ${token}",
+      'Authorization': "Bearer $token",
 
     },
 
