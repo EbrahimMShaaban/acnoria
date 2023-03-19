@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/Favourite/cubit/cubit.dart';
 import 'features/search/cubit/cubit.dart';
 
 
@@ -62,7 +63,11 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) =>
               CategoriesCubit()..getAllCatefories(),
 
-            )
+            ),BlocProvider(
+              create: (context) => FavouritesCubit()..getAllfavourites(),
+
+
+            ),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -76,7 +81,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // English
               // Locale('es'), // Spanish
             ],
-            home: LoginScreen(),
+            home: startwidget,
           ),
         );
       },

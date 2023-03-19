@@ -1,3 +1,5 @@
+import 'package:acnoria/models/allFavorites_model.dart';
+
 var BASEURL = 'https://acnoria-backend.spider-te8.com/api/';
 const REGISTER = 'customer/register';
 const LOGIN = 'customer/login';
@@ -14,3 +16,4 @@ dynamic token = '';
 const AllCustomProducts='custom/products/';
 const CustomProduct='custom/products/';
 const AllCategories='custom/categories';
+const AllFavourites='wishlist/';
