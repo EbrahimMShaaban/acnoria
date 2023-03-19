@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'features/Favourite/cubit/cubit.dart';
 import 'features/search/cubit/cubit.dart';
 
 
@@ -56,19 +57,33 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
 
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: lightTheme,
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (BuildContext context) =>
+              CategoriesCubit()..getAllCatefories(),
+
+            ),BlocProvider(
+              create: (context) => FavouritesCubit()..getAllfavourites(),
+
+
+            ),
           ],
-          supportedLocales: const [
-            Locale('ar'), // English
-            // Locale('es'), // Spanish
-          ],
-          home: startwidget,
+
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: lightTheme,
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('ar'), // English
+              // Locale('es'), // Spanish
+            ],
+            home: startwidget,
+          ),
         );
       },
     );

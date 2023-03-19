@@ -24,7 +24,6 @@ class CartCubit extends Cubit<CartState> {
   int? code;
   String? message;
 
-
   void getCart() {
     emit(GetOrderLoadingtState());
     DioHelper.getdata(url: GEDORDER, headers: {
@@ -76,9 +75,8 @@ class CartCubit extends Cubit<CartState> {
   void AddCart({
     required int? product_id,
     required int? quantity,
-     BuildContext? context,
+    BuildContext? context,
   }) {
-
     emit(AddCartLoadingtState());
     DioHelper.postdata(url: "$ADDCART$product_id", headers: {
       "Accept": "application/json",
@@ -87,15 +85,13 @@ class CartCubit extends Cubit<CartState> {
       "product_id": product_id,
       "quantity": quantity,
     }).then((value) {
-
-    message = value.data["message"];
-      message == "تم بنجاح إضافة العنصر إلى العربة" ?navigateTo(context,
-          CartScreen())
-          :MotionToast.error(
-            description: Text(
-                "${value.data["error"]["message"]}"),
-          ).show(context!);
-    emit(AddCartSuccessState());
+      message = value.data["message"];
+      message == "تم بنجاح إضافة العنصر إلى العربة"
+          ? navigateTo(context, CartScreen())
+          : MotionToast.error(
+              description: Text("${value.data["error"]["message"]}"),
+            ).show(context!);
+      emit(AddCartSuccessState());
     }).catchError((error) {
       print(error.toString());
       print("000000000000000000");
