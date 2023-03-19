@@ -15,6 +15,17 @@ class AddCartErrorState extends CartState{
   //
   // CartErrorState({required this.message});
 
+}class GetAllProductstLoadingtState extends CartState{}
+class GetAllProductstSuccessState extends CartState{
+
+  // late final CartModel loginModel;
+  // CartSuccessState(this.loginModel);
+}
+class GetAllProductstErrorState extends CartState{
+  // final String message;
+  //
+  // CartErrorState({required this.message});
+
 }
 
 class GetOrderLoadingtState extends CartState{}
