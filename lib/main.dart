@@ -56,19 +56,28 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
 
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: lightTheme,
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (BuildContext context) =>
+              CategoriesCubit()..getAllCatefories(),
+
+            )
           ],
-          supportedLocales: const [
-            Locale('ar'), // English
-            // Locale('es'), // Spanish
-          ],
-          home: LoginScreen(),
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: lightTheme,
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('ar'), // English
+              // Locale('es'), // Spanish
+            ],
+            home: LoginScreen(),
+          ),
         );
       },
     );
