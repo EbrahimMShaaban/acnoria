@@ -8,12 +8,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class ContinerMyCart extends StatefulWidget {
   const ContinerMyCart(
     context, {
- required this.image, required this.quantity, required this.price, required this.title,
+ required this.image, required this.quantity, required this.price, required this.title, this.add, this.remove,
   });
 
   final String image;
-    final int? quantity;
+     final int quantity;
   final String price;
+  final Function()? add;
+  final Function()? remove;
   final String title;
 
 
@@ -23,8 +25,9 @@ class ContinerMyCart extends StatefulWidget {
 
 class _ContinerMyCartState extends State<ContinerMyCart> {
 
-int -quantity=quantity;
+
   @override
+ int itemCount = 1;
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
@@ -116,11 +119,11 @@ int -quantity=quantity;
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         InkWell(
-                          onTap: () {
-                            setState(() {
-                              widget.quantity++;
-                            });
-                          },
+                          onTap:
+                            widget.add
+
+
+                          ,
                           child: Icon(
                             Icons.add,
                             color: AppColors.green,
@@ -131,12 +134,9 @@ int -quantity=quantity;
                             style: AppTextStyles.boldtitles.copyWith(
                                 color: AppColors.green, height: 0, fontSize: 15)),
                         InkWell(
-                          onTap:() {
-                            if (widget.quantity > 1)
-                              setState(() {
-                                widget.quantity =widget.quantity-1;
-                              });
-                          },
+                          onTap:
+                            widget.remove,
+
                           child: Icon(
                             Icons.remove,
                             color: AppColors.green,

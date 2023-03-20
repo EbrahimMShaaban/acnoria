@@ -404,7 +404,7 @@ class _paymentScreenState extends State<paymentScreen> {
                   ],
                 ),
               ),
-              Price(),
+              // Price(),
               ButtonTemplate(
                 minwidth: MediaQueryHelper.sizeFromWidth(context, 1),
                 color: AppColors.primarycolor,

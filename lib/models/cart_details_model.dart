@@ -126,7 +126,7 @@ class Data {
 
 class Items {
   int? id;
-  int? quantity;
+  int quantity =1;
   String? sku;
   String? type;
   String? name;
