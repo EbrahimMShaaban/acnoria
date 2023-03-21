@@ -15,7 +15,7 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
 
   AllFavouritesModel? allFavouritesModel;
 
-  getAllfavourites() {
+  void getAllfavourites() {
     //   print('prooooduct is ${product?.data?.length}');
 
     emit(FavouritesLoadingtState());
@@ -38,7 +38,7 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
 
 
 
-      emit(FavouritesSuccessState(value.data));
+      emit(FavouritesSuccessState());
     }).catchError((error) {
       emit(FavouritesErrorState(message: error.toString()));
 

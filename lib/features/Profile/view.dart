@@ -5,6 +5,7 @@ import 'package:acnoria/features/Profile/myorders.dart';
 import 'package:acnoria/features/Profile/payment_methods.dart';
 import 'package:acnoria/features/Profile/privacy.dart';
 import 'package:acnoria/features/Profile/us_information.dart';
+import 'package:acnoria/features/cart/view.dart';
 import 'package:acnoria/features/location/chandeLocation.dart';
 import 'package:acnoria/features/registration/Forgit_Password/EditPassword.dart';
 import 'package:acnoria/features/registration/login/view.dart';
@@ -64,7 +65,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               fontSize: 22),
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            navigateTo(context, CartScreen());
+                          },
                           icon: Image.asset(
                             height: 25,
                             AppImages.basket,

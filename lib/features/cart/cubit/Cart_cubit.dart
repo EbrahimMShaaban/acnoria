@@ -33,14 +33,39 @@ class CartCubit extends Cubit<CartState> {
       'locale': 'ar',
     }).then((value) {
       cartDetailsModel = CartDetailsModel.fromJson(value.data);
-      print(value.data?["data"]);
+      print(cartDetailsModel!.data!.items);
       emit(GetOrdertSuccessState());
 
       print("11111111111111 done");
       print(value.data["data"]);
     }).catchError((error) {
       print(error);
+
+      print("11111111111111 ");
+
       emit(GetOrdertErrorState());
+    });
+  }
+
+  void romoveItem(int id) {
+    emit(RomoveItemFromCardLoadingtState());
+    DioHelper.getdata(url: "$RomoveItemFromCard$id", headers: {
+      'Accept': 'application/json',
+      'Authorization': "Bearer ${token}",
+    }, query: {
+      'locale': 'ar',
+    }).then((value) {
+      cartDetailsModel = CartDetailsModel.fromJson(value.data);
+      print(cartDetailsModel!.data!.items);
+      emit(RomoveItemFromCardtSuccessState());
+
+      print("11111111111111 done");
+      print(value.data["data"]);
+    }).catchError((error) {
+      print(error);
+      print("11111111111111 ");
+
+      emit(RomoveItemFromCardtErrorState());
     });
   }
 
@@ -70,8 +95,6 @@ class CartCubit extends Cubit<CartState> {
     });
   }
 
-  // final formKey = GlobalKey<FormState>();
-
   void AddCart({
     required int? product_id,
     required int? quantity,
@@ -98,6 +121,31 @@ class CartCubit extends Cubit<CartState> {
       print(product_id);
       print(quantity);
       emit(AddCartErrorState());
+    });
+  }
+
+  void updateCard({
+    required int? product_id,
+    required int? quantity,
+    BuildContext? context,
+  }) {
+    emit(UpdateCardtLoadingtState());
+    DioHelper.putdata(url: UpdateCard, headers: {
+      "Accept": "application/json",
+      'Authorization': "Bearer ${token}",
+    }, posteddata: {
+      "qty": {"${product_id}": quantity}
+    }).then((value) {
+      // message = value.data["message"];
+      print("000000000000000000");
+
+      emit(UpdateCardtSuccessState());
+    }).catchError((error) {
+      print('issssssssssssssssssssssssssssssssssssssss ${product_id}');
+    print(quantity);
+      print(error.toString());
+
+      emit(UpdateCardtErrorState());
     });
   }
 }

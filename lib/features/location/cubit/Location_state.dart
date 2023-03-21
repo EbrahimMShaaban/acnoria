@@ -15,7 +15,30 @@ class GetLocationErrorState extends LocationState{
   //
   // LocationErrorState({required this.message});
 
-}class PostLocationLoadingtState extends LocationState{}
+}
+
+class GetLocationIdLoadingtState extends LocationState{}
+class GetLocationIdSuccessState extends LocationState{
+
+  // late final LocationModel loginModel;
+  // LocationSuccessState(this.loginModel);
+}
+class GetLocationIdErrorState extends LocationState{
+  // final String message;
+  //
+  // LocationErrorState({required this.message});
+
+}
+
+
+
+
+
+
+
+
+
+class PostLocationLoadingtState extends LocationState{}
 class PostLocationSuccessState extends LocationState{
 
   // late final LocationModel loginModel;

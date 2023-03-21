@@ -30,6 +30,7 @@ void main() async {
   final Widget startWidget;
   // await Future.delayed(Duration(seconds: 5));
   token = CacheHelper.getData(key: 'token');
+  idlocaton = CacheHelper.getData(key: 'idlocaton');
 
   if (token != null) {
     if (token != null)

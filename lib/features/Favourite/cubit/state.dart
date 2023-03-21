@@ -7,9 +7,7 @@ class FavouritesInitialStates extends FavouritesStates {}
 class FavouritesLoadingtState extends FavouritesStates {}
 
 class FavouritesSuccessState extends FavouritesStates {
-  final AllFavouritesModel  allFavouritesModel ;
 
-  FavouritesSuccessState(this.allFavouritesModel);
 }
 
 class FavouritesErrorState extends FavouritesStates {
