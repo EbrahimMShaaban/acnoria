@@ -74,6 +74,7 @@ class AppLayout extends StatelessWidget {
                             ? AppImages.favouriteSelect
                             : AppImages.favourite,
                         heigh: cubit.currentIndex == 1 ? 2 : 0,
+
                         // color: cubit.currentIndex == 1
                         //     ? AppColors.primarycolor
                         //     : AppColors.blueDark,

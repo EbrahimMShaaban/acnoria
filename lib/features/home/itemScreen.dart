@@ -46,7 +46,7 @@ class _ItemScreenState extends State<ItemScreen> {
               color: AppColors.primarycolor,
             ),
             onPressed: () {
-              navigateTo(context, CartScreen());
+              navigateTo(context, const CartScreen());
             },
           ),
           actions: [

@@ -4,11 +4,12 @@ class CartDetailsModel {
 
 
   CartDetailsModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    data = json['data'] != null ?  Data.fromJson(json['data']) : null;
   }
 
-
 }
+
+
 class Data {
   int? id;
   String? customerEmail;
