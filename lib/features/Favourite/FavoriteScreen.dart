@@ -29,7 +29,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         listener: (context, state) {
           // print(
           //     'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss');
-           print("stateeeeeeeee is  $state");
+          print("stateeeeeeeee is  $state");
         },
         builder: (context, state) {
 
@@ -39,59 +39,59 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
           //     FavouritesCubit.get(context)?.addFavouriteModel;
 
           //  print("${allFavouritesModel!.data!.length}");
-if(state is FavouritesSuccessState) {
-  return Scaffold(
-      backgroundColor: AppColors.white,
-      body: Padding(
-        padding: appPadding(),
-        child: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 60.0, bottom: 20),
-              child: Text(
-                "المفضلة",
-                style: AppTextStyles.lrTitles
-                    .apply(fontSizeDelta: 5, fontWeightDelta: 200),
-              ),
-            ),
+          if(state is FavouritesSuccessState) {
+            return Scaffold(
+              backgroundColor: AppColors.white,
+              body: Padding(
+                padding: appPadding(),
+                child: ListView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 60.0, bottom: 20),
+                      child: Text(
+                        "المفضلة",
+                        style: AppTextStyles.lrTitles
+                            .apply(fontSizeDelta: 5, fontWeightDelta: 200),
+                      ),
+                    ),
 
-                 ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return ContinerMyFavorite(
-                    onPressed: () {
-                      FavouritesCubit.get(context)
-                          ?.addFavourite(state.allFavouritesModel
-                          .data![index].product!.id!);
+                    ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return ContinerMyFavorite(
+                            onPressed: () {
+                              FavouritesCubit.get(context)
+                                  ?.addFavourite(state.allFavouritesModel
+                                  .data![index].product!.id!);
 
-                        FavouritesCubit.get(context)?.getAllfavourites();
-                    },
-                    index: index,
-                    allFavouritesModel: state.allFavouritesModel,
-                  );
-                },
-                separatorBuilder: (context, index) =>
-                const SizedBox(
-                  height: 20,
+                              FavouritesCubit.get(context)?.getAllfavourites();
+                            },
+                            index: index,
+                            allFavouritesModel: state.allFavouritesModel,
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        itemCount: state.allFavouritesModel.data!.length),
+
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ButtonTemplate(
+                        minwidth: double.infinity,
+                        icon: Icons.add_circle_outline_rounded,
+                        color: AppColors.primarycolor,
+                        text1: " اضف الى السلة",
+                        onPressed: () {}),
+                  ],
                 ),
-                itemCount: state.allFavouritesModel.data!.length),
-
-            const SizedBox(
-              height: 20,
-            ),
-            ButtonTemplate(
-                minwidth: double.infinity,
-                icon: Icons.add_circle_outline_rounded,
-                color: AppColors.primarycolor,
-                text1: " اضف الى السلة",
-                onPressed: () {}),
-          ],
-        ),
-      ),
-  );
-}return const Center(child: CircularProgressIndicator(),)
-              //   : const Center(child: CircularProgressIndicator())
+              ),
+            );
+          }return const Center(child: CircularProgressIndicator(),)
+          //   : const Center(child: CircularProgressIndicator())
               ;
         },
       ),

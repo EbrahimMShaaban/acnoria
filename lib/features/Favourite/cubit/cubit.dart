@@ -1,5 +1,3 @@
-
-
 import 'package:acnoria/features/Favourite/cubit/state.dart';
 import 'package:acnoria/models/addFav_model.dart';
 import 'package:bloc/bloc.dart';
@@ -22,12 +20,12 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
     emit(FavouritesLoadingtState());
 
     DioHelper.getdata(
-        url:  AllFavourites,
-        headers: {
-          'Content-type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': "Bearer $token",
-        },
+      url:  AllFavourites,
+      headers: {
+        'Content-type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': "Bearer $token",
+      },
 
 
     ).then((value) {
@@ -38,7 +36,7 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
       //  print('prooooduct is ${value.data}');
 
 
-    //  emit(FavouritesSuccessState());
+      //  emit(FavouritesSuccessState());
 
     }).catchError((error) {
 
@@ -50,21 +48,21 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
   }
 
   addFavourite(int id){
-   emit(FavouritesAddLoadingtState());
+    emit(FavouritesAddLoadingtState());
     DioHelper.getdata(url:"$AddFavourites$id",
 
-      headers: {
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': "Bearer $token",
-      },
-      query: {
-      "product_id":id
-      }
+        headers: {
+          'Content-type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': "Bearer $token",
+        },
+        query: {
+          "product_id":id
+        }
     ).then((value){
 
       addFavouriteModel = AddFavouriteModel.fromJson(value.data);
-       emit(FavouritesAddSuccessState( AddFavouriteModel.fromJson(value.data)!));
+      emit(FavouritesAddSuccessState( AddFavouriteModel.fromJson(value.data)!));
       // if (addFavouriteModel?.data!=null){
       //   emit(FavouritesAddSuccessState());
       //

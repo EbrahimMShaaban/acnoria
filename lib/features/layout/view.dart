@@ -28,7 +28,7 @@ class AppLayout extends StatelessWidget {
               child: Directionality(
                 textDirection: TextDirection.ltr,
                 child: Container(
-                  padding: EdgeInsets.only(bottom: 10,left: 10,right:10),
+                  padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
                   height: MediaQueryHelper.sizeFromHeight(context, 9),
                   decoration: BoxDecoration(
                       boxShadow: [
@@ -55,7 +55,7 @@ class AppLayout extends StatelessWidget {
                         //     ? MediaQueryHelper.sizeFromWidth(context, 13)
                         //     : MediaQueryHelper.sizeFromWidth(context, 15),
                         path: cubit.currentIndex == 0
-                            ?AppImages.homeselect
+                            ? AppImages.homeselect
                             : AppImages.home,
                         heigh: cubit.currentIndex == 0 ? 2 : 0,
 
@@ -87,7 +87,7 @@ class AppLayout extends StatelessWidget {
                         //     ? MediaQueryHelper.sizeFromWidth(context, 13)
                         //     : MediaQueryHelper.sizeFromWidth(context, 15),
                         path: cubit.currentIndex == 2
-                            ?AppImages.notificationsSelect
+                            ? AppImages.notificationsSelect
                             : AppImages.notifications,
                         heigh: cubit.currentIndex == 2 ? 2 : 0,
                         // color: cubit.currentIndex == 2

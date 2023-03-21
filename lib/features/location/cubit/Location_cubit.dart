@@ -15,6 +15,7 @@ class LocationCubit extends Cubit<LocationState> {
   static LocationCubit get(context) => BlocProvider.of(context);
 
   LocationModel? myLocation;
+  LocationiDModel? locationiDModel;
 
   void getLocation() {
     emit(GetLocationLoadingtState());
@@ -36,6 +37,28 @@ class LocationCubit extends Cubit<LocationState> {
       print(error);
       print("00000000000000000000000ddddddddddddddddddddddd000000");
       emit(GetLocationErrorState());
+    });
+  }
+  void getLocationId() {
+    emit(GetLocationIdLoadingtState());
+    DioHelper.getdata(
+      url: "$addresses_get$idlocaton",
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': "Bearer ${token}",
+      },
+    ).then((value) {
+      locationiDModel = LocationiDModel.fromJson(value.data);
+      // print(myLocation!.data?.email);
+
+      emit(GetLocationIdSuccessState());
+
+       print("11111111111111 done");
+      print(value.data["data"]);
+    }).catchError((error) {
+      print(error);
+      print("00000000000000000000000ddddddddddddddddddddddd000000");
+      emit(GetLocationIdErrorState());
     });
   }
 
@@ -63,17 +86,18 @@ class LocationCubit extends Cubit<LocationState> {
       "address1": [
         "Clock Tower"
       ],
-      "country": "IN",
-      "country_name": "India",
-      "state": "UT",
-      "city": "Dehradun",
+      "country":country,
+      "country_name": country,
+      "state": state,
+      "city": city,
       "postcode": 248001,
-      "phone": "01345679",
+      "phone": phone,
     },).then((value) {
       // myLocation = RegisterModrl.fromJson(value.data);
       print("1111111111111111111111111111done");
-      print(value.data["message"]);
+      print(value.data["data"]["id"]);
       print(value.data["data"]);
+      idlocaton =value.data["data"]["id"];
       emit(PostLocationSuccessState());
     }).catchError((error) {
       print(error.toString());

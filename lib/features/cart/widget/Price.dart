@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import '../../../shared/styles/colors.dart';
 import '../../../shared/styles/styles.dart';
  class Price extends StatelessWidget {
-   const Price({Key? key}) : super(key: key);
- 
+   const Price({Key? key, required this.allPrice, required this.totalPrice, required this.priceRate}) : super(key: key);
+ final String allPrice;
+ final String totalPrice;
+ final String priceRate;
    @override
    Widget build(BuildContext context) {
      return     Column(
@@ -21,7 +23,7 @@ import '../../../shared/styles/styles.dart';
                  AppTextStyles.textsmbold,
                ),
                Text(
-                 "110 ر.س",
+                allPrice,
                  style:  AppTextStyles.textsmbold,
                ),
              ],
@@ -43,7 +45,7 @@ import '../../../shared/styles/styles.dart';
                  ),
                ),
                Text(
-                 "20 ر.س",
+                 priceRate,
                  style:  AppTextStyles.textsmbold.copyWith(
                      color: AppColors.green
                  ),
@@ -69,14 +71,14 @@ import '../../../shared/styles/styles.dart';
                SizedBox(
                  width: 12,
                ),
-               Text(
-                 "(4 عناصر)",
-                 style: AppTextStyles.boldtitles
-                     .apply(color: AppColors.blue, fontSizeDelta: -5),
-               ),
+               // Text(
+               //   "(4 عناصر)",
+               //   style: AppTextStyles.boldtitles
+               //       .apply(color: AppColors.blue, fontSizeDelta: -5),
+               // ),
                Spacer(),
                Text(
-                 "124 ر.س",
+                 totalPrice,
                  style: AppTextStyles.textsmbold,
                ),
              ],

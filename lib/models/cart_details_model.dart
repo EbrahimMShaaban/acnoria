@@ -1,24 +1,19 @@
 class CartDetailsModel {
   Data? data;
 
-  CartDetailsModel({this.data});
+
 
   CartDetailsModel.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ?  Data.fromJson(json['data']) : null;
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    return data;
-  }
 }
+
 
 class Data {
   int? id;
   String? customerEmail;
+  String? message;
   String? customerFirstName;
   String? customerLastName;
   String? shippingMethod;
@@ -55,7 +50,7 @@ class Data {
   String? channel;
   List<Items>? items;
   String? selectedShippingRate;
-  Null? payment;
+  String? payment;
   String? billingAddress;
   String? shippingAddress;
   String? createdAt;
@@ -67,56 +62,9 @@ class Data {
   String? formatedDiscountedSubTotal;
   String? formatedBaseDiscountedSubTotal;
 
-  Data(
-      {this.id,
-        this.customerEmail,
-        this.customerFirstName,
-        this.customerLastName,
-        this.shippingMethod,
-        this.couponCode,
-        this.isGift,
-        this.itemsCount,
-        this.itemsQty,
-        this.exchangeRate,
-        this.globalCurrencyCode,
-        this.baseCurrencyCode,
-        this.channelCurrencyCode,
-        this.cartCurrencyCode,
-        this.grandTotal,
-        this.formatedGrandTotal,
-        this.baseGrandTotal,
-        this.formatedBaseGrandTotal,
-        this.subTotal,
-        this.formatedSubTotal,
-        this.baseSubTotal,
-        this.formatedBaseSubTotal,
-        this.taxTotal,
-        this.formatedTaxTotal,
-        this.baseTaxTotal,
-        this.formatedBaseTaxTotal,
-        this.discount,
-        this.formatedDiscount,
-        this.baseDiscount,
-        this.formatedBaseDiscount,
-        this.checkoutMethod,
-        this.isGuest,
-        this.isActive,
-        this.conversionTime,
-        this.customer,
-        this.channel,
-        this.items,
-        this.selectedShippingRate,
-        this.payment,
-        this.billingAddress,
-        this.shippingAddress,
-        this.createdAt,
-        this.updatedAt,
-        this.taxes,
-        this.formatedTaxes,
-        this.baseTaxes,
-        this.formatedBaseTaxes,
-        this.formatedDiscountedSubTotal,
-        this.formatedBaseDiscountedSubTotal});
+
+
+
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -175,71 +123,15 @@ class Data {
     formatedBaseDiscountedSubTotal = json['formated_base_discounted_sub_total'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['customer_email'] = this.customerEmail;
-    data['customer_first_name'] = this.customerFirstName;
-    data['customer_last_name'] = this.customerLastName;
-    data['shipping_method'] = this.shippingMethod;
-    data['coupon_code'] = this.couponCode;
-    data['is_gift'] = this.isGift;
-    data['items_count'] = this.itemsCount;
-    data['items_qty'] = this.itemsQty;
-    data['exchange_rate'] = this.exchangeRate;
-    data['global_currency_code'] = this.globalCurrencyCode;
-    data['base_currency_code'] = this.baseCurrencyCode;
-    data['channel_currency_code'] = this.channelCurrencyCode;
-    data['cart_currency_code'] = this.cartCurrencyCode;
-    data['grand_total'] = this.grandTotal;
-    data['formated_grand_total'] = this.formatedGrandTotal;
-    data['base_grand_total'] = this.baseGrandTotal;
-    data['formated_base_grand_total'] = this.formatedBaseGrandTotal;
-    data['sub_total'] = this.subTotal;
-    data['formated_sub_total'] = this.formatedSubTotal;
-    data['base_sub_total'] = this.baseSubTotal;
-    data['formated_base_sub_total'] = this.formatedBaseSubTotal;
-    data['tax_total'] = this.taxTotal;
-    data['formated_tax_total'] = this.formatedTaxTotal;
-    data['base_tax_total'] = this.baseTaxTotal;
-    data['formated_base_tax_total'] = this.formatedBaseTaxTotal;
-    data['discount'] = this.discount;
-    data['formated_discount'] = this.formatedDiscount;
-    data['base_discount'] = this.baseDiscount;
-    data['formated_base_discount'] = this.formatedBaseDiscount;
-    data['checkout_method'] = this.checkoutMethod;
-    data['is_guest'] = this.isGuest;
-    data['is_active'] = this.isActive;
-    data['conversion_time'] = this.conversionTime;
-    data['customer'] = this.customer;
-    data['channel'] = this.channel;
-    if (this.items != null) {
-      data['items'] = this.items!.map((v) => v.toJson()).toList();
-    }
-    data['selected_shipping_rate'] = this.selectedShippingRate;
-    data['payment'] = this.payment;
-    data['billing_address'] = this.billingAddress;
-    data['shipping_address'] = this.shippingAddress;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['taxes'] = this.taxes;
-    data['formated_taxes'] = this.formatedTaxes;
-    data['base_taxes'] = this.baseTaxes;
-    data['formated_base_taxes'] = this.formatedBaseTaxes;
-    data['formated_discounted_sub_total'] = this.formatedDiscountedSubTotal;
-    data['formated_base_discounted_sub_total'] =
-        this.formatedBaseDiscountedSubTotal;
-    return data;
-  }
 }
 
 class Items {
   int? id;
-  int? quantity;
+  int quantity =1;
   String? sku;
   String? type;
   String? name;
-  Null? couponCode;
+  // String? couponCode;
   String? weight;
   String? totalWeight;
   String? baseTotalWeight;
@@ -247,7 +139,7 @@ class Items {
   String? formatedPrice;
   String? basePrice;
   String? formatedBasePrice;
-  Null? customPrice;
+  String? customPrice;
   String? formatedCustomPrice;
   String? total;
   String? formatedTotal;
@@ -269,41 +161,7 @@ class Items {
   String? createdAt;
   String? updatedAt;
 
-  Items(
-      {this.id,
-        this.quantity,
-        this.sku,
-        this.type,
-        this.name,
-        this.couponCode,
-        this.weight,
-        this.totalWeight,
-        this.baseTotalWeight,
-        this.price,
-        this.formatedPrice,
-        this.basePrice,
-        this.formatedBasePrice,
-        this.customPrice,
-        this.formatedCustomPrice,
-        this.total,
-        this.formatedTotal,
-        this.baseTotal,
-        this.formatedBaseTotal,
-        this.taxPercent,
-        this.taxAmount,
-        this.formatedTaxAmount,
-        this.baseTaxAmount,
-        this.formatedBaseTaxAmount,
-        this.discountPercent,
-        this.discountAmount,
-        this.formatedDiscountAmount,
-        this.baseDiscountAmount,
-        this.formatedBaseDiscountAmount,
-        this.additional,
-        this.child,
-        this.product,
-        this.createdAt,
-        this.updatedAt});
+
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -311,7 +169,7 @@ class Items {
     sku = json['sku'];
     type = json['type'];
     name = json['name'];
-    couponCode = json['coupon_code'];
+    // couponCode = json['coupon_code'];
     weight = json['weight'];
     totalWeight = json['total_weight'];
     baseTotalWeight = json['base_total_weight'];
@@ -345,48 +203,6 @@ class Items {
     updatedAt = json['updated_at'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['quantity'] = this.quantity;
-    data['sku'] = this.sku;
-    data['type'] = this.type;
-    data['name'] = this.name;
-    data['coupon_code'] = this.couponCode;
-    data['weight'] = this.weight;
-    data['total_weight'] = this.totalWeight;
-    data['base_total_weight'] = this.baseTotalWeight;
-    data['price'] = this.price;
-    data['formated_price'] = this.formatedPrice;
-    data['base_price'] = this.basePrice;
-    data['formated_base_price'] = this.formatedBasePrice;
-    data['custom_price'] = this.customPrice;
-    data['formated_custom_price'] = this.formatedCustomPrice;
-    data['total'] = this.total;
-    data['formated_total'] = this.formatedTotal;
-    data['base_total'] = this.baseTotal;
-    data['formated_base_total'] = this.formatedBaseTotal;
-    data['tax_percent'] = this.taxPercent;
-    data['tax_amount'] = this.taxAmount;
-    data['formated_tax_amount'] = this.formatedTaxAmount;
-    data['base_tax_amount'] = this.baseTaxAmount;
-    data['formated_base_tax_amount'] = this.formatedBaseTaxAmount;
-    data['discount_percent'] = this.discountPercent;
-    data['discount_amount'] = this.discountAmount;
-    data['formated_discount_amount'] = this.formatedDiscountAmount;
-    data['base_discount_amount'] = this.baseDiscountAmount;
-    data['formated_base_discount_amount'] = this.formatedBaseDiscountAmount;
-    if (this.additional != null) {
-      data['additional'] = this.additional!.toJson();
-    }
-    data['child'] = this.child;
-    if (this.product != null) {
-      data['product'] = this.product!.toJson();
-    }
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    return data;
-  }
 }
 
 class Additional {
@@ -394,7 +210,6 @@ class Additional {
   int? quantity;
   String? token;
 
-  Additional({this.productId, this.quantity, this.token});
 
   Additional.fromJson(Map<String, dynamic> json) {
     productId = json['product_id'];
@@ -402,13 +217,6 @@ class Additional {
     token = json['token'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['product_id'] = this.productId;
-    data['quantity'] = this.quantity;
-    data['token'] = this.token;
-    return data;
-  }
 }
 
 class Product {
@@ -433,27 +241,7 @@ class Product {
   bool? isItemInCart;
   bool? showQuantityChanger;
 
-  Product(
-      {this.id,
-        this.sku,
-        this.type,
-        this.name,
-        this.urlKey,
-        this.price,
-        this.formatedPrice,
-        this.shortDescription,
-        this.description,
-        this.images,
-        this.videos,
-        this.baseImage,
-        this.createdAt,
-        this.updatedAt,
-        this.reviews,
-        this.inStock,
-        this.isSaved,
-        this.isWishlisted,
-        this.isItemInCart,
-        this.showQuantityChanger});
+
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -486,36 +274,6 @@ class Product {
     showQuantityChanger = json['show_quantity_changer'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['sku'] = this.sku;
-    data['type'] = this.type;
-    data['name'] = this.name;
-    data['url_key'] = this.urlKey;
-    data['price'] = this.price;
-    data['formated_price'] = this.formatedPrice;
-    data['short_description'] = this.shortDescription;
-    data['description'] = this.description;
-    if (this.images != null) {
-      data['images'] = this.images!.map((v) => v.toJson()).toList();
-    }
-    data['videos'] = this.videos;
-    if (this.baseImage != null) {
-      data['base_image'] = this.baseImage!.toJson();
-    }
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.reviews != null) {
-      data['reviews'] = this.reviews!.toJson();
-    }
-    data['in_stock'] = this.inStock;
-    data['is_saved'] = this.isSaved;
-    data['is_wishlisted'] = this.isWishlisted;
-    data['is_item_in_cart'] = this.isItemInCart;
-    data['show_quantity_changer'] = this.showQuantityChanger;
-    return data;
-  }
 }
 
 class Images {
@@ -527,14 +285,7 @@ class Images {
   String? mediumImageUrl;
   String? largeImageUrl;
 
-  Images(
-      {this.id,
-        this.path,
-        this.url,
-        this.originalImageUrl,
-        this.smallImageUrl,
-        this.mediumImageUrl,
-        this.largeImageUrl});
+
 
   Images.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -546,17 +297,7 @@ class Images {
     largeImageUrl = json['large_image_url'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['path'] = this.path;
-    data['url'] = this.url;
-    data['original_image_url'] = this.originalImageUrl;
-    data['small_image_url'] = this.smallImageUrl;
-    data['medium_image_url'] = this.mediumImageUrl;
-    data['large_image_url'] = this.largeImageUrl;
-    return data;
-  }
+
 }
 
 class BaseImage {
@@ -565,11 +306,7 @@ class BaseImage {
   String? largeImageUrl;
   String? originalImageUrl;
 
-  BaseImage(
-      {this.smallImageUrl,
-        this.mediumImageUrl,
-        this.largeImageUrl,
-        this.originalImageUrl});
+
 
   BaseImage.fromJson(Map<String, dynamic> json) {
     smallImageUrl = json['small_image_url'];
@@ -578,14 +315,7 @@ class BaseImage {
     originalImageUrl = json['original_image_url'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['small_image_url'] = this.smallImageUrl;
-    data['medium_image_url'] = this.mediumImageUrl;
-    data['large_image_url'] = this.largeImageUrl;
-    data['original_image_url'] = this.originalImageUrl;
-    return data;
-  }
+
 }
 
 class Reviews {
@@ -594,7 +324,6 @@ class Reviews {
   int? averageRating;
   List<String>? percentage;
 
-  Reviews({this.total, this.totalRating, this.averageRating, this.percentage});
 
   Reviews.fromJson(Map<String, dynamic> json) {
     total = json['total'];
@@ -603,12 +332,4 @@ class Reviews {
     percentage = json['percentage'].cast<String>();
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['total'] = this.total;
-    data['total_rating'] = this.totalRating;
-    data['average_rating'] = this.averageRating;
-    data['percentage'] = this.percentage;
-    return data;
-  }
 }

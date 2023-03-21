@@ -1,5 +1,3 @@
-
-
 import 'package:acnoria/models/allFavorites_model.dart';
 
 import '../../../models/addFav_model.dart';
@@ -17,9 +15,9 @@ class FavouritesSuccessState extends FavouritesStates {
   FavouritesSuccessState(this.allFavouritesModel);
 }
 class FavouritesAddSuccessState extends FavouritesStates {
- final AddFavouriteModel  addFavouriteModel ;
+  final AddFavouriteModel  addFavouriteModel ;
 
- FavouritesAddSuccessState(this.addFavouriteModel);
+  FavouritesAddSuccessState(this.addFavouriteModel);
 }
 
 class FavouritesErrorState extends FavouritesStates {

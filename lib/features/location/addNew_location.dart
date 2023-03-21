@@ -6,19 +6,36 @@ import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/components/navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../shared/styles/colors.dart';
 import '../../shared/styles/styles.dart';
 
-class AddNewLocation extends StatelessWidget {
+class AddNewLocation extends StatefulWidget {
   AddNewLocation({Key? key}) : super(key: key);
+  static const CameraPosition initialCameraPosition = CameraPosition(target: LatLng(37.42796133580664, -122.085749655962), zoom: 14);
+
+  @override
+  State<AddNewLocation> createState() => _AddNewLocationState();
+}
+
+class _AddNewLocationState extends State<AddNewLocation> {
   @override
   TextEditingController? cityController = TextEditingController();
+
   TextEditingController? Controller = TextEditingController();
+
   TextEditingController? countryController = TextEditingController();
+
   TextEditingController? country_nameController = TextEditingController();
+
   TextEditingController? phoneController = TextEditingController();
+
   TextEditingController? stateontroller = TextEditingController();
+
+  late GoogleMapController googleMapController;
+
+  Set<Marker> markers = {};
 
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -47,12 +64,13 @@ class AddNewLocation extends StatelessWidget {
           ],
         ),
         body: SingleChildScrollView(
+
           child: Padding(
             padding: appPadding(),
             child: BlocConsumer<LocationCubit, LocationState>(
               listener: (context, state) {
                 print(state);
-                if (state is PostLocationSuccessState )navigateTo(context, ChangeLocationScreens());
+                if (state is PostLocationSuccessState )navigateAndReplace(context, ChangeLocationScreens());
                 // TODO: implement listener
               },
               builder: (context, state) {
@@ -64,10 +82,17 @@ class AddNewLocation extends StatelessWidget {
                       "اختر العنوان",
                       style: AppTextStyles.boldtitles.apply(fontSizeDelta: 2),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Image.asset("assets/images/img_4.png"),
+                //     GoogleMap(
+                // initialCameraPosition: AddNewLocation.initialCameraPosition,
+                // markers: markers,
+                // zoomControlsEnabled: false,
+                // mapType: MapType.normal,
+                // onMapCreated: (GoogleMapController controller) {
+                // googleMapController = controller;
+                // },
+                // ),
+
+
                     SizedBox(
                       height: 20,
                     ),
@@ -130,9 +155,55 @@ class AddNewLocation extends StatelessWidget {
             ),
           ),
         ),
+        // floatingActionButton: FloatingActionButton.extended(
+        //   onPressed: () async {
+        //     Position position = await _determinePosition();
+        //
+        //     googleMapController
+        //         .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(position.latitude, position.longitude), zoom: 14)));
+        //
+        //
+        //     markers.clear();
+        //
+        //     markers.add(Marker(markerId: const MarkerId('currentLocation'),position: LatLng(position.latitude, position.longitude)));
+        //
+        //     setState(() {});
+        //
+        //   },
+        //   label: const Text("Current Location"),
+        //   icon: const Icon(Icons.location_history),
+        // ),
       ),
     );
   }
+  // Future<Position> _determinePosition() async {
+  //   bool serviceEnabled;
+  //   LocationPermission permission;
+  //
+  //   serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  //
+  //   if (!serviceEnabled) {
+  //     return Future.error('Location services are disabled');
+  //   }
+  //
+  //   permission = await Geolocator.checkPermission();
+  //
+  //   if (permission == LocationPermission.denied) {
+  //     permission = await Geolocator.requestPermission();
+  //
+  //     if (permission == LocationPermission.denied) {
+  //       return Future.error("Location permission denied");
+  //     }
+  //   }
+  //
+  //   if (permission == LocationPermission.deniedForever) {
+  //     return Future.error('Location permissions are permanently denied');
+  //   }
+  //
+  //   Position position = await Geolocator.getCurrentPosition();
+  //
+  //   return position;
+  // }
 }
 
 class Addlocation extends StatelessWidget {
@@ -186,4 +257,9 @@ class Addlocation extends StatelessWidget {
       ),
     );
   }
+
+
+
 }
+
+

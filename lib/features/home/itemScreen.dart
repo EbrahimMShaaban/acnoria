@@ -8,7 +8,9 @@ import 'package:acnoria/shared/styles/colors.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:motion_toast/motion_toast.dart';
 
+import '../../models/cart_details_model.dart';
 import '../../models/custom_item_model.dart';
 import '../../models/product_model.dart';
 import '../../shared/styles/images.dart';
@@ -67,7 +69,7 @@ class _ItemScreenState extends State<ItemScreen> {
             builder: (context, state) {
               CustemItemModel? customProductsModel =
                   CartCubit.get(context).product;
-              return state is! AddCartLoadingtState
+              return state is! GetAllProductstLoadingtState
                   ? SingleChildScrollView(
                       child: Stack(
                         children: [
@@ -104,60 +106,47 @@ class _ItemScreenState extends State<ItemScreen> {
                                       topLeft: Radius.circular(35.0),
                                       topRight: Radius.circular(35.0))),
                               padding: EdgeInsets.symmetric(
-                                  horizontal: 36, vertical: 4),
+                                  horizontal: 36, vertical: 20),
                               margin: EdgeInsets.only(
                                 top: MediaQueryHelper.sizeFromHeight(
                                     context, 2.5),
                               ),
-                              // decoration: BoxDecoration(
-                              //     color: Colors.white,
-                              //     boxShadow: [
-                              //       BoxShadow(
-                              //         color: Colors.grey.withOpacity(0.5),
-                              //         spreadRadius: 1,
-                              //         blurRadius: 5,
-                              //         offset: Offset(0, 3), // changes position of shadow
-                              //       ),
-                              //     ],
-                              //     borderRadius: BorderRadius.only(
-                              //         topLeft: Radius.circular(35.0),
-                              //         topRight: Radius.circular(35.0))),
-                              // padding: EdgeInsets.symmetric(horizontal: 36, vertical: 30),
-                              // margin: EdgeInsets.only(
-                              //   top: MediaQueryHelper.sizeFromHeight(context, 2.5),
-                              // ),
-
                               child: Column(
                                 children: [
                                   Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
                                       children: [
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                              CrossAxisAlignment.center,
                                           children: [
                                             SizedBox(
-                                                width: 280,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    1.5,
                                                 child: Text(
                                                   '${customProductsModel?.data!.shortDescription}',
                                                   maxLines: 2,
                                                   style: AppTextStyles
                                                       .boldtitles
                                                       .copyWith(
-                                                          fontSize: 15,
+                                                          fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.w600),
                                                 )),
-                                            IconButton(
-                                              onPressed: () {
+                                            InkWell(
+                                              onTap: () {
                                                 setState(() {
                                                   favoriteIcon = !favoriteIcon;
                                                 });
                                               },
-                                              icon: favoriteIcon == true
+                                              child: favoriteIcon == true
                                                   ? Icon(
                                                       Icons.favorite,
                                                       size: 30,
@@ -176,16 +165,16 @@ class _ItemScreenState extends State<ItemScreen> {
                                         SizedBox(
                                           height: 10,
                                         ),
-                                        Text(
-                                          "– وردي – 4 غ",
-                                          style: AppTextStyles.boldtitles
-                                              .copyWith(
-                                                  color: AppColors.blueDark,
-                                                  fontSize: 15),
-                                        ),
-                                        SizedBox(
-                                          height: 15,
-                                        ),
+                                        // Text(
+                                        //   "– وردي – 4 غ",
+                                        //   style: AppTextStyles.boldtitles
+                                        //       .copyWith(
+                                        //           color: AppColors.blueDark,
+                                        //           fontSize: 15),
+                                        // ),
+                                        // SizedBox(
+                                        //   height: 15,
+                                        // ),
                                         Text(
                                           '${customProductsModel?.data!.description}',
                                           style: AppTextStyles.smTitles.apply(
@@ -300,14 +289,14 @@ class _ItemScreenState extends State<ItemScreen> {
                                   BlocConsumer<CartCubit, CartState>(
                                     listener: (context, state) {
                                       print(state);
-                                      if (state is AddCartSuccessState) {
-                                        navigateTo(context, CartScreen());
-                                      }
                                       // TODO: implement listener
                                     },
                                     builder: (context, state) {
                                       CustemItemModel? customProductsModel =
                                           CartCubit.get(context).product;
+
+
+
                                       return state is AddCartLoadingtState
                                           ? Center(
                                               child:
@@ -327,9 +316,15 @@ class _ItemScreenState extends State<ItemScreen> {
                                                           .primarycolor,
                                                       text1: " اضف الى السلة",
                                                       onPressed: () {
-                                                        CartCubit.get(context).AddCart(
-                                                            product_id: customProductsModel?.data!.id,
-                                                            quantity: count);
+                                                        CartCubit.get(context)
+                                                            .AddCart(context:context ,
+                                                                product_id:
+                                                                    customProductsModel
+                                                                        ?.data!
+                                                                        .id,
+                                                                quantity:
+                                                                    count);
+
                                                       }),
                                                 ),
                                               ),

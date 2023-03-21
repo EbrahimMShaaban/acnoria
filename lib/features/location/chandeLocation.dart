@@ -4,6 +4,7 @@ import 'package:acnoria/models/LocationKodel.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/components/navigator.dart';
+import 'package:acnoria/shared/network/remote/end_points.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,15 +20,12 @@ class ChangeLocationScreens extends StatefulWidget {
 }
 
 class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
-
-
+  late int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-      LocationCubit()
-        ..getLocation(),
+      create: (context) => LocationCubit()..getLocation(),
       child: Scaffold(
         appBar: ProfileAppBar(context, txt: 'العنوان'),
         body: Padding(
@@ -43,46 +41,51 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
                 "اختر العنوان",
                 style: AppTextStyles.boldtitles.apply(fontSizeDelta: 5),
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Expanded(
                 flex: 9,
-
                 child: BlocConsumer<LocationCubit, LocationState>(
                   listener: (context, state) {
                     print(state);
                     // TODO: implement listener
                   },
                   builder: (context, state) {
-                    LocationModel? locationModel = LocationCubit
-                        .get(context)
-                        .myLocation;
-                    return state is GetLocationLoadingtState ? Center(
-                      child: CircularProgressIndicator(),):ListView.builder(
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      itemCount: locationModel!.data!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        print(locationModel.data!.length);
-                        print("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-                        return InkWell(
-                            onTap: () {
-                              // setState(() {
-                              //   ContaineList?.forEach(
-                              //           (gender) => gender.isSelected = false);
-                              //   ContaineList![index].isSelected = true;
-                              // });
+                    LocationModel? locationModel =
+                        LocationCubit.get(context).myLocation;
+                    return state is GetLocationLoadingtState
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : ListView.builder(
+                            shrinkWrap: true,
+                            physics: ScrollPhysics(),
+                            itemCount: locationModel!.data!.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              print(locationModel.data!.length);
+                              print(
+                                  "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+                              return InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      selectedIndex = index;
+                                      idlocaton= locationModel.data![index].id;
+                                    });
+                                  },
+                                  child: ContainerLocation(
+                                    locationModel: locationModel.data![index],
+                                    color: selectedIndex == index
+                                        ? AppColors.green
+                                        : AppColors.grey,
+                                  ));
                             },
-                            child: ContainerLocation(
-                                locationModel: locationModel.data![index]));
-                      },
-                    );
+                          );
                   },
                 ),
               ),
-
               Expanded(
                 flex: 1,
-
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: ButtonTemplate(
@@ -92,7 +95,8 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
                     text1: "أضافة عنوان جديد",
                     onPressed: () {
                       navigateTo(context, AddNewLocation());
-                    },),
+                    },
+                  ),
                 ),
               )
             ],
@@ -103,14 +107,14 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
   }
 }
 
-
-
 class ContainerLocation extends StatelessWidget {
-  const ContainerLocation({Key? key, required this.locationModel})
+  const ContainerLocation(
+      {Key? key, required this.locationModel, required this.color})
       : super(key: key);
 
   // final ContainerLocationModel containerLocationModel;
   final Data locationModel;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -121,11 +125,7 @@ class ContainerLocation extends StatelessWidget {
       width: MediaQueryHelper.sizeFromWidth(context, 1),
       decoration: BoxDecoration(
         color: AppColors.white,
-        // border: Border.all(
-        //     color: containerLocationModel.isSelected
-        //         ? AppColors.green
-        //         : AppColors.grey,
-        //     width: 1.0),
+        border: Border.all(color: color, width: 1.0),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(

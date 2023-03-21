@@ -8,14 +8,21 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class ContinerMyCart extends StatefulWidget {
   const ContinerMyCart(
     context, {
-    required this.add,
-    required this.count,
-    required this.remove,
+    required this.image,
+    required this.quantity,
+    required this.price,
+    required this.title,
+    this.add,
+    this.remove, this.removeitem,
   });
 
-  final int count;
+  final String image;
+  final int quantity;
+  final String price;
   final Function()? add;
   final Function()? remove;
+  final Function()? removeitem;
+  final String title;
 
   @override
   State<ContinerMyCart> createState() => _ContinerMyCartState();
@@ -23,6 +30,8 @@ class ContinerMyCart extends StatefulWidget {
 
 class _ContinerMyCartState extends State<ContinerMyCart> {
   @override
+  int itemCount = 1;
+
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 10),
@@ -45,34 +54,41 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
         children: [
           Container(
             height: 80,
-            width: 90,
+            width: 100,
 // color: Colors.amber
-            child: Image.asset(
-              "assets/images/item.png",
-              fit: BoxFit.fill,
+            child: Center(
+              child: Image.network(
+                widget.image,
+                errorBuilder: (context, obj, tracer) {
+                  return Text("لا توجد صورة لعرضها");
+                },
+              ),
             ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "أوه ماي تنت",
-                style: AppTextStyles.textsmbold
-                    .copyWith(color: AppColors.blue, height: 0),
-              ),
-              Text(
-                "متبقى 3",
-                style: AppTextStyles.hittext.copyWith(
-                  color: AppColors.green,
+              SizedBox(
+                width: MediaQuery.of(context).size.width / 3,
+                child: Text(
+                  widget.title,
+                  maxLines: 2,
+                  style: AppTextStyles.textsmbold
+                      .copyWith(color: AppColors.blue, height: 0, fontSize: 15),
                 ),
-
               ),
+              // Text(
+              //   "${widget.quantity}",
+              //   style: AppTextStyles.hittext.copyWith(
+              //     color: AppColors.green,
+              //   ),
+
+              // ),
               SizedBox(height: 9),
 
-
               Text(
-                "55 ر.س",
+                widget.price,
                 style: AppTextStyles.textsmbold
                     .copyWith(color: AppColors.blue, height: 0),
               ),
@@ -81,12 +97,13 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
 
           Spacer(),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding:  EdgeInsets.all(8.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Icon(Icons.clear_outlined,size: 18),
+                InkWell(
+                    onTap: widget.removeitem ,child:  Icon(Icons.clear_outlined, size: 18)),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Container(
@@ -97,8 +114,8 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
                       border: Border.all(
                         color: AppColors.Bluehint,
                       ),
-                      borderRadius: const BorderRadius.all(
-                          Radius.circular(10.0) //         <--- border radius here
+                      borderRadius: const BorderRadius.all(Radius.circular(
+                              10.0) //         <--- border radius here
                           ),
                     ),
                     child: Row(
@@ -106,22 +123,20 @@ class _ContinerMyCartState extends State<ContinerMyCart> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         InkWell(
-                          onTap: () {
-                            widget.add!();
-                          },
+                          onTap: widget.add,
                           child: Icon(
                             Icons.add,
                             color: AppColors.green,
                             size: 15,
                           ),
                         ),
-                        Text("${widget.count}",
+                        Text("${widget.quantity}",
                             style: AppTextStyles.boldtitles.copyWith(
-                                color: AppColors.green, height: 0, fontSize: 15)),
+                                color: AppColors.green,
+                                height: 0,
+                                fontSize: 15)),
                         InkWell(
-                          onTap: () {
-                            widget.remove!();
-                          },
+                          onTap: widget.remove,
                           child: Icon(
                             Icons.remove,
                             color: AppColors.green,

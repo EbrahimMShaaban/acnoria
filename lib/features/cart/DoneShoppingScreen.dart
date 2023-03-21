@@ -1,3 +1,6 @@
+import 'package:acnoria/features/cart/widget/ContainerMyOrder.dart';
+import 'package:acnoria/features/cart/widget/Price.dart';
+import 'package:acnoria/features/layout/view.dart';
 import 'package:acnoria/shared/components/components.dart';
 import 'package:acnoria/shared/components/constants.dart';
 import 'package:acnoria/shared/styles/colors.dart';
@@ -5,10 +8,12 @@ import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../models/cart_details_model.dart';
 import '../../shared/components/navigator.dart';
 
 class DoneShoppingScreen extends StatefulWidget {
-  const DoneShoppingScreen({Key? key}) : super(key: key);
+  const DoneShoppingScreen({Key? key, required this.cartDetailsModel}) : super(key: key);
+  final CartDetailsModel cartDetailsModel;
 
   @override
   State<DoneShoppingScreen> createState() => _DoneShoppingScreenState();
@@ -142,157 +147,32 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                         "المنتجات",
                         style: AppTextStyles.boldtitles.copyWith(fontSize: 20),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 10, top: 20),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 1, vertical: 5),
-                        height: 110.h,
-                        decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        width: MediaQueryHelper.sizeFromWidth(context, 1),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 80,
-                              width: 80,
-                              child: Image.asset(
-                                "assets/images/item.png",
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "أوه ماي تنت",
-                                  style: AppTextStyles.boldtitles.apply(
-                                      color: AppColors.primarycolor, fontSizeDelta: 0),
-                                ),
-                                RichText(
-                                    textAlign: TextAlign.center,
-                                    text: TextSpan(children: [
-                                      TextSpan(
-                                        text: "السعر :  ",
-                                        style: AppTextStyles.w600.copyWith(
-                                            color: AppColors.primarycolor,
-                                            fontSize: 17),
-                                      ),
-                                      TextSpan(
-                                        text: "55 ر.س ",
-                                        style: AppTextStyles.w600.copyWith(
-                                            color: AppColors.green,
-                                            fontSize: 17),
-                                      ),
-                                    ])),
-                                RichText(
-                                    textAlign: TextAlign.center,
-                                    text: TextSpan(children: [
-                                      TextSpan(
-                                        text: "الكمية :  ",
-                                        style: AppTextStyles.w600.copyWith(
-                                            color: AppColors.primarycolor,
-                                            fontSize: 17),
-                                      ),
-                                      TextSpan(
-                                        text: "2",
-                                        style: AppTextStyles.w600.copyWith(
-                                            color: AppColors.green,
-                                            fontSize: 17),
-                                      ),
-                                    ])),
-                              ],
-                            ),
-
-
-                          ],
-                        ),
+                      ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: widget.cartDetailsModel.data!.items!.length,
+                        itemBuilder: (context, index) {
+                          return ContainerMyOrder(
+                              cartDetailsModel: widget.cartDetailsModel,
+                              index: index);
+                        },
                       ),
                       Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "مبلغ اجمالى",
-                                  style:
-                                  AppTextStyles.boldtitles.apply(fontSizeDelta: 3),
-                                ),
-                                Text(
-                                  "110 ر.س",
-                                  style: AppTextStyles.boldtitles
-                                      .apply(color: AppColors.blue, fontSizeDelta: 3),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            height: 10,
-                            color: AppColors.greyDark,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "الشحن",
-                                  style: AppTextStyles.boldtitles
-                                      .apply(color: AppColors.green, fontSizeDelta: 3),
-                                ),
-                                Text(
-                                  "110 ر.س",
-                                  style: AppTextStyles.boldtitles
-                                      .apply(color: AppColors.green, fontSizeDelta: 3),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Divider(
-                            height: 10,
-                            color: AppColors.greyDark,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "اجمالى المبلغ",
-                                  style:
-                                  AppTextStyles.boldtitles.apply(fontSizeDelta: 3),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "(4 عناصر)",
-                                  style: AppTextStyles.boldtitles
-                                      .apply(color: AppColors.blue, fontSizeDelta: -5),
-                                ),
-                                Spacer(),
-                                Text(
-                                  "110 ر.س",
-                                  style: AppTextStyles.boldtitles
-                                      .apply(color: AppColors.blue, fontSizeDelta: 3),
-                                ),
-                              ],
-                            ),
+                          Price(
+                            allPrice:
+                            "${widget.cartDetailsModel.data!.formatedBaseSubTotal}",
+                            totalPrice:
+                            "${widget.cartDetailsModel.data!.formatedBaseDiscountedSubTotal}",
+                            priceRate:
+                            "${widget.cartDetailsModel.data!.formatedBaseTaxTotal}",
                           ),
                           ButtonTemplate(
                             minwidth: MediaQueryHelper.sizeFromWidth(context, 1),
                             color: AppColors.primarycolor,
                             text1: "استمر فى الشراء",
                             onPressed: () {
-                              navigateTo(context, DoneShoppingScreen());
+                              navigateTo(context, AppLayout());
                             },
                           ),
                           SizedBox(
