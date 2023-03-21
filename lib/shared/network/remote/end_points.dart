@@ -17,3 +17,4 @@ const AllCustomProducts='custom/products/';
 const CustomProduct='custom/products/';
 const AllCategories='custom/categories';
 const AllFavourites='wishlist/';
+const AddFavourites='wishlist/add/';

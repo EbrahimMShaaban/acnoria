@@ -1,12 +1,13 @@
-import 'package:acnoria/features/Favourite/cubit/state.dart';
 
-import 'package:acnoria/shared/network/remote/dio_helper.dart';
-import 'package:acnoria/shared/network/remote/end_points.dart';
+
+import 'package:acnoria/features/Favourite/cubit/state.dart';
+import 'package:acnoria/models/addFav_model.dart';
+import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import '../../../models/allFavorites_model.dart';
-import '../../../models/fav_model/test.dart';
+import '../../../shared/network/remote/dio_helper.dart';
+import '../../../shared/network/remote/end_points.dart';
 
 class FavouritesCubit extends Cubit<FavouritesStates> {
   FavouritesCubit() : super(FavouritesInitialStates());
@@ -14,9 +15,9 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
   static FavouritesCubit? get(context) => BlocProvider.of(context);
 
   AllFavouritesModel? allFavouritesModel;
+  AddFavouriteModel? addFavouriteModel;
 
   getAllfavourites() {
-    //   print('prooooduct is ${product?.data?.length}');
 
     emit(FavouritesLoadingtState());
 
@@ -30,20 +31,54 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
 
 
     ).then((value) {
+
       allFavouritesModel = AllFavouritesModel.fromJson(value.data);
-      print("name  in modelllll is :${allFavouritesModel?.data![1].product?.name!}");
-      // List<Data> list = product?.data?.length as List<Data>;
-      print('prooooduct is .data}');
-       print('prooooduct is ${value.data}');
+      print("dataaaaa in cubit is ${value.data}");
+      emit(FavouritesSuccessState( allFavouritesModel!));
+      //  print('prooooduct is ${value.data}');
 
 
+    //  emit(FavouritesSuccessState());
 
-      emit(FavouritesSuccessState(value.data));
     }).catchError((error) {
+
       emit(FavouritesErrorState(message: error.toString()));
 
       print('eeeeeeeeeeee${error.toString()}');
-      print('prooooduct is ${allFavouritesModel?.data?.length}');
+
     });
   }
+
+  addFavourite(int id){
+   emit(FavouritesAddLoadingtState());
+    DioHelper.getdata(url:"$AddFavourites$id",
+
+      headers: {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': "Bearer $token",
+      },
+      query: {
+      "product_id":id
+      }
+    ).then((value){
+
+      addFavouriteModel = AddFavouriteModel.fromJson(value.data);
+       emit(FavouritesAddSuccessState( AddFavouriteModel.fromJson(value.data)!));
+      // if (addFavouriteModel?.data!=null){
+      //   emit(FavouritesAddSuccessState());
+      //
+      // }
+
+    }).catchError((error) {
+      emit(FavouritesAddErrorState(message: error.toString()));
+
+      print('eeeeeeeeeeee${error.toString()}');
+      //print('prooooduct is ${allFavouritesModel?.data?.length}');
+    });
+
+
+
+  }
+
 }

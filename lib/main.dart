@@ -63,7 +63,8 @@ class MyApp extends StatelessWidget {
               create: (BuildContext context) =>
               CategoriesCubit()..getAllCatefories(),
 
-            ),BlocProvider(
+            ),
+            BlocProvider(
               create: (context) => FavouritesCubit()..getAllfavourites(),
 
 
