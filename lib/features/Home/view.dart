@@ -209,120 +209,123 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(
                       height: 10,
                     ),
-                    BlocConsumer<CategoriesCubit, CategoriesStates>(
-                      listener: (context, state) {},
-                      builder: (context, state) {
-                        CategoriesModel? categoriesmodel =
-                            CategoriesCubit.get(context)?.categoriesModel;
 
-                        return ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  Image.asset(AppImages.img,
-                                      width: MediaQueryHelper.sizeFromWidth(
-                                          context, 1)),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: 200,
-                                        child: Text(
-                                            maxLines: 1,
-                                            overflow: TextOverflow.clip,
-                                            '${categoriesmodel?.data![index].name}',
-                                            style: AppTextStyles.boldtitles
-                                                .copyWith(
-                                              color: AppColors.blue,
-                                              fontSize: 18,
-                                            )),
-                                      ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        child: ElevatedButton(
-                                          onPressed: () {
-                                            navigateTo(context, Categories());
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                              shape: const RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(8))),
-                                              backgroundColor:
-                                                  AppColors.primarycolor),
-                                          child: const Text('مشاهدة الجميع'),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                const  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                    margin:const EdgeInsets.symmetric(horizontal: 5),
-                                    height: MediaQueryHelper.sizeFromHeight(
-                                        context, 3.1),
-                                    child: BlocProvider(
-                                      create: (BuildContext context) =>
-                                          HomeCubit()
-                                            ..getAllProducts(
-                                                id: categoriesmodel!
-                                                    .data![index].id!),
-                                      child:
-                                          BlocConsumer<HomeCubit, HomeStates>(
-                                        listener: (context, state) {},
-                                        builder: (context, state) {
-                                          CustomProductsModel? customproduct =
-                                              HomeCubit.get(context)?.product;
-                                          return state is! HomeLoadingtState
-                                              ? ListView.separated(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  itemBuilder:
-                                                      (context, index) {
-                                                    return ProductItem(
-                                                        model: customproduct,
-                                                        index: index);
-                                                  },
-                                                  separatorBuilder:
-                                                      (context, x) {
-                                                    return SizedBox(
-                                                      width: MediaQueryHelper
-                                                          .sizeFromWidth(
-                                                              context, 30),
-                                                    );
-                                                  },
-                                                  itemCount: customproduct!
-                                                      .data!.length)
-                                              : const Center(
-                                                  child:
-                                                      CircularProgressIndicator());
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                               const   SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              );
-                            },
-                            itemCount: 10);
-                      },
-                    ),
-
-
-
+                    // BlocConsumer<CategoriesCubit, CategoriesStates>(
+                    //   listener: (context, state) {},
+                    //   builder: (context, state) {
+                    //     CategoriesModel? categoriesmodel =
+                    //         CategoriesCubit.get(context)?.categoriesModel;
+                    //
+                    //     return ListView.builder(
+                    //         physics: const NeverScrollableScrollPhysics(),
+                    //         shrinkWrap: true,
+                    //         itemBuilder: (context, index) {
+                    //           return Column(
+                    //             children: [
+                    //               Image.asset(AppImages.img,
+                    //                   width: MediaQueryHelper.sizeFromWidth(
+                    //                       context, 1)),
+                    //               const SizedBox(
+                    //                 height: 10,
+                    //               ),
+                    //               Row(
+                    //                 crossAxisAlignment:
+                    //                     CrossAxisAlignment.start,
+                    //                 mainAxisAlignment:
+                    //                     MainAxisAlignment.spaceBetween,
+                    //                 children: [
+                    //                   Container(
+                    //                     width: 200,
+                    //                     child: Text(
+                    //                         maxLines: 1,
+                    //                         overflow: TextOverflow.clip,
+                    //                         '${categoriesmodel?.data![index].name}',
+                    //                         style: AppTextStyles.boldtitles
+                    //                             .copyWith(
+                    //                           color: AppColors.blue,
+                    //                           fontSize: 18,
+                    //                         )),
+                    //                   ),
+                    //                   Container(
+                    //                     decoration: BoxDecoration(
+                    //                         borderRadius:
+                    //                             BorderRadius.circular(20)),
+                    //                     child: ElevatedButton(
+                    //                       onPressed: () {
+                    //                         navigateTo(context, Categories());
+                    //                       },
+                    //                       style: ElevatedButton.styleFrom(
+                    //                           shape:
+                    //                               const RoundedRectangleBorder(
+                    //                                   borderRadius:
+                    //                                       BorderRadius.all(
+                    //                                           Radius.circular(
+                    //                                               8))),
+                    //                           backgroundColor:
+                    //                               AppColors.primarycolor),
+                    //                       child: const Text('مشاهدة الجميع'),
+                    //                     ),
+                    //                   )
+                    //                 ],
+                    //               ),
+                    //               const SizedBox(
+                    //                 height: 10,
+                    //               ),
+                    //               Container(
+                    //                 margin: const EdgeInsets.symmetric(
+                    //                     horizontal: 5),
+                    //                 height: MediaQueryHelper.sizeFromHeight(
+                    //                     context, 3.1),
+                    //                 child: BlocProvider(
+                    //                   create: (BuildContext context) =>
+                    //                       HomeCubit()
+                    //                         ..getAllProducts(
+                    //                             id: categoriesmodel!
+                    //                                 .data![index].id!),
+                    //                   child:
+                    //                       BlocConsumer<HomeCubit, HomeStates>(
+                    //                     listener: (context, state) {},
+                    //                     builder: (context, state) {
+                    //                       CustomProductsModel? customproduct =
+                    //                           HomeCubit.get(context)?.product;
+                    //                       return state is! HomeLoadingtState
+                    //                           ? ListView.separated(
+                    //                               scrollDirection:
+                    //                                   Axis.horizontal,
+                    //                               itemBuilder:
+                    //                                   (context, index) {
+                    //                                 return ProductItem(
+                    //                                     model: customproduct!,
+                    //                                     index: index);
+                    //                               },
+                    //                               separatorBuilder:
+                    //                                   (context, x) {
+                    //                                 return SizedBox(
+                    //                                   width: MediaQueryHelper
+                    //                                       .sizeFromWidth(
+                    //                                           context, 30),
+                    //                                 );
+                    //                               },
+                    //                               itemCount: 3
+                    //                               // customproduct!
+                    //                               //     .data!.length
+                    //                       )
+                    //                           : const Center(
+                    //                               child:
+                    //                                   CircularProgressIndicator());
+                    //                     },
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //               const SizedBox(
+                    //                 height: 10,
+                    //               ),
+                    //             ],
+                    //           );
+                    //         },
+                    //         itemCount:5);
+                    //   },
+                    // ),
                   ],
                 ),
               )

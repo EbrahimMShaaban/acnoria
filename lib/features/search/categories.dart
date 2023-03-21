@@ -176,14 +176,14 @@ class _CategoriesState extends State<Categories> {
                                     childAspectRatio: 0.65,
                                     crossAxisSpacing: 8,
                                     crossAxisCount: 2),
-                            itemCount: product?.data?.length,
+                            itemCount: (product!.data!.length)-1,
                             //  itemCount: 10,
                             itemBuilder: (BuildContext context, int index) {
                               // SearchCubit.get(context)?.getAllProducts(widget.id);
                               print(
-                                  'product length in ui is ${product?.data?.length}');
+                                  'product length in ui is ${product.data?.length}');
                               return ProductItem(
-                                model: product!,
+                                model: product,
                                 index: index,
                               );
                             },
