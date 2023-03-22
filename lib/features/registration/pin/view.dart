@@ -8,9 +8,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../shared/components/navigator.dart';
-import '../login/view.dart';
-
 class PinScreen extends StatefulWidget {
   const PinScreen({Key? key}) : super(key: key);
 
@@ -78,7 +75,9 @@ class _PinScreenState extends State<PinScreen> {
                     "تم ارسال الرمز الى +966 4558 545",
                     style: AppTextStyles.w600.apply(color: AppColors.blue),
                   ),
-                  SizedBox(height: 30,),
+                  SizedBox(
+                    height: 30,
+                  ),
                   Form(
                     key: formKey,
                     child: Padding(
@@ -96,7 +95,7 @@ class _PinScreenState extends State<PinScreen> {
                           obscuringCharacter: '*',
                           animationType: AnimationType.fade,
                           validator: (v) {
-                            if (v!.length! < 3) {
+                            if ((v ?? '').length < 3) {
                               return "I'm from validator";
                             } else {
                               return null;
@@ -195,7 +194,6 @@ class _PinScreenState extends State<PinScreen> {
                           });
                         }
                       }),
-
                   Padding(
                     padding: EdgeInsets.only(top: 36.0),
                     child: Row(
@@ -217,7 +215,6 @@ class _PinScreenState extends State<PinScreen> {
                       ],
                     ),
                   )
-
                 ]),
           ),
         ),
