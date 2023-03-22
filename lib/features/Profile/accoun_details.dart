@@ -1,4 +1,5 @@
 import 'package:acnoria/features/cart/widget/profileappbar.dart';
+import 'package:acnoria/features/layout/view.dart';
 import 'package:acnoria/shared/components/navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +51,7 @@ class _AccountDetailsState extends State<AccountDetails> {
       child: BlocConsumer<ProfilCubit, ProfilState>(
         listener: (context, state) {
           if (state is EditProfilSuccessState) {
-            Navigator.pop(context);
+            navigateAndReplace(context, AppLayout());
           } // TODO: implement listener
         },
         builder: (context, state) {
