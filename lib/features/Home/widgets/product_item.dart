@@ -26,7 +26,7 @@ class ProductItem extends StatefulWidget {
 }
 
 class _ProductItemState extends State<ProductItem> {
-  bool isfav=false;
+  bool isfav = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,8 @@ class _ProductItemState extends State<ProductItem> {
         ),
         child: InkWell(
           onTap: () {
-            navigateTo(context, ItemScreen(urlkey: widget.model.data![widget.index].urlKey));
+            navigateTo(context,
+                ItemScreen(urlkey: widget.model.data![widget.index].urlKey));
           },
 
           //       onTap: () => navigateTo(context, ItemScreen(product: model,index:  index,)),
@@ -61,41 +62,37 @@ class _ProductItemState extends State<ProductItem> {
                   BlocConsumer<FavouritesCubit, FavouritesStates>(
                     listener: (context, state) {},
                     builder: (context, state) {
+
                       AddFavouriteModel? addFavouriteModel =
                           FavouritesCubit.get(context)?.addFavouriteModel;
+                      addFavouriteModel?.data != null? isfav=true:isfav=false;
 
                       // if (state is FavouritesSuccessState
                       //     ||state is FavouritesAddSuccessState
                       // ) {
-                        return
-                          InkWell(
-                          onTap: () {
-                              FavouritesCubit.get(context)?.addFavourite( widget.model.data![widget.index].id!);
-                              if(state is FavouritesAddSuccessState){
-                               if( state.addFavouriteModel.data !=null ){
-
-                                     setState(() {
-                                       isfav =true;
-                                     });
-                               }else{
-
-                                 setState(() {
-                                   isfav =false;
-                                 });
-                               }
-                              }
-                          },
-                          child:
-
-
-                          isfav
-                                  ?
-                              Icon(Icons.favorite_outlined)
-                                  :
-
-                            Icon(Icons.favorite_border),
-                          // color: AppColors.primarycolor
-                        );
+                      return InkWell(
+                        onTap: () {
+                          FavouritesCubit.get(context)?.addFavourite(
+                              widget.model.data![widget.index].id!);
+                          // if(state is FavouritesAddSuccessState){
+                          //  if( state.addFavouriteModel.data !=null ){
+                          //
+                          //        setState(() {
+                          //          isfav =true;
+                          //        });
+                          //  }else{
+                          //
+                          //    setState(() {
+                          //      isfav =false;
+                          //    });
+                          //  }
+                          // }
+                        },
+                        child: isfav
+                            ? Icon(Icons.favorite_outlined)
+                            : Icon(Icons.favorite_border),
+                        // color: AppColors.primarycolor
+                      );
                       // }
                       // return Center(
                       //   child: CircularProgressIndicator(),
@@ -105,7 +102,8 @@ class _ProductItemState extends State<ProductItem> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text('${widget.model.data![widget.index].reviews?.averageRating}',
+                      Text(
+                          '${widget.model.data![widget.index].reviews?.averageRating}',
                           style: TextStyle(
                               color: AppColors.green,
                               fontSize: 12,
@@ -133,7 +131,8 @@ class _ProductItemState extends State<ProductItem> {
               ),
               Container(
                 height: 45,
-                child: Text('${widget.model.data![widget.index].shortDescription}',
+                child: Text(
+                    '${widget.model.data![widget.index].shortDescription}',
                     maxLines: 2,
                     style: AppTextStyles.smTitles
                         .copyWith(fontSize: 14, fontWeight: FontWeight.w600)),
