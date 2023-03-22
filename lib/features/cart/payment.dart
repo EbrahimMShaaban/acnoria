@@ -72,7 +72,9 @@ class _paymentScreenState extends State<paymentScreen> {
         ),
       ],
       child: Scaffold(
-        appBar: ProfileAppBar(context, txt: 'عملية الشراء'),
+        appBar: ProfileAppBar(context, txt: 'عملية الشراء',navTo: () {
+          Navigator.pop(context);
+        }),
         body: BlocConsumer<CartCubit, CartState>(
           listener: (context, state) {
             // TODO: implement listener

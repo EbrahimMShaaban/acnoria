@@ -65,10 +65,11 @@ class ProfilCubit extends Cubit<ProfilState> {
     }).then((value) {
 
       myProfil = RegisterModrl.fromJson(value.data);
+      emit(EditProfilSuccessState());
       print("1111111111111111111111111111done");
       print(myProfil?.message);
       print(myProfil?.token);
-      emit(EditProfilSuccessState());
+
     }).catchError((error) {
 
       print(error.toString());
