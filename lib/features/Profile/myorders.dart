@@ -11,7 +11,9 @@ class MyOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: ProfileAppBar(context, txt: 'طلباتي'),
+      appBar: ProfileAppBar(context, txt: 'طلباتي',navTo: () {
+        Navigator.pop(context);
+      }),
       body: Padding(
           padding: appPadding(),
           child: Column(

@@ -31,7 +31,9 @@ class _CartScreenState extends State<CartScreen> {
       CartCubit()
         ..getCart(),
       child: Scaffold(
-        appBar: ProfileAppBar(context, txt: 'السلة'),
+        appBar: ProfileAppBar(context, txt: 'السلة',navTo: () {
+          Navigator.pop(context);
+        }),
         body: BlocConsumer<CartCubit, CartState>(
           listener: (context, state) {
             // TODO: implement listener
