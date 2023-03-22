@@ -280,6 +280,7 @@ class HomeScreen extends StatelessWidget {
                                             ..getAllProducts(
                                                 id: categoriesmodel!
                                                     .data![index].id!),
+
                                           child: BlocBuilder<HomeCubit, HomeStates>(
                                             builder: (context, state) {
                                               CustomProductsModel? customproduct =

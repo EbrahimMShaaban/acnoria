@@ -8,12 +8,14 @@ import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../models/LocationKodel.dart';
 import '../../models/cart_details_model.dart';
 import '../../shared/components/navigator.dart';
 
 class DoneShoppingScreen extends StatefulWidget {
-  const DoneShoppingScreen({Key? key, required this.cartDetailsModel}) : super(key: key);
+  const DoneShoppingScreen({Key? key, required this.cartDetailsModel, required this.locationiDModel}) : super(key: key);
   final CartDetailsModel cartDetailsModel;
+  final LocationiDModel? locationiDModel;
 
   @override
   State<DoneShoppingScreen> createState() => _DoneShoppingScreenState();
@@ -82,10 +84,10 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "اسم العميل",
-                        style: AppTextStyles.boldtitles.copyWith(fontSize: 20),
-                      ),
+                      // Text(
+                      //   "اسم العميل",
+                      //   style: AppTextStyles.boldtitles.copyWith(fontSize: 20),
+                      // ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 5),
                         padding: EdgeInsets.all(10),
@@ -115,9 +117,9 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                               ],
                             ),
                             Text(
-                              "85 صاري, الخالدية 506 جدة, 23\n423 - 8949",
+                              "${widget.locationiDModel!.data!.city}",
                               style: AppTextStyles.boldtitles.apply(
-                                  color: AppColors.greyDark, fontSizeDelta: -5),
+                                  color: AppColors.greyDark, fontSizeDelta: 0),
                             ),
                             Row(  crossAxisAlignment: CrossAxisAlignment.end,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -136,7 +138,7 @@ class _DoneShoppingScreenState extends State<DoneShoppingScreen> {
                               ],
                             ),
                             Text(
-                              "96655245+",
+                              "${widget.locationiDModel!.data!.phone}+",
                               style: AppTextStyles.boldtitles.apply(
                                   color: AppColors.greyDark, fontSizeDelta: -5),
                             ),

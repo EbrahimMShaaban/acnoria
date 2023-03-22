@@ -62,7 +62,7 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
     ).then((value){
 
       addFavouriteModel = AddFavouriteModel.fromJson(value.data);
-      emit(FavouritesAddSuccessState( AddFavouriteModel.fromJson(value.data)!));
+      emit(FavouritesAddSuccessState( AddFavouriteModel.fromJson(value.data)));
       // if (addFavouriteModel?.data!=null){
       //   emit(FavouritesAddSuccessState());
       //

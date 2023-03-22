@@ -13,7 +13,8 @@ import '../../shared/styles/styles.dart';
 
 class AddNewLocation extends StatefulWidget {
   AddNewLocation({Key? key}) : super(key: key);
-  static const CameraPosition initialCameraPosition = CameraPosition(target: LatLng(37.42796133580664, -122.085749655962), zoom: 14);
+  static const CameraPosition initialCameraPosition = CameraPosition(
+      target: LatLng(37.42796133580664, -122.085749655962), zoom: 14);
 
   @override
   State<AddNewLocation> createState() => _AddNewLocationState();
@@ -22,6 +23,7 @@ class AddNewLocation extends StatefulWidget {
 class _AddNewLocationState extends State<AddNewLocation> {
   @override
   TextEditingController? cityController = TextEditingController();
+  TextEditingController? postcodeController = TextEditingController();
 
   TextEditingController? Controller = TextEditingController();
 
@@ -64,13 +66,13 @@ class _AddNewLocationState extends State<AddNewLocation> {
           ],
         ),
         body: SingleChildScrollView(
-
           child: Padding(
             padding: appPadding(),
             child: BlocConsumer<LocationCubit, LocationState>(
               listener: (context, state) {
                 print(state);
-                if (state is PostLocationSuccessState )navigateAndReplace(context, ChangeLocationScreens());
+                if (state is PostLocationSuccessState)
+                  navigateAndReplace(context, ChangeLocationScreens());
                 // TODO: implement listener
               },
               builder: (context, state) {
@@ -82,16 +84,15 @@ class _AddNewLocationState extends State<AddNewLocation> {
                       "اختر العنوان",
                       style: AppTextStyles.boldtitles.apply(fontSizeDelta: 2),
                     ),
-                //     GoogleMap(
-                // initialCameraPosition: AddNewLocation.initialCameraPosition,
-                // markers: markers,
-                // zoomControlsEnabled: false,
-                // mapType: MapType.normal,
-                // onMapCreated: (GoogleMapController controller) {
-                // googleMapController = controller;
-                // },
-                // ),
-
+                    //     GoogleMap(
+                    // initialCameraPosition: AddNewLocation.initialCameraPosition,
+                    // markers: markers,
+                    // zoomControlsEnabled: false,
+                    // mapType: MapType.normal,
+                    // onMapCreated: (GoogleMapController controller) {
+                    // googleMapController = controller;
+                    // },
+                    // ),
 
                     SizedBox(
                       height: 20,
@@ -103,7 +104,7 @@ class _AddNewLocationState extends State<AddNewLocation> {
                     ),
                     Addlocation(
                       controller: stateontroller,
-                      hintText: "سارع صلاح الدين",
+                      hintText: "شارع صلاح الدين",
                       text: "اسم الشارع",
                     ),
                     Addlocation(
@@ -122,9 +123,9 @@ class _AddNewLocationState extends State<AddNewLocation> {
                       text: "رقم الطابق",
                     ),
                     Addlocation(
-                      controller: Controller,
-                      hintText: "علاقمة مميزه للمنزل او المكتب",
-                      text: "علاقمة مميزه للمنزل او المكتب",
+                      controller: postcodeController,
+                      hintText: "رمز البريدي",
+                      text: "رمز البريدي",
                     ),
                     Addlocation(
                       controller: phoneController,
@@ -143,6 +144,7 @@ class _AddNewLocationState extends State<AddNewLocation> {
                             text1: "حفظ العنوان",
                             onPressed: () {
                               LocationCubit.get(context).PostLocation(
+                                  postcode: postcodeController!.text,
                                   city: cityController!.text,
                                   country: countryController!.text,
                                   country_name: country_nameController!.text,
@@ -176,34 +178,34 @@ class _AddNewLocationState extends State<AddNewLocation> {
       ),
     );
   }
-  // Future<Position> _determinePosition() async {
-  //   bool serviceEnabled;
-  //   LocationPermission permission;
-  //
-  //   serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  //
-  //   if (!serviceEnabled) {
-  //     return Future.error('Location services are disabled');
-  //   }
-  //
-  //   permission = await Geolocator.checkPermission();
-  //
-  //   if (permission == LocationPermission.denied) {
-  //     permission = await Geolocator.requestPermission();
-  //
-  //     if (permission == LocationPermission.denied) {
-  //       return Future.error("Location permission denied");
-  //     }
-  //   }
-  //
-  //   if (permission == LocationPermission.deniedForever) {
-  //     return Future.error('Location permissions are permanently denied');
-  //   }
-  //
-  //   Position position = await Geolocator.getCurrentPosition();
-  //
-  //   return position;
-  // }
+// Future<Position> _determinePosition() async {
+//   bool serviceEnabled;
+//   LocationPermission permission;
+//
+//   serviceEnabled = await Geolocator.isLocationServiceEnabled();
+//
+//   if (!serviceEnabled) {
+//     return Future.error('Location services are disabled');
+//   }
+//
+//   permission = await Geolocator.checkPermission();
+//
+//   if (permission == LocationPermission.denied) {
+//     permission = await Geolocator.requestPermission();
+//
+//     if (permission == LocationPermission.denied) {
+//       return Future.error("Location permission denied");
+//     }
+//   }
+//
+//   if (permission == LocationPermission.deniedForever) {
+//     return Future.error('Location permissions are permanently denied');
+//   }
+//
+//   Position position = await Geolocator.getCurrentPosition();
+//
+//   return position;
+// }
 }
 
 class Addlocation extends StatelessWidget {
@@ -257,9 +259,4 @@ class Addlocation extends StatelessWidget {
       ),
     );
   }
-
-
-
 }
-
-
