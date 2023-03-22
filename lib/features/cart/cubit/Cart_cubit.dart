@@ -29,8 +29,6 @@ class CartCubit extends Cubit<CartState> {
     DioHelper.getdata(url: GEDORDER, headers: {
       'Accept': 'application/json',
       'Authorization': "Bearer ${token}",
-    }, query: {
-      'locale': 'ar',
     }).then((value) {
       cartDetailsModel = CartDetailsModel.fromJson(value.data);
       print(cartDetailsModel!.data!.items);
@@ -104,6 +102,8 @@ class CartCubit extends Cubit<CartState> {
     DioHelper.postdata(url: "$ADDCART$product_id", headers: {
       "Accept": "application/json",
       'Authorization': "Bearer ${token}",
+    },query: {
+      "locale":"ar"
     }, posteddata: {
       "product_id": product_id,
       "quantity": quantity,

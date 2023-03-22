@@ -146,19 +146,19 @@ class ContainerLocation extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "${locationModel.phone}",
+                "${locationModel.city}",
                 style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.blueDark, fontSizeDelta: -2),
+                    .apply(color: AppColors.blueDark, fontSizeDelta: 3),
+              ),
+              Text(
+                "${locationModel.country}",
+                style: AppTextStyles.boldtitles
+                    .apply(color: AppColors.greyDark, fontSizeDelta: 0),
               ),
               Text(
                 "${locationModel.phone}",
                 style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.greyDark, fontSizeDelta: -5),
-              ),
-              Text(
-                "${locationModel.phone}",
-                style: AppTextStyles.boldtitles
-                    .apply(color: AppColors.greyDark, fontSizeDelta: -5),
+                    .apply(color: AppColors.greyDark, fontSizeDelta: 0),
               ),
             ],
           ),

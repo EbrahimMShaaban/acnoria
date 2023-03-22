@@ -71,6 +71,7 @@ class LocationCubit extends Cubit<LocationState> {
     required String? country_name,
     required String? phone,
     required String? state,
+    required String? postcode,
   }) {
     // if (!formKey.currentState!.validate()) {
     //   return;
@@ -90,7 +91,7 @@ class LocationCubit extends Cubit<LocationState> {
       "country_name": country,
       "state": state,
       "city": city,
-      "postcode": 248001,
+      "postcode": postcode,
       "phone": phone,
     },).then((value) {
       // myLocation = RegisterModrl.fromJson(value.data);
