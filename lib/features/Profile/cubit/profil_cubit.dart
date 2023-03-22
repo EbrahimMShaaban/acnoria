@@ -64,13 +64,15 @@ class ProfilCubit extends Cubit<ProfilState> {
       "first_name": first_name
     }).then((value) {
 
-      // myProfil = RegisterModrl.fromJson(value.data);
+     // myProfil = RegisterModrl.fromJson(value.data);
+
       emit(EditProfilSuccessState());
       print("1111111111111111111111111111done");
       print(email);
       print(last_name);
       print(first_name);
       print(myProfil?.token);
+      print(value.data["message"]);
 
     }).catchError((error) {
 
@@ -80,6 +82,7 @@ class ProfilCubit extends Cubit<ProfilState> {
       print(first_name);
       print(last_name);
       print(myProfil?.message);
+      print(error["message"]);
       emit(EditProfilErrorState());
     });
   }

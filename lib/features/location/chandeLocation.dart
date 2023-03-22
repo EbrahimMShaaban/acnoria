@@ -27,7 +27,9 @@ class _ChangeLocationScreensState extends State<ChangeLocationScreens> {
     return BlocProvider(
       create: (context) => LocationCubit()..getLocation(),
       child: Scaffold(
-        appBar: ProfileAppBar(context, txt: 'العنوان'),
+        appBar: ProfileAppBar(context, txt: 'العنوان',navTo: () {
+          Navigator.pop(context);
+        }),
         body: Padding(
           padding: appPadding(),
           child: Column(

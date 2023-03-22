@@ -1,3 +1,4 @@
+import 'package:acnoria/features/Profile/view.dart';
 import 'package:acnoria/features/cart/widget/profileappbar.dart';
 import 'package:acnoria/features/layout/view.dart';
 import 'package:acnoria/shared/components/navigator.dart';
@@ -51,12 +52,16 @@ class _AccountDetailsState extends State<AccountDetails> {
       child: BlocConsumer<ProfilCubit, ProfilState>(
         listener: (context, state) {
           if (state is EditProfilSuccessState) {
+
             navigateAndReplace(context, AppLayout());
+
           } // TODO: implement listener
         },
         builder: (context, state) {
           return Scaffold(
-            appBar: ProfileAppBar(context, txt: 'معلومات الحساب'),
+            appBar: ProfileAppBar(context, txt: 'معلومات الحساب',navTo:  (){
+              navigateTo(context, ProfileScreen());
+            }),
             body: SingleChildScrollView(
               child: Padding(
                 padding: appPadding(),
