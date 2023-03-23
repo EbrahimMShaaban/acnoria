@@ -108,8 +108,8 @@ class _TextFieldTemplateState extends State<TextFieldTemplate> {
                 splashRadius: 20,
                 icon: Icon(
                     _isObscure == true
-                        ? Icons.visibility_outlined
-                        : Icons.visibility_off_outlined,
+                        ?  Icons.visibility_off_outlined
+                        :Icons.visibility_outlined,
                     color: AppColors.Bluehint),
                 onPressed: () => setState(() => _isObscure = !_isObscure))
                 : null,

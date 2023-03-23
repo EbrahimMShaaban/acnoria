@@ -27,6 +27,7 @@ class ProductItem extends StatefulWidget {
 
 class _ProductItemState extends State<ProductItem> {
   bool isfav = false;
+  bool isfav2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +70,9 @@ class _ProductItemState extends State<ProductItem> {
                       //     ? isfav = true
                       //     : isfav = false;
 
-                      isfav = allFavouriteModel!.data!.any((item) =>
-                          item.product?.id ==
-                          widget.model.data![widget.index].id!);
+                      isfav2 = allFavouriteModel!.data!.any((item) =>
+                      widget.model.data![widget.index].id! ==
+                          item.product?.id);
                       // if (state is FavouritesSuccessState
                       //     ||state is FavouritesAddSuccessState
                       // ) {
@@ -93,13 +94,8 @@ class _ProductItemState extends State<ProductItem> {
                           }
                         },
                         child:
-                            // allFavouriteModel?.data?.map((e) {
-                            //           return widget.model.data![widget.index].id ==
-                            //                   e.product?.id
-                            //               ? true
-                            //               : false;
-                            //         }) ==true
-                            isfav
+
+                        isfav2
                                 ? Icon(Icons.favorite_outlined)
                                 : Icon(Icons.favorite_border),
                         // color: AppColors.primarycolor
