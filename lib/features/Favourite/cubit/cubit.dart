@@ -26,31 +26,20 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
         'Accept': 'application/json',
         'Authorization': "Bearer $token",
       },
-
-
     ).then((value) {
-
       allFavouritesModel = AllFavouritesModel.fromJson(value.data);
       print("dataaaaa in cubit is ${value.data}");
       emit(FavouritesSuccessState( allFavouritesModel!));
-      //  print('prooooduct is ${value.data}');
-
-
       //  emit(FavouritesSuccessState());
-
     }).catchError((error) {
-
       emit(FavouritesErrorState(message: error.toString()));
-
       print('eeeeeeeeeeee${error.toString()}');
 
     });
   }
-
   addFavourite(int id){
     emit(FavouritesAddLoadingtState());
     DioHelper.getdata(url:"$AddFavourites$id",
-
         headers: {
           'Content-type': 'application/json',
           'Accept': 'application/json',
@@ -62,7 +51,7 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
     ).then((value){
 
       addFavouriteModel = AddFavouriteModel.fromJson(value.data);
-      emit(FavouritesAddSuccessState( AddFavouriteModel.fromJson(value.data)!));
+      emit(FavouritesAddSuccessState( AddFavouriteModel.fromJson(value.data)));
       // if (addFavouriteModel?.data!=null){
       //   emit(FavouritesAddSuccessState());
       //

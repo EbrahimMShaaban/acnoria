@@ -52,8 +52,6 @@ class _ProductItemState extends State<ProductItem> {
             navigateTo(context,
                 ItemScreen(urlkey: widget.model.data![widget.index].urlKey));
           },
-
-          //       onTap: () => navigateTo(context, ItemScreen(product: model,index:  index,)),
           child: Column(
             children: [
               Row(
@@ -62,11 +60,18 @@ class _ProductItemState extends State<ProductItem> {
                   BlocConsumer<FavouritesCubit, FavouritesStates>(
                     listener: (context, state) {},
                     builder: (context, state) {
-
                       AddFavouriteModel? addFavouriteModel =
                           FavouritesCubit.get(context)?.addFavouriteModel;
-                      addFavouriteModel?.data != null? isfav=true:isfav=false;
+                      AllFavouritesModel? allFavouriteModel =
+                          FavouritesCubit.get(context)?.allFavouritesModel;
 
+                      // allFavouriteModel?.data?.any((element) => element.product.id) != null
+                      //     ? isfav = true
+                      //     : isfav = false;
+
+                      isfav = allFavouriteModel!.data!.any((item) =>
+                          item.product?.id ==
+                          widget.model.data![widget.index].id!);
                       // if (state is FavouritesSuccessState
                       //     ||state is FavouritesAddSuccessState
                       // ) {
@@ -74,23 +79,29 @@ class _ProductItemState extends State<ProductItem> {
                         onTap: () {
                           FavouritesCubit.get(context)?.addFavourite(
                               widget.model.data![widget.index].id!);
-                          // if(state is FavouritesAddSuccessState){
-                          //  if( state.addFavouriteModel.data !=null ){
-                          //
-                          //        setState(() {
-                          //          isfav =true;
-                          //        });
-                          //  }else{
-                          //
-                          //    setState(() {
-                          //      isfav =false;
-                          //    });
-                          //  }
-                          // }
+
+                          if (state is FavouritesAddSuccessState) {
+                            if (state.addFavouriteModel.data != null) {
+                              setState(() {
+                                isfav = true;
+                              });
+                            } else {
+                              setState(() {
+                                isfav = false;
+                              });
+                            }
+                          }
                         },
-                        child: isfav
-                            ? Icon(Icons.favorite_outlined)
-                            : Icon(Icons.favorite_border),
+                        child:
+                            // allFavouriteModel?.data?.map((e) {
+                            //           return widget.model.data![widget.index].id ==
+                            //                   e.product?.id
+                            //               ? true
+                            //               : false;
+                            //         }) ==true
+                            isfav
+                                ? Icon(Icons.favorite_outlined)
+                                : Icon(Icons.favorite_border),
                         // color: AppColors.primarycolor
                       );
                       // }

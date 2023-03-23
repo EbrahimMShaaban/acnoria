@@ -282,12 +282,12 @@ class HomeScreen extends StatelessWidget {
                                             ..getAllProducts(
                                                 id: categoriesmodel!
                                                     .data![index].id!),
-                                      child: BlocBuilder<HomeCubit, HomeStates>(
-                                        builder: (context, state) {
-                                          CustomProductsModel? customproduct =
-                                              HomeCubit.get(context)?.product;
-                                          return state is! HomeLoadingtState
-                                              ? ListView.separated(
+                           child: BlocBuilder<HomeCubit, HomeStates>(
+                                            builder: (context, state) {
+                                              CustomProductsModel? customproduct =
+                                                  HomeCubit.get(context)?.product;
+                                              return state is! HomeLoadingtState
+                                                  ? ListView.separated(
                                                   scrollDirection:
                                                       Axis.horizontal,
                                                   itemBuilder:

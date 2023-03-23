@@ -82,6 +82,8 @@ class _paymentScreenState extends State<paymentScreen> {
           builder: (context, state) {
             CartDetailsModel? cartDetailsModel =
                 CartCubit.get(context).cartDetailsModel;
+            LocationiDModel? locationiDModel =
+                LocationCubit.get(context).locationiDModel;
             return state is GetOrderLoadingtState
                 ? const Center(
                     child: Center(child: CircularProgressIndicator()),
@@ -106,8 +108,7 @@ class _paymentScreenState extends State<paymentScreen> {
                               // TODO: implement listener
                             },
                             builder: (context, state) {
-                              LocationiDModel? locationiDModel =
-                                  LocationCubit.get(context).locationiDModel;
+
                               return state is GetLocationIdLoadingtState
                                   ? const Center(
                                 child: Center(child: Padding(
@@ -376,6 +377,7 @@ class _paymentScreenState extends State<paymentScreen> {
                                   context,
                                   DoneShoppingScreen(
                                     cartDetailsModel: cartDetailsModel,
+                                    locationiDModel: locationiDModel,
                                   ));
                             },
                           ),

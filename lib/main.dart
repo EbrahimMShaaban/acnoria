@@ -84,7 +84,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // English
               // Locale('es'), // Spanish
             ],
-            home: startwidget,
+            home: LoginScreen(),
           ),
         );
       },
