@@ -14,7 +14,7 @@ class HomeCubit extends Cubit<HomeStates> {
 
   CustomProductsModel? product;
 
-  getAllProducts({required int id,bool isnew= false,}) {
+  getAllProducts({ int? id,bool isnew= false,}) {
  //   print('prooooduct is ${product?.data?.length}');
 
     emit(HomeLoadingtState());
@@ -26,8 +26,8 @@ class HomeCubit extends Cubit<HomeStates> {
         'Accept': 'application/json',
       },
       query: {
-        'new': isnew,
-        'category_id':id,
+        //'new': isnew,
+        'category_id': !isnew?id:null,
         'locale':"ar"
       }
 

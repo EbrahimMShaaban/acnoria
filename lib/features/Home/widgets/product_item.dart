@@ -26,7 +26,7 @@ class ProductItem extends StatefulWidget {
 }
 
 class _ProductItemState extends State<ProductItem> {
-  bool isfav=false;
+  bool isfav = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +49,9 @@ class _ProductItemState extends State<ProductItem> {
         ),
         child: InkWell(
           onTap: () {
-            navigateTo(context, ItemScreen(urlkey: widget.model.data![widget.index].urlKey));
+            navigateTo(context,
+                ItemScreen(urlkey: widget.model.data![widget.index].urlKey));
           },
-
-          //       onTap: () => navigateTo(context, ItemScreen(product: model,index:  index,)),
           child: Column(
             children: [
               Row(
@@ -63,39 +62,48 @@ class _ProductItemState extends State<ProductItem> {
                     builder: (context, state) {
                       AddFavouriteModel? addFavouriteModel =
                           FavouritesCubit.get(context)?.addFavouriteModel;
+                      AllFavouritesModel? allFavouriteModel =
+                          FavouritesCubit.get(context)?.allFavouritesModel;
 
+                      // allFavouriteModel?.data?.any((element) => element.product.id) != null
+                      //     ? isfav = true
+                      //     : isfav = false;
+
+                      isfav = allFavouriteModel!.data!.any((item) =>
+                          item.product?.id ==
+                          widget.model.data![widget.index].id!);
                       // if (state is FavouritesSuccessState
                       //     ||state is FavouritesAddSuccessState
                       // ) {
-                        return
-                          InkWell(
-                          onTap: () {
-                              FavouritesCubit.get(context)?.addFavourite( widget.model.data![widget.index].id!);
-                              if(state is FavouritesAddSuccessState){
-                               if( state.addFavouriteModel.data !=null ){
+                      return InkWell(
+                        onTap: () {
+                          FavouritesCubit.get(context)?.addFavourite(
+                              widget.model.data![widget.index].id!);
 
-                                     setState(() {
-                                       isfav =true;
-                                     });
-                               }else{
-
-                                 setState(() {
-                                   isfav =false;
-                                 });
-                               }
-                              }
-                          },
-                          child:
-
-
-                          isfav
-                                  ?
-                              Icon(Icons.favorite_outlined)
-                                  :
-
-                            Icon(Icons.favorite_border),
-                          // color: AppColors.primarycolor
-                        );
+                          if (state is FavouritesAddSuccessState) {
+                            if (state.addFavouriteModel.data != null) {
+                              setState(() {
+                                isfav = true;
+                              });
+                            } else {
+                              setState(() {
+                                isfav = false;
+                              });
+                            }
+                          }
+                        },
+                        child:
+                            // allFavouriteModel?.data?.map((e) {
+                            //           return widget.model.data![widget.index].id ==
+                            //                   e.product?.id
+                            //               ? true
+                            //               : false;
+                            //         }) ==true
+                            isfav
+                                ? Icon(Icons.favorite_outlined)
+                                : Icon(Icons.favorite_border),
+                        // color: AppColors.primarycolor
+                      );
                       // }
                       // return Center(
                       //   child: CircularProgressIndicator(),
@@ -105,7 +113,8 @@ class _ProductItemState extends State<ProductItem> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text('${widget.model.data![widget.index].reviews?.averageRating}',
+                      Text(
+                          '${widget.model.data![widget.index].reviews?.averageRating}',
                           style: TextStyle(
                               color: AppColors.green,
                               fontSize: 12,
@@ -133,7 +142,8 @@ class _ProductItemState extends State<ProductItem> {
               ),
               Container(
                 height: 45,
-                child: Text('${widget.model.data![widget.index].shortDescription}',
+                child: Text(
+                    '${widget.model.data![widget.index].shortDescription}',
                     maxLines: 2,
                     style: AppTextStyles.smTitles
                         .copyWith(fontSize: 14, fontWeight: FontWeight.w600)),
