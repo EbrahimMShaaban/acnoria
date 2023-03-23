@@ -3,6 +3,7 @@ import 'package:acnoria/features/Home/cubit/cubit.dart';
 import 'package:acnoria/features/layout/view.dart';
 
 import 'package:acnoria/features/registration/login/view.dart';
+import 'package:acnoria/features/welcamScreen/view.dart';
 import 'package:acnoria/shared/network/local/shared_preferences.dart';
 import 'package:acnoria/shared/network/remote/dio_helper.dart';
 import 'package:acnoria/shared/network/remote/end_points.dart';
@@ -30,15 +31,16 @@ void main() async {
   final Widget startWidget;
   // await Future.delayed(Duration(seconds: 5));
   token = CacheHelper.getData(key: 'token');
+  OnBoarding = CacheHelper.getData(key: 'OnBoarding');
   idlocaton = CacheHelper.getData(key: 'idlocaton');
 
-  if (token != null) {
+  if (OnBoarding != null) {
     if (token != null)
       startWidget = AppLayout();
     else
       startWidget = LoginScreen();
   } else {
-    startWidget = LoginScreen();
+    startWidget = OnBoardingScreen();
   }
   runApp(MyApp(
     startwidget: startWidget,
@@ -84,7 +86,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // English
               // Locale('es'), // Spanish
             ],
-            home: LoginScreen(),
+            home: startwidget,
           ),
         );
       },
