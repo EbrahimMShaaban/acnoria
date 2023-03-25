@@ -148,9 +148,8 @@ class _CategoriesState extends State<Categories> {
                                                                   .selectedIndex ==
                                                           (categoriesmodel
                                                               .data ?? [])[index].id
-                                                          ? AppColors
-                                                              .primarycolor
-                                                          : AppColors.green,
+                                                          ? AppColors.blueDark
+                                                          : AppColors.Bluehint,
                                                       fontSize: 18,
                                                       fontWeight:
                                                           FontWeight.w900)),
