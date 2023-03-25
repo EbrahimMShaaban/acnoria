@@ -10,6 +10,7 @@ import '../../../shared/components/navigator.dart';
 import '../../../shared/styles/colors.dart';
 import '../../shared/styles/images.dart';
 import '../cart/view.dart';
+import '../search/categories.dart';
 import '../search/widgets/search_bar.dart';
 import 'ContinerCategories.dart';
 import 'ContinerCategoriesBackgroundimage.dart';
@@ -81,9 +82,16 @@ class CategoriesScrren extends StatelessWidget {
                         physics: NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return categoriesmodel.data![index].name != null
-                              ? ContinerCategories(
-                                  name: '${categoriesmodel.data![index].name}',
-                                )
+                              ? InkWell(
+                            onTap: (){
+                              int id = categoriesmodel.data![index].id ?? 0;
+                              navigateTo(context, Categories(selectedIndex: id,));
+
+                            },
+                                child: ContinerCategories(
+                                    name: '${categoriesmodel.data![index].name}',
+                                  ),
+                              )
                               : SizedBox();
                         },
                         itemCount: categoriesmodel.data?.length,

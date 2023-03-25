@@ -25,18 +25,16 @@ class ProfilCubit extends Cubit<ProfilState> {
         'Authorization': "Bearer ${token}",
       },
     ).then((value) {
+      print(value);
       myProfil = RegisterModrl.fromJson(value.data);
       // print(myProfil!.team.attributes.body);
-      print(myProfil!.data?.email);
+      // print(myProfil!.data?.email);
+
 
       emit(ProfilSuccessState());
 
       // print(team_id);
       print("team_id");
-    }).catchError((error) {
-      print(error);
-      print("00000000000000000000000ddddddddddddddddddddddd000000");
-      emit(ProfilErrorState());
     });
   }
 

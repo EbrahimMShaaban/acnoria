@@ -43,7 +43,7 @@ class DioHelper {
   static Future<Response> putdata(
       {required String url,
       Map<String, dynamic>? query,
-      required Map<String, dynamic> posteddata,
+      required  posteddata,
       headers}) async {
     return await dio.put(url,
         queryParameters: query,

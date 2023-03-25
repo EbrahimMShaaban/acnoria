@@ -51,7 +51,7 @@ class _CartScreenState extends State<CartScreen> {
                     child: Padding(
                       padding: appPadding(),
                       child: state is GetOrdertErrorState
-                          ? Container(
+                          ? SizedBox(
                               height: MediaQuery.of(context).size.height / 2,
                               child: Center(
                                 child: Text(
@@ -65,7 +65,7 @@ class _CartScreenState extends State<CartScreen> {
                                   height: 30,
                                 ),
                                 ListView.builder(
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
                                   itemCount:
                                       cartDetailsModel!.data!.items!.length,
@@ -88,21 +88,22 @@ class _CartScreenState extends State<CartScreen> {
                                               product_id: cartDetailsModel
                                                   .data!.items![index].id!,
                                               quantity: cartDetailsModel.data!
-                                                  .items![index].quantity++);
+                                                  .items![index].quantity);
                                         });
                                       },
                                       remove: () {
                                         setState(() {
                                           if (cartDetailsModel.data!
                                                   .items![index].quantity >
-                                              1)
+                                              1) {
                                             cartDetailsModel
                                                 .data!.items![index].quantity--;
+                                          }
                                           CartCubit.get(context).updateCard(
                                               product_id: cartDetailsModel
                                                   .data!.items![index].id!,
                                               quantity: cartDetailsModel.data!
-                                                  .items![index].quantity--);
+                                                  .items![index].quantity);
                                         });
                                       },
                                       image:

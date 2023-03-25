@@ -7,8 +7,8 @@ class RegisterModrl {
 
   RegisterModrl.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? Data.fromJson(json['data']) : null;
-    message = json['message'];
-    token = json['token'];
+    message = json['message'] ?? '';
+    token = json['token'] ?? '';
   }
 
 
@@ -20,29 +20,29 @@ class Data {
   String? name;
   String? firstName ;
   String? lastName ;
-  Null? gender;
-  Null? dateOfBirth;
-  Null? phone;
+  String? gender;
+  String? dateOfBirth;
+  String? phone;
   int? status;
   Group? group;
-  Null? notes;
+  String? notes;
   String? createdAt;
   String? updatedAt;
 
 
 
   Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    email = json['email'];
-    name = json['name'];
-    firstName = json['first_name'];
-    lastName = json['last_name'];
-    gender = json['gender'];
-    dateOfBirth = json['date_of_birth'];
-    phone = json['phone'];
-    status = json['status'];
+    id = json['id'] ?? 0;
+    email = json['email'] ?? '';
+    name = json['name'] ?? '';
+    firstName = json['first_name'] ?? '';
+    lastName = json['last_name'] ?? '';
+    gender = json['gender'] ?? '';
+    dateOfBirth = json['date_of_birth'] ?? '';
+    phone = json['phone'] ?? '';
+    status = json['status'] ?? '';
     group = json['group'] != null ? Group.fromJson(json['group']) : null;
-    notes = json['notes'];
+    notes = json['notes'] ?? '';
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -53,8 +53,8 @@ class Data {
 class Group {
   int? id;
   String? name;
-  Null? createdAt;
-  Null? updatedAt;
+  String? createdAt;
+  String? updatedAt;
 
 
 

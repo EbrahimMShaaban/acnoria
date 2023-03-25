@@ -65,11 +65,6 @@ class MyApp extends StatelessWidget {
               CategoriesCubit()..getAllCatefories(),
 
             ),
-            BlocProvider(
-              create: (context) => FavouritesCubit()..getAllfavourites(),
-
-
-            ),
           ],
 
           child: MaterialApp(
@@ -84,7 +79,7 @@ class MyApp extends StatelessWidget {
               Locale('ar'), // English
               // Locale('es'), // Spanish
             ],
-            home: LoginScreen(),
+            home: startwidget,
           ),
         );
       },

@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:motion_toast/motion_toast.dart';
@@ -53,12 +54,11 @@ class CartCubit extends Cubit<CartState> {
     }, query: {
       'locale': 'ar',
     }).then((value) {
-      cartDetailsModel = CartDetailsModel.fromJson(value.data);
-      print(cartDetailsModel!.data!.items);
       emit(RomoveItemFromCardtSuccessState());
 
       print("11111111111111 done");
       print(value.data["data"]);
+      getCart();
     }).catchError((error) {
       print(error);
       print("11111111111111 ");
@@ -130,12 +130,14 @@ class CartCubit extends Cubit<CartState> {
     BuildContext? context,
   }) {
     emit(UpdateCardtLoadingtState());
+
+    final formData = FormData.fromMap({
+      "qty": {"$product_id": quantity}
+    });
     DioHelper.putdata(url: UpdateCard, headers: {
       "Accept": "application/json",
       'Authorization': "Bearer ${token}",
-    }, posteddata: {
-      "qty": {"${product_id}": quantity}
-    }).then((value) {
+    }, posteddata:formData, ).then((value) {
       // message = value.data["message"];
       print("000000000000000000");
 

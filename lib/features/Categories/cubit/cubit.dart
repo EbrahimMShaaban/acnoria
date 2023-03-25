@@ -27,7 +27,7 @@ class CategoriesCubit extends Cubit<CategoriesStates> {
 
   CategoriesModel? categoriesModel;
 
-  getAllCatefories() {
+  getAllCatefories([void Function(int id)? onGetCategories]) {
     print('categoriesModel is ${categoriesModel?.data?.length}');
 
     emit(CategoriesLoadingtState());
@@ -44,6 +44,9 @@ class CategoriesCubit extends Cubit<CategoriesStates> {
     ).then((value) {
       categoriesModel = CategoriesModel.fromJson(value.data);
 
+      if(onGetCategories != null) {
+        onGetCategories((categoriesModel!.data ?? []).first.id ?? 0);
+      }
       print('categoriesModel is ${value.data}');
       print('categoriesModel is ${value.data}');
     //  print('prooooduct is ${list}');

@@ -60,7 +60,7 @@ class _AccountDetailsState extends State<AccountDetails> {
         builder: (context, state) {
           return Scaffold(
             appBar: ProfileAppBar(context, txt: 'معلومات الحساب',navTo:  (){
-              navigateTo(context, ProfileScreen());
+              Navigator.pop(context);
             }),
             body: SingleChildScrollView(
               child: Padding(
