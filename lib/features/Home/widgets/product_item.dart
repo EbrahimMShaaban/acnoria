@@ -45,7 +45,7 @@ class _ProductItemState extends State<ProductItem> {
     Future.delayed(Duration.zero, () {
       print("initi");
       isfav = (widget.favorites ?? []).any(
-        (item) => item.product?.id == widget.model.data![widget.index].id!,
+            (item) => item.product?.id == widget.model.data![widget.index].id!,
       );
 
       setState(() {});

@@ -53,10 +53,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   var boardController = PageController();
 
   void finishOnBoarding() {
-    navigateAndFinished(context, LoginScreen());
-    // CacheHelper.saveData(key: 'token', value: true).then((value) {
-    //   navigateAndFinished(context, LoginScreen());
-    // });
+    // navigateAndFinished(context, LoginScreen());
+    CacheHelper.saveData(key: 'OnBoarding', value: true).then((value) {
+      navigateAndFinished(context, LoginScreen());
+    });
   }
 
   @override

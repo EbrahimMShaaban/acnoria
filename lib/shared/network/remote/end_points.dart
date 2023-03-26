@@ -14,6 +14,7 @@ const RomoveItemFromCard= 'checkout/cart/remove-item/';
 const UpdateCard= 'checkout/cart/update/';
 
 dynamic token = '';
+dynamic OnBoarding = '';
 dynamic idlocaton = '';
 
 const AllCustomProducts='custom/products/';
