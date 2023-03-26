@@ -95,6 +95,7 @@ class CategoriesScrren extends StatelessWidget {
                                   child: ContinerCategories(
                                     name:
                                         '${categoriesmodel.data![index].name}',
+                                    imgpath:  '${categoriesmodel.data![index].imageUrl}',
                                   ),
                                 )
                               : SizedBox();
