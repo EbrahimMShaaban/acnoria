@@ -1,5 +1,5 @@
 class AllFavouritesModel {
-  List<Data>? data;
+  List<FavItem>? data;
   Links? links;
   Meta? meta;
 
@@ -7,9 +7,9 @@ class AllFavouritesModel {
 
   AllFavouritesModel.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <FavItem>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(new FavItem.fromJson(v));
       });
     }
     links = json['links'] != null ? new Links.fromJson(json['links']) : null;
@@ -17,15 +17,15 @@ class AllFavouritesModel {
   }
 }
 
-class Data {
+class FavItem {
   int? id;
   Product? product;
   String? createdAt;
   String? updatedAt;
 
-  Data({this.id, this.product, this.createdAt, this.updatedAt});
+  FavItem({this.id, this.product, this.createdAt, this.updatedAt});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  FavItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     product =
         json['product'] != null ? new Product.fromJson(json['product']) : null;

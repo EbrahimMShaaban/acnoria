@@ -29,7 +29,7 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
     ).then((value) {
       allFavouritesModel = AllFavouritesModel.fromJson(value.data);
       print("dataaaaa in cubit is ${value.data}");
-      emit(FavouritesSuccessState( allFavouritesModel!));
+      emit(FavouritesSuccessState(allFavouritesModel!));
       //  emit(FavouritesSuccessState());
     }).catchError((error) {
       emit(FavouritesErrorState(message: error.toString()));
@@ -38,7 +38,7 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
     });
   }
   addFavourite(int id){
-    emit(FavouritesAddLoadingtState());
+    // emit(FavouritesAddLoadingtState());
     DioHelper.getdata(url:"$AddFavourites$id",
         headers: {
           'Content-type': 'application/json',
@@ -51,14 +51,14 @@ class FavouritesCubit extends Cubit<FavouritesStates> {
     ).then((value){
 
       addFavouriteModel = AddFavouriteModel.fromJson(value.data);
-      emit(FavouritesAddSuccessState( AddFavouriteModel.fromJson(value.data)));
+      // emit(FavouritesAddSuccessState( AddFavouriteModel.fromJson(value.data)));
       // if (addFavouriteModel?.data!=null){
       //   emit(FavouritesAddSuccessState());
       //
       // }
 
     }).catchError((error) {
-      emit(FavouritesAddErrorState(message: error.toString()));
+      // emit(FavouritesAddErrorState(message: error.toString()));
 
       print('eeeeeeeeeeee${error.toString()}');
       //print('prooooduct is ${allFavouritesModel?.data?.length}');

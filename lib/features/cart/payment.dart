@@ -361,7 +361,7 @@ class _paymentScreenState extends State<paymentScreen> {
                           ),
                           Price(
                             allPrice:
-                                "${cartDetailsModel!.data!.formatedBaseSubTotal}",
+                                "${cartDetailsModel.data!.formatedBaseSubTotal}",
                             totalPrice:
                                 "${cartDetailsModel.data!.formatedBaseDiscountedSubTotal}",
                             priceRate:

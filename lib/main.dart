@@ -67,11 +67,6 @@ class MyApp extends StatelessWidget {
               CategoriesCubit()..getAllCatefories(),
 
             ),
-            BlocProvider(
-              create: (context) => FavouritesCubit()..getAllfavourites(),
-
-
-            ),
           ],
 
           child: MaterialApp(

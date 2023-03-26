@@ -10,6 +10,7 @@ import '../../../shared/components/navigator.dart';
 import '../../../shared/styles/colors.dart';
 import '../../shared/styles/images.dart';
 import '../cart/view.dart';
+import '../search/categories.dart';
 import '../search/widgets/search_bar.dart';
 import 'ContinerCategories.dart';
 import 'ContinerCategoriesBackgroundimage.dart';
@@ -63,10 +64,10 @@ class CategoriesScrren extends StatelessWidget {
                 height: MediaQueryHelper.sizeFromHeight(context, 8),
                 //  color: Colors.red,
                 child: SearchBar()),
-            SizedBox(
+          const  SizedBox(
               height: 30,
             ),
-            ContinerCategoriesBackgroundImage(),
+           const ContinerCategoriesBackgroundImage(),
             BlocConsumer<CategoriesCubit, CategoriesStates>(
               listener: (context, state) {
                 print(state);
@@ -75,14 +76,27 @@ class CategoriesScrren extends StatelessWidget {
                 CategoriesModel? categoriesmodel =
                     CategoriesCubit.get(context)?.categoriesModel;
                 return categoriesmodel == null
-                    ? Center(child: CircularProgressIndicator())
+                    ?const Center(child: CircularProgressIndicator())
                     : ListView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics:const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return categoriesmodel.data![index].name != null
-                              ? ContinerCategories(
-                                  name: '${categoriesmodel.data![index].name}',
+                              ? InkWell(
+                                  onTap: () {
+                                    int id =
+                                        categoriesmodel.data![index].id ?? 0;
+                                    navigateTo(
+                                        context,
+                                        Categories(
+                                          selectedIndex: id,
+                                        ));
+                                  },
+                                  child: ContinerCategories(
+                                    name:
+                                        '${categoriesmodel.data![index].name}',
+                                    imgpath:  '${categoriesmodel.data![index].imageUrl}',
+                                  ),
                                 )
                               : SizedBox();
                         },

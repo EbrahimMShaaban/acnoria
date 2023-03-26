@@ -20,9 +20,9 @@ import '../Home/widgets/product_item.dart';
 import 'filteration.dart';
 
 class Categories extends StatefulWidget {
-  Categories({Key? key}) : super(key: key);
-  int selectedIndex = 0;
-  int id = 6906;
+  Categories({Key? key,this.selectedIndex,}) : super(key: key);
+  // int
+  int? selectedIndex;
 
   @override
   State<Categories> createState() => _CategoriesState();
@@ -34,10 +34,14 @@ class _CategoriesState extends State<Categories> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => SearchCubit()..getAllProducts(widget.id),
+          create: (context) => SearchCubit(),
         ),
         BlocProvider(
-          create: (context) => CategoriesCubit()..getAllCatefories(),
+          create: (context) => CategoriesCubit()..getAllCatefories((int id){
+            widget.selectedIndex ??= id;
+            SearchCubit.get(context)!.getAllProducts(widget.selectedIndex ?? 0);
+
+          }),
         ),
       ],
       child: Scaffold(
@@ -121,14 +125,11 @@ class _CategoriesState extends State<Categories> {
                                     ? GestureDetector(
                                         onTap: () {
                                           setState(() {
-                                            widget.selectedIndex = index;
-                                            widget.id = categoriesmodel
-                                                .data![index].id!;
+                                            widget.selectedIndex = categoriesmodel
+                                                .data![index].id ?? 0;
 
                                             SearchCubit.get(context)
-                                                ?.getAllProducts(categoriesmodel
-                                                    .data![index].id!);
-                                            print("idddddddd is${widget.id}");
+                                                ?.getAllProducts(widget.selectedIndex ?? 0);
                                           });
                                           // CategoriesCubit.get(context)
                                           //     ?.chngeSelection(index);
@@ -145,10 +146,10 @@ class _CategoriesState extends State<Categories> {
                                                   .copyWith(
                                                       color: widget
                                                                   .selectedIndex ==
-                                                              index
-                                                          ? AppColors
-                                                              .primarycolor
-                                                          : AppColors.green,
+                                                          (categoriesmodel
+                                                              .data ?? [])[index].id
+                                                          ? AppColors.blueDark
+                                                          : AppColors.Bluehint,
                                                       fontSize: 18,
                                                       fontWeight:
                                                           FontWeight.w900)),
@@ -165,30 +166,38 @@ class _CategoriesState extends State<Categories> {
               Expanded(
                 child: BlocConsumer<SearchCubit, SearchStates>(
                   builder: (context, state) {
-                    CustomProductsModel? product =
-                        SearchCubit.get(context)?.product;
-                    return state is!SearchLoadingtState
-                        ? GridView.builder(
-                            // shrinkWrap: true,
-                            //  physics: NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    childAspectRatio: 0.65,
-                                    crossAxisSpacing: 8,
-                                    crossAxisCount: 2),
-                            itemCount: (product!.data!.length)-1,
-                            //  itemCount: 10,
-                            itemBuilder: (BuildContext context, int index) {
-                              // SearchCubit.get(context)?.getAllProducts(widget.id);
-                              print(
-                                  'product length in ui is ${product.data?.length}');
-                              return ProductItem(
-                                model: product,
-                                index: index,
-                              );
-                            },
-                          )
-                        : const Center(child: CircularProgressIndicator());
+                    // return state is!SearchLoadingtState
+                    //     ?
+                    //     : const Center(child: CircularProgressIndicator());
+
+                    if(state is SearchSuccessState) {
+                      CustomProductsModel? product =
+                          SearchCubit.get(context)?.product;
+
+                      return GridView.builder(
+                      // shrinkWrap: true,
+                      //  physics: NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 0.65,
+                    crossAxisSpacing: 8,
+                    crossAxisCount: 2),
+                    itemCount: (product!.data!.length)-1,
+                    //  itemCount: 10,
+                    itemBuilder: (BuildContext context, int index) {
+                    // SearchCubit.get(context)?.getAllProducts(widget.id);
+                    print(
+                    'product length in ui is ${product.data?.length}');
+                    return ProductItem(
+                    model: product,
+                    index: index,
+                    favorites: [],
+                    );
+                    },
+                    );
+                    }
+
+                    return const Center(child: CircularProgressIndicator());
                   },
                   listener: (context, state) {},
                 ),

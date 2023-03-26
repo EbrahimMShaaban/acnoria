@@ -4,10 +4,11 @@ import '../../shared/components/constants.dart';
 import '../../shared/styles/colors.dart';
 import '../../shared/styles/styles.dart';
 class ContinerCategories extends StatelessWidget {
-  ContinerCategories({required this.name, Key? key}) : super(key: key);
+  ContinerCategories({required this.name, required this.imgpath,Key? key}) : super(key: key);
 
   // Data? model;
   String name;
+  String imgpath;
 
 
   @override
@@ -42,8 +43,11 @@ class ContinerCategories extends StatelessWidget {
               height: 70,
               width: 70,
               // color: Colors.amber
-              child: Image.asset(
-                "assets/images/gym.png",
+              child: Image.network(
+                imgpath,
+                errorBuilder: (context,obj,tracer){
+                  return Image.asset( "assets/images/gym.png");
+                },
                 fit: BoxFit.fill,
               ),
             ),

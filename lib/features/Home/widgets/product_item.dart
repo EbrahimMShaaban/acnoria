@@ -1,9 +1,9 @@
+import 'dart:async';
+
 import 'package:acnoria/features/Favourite/cubit/cubit.dart';
 import 'package:acnoria/features/Favourite/cubit/state.dart';
 import 'package:acnoria/features/home/itemScreen.dart';
-import 'package:acnoria/models/addFav_model.dart';
-import 'package:acnoria/models/fav_model/test.dart';
-import 'package:acnoria/models/product_model.dart';
+import 'package:acnoria/models/addFav_model.dart' as fav;
 import 'package:acnoria/shared/components/navigator.dart';
 import 'package:acnoria/shared/styles/styles.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +13,16 @@ import '../../../models/allFavorites_model.dart';
 import '../../../models/customproducts_model.dart';
 import '../../../shared/components/constants.dart';
 import '../../../shared/styles/colors.dart';
-import '../../../shared/styles/images.dart';
 
 class ProductItem extends StatefulWidget {
-  ProductItem({required this.model, required this.index, Key? key})
-      : super(key: key);
+  ProductItem({
+    required this.model,
+    required this.index,
+    Key? key,
+    required this.favorites,
+  }) : super(key: key);
   CustomProductsModel model;
+  List<FavItem>? favorites;
   int index;
 
   @override
@@ -27,7 +31,41 @@ class ProductItem extends StatefulWidget {
 
 class _ProductItemState extends State<ProductItem> {
   bool isfav = false;
-  bool isfav2 = false;
+
+  // allFavouriteModel?.data?.any((element) => element.product.id) != null
+  //     ? isfav = true
+  //     : isfav = false;
+
+  AllFavouritesModel? allFavouriteModel;
+
+  // StreamSubscription? streamSubscription;
+
+  @override
+  void initState() {
+    Future.delayed(Duration.zero, () {
+      print("initi");
+      isfav = (widget.favorites ?? []).any(
+            (item) => item.product?.id == widget.model.data![widget.index].id!,
+      );
+
+      setState(() {});
+
+      // streamSubscription =
+      //     context.read<FavouritesCubit>().stream.listen((state) {
+      //   print('emit new state $state');
+      //   if (state is FavouritesSuccessState) {
+      //     allFavouriteModel = FavouritesCubit.get(context)?.allFavouritesModel;
+      //
+      //     isfav = allFavouriteModel!.data!.any((item) =>
+      //         item.product?.id == widget.model.data![widget.index].id!);
+      //     print(isfav);
+      //     setState(() {});
+      //   }
+      // });
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,64 +96,29 @@ class _ProductItemState extends State<ProductItem> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  BlocConsumer<FavouritesCubit, FavouritesStates>(
-                    listener: (context, state) {},
-                    builder: (context, state) {
-                      AddFavouriteModel? addFavouriteModel =
-                          FavouritesCubit.get(context)?.addFavouriteModel;
-                      AllFavouritesModel? allFavouriteModel =
-                          FavouritesCubit.get(context)?.allFavouritesModel;
+                  InkWell(
+                    onTap: () {
+                      FavouritesCubit.get(context)
+                          ?.addFavourite(widget.model.data![widget.index].id!);
 
-                      // allFavouriteModel?.data?.any((element) => element.product.id) != null
-                      //     ? isfav = true
-                      //     : isfav = false;
+                      isfav = !isfav;
 
-                      isfav2 = allFavouriteModel!.data!.any((item) =>
-                      widget.model.data![widget.index].id! ==
-                          item.product?.id);
-                      // if (state is FavouritesSuccessState
-                      //     ||state is FavouritesAddSuccessState
-                      // ) {
-                      return InkWell(
-                        onTap: () {
-                          FavouritesCubit.get(context)?.addFavourite(
-                              widget.model.data![widget.index].id!);
-
-                          if (state is FavouritesAddSuccessState) {
-                            if (state.addFavouriteModel.data != null) {
-                              setState(() {
-                                isfav = true;
-                              });
-                            } else {
-                              setState(() {
-                                isfav = false;
-                              });
-                            }
-                          }
-                        },
-                        child:
-
-                        isfav2
-                                ? Icon(Icons.favorite_outlined)
-                                : Icon(Icons.favorite_border),
-                        // color: AppColors.primarycolor
-                      );
-                      // }
-                      // return Center(
-                      //   child: CircularProgressIndicator(),
-                      // );
+                      setState(() {});
                     },
+                    child: isfav
+                        ? Icon(Icons.favorite_outlined)
+                        : Icon(Icons.favorite_border),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
                           '${widget.model.data![widget.index].reviews?.averageRating}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: AppColors.green,
                               fontSize: 12,
                               fontWeight: FontWeight.bold)),
-                      Icon(
+                      const Icon(
                         Icons.star,
                         size: 15,
                         color: AppColors.gold,
@@ -124,27 +127,25 @@ class _ProductItemState extends State<ProductItem> {
                   )
                 ],
               ),
-              Container(
+              SizedBox(
                 height: MediaQueryHelper.sizeFromHeight(context, 8),
                 child: Image.network(
                   '${widget.model.data![widget.index].baseImage?.originalImageUrl}',
                   errorBuilder: (context, object, stack) {
-                    return Center(
+                    return const Center(
                       child: Text('لا توجد صورة لعرضها'),
                     );
                   },
-                  // height: MediaQueryHelper.sizeFromHeight(context, 10),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 45,
-                child: Text(
-                    '${widget.model.data![widget.index].shortDescription}',
+                child: Text('${widget.model.data![widget.index].name}',
                     maxLines: 2,
                     style: AppTextStyles.smTitles
                         .copyWith(fontSize: 14, fontWeight: FontWeight.w600)),
               ),
-              Container(
+              SizedBox(
                 height: 30,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,7 +158,7 @@ class _ProductItemState extends State<ProductItem> {
                             color: AppColors.blue)),
                     IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.add_circle_outline),
+                        icon: const Icon(Icons.add_circle_outline),
                         iconSize: 20,
                         color: AppColors.primarycolor),
                   ],
